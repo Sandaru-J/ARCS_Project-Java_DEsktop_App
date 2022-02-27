@@ -1,5 +1,5 @@
 package Model;
 
-public class journeyModel {
+public class journeyModel  {
 
 }
