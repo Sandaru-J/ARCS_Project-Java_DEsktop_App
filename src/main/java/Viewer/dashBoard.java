@@ -49,6 +49,9 @@ public class dashBoard {
     private JTextField textField28;
     private JTextField textField29;
     private JComboBox comboBox3;
+    private JTextField textField30;
+    private JButton cancelButton1;
+    private JButton registerButton;
 
 
     public dashBoard(){
