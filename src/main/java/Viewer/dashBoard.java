@@ -32,6 +32,13 @@ public class dashBoard {
     private JButton cancelButton;
     private JButton createButton;
     private JButton clearButton;
+    private JTextField textField14;
+    private JTextField textField15;
+    private JTextField textField16;
+    private JTextField textField17;
+    private JTextField textField18;
+    private JTextField textField19;
+    private JTextField textField20;
 
 
     public dashBoard(){
