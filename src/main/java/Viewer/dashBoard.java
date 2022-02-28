@@ -8,6 +8,30 @@ public class dashBoard {
     private JTabbedPane tabbedPane2;
     private JTabbedPane tabbedPane3;
     private JTabbedPane tabbedPane4;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JTextField textField5;
+    private JTextField textField6;
+    private JTextField textField8;
+    private JTextField textField9;
+    private JCheckBox checkBox1;
+    private JCheckBox checkBox2;
+    private JCheckBox checkBox3;
+    private JCheckBox checkBox4;
+    private JCheckBox checkBox5;
+    private JCheckBox checkBox6;
+    private JCheckBox checkBox7;
+    private JTextField textField7;
+    private JTextField textField10;
+    private JTextField textField11;
+    private JComboBox comboBox1;
+    private JTextField textField12;
+    private JTextField textField13;
+    private JButton cancelButton;
+    private JButton createButton;
+    private JButton clearButton;
 
 
     public dashBoard(){
