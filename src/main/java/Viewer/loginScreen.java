@@ -2,6 +2,10 @@ package Viewer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.Component;
+import java.lang.*;
 
 public class loginScreen extends JFrame {
     private JPanel lbLogin;
@@ -27,6 +31,23 @@ public class loginScreen extends JFrame {
             //setMinimumSize(new Dimension(450,450));
 
 
+        btnLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                if(tfUsername.getText().equals("") || tfPassword.getText().equals(""))
+                {
+                    JOptionPane.showMessageDialog(null,"Enter all credentials","Try again",JOptionPane.ERROR_MESSAGE);
+                    tfPassword.setText("");
+                    tfUsername.setText("");
+
+                }else
+                {
+                    // add a function or sent to relevant class to check login
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
