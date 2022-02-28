@@ -52,6 +52,10 @@ public class dashBoard {
     private JTextField textField30;
     private JButton cancelButton1;
     private JButton registerButton;
+    private JButton cancelButton2;
+    private JButton registerButton1;
+    private JButton cancelButton3;
+    private JButton registerButton2;
 
 
     public dashBoard(){
