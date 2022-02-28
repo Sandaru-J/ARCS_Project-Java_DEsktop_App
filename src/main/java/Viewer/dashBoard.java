@@ -6,7 +6,6 @@ public class dashBoard {
     private JPanel dashPanel;
     private JTabbedPane tabbedPane1;
     private JTabbedPane tabbedPane2;
-    private JTabbedPane tabbedPane3;
     private JTabbedPane tabbedPane4;
     private JTextField textField1;
     private JTextField textField2;
@@ -39,6 +38,17 @@ public class dashBoard {
     private JTextField textField18;
     private JTextField textField19;
     private JTextField textField20;
+    private JTextField textField21;
+    private JTextField textField23;
+    private JTextField textField24;
+    private JTextField textField25;
+    private JComboBox comboBox2;
+    private JTextField textField22;
+    private JTextField textField26;
+    private JTextField textField27;
+    private JTextField textField28;
+    private JTextField textField29;
+    private JComboBox comboBox3;
 
 
     public dashBoard(){
