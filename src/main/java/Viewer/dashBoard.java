@@ -28,7 +28,6 @@ public class dashBoard {
     private JTextField txtNoOfBlocks;
     private JButton btnCancel;
     private JButton btnCreate;
-    private JButton btnClear;
     private JTextField txtFullName;
     private JTextField txtAge;
     private JTextField txtNIC;
@@ -72,7 +71,55 @@ public class dashBoard {
         btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                txtJourneyName.setText("");
+                lblEngineID.setToolTipText("");
+                txtStartingTime.setText("");
+                txtEndTime.setText("");
+                txtStartingStation.setText("");
+                txtDestination.setText("");
+                lblDuration.setText("");
+                lblDistance.setText("");
+                txtTrainID.setText("");
+                cmbJourneyType.setToolTipText("");
+                txtBlockID.setText("");
+                txtNoOfBlocks.setText("");
+
+            }
+        });
+
+        btnDriverCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtDriver.setText("");
+                txtFullName.setText("");
+                txtAge.setText("");
+                txtNIC.setText("");
+                txtAssignedRoutes.setText("");
+                txtContactNumber.setText("");
+                txtEmail.setText("");
+            }
+        });
+        });
+        btnBlockCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtBlock.setText("");
+                cbmBlockName.setToolTipText("");
+                txtBlockType.setText("");
+                txtLength.setText("");
+                txtQuantity.setText("");
+                txtWeight.setText("");
+                txtCap.setText("");
+
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 //clearTextFields(this.getContentPane());
+              txtTrain.setText("");
+                txtTrainName.setText("");
+                txtCapacity.setText("");
+                cmbType.setToolTipText("");
+                txtSpeed.setText("");
             }
         });
     }
