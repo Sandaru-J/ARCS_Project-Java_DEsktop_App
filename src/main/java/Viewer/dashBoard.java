@@ -7,25 +7,25 @@ public class dashBoard {
     private JTabbedPane tabbedPane1;
     private JTabbedPane tabbedPane2;
     private JTabbedPane tabbedPane4;
-    private JTextField textField1;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField6;
-    private JTextField textField9;
-    private JCheckBox checkBox1;
-    private JCheckBox checkBox2;
-    private JCheckBox checkBox3;
-    private JCheckBox checkBox4;
-    private JCheckBox checkBox5;
-    private JCheckBox checkBox6;
-    private JCheckBox checkBox7;
-    private JTextField textField7;
-    private JTextField textField10;
-    private JComboBox comboBox1;
-    private JTextField textField13;
-    private JButton cancelButton;
-    private JButton createButton;
-    private JButton clearButton;
+    private JTextField txtJourneyName;
+    private JTextField txtStartingTime;
+    private JTextField txtStartingStation;
+    private JTextField txtTrainID;
+    private JTextField txtBlockID;
+    private JCheckBox cbMonday;
+    private JCheckBox cbTuesday;
+    private JCheckBox cbWednesday;
+    private JCheckBox cbThursday;
+    private JCheckBox cbFriday;
+    private JCheckBox cbSaturday;
+    private JCheckBox cbSunday;
+    private JTextField txtEndTime;
+    private JTextField txtDestination;
+    private JComboBox cmbJourneyType;
+    private JTextField txtNoOfBlocks;
+    private JButton btnCancel;
+    private JButton btnCreate;
+    private JButton btnClear;
     private JTextField textField14;
     private JTextField textField15;
     private JTextField textField16;
@@ -51,6 +51,11 @@ public class dashBoard {
     private JButton registerButton1;
     private JButton cancelButton3;
     private JButton registerButton2;
+    private JLabel lblJourneyID;
+    private JLabel lblDuration;
+    private JLabel lblDistance;
+    private JLabel lblDriverID;
+    private JPanel lblEngineID;
 
 
     public dashBoard(){

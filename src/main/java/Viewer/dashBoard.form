@@ -41,7 +41,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="6a288" layout-manager="GridLayoutManager" row-count="11" column-count="12" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="6a288" binding="lblEngineID" layout-manager="GridLayoutManager" row-count="11" column-count="12" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title="Create Journey"/>
@@ -143,63 +143,63 @@
                   <text value="Block ID -"/>
                 </properties>
               </component>
-              <component id="e8d81" class="javax.swing.JCheckBox" binding="checkBox1" default-binding="true">
+              <component id="e8d81" class="javax.swing.JCheckBox" binding="cbMonday">
                 <constraints>
                   <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="CheckBox"/>
+                  <text value="Monday"/>
                 </properties>
               </component>
-              <component id="87d58" class="javax.swing.JCheckBox" binding="checkBox2" default-binding="true">
+              <component id="87d58" class="javax.swing.JCheckBox" binding="cbTuesday">
                 <constraints>
                   <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="CheckBox"/>
+                  <text value="Tuesday"/>
                 </properties>
               </component>
-              <component id="be6e0" class="javax.swing.JCheckBox" binding="checkBox3" default-binding="true">
+              <component id="be6e0" class="javax.swing.JCheckBox" binding="cbWednesday">
                 <constraints>
                   <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="CheckBox"/>
+                  <text value="Wednesday"/>
                 </properties>
               </component>
-              <component id="6e8e9" class="javax.swing.JCheckBox" binding="checkBox4" default-binding="true">
+              <component id="6e8e9" class="javax.swing.JCheckBox" binding="cbThursday">
                 <constraints>
                   <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="CheckBox"/>
+                  <text value="Thursday"/>
                 </properties>
               </component>
-              <component id="d0543" class="javax.swing.JCheckBox" binding="checkBox5" default-binding="true">
+              <component id="d0543" class="javax.swing.JCheckBox" binding="cbFriday">
                 <constraints>
                   <grid row="7" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="CheckBox"/>
+                  <text value="Friday"/>
                 </properties>
               </component>
-              <component id="8703e" class="javax.swing.JCheckBox" binding="checkBox6" default-binding="true">
+              <component id="8703e" class="javax.swing.JCheckBox" binding="cbSaturday">
                 <constraints>
                   <grid row="7" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="CheckBox"/>
+                  <text value="Saturday"/>
                 </properties>
               </component>
-              <component id="cdfdf" class="javax.swing.JCheckBox" binding="checkBox7" default-binding="true">
+              <component id="cdfdf" class="javax.swing.JCheckBox" binding="cbSunday">
                 <constraints>
                   <grid row="7" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="CheckBox"/>
+                  <text value="Sunday"/>
                 </properties>
               </component>
-              <component id="e76e8" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+              <component id="e76e8" class="javax.swing.JTextField" binding="txtTrainID">
                 <constraints>
                   <grid row="6" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -207,7 +207,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="35355" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+              <component id="35355" class="javax.swing.JTextField" binding="txtStartingStation">
                 <constraints>
                   <grid row="4" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -215,7 +215,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="6c7f0" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+              <component id="6c7f0" class="javax.swing.JTextField" binding="txtStartingTime">
                 <constraints>
                   <grid row="3" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -223,7 +223,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="cf828" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+              <component id="cf828" class="javax.swing.JTextField" binding="txtJourneyName">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -263,7 +263,7 @@
                   <text value="Journey Type -"/>
                 </properties>
               </component>
-              <component id="3bdd4" class="javax.swing.JTextField" binding="textField9" default-binding="true">
+              <component id="3bdd4" class="javax.swing.JTextField" binding="txtBlockID">
                 <constraints>
                   <grid row="9" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -271,7 +271,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="29829" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+              <component id="29829" class="javax.swing.JTextField" binding="txtEndTime">
                 <constraints>
                   <grid row="3" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -279,7 +279,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="ccfe4" class="javax.swing.JTextField" binding="textField10" default-binding="true">
+              <component id="ccfe4" class="javax.swing.JTextField" binding="txtDestination">
                 <constraints>
                   <grid row="4" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -287,13 +287,13 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="a0be8" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+              <component id="a0be8" class="javax.swing.JComboBox" binding="cmbJourneyType">
                 <constraints>
                   <grid row="6" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
-              <component id="5f088" class="javax.swing.JTextField" binding="textField13" default-binding="true">
+              <component id="5f088" class="javax.swing.JTextField" binding="txtNoOfBlocks">
                 <constraints>
                   <grid row="9" column="6" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -317,7 +317,7 @@
                   <text value="No of Blocks -"/>
                 </properties>
               </component>
-              <component id="837ba" class="javax.swing.JButton" binding="cancelButton" default-binding="true">
+              <component id="837ba" class="javax.swing.JButton" binding="btnCancel">
                 <constraints>
                   <grid row="10" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -325,7 +325,7 @@
                   <text value="Cancel"/>
                 </properties>
               </component>
-              <component id="6cbe7" class="javax.swing.JButton" binding="createButton" default-binding="true">
+              <component id="6cbe7" class="javax.swing.JButton" binding="btnCreate">
                 <constraints>
                   <grid row="10" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -333,7 +333,7 @@
                   <text value="Create"/>
                 </properties>
               </component>
-              <component id="19ed5" class="javax.swing.JButton" binding="clearButton" default-binding="true">
+              <component id="19ed5" class="javax.swing.JButton" binding="btnClear">
                 <constraints>
                   <grid row="10" column="7" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -341,7 +341,7 @@
                   <text value="Clear"/>
                 </properties>
               </component>
-              <component id="ec218" class="javax.swing.JLabel">
+              <component id="ec218" class="javax.swing.JLabel" binding="lblJourneyID">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -349,7 +349,7 @@
                   <text value="Label"/>
                 </properties>
               </component>
-              <component id="7e3b" class="javax.swing.JLabel">
+              <component id="7e3b" class="javax.swing.JLabel" binding="lblDuration">
                 <constraints>
                   <grid row="5" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -357,7 +357,7 @@
                   <text value="Label"/>
                 </properties>
               </component>
-              <component id="6bdaa" class="javax.swing.JLabel">
+              <component id="6bdaa" class="javax.swing.JLabel" binding="lblDistance">
                 <constraints>
                   <grid row="5" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -373,7 +373,7 @@
                   <text value="Label"/>
                 </properties>
               </component>
-              <component id="4f0e0" class="javax.swing.JLabel">
+              <component id="4f0e0" class="javax.swing.JLabel" binding="lblDriverID">
                 <constraints>
                   <grid row="8" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
