@@ -26,13 +26,12 @@ public class dashBoard {
     private JButton btnCancel;
     private JButton btnCreate;
     private JButton btnClear;
-    private JTextField textField14;
-    private JTextField textField15;
-    private JTextField textField16;
-    private JTextField textField17;
-    private JTextField textField18;
-    private JTextField textField19;
-    private JTextField textField20;
+    private JTextField txtFullName;
+    private JTextField txtAge;
+    private JTextField txtNIC;
+    private JTextField txtAssignedRoutes;
+    private JTextField txtContactNumber;
+    private JTextField txtEmail;
     private JTextField txtBlockType;
     private JTextField txtLength;
     private JTextField txtQuantity;
@@ -46,8 +45,8 @@ public class dashBoard {
     private JTextField txtSpeed;
     private JButton btnCancle;
     private JButton btnRegister;
-    private JButton cancelButton2;
-    private JButton registerButton1;
+    private JButton btnDriverCancel;
+    private JButton btnDriverRegister;
     private JButton btnBlockCancel;
     private JButton btnBlockRegister;
     private JLabel lblJourneyID;
@@ -56,6 +55,7 @@ public class dashBoard {
     private JLabel lblDriverID;
     private JPanel lblEngineID;
     private JTextField txtBlock;
+    private JTextField txtDriver;
 
 
     public dashBoard(){

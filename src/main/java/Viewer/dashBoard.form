@@ -447,7 +447,7 @@
                       <text value="Full Name -"/>
                     </properties>
                   </component>
-                  <component id="23e05" class="javax.swing.JTextField" binding="textField15" default-binding="true">
+                  <component id="23e05" class="javax.swing.JTextField" binding="txtFullName">
                     <constraints>
                       <grid row="2" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -455,7 +455,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="b8447" class="javax.swing.JTextField" binding="textField14" default-binding="true">
+                  <component id="b8447" class="javax.swing.JTextField" binding="txtDriver">
                     <constraints>
                       <grid row="1" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -463,7 +463,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="42026" class="javax.swing.JTextField" binding="textField16" default-binding="true">
+                  <component id="42026" class="javax.swing.JTextField" binding="txtAge">
                     <constraints>
                       <grid row="3" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -471,7 +471,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="92040" class="javax.swing.JTextField" binding="textField17" default-binding="true">
+                  <component id="92040" class="javax.swing.JTextField" binding="txtNIC">
                     <constraints>
                       <grid row="4" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -479,7 +479,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="a8e27" class="javax.swing.JTextField" binding="textField18" default-binding="true">
+                  <component id="a8e27" class="javax.swing.JTextField" binding="txtAssignedRoutes">
                     <constraints>
                       <grid row="5" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -487,7 +487,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="be707" class="javax.swing.JTextField" binding="textField19" default-binding="true">
+                  <component id="be707" class="javax.swing.JTextField" binding="txtContactNumber">
                     <constraints>
                       <grid row="6" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -527,7 +527,7 @@
                       <text value="Contact Number -"/>
                     </properties>
                   </component>
-                  <component id="b91b9" class="javax.swing.JTextField" binding="textField20" default-binding="true">
+                  <component id="b91b9" class="javax.swing.JTextField" binding="txtEmail">
                     <constraints>
                       <grid row="7" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -543,7 +543,7 @@
                       <text value="Email -"/>
                     </properties>
                   </component>
-                  <component id="c97e1" class="javax.swing.JButton" binding="cancelButton2" default-binding="true">
+                  <component id="c97e1" class="javax.swing.JButton" binding="btnDriverCancel">
                     <constraints>
                       <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -551,7 +551,7 @@
                       <text value="Cancel"/>
                     </properties>
                   </component>
-                  <component id="eb7e2" class="javax.swing.JButton" binding="registerButton1" default-binding="true">
+                  <component id="eb7e2" class="javax.swing.JButton" binding="btnDriverRegister">
                     <constraints>
                       <grid row="8" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
