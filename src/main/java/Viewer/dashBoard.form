@@ -741,7 +741,7 @@
                       <text value="Quantity -"/>
                     </properties>
                   </component>
-                  <component id="af1de" class="javax.swing.JTextField" binding="textField21" default-binding="true">
+                  <component id="af1de" class="javax.swing.JTextField" binding="txtBlock">
                     <constraints>
                       <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -749,7 +749,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="46057" class="javax.swing.JTextField" binding="textField23" default-binding="true">
+                  <component id="46057" class="javax.swing.JTextField" binding="txtBlockType">
                     <constraints>
                       <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -757,7 +757,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="88838" class="javax.swing.JTextField" binding="textField25" default-binding="true">
+                  <component id="88838" class="javax.swing.JTextField" binding="txtQuantity">
                     <constraints>
                       <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -787,13 +787,13 @@
                       </component>
                     </children>
                   </grid>
-                  <component id="67163" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+                  <component id="67163" class="javax.swing.JComboBox" binding="cbmBlockName">
                     <constraints>
                       <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="7f602" class="javax.swing.JTextField" binding="textField24" default-binding="true">
+                  <component id="7f602" class="javax.swing.JTextField" binding="txtLength">
                     <constraints>
                       <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -817,7 +817,7 @@
                       <text value="Capacity -"/>
                     </properties>
                   </component>
-                  <component id="7b833" class="javax.swing.JTextField" binding="textField22" default-binding="true">
+                  <component id="7b833" class="javax.swing.JTextField" binding="txtWeight">
                     <constraints>
                       <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -825,7 +825,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="94832" class="javax.swing.JTextField" binding="textField26" default-binding="true">
+                  <component id="94832" class="javax.swing.JTextField" binding="txtCap">
                     <constraints>
                       <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -833,7 +833,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="857ba" class="javax.swing.JButton" binding="cancelButton3" default-binding="true">
+                  <component id="857ba" class="javax.swing.JButton" binding="btnBlockCancel">
                     <constraints>
                       <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -841,7 +841,7 @@
                       <text value="Cancel"/>
                     </properties>
                   </component>
-                  <component id="4a9f7" class="javax.swing.JButton" binding="registerButton2" default-binding="true">
+                  <component id="4a9f7" class="javax.swing.JButton" binding="btnBlockRegister">
                     <constraints>
                       <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>

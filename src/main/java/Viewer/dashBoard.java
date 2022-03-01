@@ -33,13 +33,12 @@ public class dashBoard {
     private JTextField textField18;
     private JTextField textField19;
     private JTextField textField20;
-    private JTextField textField21;
-    private JTextField textField23;
-    private JTextField textField24;
-    private JTextField textField25;
-    private JComboBox comboBox2;
-    private JTextField textField22;
-    private JTextField textField26;
+    private JTextField txtBlockType;
+    private JTextField txtLength;
+    private JTextField txtQuantity;
+    private JComboBox cbmBlockName;
+    private JTextField txtWeight;
+    private JTextField txtCap;
     private JTextField txtTrain;
     private JTextField txtTrainName;
     private JTextField txtCapacity;
@@ -49,13 +48,14 @@ public class dashBoard {
     private JButton btnRegister;
     private JButton cancelButton2;
     private JButton registerButton1;
-    private JButton cancelButton3;
-    private JButton registerButton2;
+    private JButton btnBlockCancel;
+    private JButton btnBlockRegister;
     private JLabel lblJourneyID;
     private JLabel lblDuration;
     private JLabel lblDistance;
     private JLabel lblDriverID;
     private JPanel lblEngineID;
+    private JTextField txtBlock;
 
 
     public dashBoard(){
