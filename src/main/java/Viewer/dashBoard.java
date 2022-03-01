@@ -68,7 +68,6 @@ public class dashBoard {
         frame.setLocationRelativeTo(null);
         frame.setSize(800,600);
 
-
         btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -100,15 +99,6 @@ public class dashBoard {
                 txtEmail.setText("");
             }
         });
-        btnCancle.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                txtTrain.setText("");
-                txtTrainName.setText("");
-                txtCapacity.setText("");
-                cmbType.setToolTipText("");
-                txtSpeed.setText("");
-            }
         });
         btnBlockCancel.addActionListener(new ActionListener() {
             @Override
@@ -120,6 +110,16 @@ public class dashBoard {
                 txtQuantity.setText("");
                 txtWeight.setText("");
                 txtCap.setText("");
+
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //clearTextFields(this.getContentPane());
+              txtTrain.setText("");
+                txtTrainName.setText("");
+                txtCapacity.setText("");
+                cmbType.setToolTipText("");
+                txtSpeed.setText("");
             }
         });
     }
