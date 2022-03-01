@@ -69,11 +69,10 @@ public class dashBoard {
         frame.setLocationRelativeTo(null);
         frame.setSize(800,600);
 
-        cancelButton2.addActionListener(new ActionListener() {
+        btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //clearTextFields(this.getContentPane());
-
             }
         });
     }
