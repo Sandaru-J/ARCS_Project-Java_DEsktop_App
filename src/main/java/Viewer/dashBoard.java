@@ -87,6 +87,41 @@ public class dashBoard {
 
             }
         });
+
+        btnDriverCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtDriver.setText("");
+                txtFullName.setText("");
+                txtAge.setText("");
+                txtNIC.setText("");
+                txtAssignedRoutes.setText("");
+                txtContactNumber.setText("");
+                txtEmail.setText("");
+            }
+        });
+        btnCancle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtTrain.setText("");
+                txtTrainName.setText("");
+                txtCapacity.setText("");
+                cmbType.setToolTipText("");
+                txtSpeed.setText("");
+            }
+        });
+        btnBlockCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtBlock.setText("");
+                cbmBlockName.setToolTipText("");
+                txtBlockType.setText("");
+                txtLength.setText("");
+                txtQuantity.setText("");
+                txtWeight.setText("");
+                txtCap.setText("");
+            }
+        });
     }
 //    public void clearTextFields (Container container){
 //
