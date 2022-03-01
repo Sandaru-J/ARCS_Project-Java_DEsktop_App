@@ -28,7 +28,6 @@ public class dashBoard {
     private JTextField txtNoOfBlocks;
     private JButton btnCancel;
     private JButton btnCreate;
-    private JButton btnClear;
     private JTextField txtFullName;
     private JTextField txtAge;
     private JTextField txtNIC;
@@ -69,10 +68,22 @@ public class dashBoard {
         frame.setLocationRelativeTo(null);
         frame.setSize(800,600);
 
-        cancelButton2.addActionListener(new ActionListener() {
+
+        btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //clearTextFields(this.getContentPane());
+                txtJourneyName.setText("");
+                lblEngineID.setToolTipText("");
+                txtStartingTime.setText("");
+                txtEndTime.setText("");
+                txtStartingStation.setText("");
+                txtDestination.setText("");
+                lblDuration.setText("");
+                lblDistance.setText("");
+                txtTrainID.setText("");
+                cmbJourneyType.setToolTipText("");
+                txtBlockID.setText("");
+                txtNoOfBlocks.setText("");
 
             }
         });
