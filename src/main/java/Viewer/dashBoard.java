@@ -1,6 +1,9 @@
 package Viewer;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class dashBoard {
     private JPanel dashPanel;
@@ -66,8 +69,24 @@ public class dashBoard {
         frame.setLocationRelativeTo(null);
         frame.setSize(800,600);
 
+        btnCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //clearTextFields(this.getContentPane());
+            }
+        });
     }
-
+//    public void clearTextFields (Container container){
+//
+//        for(Component c : container.getComponents()){
+//            if(c instanceof JTextField){
+//                JTextField f = (JTextField) c;
+//                f.setText("");
+//            }
+//            else if (c instanceof Container)
+//                clearTextFields((Container)c);
+//        }
+//    }
     public static void main(String[] args) {
         dashBoard panel = new dashBoard();
 
