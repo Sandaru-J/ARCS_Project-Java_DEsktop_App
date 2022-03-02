@@ -75,18 +75,19 @@ public class dashBoard {
         btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                txtJourneyName.setText("");
-                lblEngineID.setToolTipText("");
-                txtStartingTime.setText("");
-                txtEndTime.setText("");
-                txtStartingStation.setText("");
-                txtDestination.setText("");
-                lblDuration.setText("");
-                lblDistance.setText("");
-                txtTrainID.setText("");
-                cmbJourneyType.setToolTipText("");
-                txtBlockID.setText("");
-                txtNoOfBlocks.setText("");
+                durationCalc();
+//                txtJourneyName.setText("");
+//                lblEngineID.setToolTipText("");
+//                txtStartingTime.setText("");
+//                txtEndTime.setText("");
+//                txtStartingStation.setText("");
+//                txtDestination.setText("");
+//                lblDuration.setText("");
+//                lblDistance.setText("");
+//                txtTrainID.setText("");
+//                cmbJourneyType.setToolTipText("");
+//                txtBlockID.setText("");
+//                txtNoOfBlocks.setText("");
 
             }
         });
@@ -103,7 +104,6 @@ public class dashBoard {
                 txtEmail.setText("");
             }
         });
-        });
         btnBlockCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -114,21 +114,22 @@ public class dashBoard {
                 txtQuantity.setText("");
                 txtWeight.setText("");
                 txtCap.setText("");
-
-        btnCancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //clearTextFields(this.getContentPane());
-                durationCalc();
-              txtTrain.setText("");
-                txtTrainName.setText("");
-                txtCapacity.setText("");
-                cmbType.setToolTipText("");
-                txtSpeed.setText("");
             }
-        });
-    }
-//    public void clearTextFields (Container container){
+            });
+//        btnCancel.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                        //clearTextFields(this.getContentPane());
+//                        durationCalc();
+//                        txtTrain.setText("");
+//                        txtTrainName.setText("");
+//                        txtCapacity.setText("");
+//                        cmbType.setToolTipText("");
+//                        txtSpeed.setText("");
+//                    }
+//                });
+            }
+            //    public void clearTextFields (Container container){
 //
 //        for(Component c : container.getComponents()){
 //            if(c instanceof JTextField){
@@ -139,51 +140,45 @@ public class dashBoard {
 //                clearTextFields((Container)c);
 //        }
 //    }
-    public void durationCalc()
-    {
+            public void durationCalc() {
 //        LocalDateTime stDate = LocalDateTime.parse(txtStartingTime.getText());
 //        LocalDateTime eDate = LocalDateTime.parse(txtEndTime.getText());
 
 //        String time1 = "16:00:00";
 //        String time2 = "19:00:00";
 
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-        Date date1 = null;
-        try {
-            date1 = format.parse(txtStartingTime.getText());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Date date2 = null;
-        try {
-            date2 = format.parse(txtEndTime.getText() );
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        if( date1 instanceof Date || date2 instanceof Date )
-        {
-            long difference = date2.getTime() - date1.getTime();
-            difference=difference/60000;
-            if(difference < 0)
-            {
-                difference = difference * (-1);
-                lblDuration.setText(String.valueOf(difference)+" Minutes");
-            }else
-            {
-                lblDuration.setText(String.valueOf(difference)+" Minutes");
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+                Date date1 = null;
+                try {
+                    date1 = format.parse(txtStartingTime.getText());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Date date2 = null;
+                try {
+                    date2 = format.parse(txtEndTime.getText());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                if (date1 instanceof Date || date2 instanceof Date) {
+                    long difference = date2.getTime() - date1.getTime();
+                    difference = difference / 60000;
+                    if (difference < 0) {
+                        difference = difference * (-1);
+                        lblDuration.setText(String.valueOf(difference) + " Minutes");
+                    } else {
+                        lblDuration.setText(String.valueOf(difference) + " Minutes");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Incorrect Time format", "Try again", JOptionPane.ERROR_MESSAGE);
+                    txtStartingTime.setText("");
+                    txtEndTime.setText("");
+                }
+
             }
-        }else
-        {
-            JOptionPane.showMessageDialog(null,"Incorrect Time format","Try again",JOptionPane.ERROR_MESSAGE);
-            txtStartingTime.setText("");
-            txtEndTime.setText("");
-        }
 
-    }
-    public static void main(String[] args) {
-        dashBoard panel = new dashBoard();
+            public static void main(String[] args) {
+                dashBoard panel = new dashBoard();
 
-    }
-
-
+            }
 }
