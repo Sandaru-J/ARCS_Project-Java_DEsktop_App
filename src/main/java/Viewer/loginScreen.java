@@ -16,19 +16,19 @@ public class loginScreen extends JFrame {
     private JLabel lbPassword;
     private JFrame frame;
 
-    public loginScreen(){
+    public loginScreen() {
 
 
-            frame = new JFrame("Login Frame");
-            //frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            //frame.setPreferredSize(new Dimension(300,300));
-            //frame.setResizable(false);
+        frame = new JFrame("Login Frame");
+        //frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //frame.setPreferredSize(new Dimension(300,300));
+        //frame.setResizable(false);
 
-            frame.add(lbLogin);
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-            //setMinimumSize(new Dimension(450,450));
+        frame.add(lbLogin);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        //setMinimumSize(new Dimension(450,450));
 
 
         btnLogin.addActionListener(new ActionListener() {
@@ -49,6 +49,8 @@ public class loginScreen extends JFrame {
             }
         });
     }
+
+
 
     public static void main(String[] args) {
         loginScreen form = new loginScreen();
