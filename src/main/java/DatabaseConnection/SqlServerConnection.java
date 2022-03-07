@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class SqlServerConnection {
   public void createConnectionSqlServer() {
     try{
-      Class.forName("com.mysql.cj.jdbc.Driver");
+      //Class.forName("com.mysql.cj.jdbc.Driver");
       Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;\" +\n" +
               "     \"databaseName=ARCSDatabase" +
               "     \"encrypt=true;trustServerCertificate=true","Admin","Admin@12345");
