@@ -17,7 +17,6 @@ public class dashBoard {
     private JTextField txtJourneyName;
     private JTextField txtStartingTime;
     private JTextField txtStartingStation;
-    private JTextField txtTrainID;
     private JTextField txtBlockID;
     private JCheckBox cbMonday;
     private JCheckBox cbTuesday;
@@ -55,7 +54,6 @@ public class dashBoard {
     private JButton btnDriverRegister;
     private JButton btnBlockCancel;
     private JButton btnBlockRegister;
-    private JLabel lblJourneyID;
     private JLabel lblDuration;
     private JLabel lblDistance;
     private JLabel lblDriverID;
