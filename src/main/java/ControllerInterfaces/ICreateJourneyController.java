@@ -1,5 +1,5 @@
 package ControllerInterfaces;
 
-public interface ICreateJourneyController {
+public interface IcreateJourneyController {
 
 }
