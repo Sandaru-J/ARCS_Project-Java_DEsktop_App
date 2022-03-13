@@ -126,7 +126,24 @@ public class dashBoard {
 //                        txtSpeed.setText("");
 //                    }
 //                });
+        btnDriverRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if(txtDriver.getText().equals("") || txtFullName.getText().equals("") ||
+                txtAge.getText().equals("") || txtNIC.getText().equals("") ||
+                txtAssignedRoutes.getText().equals("") || txtContactNumber.getText().equals("") ||
+                txtEmail.getText().equals("") )
+                {
+                    JOptionPane.showMessageDialog(null,"Enter data to all text fields","Missing Fields",JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                    //Add a function or send to a relavant class
+                }
+
             }
+        });
+    }
             //    public void clearTextFields (Container container){
 //
 //        for(Component c : container.getComponents()){
