@@ -126,7 +126,21 @@ public class dashBoard {
 //                        txtSpeed.setText("");
 //                    }
 //                });
+
+        btnRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cmbType.addItem("1");
+               // item select keranne one so validate keranne ba
+                if (txtTrain.getText().equals("") || txtTrainName.getText().equals("")
+                        || txtCapacity.getText().equals("") || txtSpeed.getText().equals("") || cmbType.getSelectedItem().equals(null) )
+                {
+                        JOptionPane.showMessageDialog(null,"Enter Data to all text fields","Missing fields",JOptionPane.ERROR_MESSAGE);
+                }
+
             }
+        });
+    }
             //    public void clearTextFields (Container container){
 //
 //        for(Component c : container.getComponents()){
