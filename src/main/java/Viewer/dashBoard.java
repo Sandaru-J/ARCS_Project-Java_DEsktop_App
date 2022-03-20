@@ -1,12 +1,10 @@
 package Viewer;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class dashBoard {
@@ -56,10 +54,15 @@ public class dashBoard {
     private JButton btnBlockRegister;
     private JLabel lblDuration;
     private JLabel lblDistance;
-    private JLabel lblDriverID;
     private JPanel lblEngineID;
     private JTextField txtBlock;
     private JTextField txtDriver;
+    private JPasswordField txtDriverPassword;
+    private JComboBox cmbBlockType;
+    private JTextField txtBlockName;
+    private JTextField txtDriverNameJourney;
+    private JTextField textField1;
+    private JButton button1;
 
 
     public dashBoard(){
@@ -82,7 +85,7 @@ public class dashBoard {
 //                txtDestination.setText("");
 //                lblDuration.setText("");
 //                lblDistance.setText("");
-//                txtTrainID.setText("");
+//
 //                cmbJourneyType.setToolTipText("");
 //                txtBlockID.setText("");
 //                txtNoOfBlocks.setText("");
@@ -97,7 +100,7 @@ public class dashBoard {
                 txtFullName.setText("");
                 txtAge.setText("");
                 txtNIC.setText("");
-                txtAssignedRoutes.setText("");
+                txtDriverPassword.setText("");
                 txtContactNumber.setText("");
                 txtEmail.setText("");
             }
@@ -106,8 +109,8 @@ public class dashBoard {
             @Override
             public void actionPerformed(ActionEvent e) {
                 txtBlock.setText("");
-                cbmBlockName.setToolTipText("");
-                txtBlockType.setText("");
+                txtBlockName.setText("");
+                cmbBlockType.setToolTipText("");
                 txtLength.setText("");
                 txtQuantity.setText("");
                 txtWeight.setText("");
@@ -119,14 +122,28 @@ public class dashBoard {
 //            public void actionPerformed(ActionEvent e) {
 //                        //clearTextFields(this.getContentPane());
 //                        durationCalc();
-//                        txtTrain.setText("");
+//
 //                        txtTrainName.setText("");
 //                        txtCapacity.setText("");
 //                        cmbType.setToolTipText("");
-//                        txtSpeed.setText("");
+//
 //                    }
 //                });
+
+        btnRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cmbType.addItem("1");
+               // item select keranne one so validate keranne ba
+                if ( txtTrainName.getText().equals("") || txtCapacity.getText().equals("")
+                        ||  cmbType.getSelectedItem().equals(null) )
+                {
+                        JOptionPane.showMessageDialog(null,"Enter Data to all text fields","Missing fields",JOptionPane.ERROR_MESSAGE);
+                }
+
             }
+        });
+    }
             //    public void clearTextFields (Container container){
 //
 //        for(Component c : container.getComponents()){
