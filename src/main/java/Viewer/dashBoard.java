@@ -62,6 +62,7 @@ public class dashBoard {
     private JTextField txtBlockName;
     private JTextField txtDriverNameJourney;
     private JTextField textField1;
+    private JButton button1;
 
 
     public dashBoard(){
