@@ -3,10 +3,12 @@ import ControllerInterfaces.IRegistrationController;
 import Model.*;
 import Service.*;
 
+import java.sql.SQLException;
+
 public class RegistrationController implements IRegistrationController {
   RegistrationService registrationService = new RegistrationService();
 
-  public void saveDriverRegistration(String userName, String Password, String fullName, int age, String nic, int contactNumber, String email) {
+  public void saveDriverRegistration(String userName, String Password, String fullName, String age, String nic, String contactNumber, String email) throws SQLException {
 
     driverRegistrationModel driverRegistrationModel = new driverRegistrationModel();
     driverRegistrationModel.setUserName(userName);
@@ -17,7 +19,7 @@ public class RegistrationController implements IRegistrationController {
     driverRegistrationModel.setContactNumber(contactNumber);
     driverRegistrationModel.setEmail(email);
 
-    registrationService.saveDriverRegistration();
+    boolean regdriver = registrationService.saveDriverRegistration();
 
   }
 }

@@ -16,6 +16,8 @@ public class SqlServerConnection {
     } catch (Exception e) {
       System.out.println("Connection error to SqlServe Database ARCSDatabase");
       System.err.println(e);
+    }finally {
+      System.out.println("fdsafds");
     }
     return con;
   }

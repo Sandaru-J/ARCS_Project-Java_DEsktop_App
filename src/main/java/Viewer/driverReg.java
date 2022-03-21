@@ -1,6 +1,8 @@
 package Viewer;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class driverReg extends JFrame {
     private JLabel lblDriverReg;
@@ -27,6 +29,12 @@ public class driverReg extends JFrame {
         frame.setVisible(true);
 
 
+        btnRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     public static void main(String[] args) {
