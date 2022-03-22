@@ -1,5 +1,7 @@
 package Viewer;
 
+import Controller.driverRegisterController;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -141,6 +143,14 @@ public class dashBoard {
                         JOptionPane.showMessageDialog(null,"Enter Data to all text fields","Missing fields",JOptionPane.ERROR_MESSAGE);
                 }
 
+            }
+        });
+        btnDriverRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                driverRegisterController driverRegisterController = new driverRegisterController();
+                //driverRegisterController.saveDriverReg(DriverRegistrationID, DriverFullName, DriverUserName, DriverAge, DriverNIC, DriverContactNumber, DriverEmail, DriverPassword);
             }
         });
     }
