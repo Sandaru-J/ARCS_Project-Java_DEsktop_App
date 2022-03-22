@@ -1,6 +1,7 @@
 package Viewer;
 
 import Controller.driverRegisterController;
+import Controller.engineRegisterControlleer;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -151,6 +152,13 @@ public class dashBoard {
 
                 driverRegisterController driverRegisterController = new driverRegisterController();
                 //driverRegisterController.saveDriverReg(DriverRegistrationID, DriverFullName, DriverUserName, DriverAge, DriverNIC, DriverContactNumber, DriverEmail, DriverPassword);
+            }
+        });
+        btnRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                engineRegisterControlleer engineRegisterControlleer = new engineRegisterControlleer();
+                //engineRegisterControlleer.saveEngineReg();
             }
         });
     }
