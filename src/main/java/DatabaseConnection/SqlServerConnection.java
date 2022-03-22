@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class SqlServerConnection {
-  public void createConnectionSqlServer() {
+  public Connection createConnectionSqlServer() {
     try{
       //Class.forName("com.mysql.cj.jdbc.Driver");
       Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;\" +\n" +
@@ -16,5 +16,6 @@ public class SqlServerConnection {
       System.out.println("Connection error to SqlServe Database ARCSDatabase");
       System.err.println(e);
     }
+      return null;
   }
 }
