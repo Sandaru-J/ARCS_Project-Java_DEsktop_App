@@ -17,21 +17,23 @@ public class RegistrationService {
     //sql code to call a stored procedure
     try{
 
-      PreparedStatement ps = sqlServerConnection.createConnectionSqlServer().prepareStatement("insert into DriverDetails values(?,?,?,?,?,?,?,?)");
+      int i;
+      try (PreparedStatement ps = sqlServerConnection.createConnectionSqlServer().prepareStatement("insert into DriverDetails values(?,?,?,?,?,?,?,?)")) {
 
 
-      ps.setString(1, "userName");
-      ps.setString(2, "password");
-      ps.setString(3, "fullName");
-      ps.setInt(4, 1);
-      ps.setString(5, "nic");
-      ps.setInt(6, 2);
-      ps.setString(7, "email");
-      ps.setString(8, "email1");
+        ps.setString(1, "userName");
+        ps.setString(2, "password");
+        ps.setString(3, "fullName");
+        ps.setInt(4, 1);
+        ps.setString(5, "nic");
+        ps.setInt(6, 2);
+        ps.setString(7, "email");
+        ps.setString(8, "email1");
 
-      System.out.println("Ok");
+        System.out.println("Ok");
 
-      int i = ps.executeUpdate();
+        i = ps.executeUpdate();
+      }
       System.out.println("Insert: " + i);
       if (i > 0)
         return true;
@@ -47,14 +49,10 @@ public class RegistrationService {
 
     return false;
   }
-    public void Max() throws SQLException {
-    saveDriverRegistration();
-  }
     public static void main(String[] args) throws SQLException {
      boolean check=saveDriverRegistration();
 
     }
-
 
 
 
