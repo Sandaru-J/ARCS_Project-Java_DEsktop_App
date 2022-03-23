@@ -157,8 +157,13 @@ public class dashBoard {
         btnRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                String EngineName = txtTrainName.getText();
+                Float EngineCapacity = Float.valueOf(txtCapacity.getText());
+                String EngineModel = String.valueOf(cmbType.getAction());
+
                 engineRegisterControlleer engineRegisterControlleer = new engineRegisterControlleer();
-                //engineRegisterControlleer.saveEngineReg();
+                engineRegisterControlleer.saveEngineReg(EngineName, EngineCapacity, EngineModel);
             }
         });
     }

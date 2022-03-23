@@ -9,25 +9,21 @@ import java.sql.SQLException;
 
 public class engineRegisterService {
 
-    public static boolean saveEngineReg() {
+    public static boolean saveEngineReg(engineRegisterModel engineRegisterModel) {
         SqlServerConnection objsqlServerConnection = new SqlServerConnection();
         Connection con = objsqlServerConnection.createConnectionSqlServer();
-        engineRegisterModel engineRegisterModel = new engineRegisterModel();
 
         //Calling SP
         try{
 
-            PreparedStatement ps = con.prepareStatement("insert into [ARCS].[TrainEngineDetails] values('a','b','c',1,'e',2,'g','h')");
+            PreparedStatement ps = con.prepareStatement("insert into [ARCS].[TrainEngineDetails] values(?,?,?)");
+
+            ps.setString(1, engineRegisterModel.getEngineName());
+            ps.setFloat(2, Float.parseFloat(engineRegisterModel.getEngineCapacity()));
+            ps.setString(3, engineRegisterModel.getEngineModel());
 
 
-//            ps.setString(1, "userName");
-//            ps.setString(2, "password");
-//            ps.setString(3, "fullName");
-//            ps.setInt(4, 1);
-//            ps.setString(5, "nic");
-//            ps.setInt(6, 2);
-//            ps.setString(7, "email");
-//            ps.setString(8, "email1");
+
 
             System.out.println("Ok");
 
@@ -47,13 +43,6 @@ public class engineRegisterService {
 
         return false;
     }
-
-    public static void main(String [] args) throws SQLException
-    {
-        boolean saveEngineReg = saveEngineReg();
-
-    }
-
 }
 
 

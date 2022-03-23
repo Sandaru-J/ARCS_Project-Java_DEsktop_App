@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.engineRegisterModel;
+import Service.engineRegisterService;
 
 public class engineRegisterControlleer {
 
@@ -11,6 +12,8 @@ public class engineRegisterControlleer {
         engineRegisterModel.setEngineName(EngineName);
         engineRegisterModel.setEngineCapacity(EngineCapacity);
         engineRegisterModel.setEngineModel(EngineModel);
+
+        engineRegisterService.saveEngineReg(engineRegisterModel);
     }
 
 }
