@@ -5,11 +5,10 @@ import Model.engineRegisterModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class engineRegisterService {
 
-    public static boolean saveEngineReg(engineRegisterModel engineRegisterModel) {
+    public static void saveEngineRegService(engineRegisterModel engineRegisterModel) {
         SqlServerConnection objsqlServerConnection = new SqlServerConnection();
         Connection con = objsqlServerConnection.createConnectionSqlServer();
 
@@ -29,10 +28,8 @@ public class engineRegisterService {
 
             int i = ps.executeUpdate();
             System.out.println("Insert: " + i);
-            if (i > 0)
-                return true;
-            else
-                return false;
+            if (i > 0) {
+            }
 
         }
         catch(Exception ex)
@@ -41,7 +38,6 @@ public class engineRegisterService {
         }
 
 
-        return false;
     }
 }
 

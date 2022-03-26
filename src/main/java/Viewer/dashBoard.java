@@ -159,7 +159,7 @@ public class dashBoard {
             public void actionPerformed(ActionEvent e) {
 
                 String EngineName = txtTrainName.getText();
-                Float EngineCapacity = Float.valueOf(txtCapacity.getText());
+                float EngineCapacity = Float.parseFloat(txtCapacity.getText());
                 String EngineModel = String.valueOf(cmbType.getAction());
 
                 engineRegisterControlleer engineRegisterControlleer = new engineRegisterControlleer();

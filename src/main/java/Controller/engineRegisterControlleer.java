@@ -13,7 +13,7 @@ public class engineRegisterControlleer {
         engineRegisterModel.setEngineCapacity(EngineCapacity);
         engineRegisterModel.setEngineModel(EngineModel);
 
-        engineRegisterService.saveEngineReg(engineRegisterModel);
+        engineRegisterService.saveEngineRegService(engineRegisterModel);
     }
 
 }
