@@ -2,9 +2,10 @@ package DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Statement;
 
 public class SqlServerConnection {
-  public Connection createConnectionSqlServer() {
+  public static Connection createConnectionSqlServer() {
     Connection con = null;
     try {
       //Class.forName("com.mysql.cj.jdbc.Driver");
@@ -16,8 +17,6 @@ public class SqlServerConnection {
     } catch (Exception e) {
       System.out.println("Connection error to SqlServe Database ARCSDatabase");
       System.err.println(e);
-    }finally {
-      System.out.println("fdsafds");
     }
     return con;
   }
