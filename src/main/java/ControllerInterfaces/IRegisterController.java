@@ -1,0 +1,8 @@
+package ControllerInterfaces;
+
+public interface IRegisterController {
+
+  public default void saveDriverReg(String DriverRegistrationID, String DriverFullName, String DriverUserName, int DriverAge, String DriverNIC, int DriverContactNumber, String DriverEmail, String DriverPassword) {}
+  public default  void saveEngineReg(String EngineName, float EngineCapacity, String EngineModel) {}
+
+}

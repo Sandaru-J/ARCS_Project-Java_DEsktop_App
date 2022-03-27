@@ -1,16 +1,17 @@
 package Controller;
-
+import ControllerInterfaces.IRegisterController;
 import Model.driverRegisterModel;
-import Service.driverRegisterService;
+import Model.engineRegisterModel;
+import Service.RegisterService;
 
 
-public class driverRegisterController {
-    driverRegisterService driverregisterService = new driverRegisterService();
+public class RegisterController implements IRegisterController {
 
-    public void saveDriverReg(String DriverRegistrationID, String DriverFullName, String DriverUserName, int DriverAge, String DriverNIC, int DriverContactNumber, String DriverEmail, String DriverPassword)
-    {
+    RegisterService registerService = new RegisterService(); //object to RegisterService
 
-        driverRegisterModel objDriverRegisterModel = new driverRegisterModel();
+    public void saveDriverReg(String DriverRegistrationID, String DriverFullName, String DriverUserName, int DriverAge, String DriverNIC, int DriverContactNumber, String DriverEmail, String DriverPassword) {
+
+        driverRegisterModel objDriverRegisterModel = new driverRegisterModel(); //object to driverRegisterModel
 
         objDriverRegisterModel.setDriverRegistrationID(DriverRegistrationID);
         objDriverRegisterModel.setDriverFullName(DriverFullName);
@@ -21,6 +22,17 @@ public class driverRegisterController {
         objDriverRegisterModel.setDriverEmail(DriverEmail);
         objDriverRegisterModel.setDriverPassword(DriverPassword);
 
-        //driverregisterService.saveDriverReg();
+        registerService.saveDriverReg();
+    }
+
+    public void saveEngineReg(String EngineName, float EngineCapacity, String EngineModel) {
+
+        engineRegisterModel engineRegisterModel = new engineRegisterModel(); //object to engineRegisterModel
+
+        engineRegisterModel.setEngineName(EngineName);
+        engineRegisterModel.setEngineCapacity(EngineCapacity);
+        engineRegisterModel.setEngineModel(EngineModel);
+
+        registerService.saveEngineReg();
     }
 }
