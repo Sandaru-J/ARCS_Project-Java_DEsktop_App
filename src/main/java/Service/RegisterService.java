@@ -1,5 +1,6 @@
 package Service;
 import DatabaseConnection.SqlServerConnection;
+import Model.blockRegisterModel;
 import Model.driverRegisterModel;
 import Model.engineRegisterModel;
 import java.sql.Connection;
@@ -22,5 +23,14 @@ public class RegisterService {
         engineRegisterModel engineRegisterModel = new engineRegisterModel();
 
         return false;
+    }
+
+    public static boolean saveBlockReg() {
+        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+        Connection con = objSqlServerConnection.createConnectionSqlServer();
+        blockRegisterModel blockRegisterModel = new blockRegisterModel();
+
+        return false;
+
     }
 }

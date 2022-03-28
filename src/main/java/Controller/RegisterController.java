@@ -1,5 +1,6 @@
 package Controller;
 import ControllerInterfaces.IRegisterController;
+import Model.blockRegisterModel;
 import Model.driverRegisterModel;
 import Model.engineRegisterModel;
 import Service.RegisterService;
@@ -25,14 +26,29 @@ public class RegisterController implements IRegisterController {
         registerService.saveDriverReg();
     }
 
-    public void saveEngineReg(String EngineName, float EngineCapacity, String EngineModel) {
+    public void saveEngineReg(String EngineName, float EngineCapacity, String EngineType) {
 
         engineRegisterModel engineRegisterModel = new engineRegisterModel(); //object to engineRegisterModel
 
         engineRegisterModel.setEngineName(EngineName);
         engineRegisterModel.setEngineCapacity(EngineCapacity);
-        engineRegisterModel.setEngineModel(EngineModel);
+        engineRegisterModel.setEngineType(EngineType);
 
         registerService.saveEngineReg();
+    }
+
+    public void saveBlockReg(String BlockModel, String BlockName, String BlockType, float BlockLength, float BlockWeight, int BlockCount, int BlockCapacity) {
+
+        blockRegisterModel blockRegisterModel = new blockRegisterModel(); //object to blockRegisterModel
+
+        blockRegisterModel.setBlockModel(BlockModel);
+        blockRegisterModel.setBlockName(BlockName);
+        blockRegisterModel.setBlockType(BlockType);
+        blockRegisterModel.setBlockLength(BlockLength);
+        blockRegisterModel.setBlockWeight(BlockWeight);
+        blockRegisterModel.setBlockCount(BlockCount);
+        blockRegisterModel.setBlockCapacity(BlockCapacity);
+
+        registerService.saveBlockReg();
     }
 }
