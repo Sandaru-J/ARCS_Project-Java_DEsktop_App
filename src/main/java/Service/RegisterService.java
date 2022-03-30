@@ -23,12 +23,13 @@ public class RegisterService {
             {
 
                 ps.setString(1, "D01");
-                ps.setString(2,driverRegisterModel.driverFullName);
-                ps.setString(3,driverRegisterModel.driverUserName);
-                ps.setInt(4,driverRegisterModel.driverAge);
-                ps.setString(5,driverRegisterModel.driverNIC);
-                ps.setInt(6,driverRegisterModel.driverContactNumber);
-                ps.setString(7,driverRegisterModel.driverPassword);
+                ps.setString(2,driverRegisterModel.getDriverFullName());
+                ps.setString(3,driverRegisterModel.getDriverUserName());
+                ps.setInt(4,driverRegisterModel.getDriverAge());
+                ps.setString(5,driverRegisterModel.getDriverNIC());
+                ps.setInt(6,driverRegisterModel.getDriverContactNumber());
+                ps.setString(7,driverRegisterModel.getDriverEmail());
+                ps.setString(8,driverRegisterModel.getDriverPassword());
 
                 i = ps.execute();
 
