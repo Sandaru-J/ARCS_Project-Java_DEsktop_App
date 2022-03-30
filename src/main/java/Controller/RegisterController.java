@@ -26,16 +26,16 @@ public class RegisterController implements IRegisterController {
         registerService.saveDriverReg();
     }
 
-    public void saveEngineReg(String EngineName, float EngineCapacity, String EngineType) {
-
-        engineRegisterModel engineRegisterModel = new engineRegisterModel(); //object to engineRegisterModel
-
-        engineRegisterModel.setEngineName(EngineName);
-        engineRegisterModel.setEngineCapacity(EngineCapacity);
-        engineRegisterModel.setEngineType(EngineType);
-
-        registerService.saveEngineReg();
-    }
+//    public void saveEngineReg(String EngineName, float EngineCapacity, String EngineType) {
+//
+//        engineRegisterModel engineRegisterModel = new engineRegisterModel(); //object to engineRegisterModel
+//
+//        engineRegisterModel.setEngineName(EngineName);
+//        engineRegisterModel.setEngineCapacity(EngineCapacity);
+//        engineRegisterModel.setEngineType(EngineType);
+//
+//        registerService.saveEngineReg();
+//    }
 
 //    public void saveBlockReg(String BlockModel, String BlockName, String BlockType, float BlockLength, float BlockWeight, int BlockCount, int BlockCapacity) {
 //
