@@ -11,7 +11,7 @@ public class driverRegisterModel {
     public String driverEmail;
     public String driverPassword;
 
-    public void setDriverRegistrationID(String driverRegistrationID) { this.driverRegistrationID = driverRegistrationID;}
+    //public void setDriverRegistrationID(String driverRegistrationID) { this.driverRegistrationID = driverRegistrationID;}
     public void setDriverFullName(String driverFullName) { this.driverFullName = driverFullName; }
     public void setDriverUserName(String driverUserName) { this.driverUserName = driverUserName; }
     public void setDriverAge(int driverAge) { this.driverAge = driverAge; }
@@ -20,7 +20,7 @@ public class driverRegisterModel {
     public void setDriverEmail(String driverEmail) { this.driverEmail = driverEmail; }
     public void setDriverPassword(String driverPassword) { this.driverPassword = driverPassword; }
 
-    public String getDriverRegistrationID() { return driverRegistrationID; }
+    //public String getDriverRegistrationID() { return driverRegistrationID; }
     public String getDriverFullName() { return driverFullName; }
     public String getDriverUserName() { return  driverUserName; }
     public int getDriverAge() { return driverAge; }

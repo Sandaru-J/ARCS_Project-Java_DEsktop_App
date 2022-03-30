@@ -149,13 +149,23 @@ public class dashBoard {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                String DriverFullName = txtFullName.getText();
+                String DriverUserName = txtDriver.getText();
+                int DriverAge = Integer.parseInt(txtAge.getText());
+                String DriverNIC = txtNIC.getText();
+                int DriverContactNumber = Integer.parseInt(txtContactNumber.getText());
+                String DriverEmail = txtEmail.getText();
+                String DriverPassword = txtDriverPassword.getText();
+
                 RegisterController driverRegisterController = new RegisterController();
-                //driverRegisterController.saveDriverReg(DriverRegistrationID, DriverFullName, DriverUserName, DriverAge, DriverNIC, DriverContactNumber, DriverEmail, DriverPassword);
+                driverRegisterController.saveDriverReg(DriverFullName, DriverUserName, DriverAge, DriverNIC, DriverContactNumber, DriverEmail, DriverPassword);
             }
         });
         btnRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
                 //engineRegisterControlleer engineRegisterControlleer = new engineRegisterControlleer();
                 //engineRegisterControlleer.saveEngineReg();
             }
