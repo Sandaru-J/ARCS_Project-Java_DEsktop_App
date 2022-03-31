@@ -9,10 +9,10 @@ import java.sql.SQLException;
 
 public class RegisterService {
 
-    public static boolean saveDriverReg() {
+    public static boolean saveDriverReg(driverRegisterModel dRegModelObj) {
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
-        driverRegisterModel dRegModelObj = new driverRegisterModel();
+        //driverRegisterModel dRegModelObj = new driverRegisterModel();
 
 
         try {
@@ -20,8 +20,6 @@ public class RegisterService {
             PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[DriverDetails] values(?,?,?,?,?,?,?,?)");
             boolean i;
             {
-
-
 
                 ps.setString(1, "D01");
                 ps.setString(2,dRegModelObj.getDriverFullName());
@@ -44,9 +42,6 @@ public class RegisterService {
         return false;
 
     }
-
-
-
 
 //    public static boolean saveBlockReg() {
 //        SqlServerConnection objSqlServerConnection = new SqlServerConnection();

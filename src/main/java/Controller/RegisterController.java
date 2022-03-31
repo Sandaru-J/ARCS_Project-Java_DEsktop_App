@@ -23,7 +23,7 @@ public class RegisterController {
         objDriverRegisterModel.setDriverEmail(DriverEmail);
         objDriverRegisterModel.setDriverPassword(DriverPassword);
 
-        registerService.saveDriverReg();
+        registerService.saveDriverReg(objDriverRegisterModel);
     }
 
 //    public void saveEngineReg(String EngineName, float EngineCapacity, String EngineType) {
