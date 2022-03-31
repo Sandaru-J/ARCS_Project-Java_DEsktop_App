@@ -1,12 +1,12 @@
 package Controller;
-import ControllerInterfaces.IRegisterController;
+//import ControllerInterfaces.IRegisterController;
 //import Model.blockRegisterModel;
 import Model.driverRegisterModel;
-import Model.engineRegisterModel;
+//import Model.engineRegisterModel;
 import Service.RegisterService;
 
 
-public class RegisterController implements IRegisterController {
+public class RegisterController {
 
     RegisterService registerService = new RegisterService(); //object to RegisterService
 
