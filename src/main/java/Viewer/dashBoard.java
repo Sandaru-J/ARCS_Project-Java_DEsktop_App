@@ -165,9 +165,36 @@ public class dashBoard {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                String engineName = txtTrainName.getText();
+                float engineCapacity = Float.parseFloat(txtCapacity.getText());
+                String engineType = (String) cmbType.getSelectedItem();
 
-                //engineRegisterControlleer engineRegisterControlleer = new engineRegisterControlleer();
-                //engineRegisterControlleer.saveEngineReg();
+                RegisterController engineRegisterControlleer = new RegisterController();
+                engineRegisterControlleer.saveEngineReg(engineName, engineCapacity, engineType);
+            }
+        });
+        btnRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnBlockRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String BlockModel = txtBlock.getText();
+                String BlockName = txtBlockName.getName();
+                String BlockType = (String) cmbBlockType.getSelectedItem();
+                float BlockLength = Float.parseFloat(txtLength.getText());
+                float BlockWeight = Float.parseFloat(txtWeight.getText());
+                int BlockCount = Integer.parseInt(txtQuantity.getText());
+                int BlockCapacity = Integer.parseInt(txtCapacity.getText());
+
+                RegisterController blockRegisterControlleer = new RegisterController();
+                blockRegisterControlleer.saveBlockReg(BlockModel, BlockName, BlockType, BlockLength, BlockWeight, BlockCount, BlockCapacity);
+
+
             }
         });
     }
