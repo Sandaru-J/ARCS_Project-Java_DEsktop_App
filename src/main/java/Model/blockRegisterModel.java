@@ -2,6 +2,7 @@ package Model;
 
 public class blockRegisterModel {
 
+
     public String BlockModel;
     public String BlockName;
     public String BlockType;
