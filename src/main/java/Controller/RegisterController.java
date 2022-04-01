@@ -1,20 +1,22 @@
 package Controller;
-import ControllerInterfaces.IRegisterController;
+//import ControllerInterfaces.IRegisterController;
+//import Model.blockRegisterModel;
 import Model.blockRegisterModel;
 import Model.driverRegisterModel;
+//import Model.engineRegisterModel;
 import Model.engineRegisterModel;
 import Service.RegisterService;
 
 
-public class RegisterController implements IRegisterController {
+public class RegisterController {
 
     RegisterService registerService = new RegisterService(); //object to RegisterService
 
-    public void saveDriverReg(String DriverRegistrationID, String DriverFullName, String DriverUserName, int DriverAge, String DriverNIC, int DriverContactNumber, String DriverEmail, String DriverPassword) {
+    public void saveDriverReg(String DriverFullName, String DriverUserName, int DriverAge, String DriverNIC, int DriverContactNumber, String DriverEmail, String DriverPassword) {
 
         driverRegisterModel objDriverRegisterModel = new driverRegisterModel(); //object to driverRegisterModel
 
-        objDriverRegisterModel.setDriverRegistrationID(DriverRegistrationID);
+        //objDriverRegisterModel.setDriverRegistrationID(DriverRegistrationID);
         objDriverRegisterModel.setDriverFullName(DriverFullName);
         objDriverRegisterModel.setDriverUserName(DriverUserName);
         objDriverRegisterModel.setDriverAge(DriverAge);
@@ -23,7 +25,7 @@ public class RegisterController implements IRegisterController {
         objDriverRegisterModel.setDriverEmail(DriverEmail);
         objDriverRegisterModel.setDriverPassword(DriverPassword);
 
-        registerService.saveDriverReg();
+        registerService.saveDriverReg(objDriverRegisterModel);
     }
 
     public void saveEngineReg(String EngineName, float EngineCapacity, String EngineType) {
@@ -34,7 +36,7 @@ public class RegisterController implements IRegisterController {
         engineRegisterModel.setEngineCapacity(EngineCapacity);
         engineRegisterModel.setEngineType(EngineType);
 
-        registerService.saveEngineReg();
+        registerService.saveEngineReg(engineRegisterModel);
     }
 
     public void saveBlockReg(String BlockModel, String BlockName, String BlockType, float BlockLength, float BlockWeight, int BlockCount, int BlockCapacity) {
@@ -49,6 +51,6 @@ public class RegisterController implements IRegisterController {
         blockRegisterModel.setBlockCount(BlockCount);
         blockRegisterModel.setBlockCapacity(BlockCapacity);
 
-        registerService.saveBlockReg();
+        registerService.saveBlockReg(blockRegisterModel);
     }
 }
