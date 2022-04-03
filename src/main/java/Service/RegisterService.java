@@ -79,7 +79,7 @@ public class RegisterService {
         Connection con = objSqlServerConnection.createConnectionSqlServer();
         try {
 
-            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainBlockDetails] values(?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainBlockDetails] values(?,?,?,?,?,?,?)");
             boolean i;
             {
 
@@ -90,7 +90,7 @@ public class RegisterService {
                 ps.setFloat(5,bRegModelObj.getBlockWeight());
                 ps.setInt(6,bRegModelObj.getBlockCount());
                 ps.setInt(7,bRegModelObj.getBlockCapacity());
-                ps.setInt(8,0);
+
 
                 i = ps.execute();
 

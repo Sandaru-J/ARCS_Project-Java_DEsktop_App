@@ -1,5 +1,6 @@
 package Viewer;
 
+import Controller.JourneyController;
 import Controller.RegisterController;
 
 import javax.swing.*;
@@ -194,6 +195,34 @@ public class dashBoard {
                 RegisterController blockRegisterControlleer = new RegisterController();
                 blockRegisterControlleer.saveBlockReg(BlockModel, BlockName, BlockType, BlockLength, BlockWeight, BlockCount, BlockCapacity);
 
+
+            }
+        });
+        btnCreate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String journeyName = txtJourneyName.getText();
+                float startingTime = Float.parseFloat(txtStartingTime.getText());
+                float endTime = Float.parseFloat(txtEndTime.getText());
+                int startingStation = Integer.parseInt(txtStartingStation.getText());
+                int destination = Integer.parseInt(txtDestination.getText());
+                boolean monday = cbMonday.getModel().isSelected();
+                boolean tuesday = cbTuesday.getModel().isSelected();
+                boolean wednesday = cbWednesday.getModel().isSelected();
+                boolean thursday = cbThursday.getModel().isSelected();
+                boolean friday = cbFriday.getModel().isSelected();
+                boolean saturday = cbSaturday.getModel().isSelected();
+                boolean sunday = cbSunday.getModel().isSelected();
+                String journeyType = (String) cmbJourneyType.getSelectedItem();
+                String driverName = txtDriverNameJourney.getText();
+                int engineID = Integer.parseInt(textField1.getText());
+                int blockID = Integer.parseInt(txtBlockID.getText());
+                int noOfBlocks = Integer.parseInt(txtNoOfBlocks.getText());
+
+
+                JourneyController journeyController = new JourneyController();
+                journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, monday, tuesday, wednesday, thursday, friday, saturday, sunday, journeyType, driverName, engineID, blockID, noOfBlocks);
 
             }
         });

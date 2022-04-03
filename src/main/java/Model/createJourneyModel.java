@@ -7,13 +7,13 @@ public class createJourneyModel {
       public float endTime;
       public int startingStation;
       public int destination;
-      public int monday;
-      public int tuesday;
-      public int wednesday;
-      public int thursday;
-      public int friday;
-      public int saturday;
-      public int sunday;
+      public boolean monday;
+      public boolean tuesday;
+      public boolean wednesday;
+      public boolean thursday;
+      public boolean friday;
+      public boolean saturday;
+      public boolean sunday;
       public String journeyType;
       public String driverName;
       public int engineID;
@@ -25,17 +25,17 @@ public class createJourneyModel {
       public void setEndTime (float endTime) { this.endTime = endTime; }
       public void setStartingStation (int startingStation) { this.startingStation = startingStation; }
       public void setDestination (int destination) { this.destination = destination; }
-      public void setMonday (int monday) { this.monday = monday; }
-      public void setTuesday (int tuesday) { this.tuesday = tuesday; }
-      public void setWednesday (int wednesday) { this.wednesday = wednesday; }
-      public void setThursday (int thursday) { this.thursday = thursday; }
-      public void setFriday (int friday) { this.friday = friday; }
-      public void setSaturday (int saturday) { this.saturday = saturday; }
-      public void setSunday (int sunday) { this.sunday = sunday; }
+      public void setMonday (boolean monday) { this.monday = monday; }
+      public void setTuesday (boolean tuesday) { this.tuesday = tuesday; }
+      public void setWednesday (boolean wednesday) { this.wednesday = wednesday; }
+      public void setThursday (boolean thursday) { this.thursday = thursday; }
+      public void setFriday (boolean friday) { this.friday = friday; }
+      public void setSaturday (boolean saturday) { this.saturday = saturday; }
+      public void setSunday (boolean sunday) { this.sunday = sunday; }
       public void setJourneyType (String journeyType) { this.journeyType = journeyType; }
       public void setDriverName (String driverName) { this.driverName = driverName; }
       public void setEngineID (int engineID) { this.engineID = engineID; }
-      public void setJourneyName (int blockID) { this.blockID = blockID; }
+      public void setBlockID (int blockID) { this.blockID = blockID; }
       public void setNoOfBlocks (int noOfBlocks) { this.noOfBlocks = noOfBlocks; }
 
       public String getJourneyName() { return journeyName; }
@@ -43,13 +43,13 @@ public class createJourneyModel {
       public float getEndTime() { return endTime; }
       public int getStartingStation() { return startingStation; }
       public int getDestination() { return destination; }
-      public int getMonday() { return monday; }
-      public int getTuesday() { return tuesday; }
-      public int getWednesday() { return wednesday; }
-      public int getThursday() { return thursday; }
-      public int getFriday() { return friday; }
-      public int getSaturday() { return saturday; }
-      public int getSunday() { return sunday; }
+      public boolean isMonday() { return monday; }
+      public boolean isTuesday() { return tuesday; }
+      public boolean isWednesday() { return wednesday; }
+      public boolean isThursday() { return thursday; }
+      public boolean isFriday() { return friday; }
+      public boolean isSaturday() { return saturday; }
+      public boolean isSunday() { return sunday; }
       public String getJourneyType() { return journeyType; }
       public String getDriverName() { return driverName; }
       public int getEngineID() { return engineID; }
