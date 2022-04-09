@@ -41,6 +41,7 @@ public class RegisterController {
 
     public void saveBlockReg(String BlockModel, String BlockName, String BlockType, float BlockLength, float BlockWeight, int BlockCount, int BlockCapacity) {
 
+        System.out.println("came to controller");
         blockRegisterModel blockRegisterModel = new blockRegisterModel(); //object to blockRegisterModel
 
         blockRegisterModel.setBlockModel(BlockModel);

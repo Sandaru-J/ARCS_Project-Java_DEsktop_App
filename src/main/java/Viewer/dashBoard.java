@@ -183,13 +183,15 @@ public class dashBoard {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
                 String BlockModel = txtBlock.getText();
                 String BlockName = txtBlockName.getName();
                 String BlockType = (String) cmbBlockType.getSelectedItem();
-                float BlockLength = Float.parseFloat(txtLength.getText());
-                float BlockWeight = Float.parseFloat(txtWeight.getText());
-                int BlockCount = Integer.parseInt(txtQuantity.getText());
-                int BlockCapacity = Integer.parseInt(txtCapacity.getText());
+
+                float BlockLength = txtLength.getAlignmentX();
+                float BlockWeight = txtWeight.getAlignmentX();
+                int BlockCount = txtQuantity.getComponentCount();
+                int BlockCapacity = txtCapacity.getComponentCount();
 
                 RegisterController blockRegisterControlleer = new RegisterController();
                 blockRegisterControlleer.saveBlockReg(BlockModel, BlockName, BlockType, BlockLength, BlockWeight, BlockCount, BlockCapacity);
