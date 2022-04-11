@@ -184,17 +184,27 @@ public class dashBoard {
             public void actionPerformed(ActionEvent e) {
 
 
-                String BlockModel = txtBlock.getText();
-                String BlockName = txtBlockName.getName();
-                String BlockType = (String) cmbBlockType.getSelectedItem();
+               // try{
+                    String BlockModel = txtBlock.getText();
+                    String BlockName = txtBlockName.getName();
+                    String BlockType = (String) cmbBlockType.getSelectedItem();
 
-                float BlockLength = txtLength.getAlignmentX();
-                float BlockWeight = txtWeight.getAlignmentX();
-                int BlockCount = txtQuantity.getComponentCount();
-                int BlockCapacity = txtCapacity.getComponentCount();
+                    float BlockLength = Float.parseFloat(txtLength.getText());
+                    float BlockWeight = Float.parseFloat(txtWeight.getText());
 
-                RegisterController blockRegisterControlleer = new RegisterController();
-                blockRegisterControlleer.saveBlockReg(BlockModel, BlockName, BlockType, BlockLength, BlockWeight, BlockCount, BlockCapacity);
+                    String BlockCountTxt = txtQuantity.getText();
+                    int BlockCount = Integer.parseInt(BlockCountTxt);
+
+                    String BlockCapacityTxt = txtCapacity.getText();
+                    int BlockCapacity = Integer.parseInt(BlockCapacityTxt);
+
+                    RegisterController blockRegisterControlleer = new RegisterController();
+                    blockRegisterControlleer.saveBlockReg(BlockModel, BlockName, BlockType, BlockLength, BlockWeight, BlockCount, BlockCapacity);
+               /* }catch(Exception ex)
+                {
+                    JOptionPane.showMessageDialog(null,"Invalid inputs","Error",JOptionPane.ERROR_MESSAGE);
+                }*/
+
 
 
             }
