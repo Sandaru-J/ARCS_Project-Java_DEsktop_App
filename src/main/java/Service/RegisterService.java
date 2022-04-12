@@ -18,25 +18,53 @@ public class RegisterService {
         //driverRegisterModel dRegModelObj = new driverRegisterModel();
 
 
-        try {
+//        try {
+//
+//            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[DriverDetails] values(?,?,?,?,?,?,?,?)");
+//            boolean i;
+//            {
+//
+//                ps.setString(1, "D01");
+//                ps.setString(2,dRegModelObj.getDriverFullName());
+//                ps.setString(3,dRegModelObj.getDriverUserName());
+//                ps.setInt(4,dRegModelObj.getDriverAge());
+//                ps.setString(5,dRegModelObj.getDriverNIC());
+//                ps.setInt(6,dRegModelObj.getDriverContactNumber());
+//                ps.setString(7,dRegModelObj.getDriverEmail());
+//                ps.setString(8,dRegModelObj.getDriverPassword());
+//
+//                i = ps.execute();
+//
+//                System.out.println("Ok");
+//
+//            }
+//            return i;
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
 
-        try {
-            CallableStatement cs = con.prepareCall("{call [ARCSDatabase].[dbo].[InsertDriverDetails]}");
+        try{
+            String sql="call [ARCSDatabase].[dbo].[InsertDriverDetails] (?,?,?,?,?,?,?,?)";
+            CallableStatement cs = con.prepareCall(sql);
+
+            boolean i;
             {
-                //cs.setString(1, "D01");
-//                cs.setString(2,dRegModelObj.getDriverFullName());
-//                cs.setString(3,dRegModelObj.getDriverUserName());
-//                cs.setInt(4,dRegModelObj.getDriverAge());
-//                cs.setString(5,dRegModelObj.getDriverNIC());
-//                cs.setInt(6,dRegModelObj.getDriverContactNumber());
-//                cs.setString(7,dRegModelObj.getDriverEmail());
-//                cs.setString(8,dRegModelObj.getDriverPassword());
+                cs.setString(1, "D01");
+                cs.setString(2,dRegModelObj.getDriverFullName());
+                cs.setString(3,dRegModelObj.getDriverUserName());
+                cs.setInt(4,dRegModelObj.getDriverAge());
+                cs.setString(5,dRegModelObj.getDriverNIC());
+                cs.setInt(6,dRegModelObj.getDriverContactNumber());
+                cs.setString(7,dRegModelObj.getDriverEmail());
+                cs.setString(8,dRegModelObj.getDriverPassword());
 
-                cs.execute();
+                i = cs.execute();
+
+                System.out.println("OK");
 
             }
 
-
+            return i;
 
 
         } catch (SQLException e) {
