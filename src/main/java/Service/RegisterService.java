@@ -5,6 +5,7 @@ import Model.blockRegisterModel;
 import Model.driverRegisterModel;
 import Model.engineRegisterModel;
 //import Model.engineRegisterModel;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -17,33 +18,63 @@ public class RegisterService {
         //driverRegisterModel dRegModelObj = new driverRegisterModel();
 
 
-        try {
+        //        try {
+//
+//            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[DriverDetails] values(?,?,?,?,?,?,?,?)");
+//            boolean i;
+//            {
+//
+//                ps.setString(1, "D01");
+//                ps.setString(2,dRegModelObj.getDriverFullName());
+//                ps.setString(3,dRegModelObj.getDriverUserName());
+//                ps.setInt(4,dRegModelObj.getDriverAge());
+//                ps.setString(5,dRegModelObj.getDriverNIC());
+//                ps.setInt(6,dRegModelObj.getDriverContactNumber());
+//                ps.setString(7,dRegModelObj.getDriverEmail());
+//                ps.setString(8,dRegModelObj.getDriverPassword());
+//
+//                i = ps.execute();
+//
+//                System.out.println("Ok");
+//
+//            }
+//            return i;
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
 
-            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[DriverDetails] values(?,?,?,?,?,?,?,?)");
+        try{
+            //String sql="call [ARCSDatabase].[dbo].[InsertDriverDetails] (?,?,?,?,?,?,?,?)";
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertDriverDetails(?,?,?,?,?,?,?,?)}");
+
             boolean i;
             {
+                cs.setString(1, "D01");
+                cs.setString(2,dRegModelObj.getDriverFullName());
+                cs.setString(3,dRegModelObj.getDriverUserName());
+                cs.setInt(4,dRegModelObj.getDriverAge());
+                cs.setString(5,dRegModelObj.getDriverNIC());
+                cs.setInt(6,dRegModelObj.getDriverContactNumber());
+                cs.setString(7,dRegModelObj.getDriverEmail());
+                cs.setString(8,dRegModelObj.getDriverPassword());
 
-                ps.setString(1, "D01");
-                ps.setString(2,dRegModelObj.getDriverFullName());
-                ps.setString(3,dRegModelObj.getDriverUserName());
-                ps.setInt(4,dRegModelObj.getDriverAge());
-                ps.setString(5,dRegModelObj.getDriverNIC());
-                ps.setInt(6,dRegModelObj.getDriverContactNumber());
-                ps.setString(7,dRegModelObj.getDriverEmail());
-                ps.setString(8,dRegModelObj.getDriverPassword());
+                i = cs.execute();
 
-                i = ps.execute();
-
-                System.out.println("Ok");
+                System.out.println("OK");
 
             }
-            return i;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return false;
 
+            return i;
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
+
+
 
     public static boolean saveEngineReg(engineRegisterModel eRegModelObj) {
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
