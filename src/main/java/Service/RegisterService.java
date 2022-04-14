@@ -44,8 +44,8 @@ public class RegisterService {
 //        }
 
         try{
-            String sql="call [ARCSDatabase].[dbo].[InsertDriverDetails] (?,?,?,?,?,?,?,?)";
-            CallableStatement cs = con.prepareCall(sql);
+            //String sql="call [ARCSDatabase].[dbo].[InsertDriverDetails] (?,?,?,?,?,?,?,?)";
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertDriverDetails(?,?,?,?,?,?,?,?)}");
 
             boolean i;
             {
