@@ -82,17 +82,17 @@ public class RegisterService {
 
 
         try {
-
-            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainEngineDetails] values(?,?,?)");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertEngineDetails(?,?,?)}");
+//            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainEngineDetails] values(?,?,?)");
             boolean i;
             {
 
-                ps.setString(1,eRegModelObj.getEngineName());
-                ps.setFloat(2,eRegModelObj.getEngineCapacity());
-                ps.setString(3,eRegModelObj.getEngineType());
+                cs.setString(1,eRegModelObj.getEngineName());
+                cs.setFloat(2,eRegModelObj.getEngineCapacity());
+                cs.setString(3,eRegModelObj.getEngineType());
 
 
-                i = ps.execute();
+                i = cs.execute();
 
                 System.out.println("Ok");
 
@@ -109,20 +109,20 @@ public class RegisterService {
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
         try {
-
-            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainBlockDetails] values(?,?,?,?,?,?,?)");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertTrainBLockDetails(?,?,?)}");
+            //PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainBlockDetails] values(?,?,?,?,?,?,?)");
             boolean i;
             {
 
-                ps.setString(1,bRegModelObj.getBlockModel());
-                ps.setString(2,bRegModelObj.getBlockType());
-                ps.setFloat(3,bRegModelObj.getBlockLength());
-                ps.setFloat(4,bRegModelObj.getBlockWeight());
-                ps.setInt(5,bRegModelObj.getBlockCapacity());
-                ps.setInt(6,bRegModelObj.getBlockCount());
-                ps.setInt(7,0);
+                cs.setString(1,bRegModelObj.getBlockModel());
+                cs.setString(2,bRegModelObj.getBlockType());
+                cs.setFloat(3,bRegModelObj.getBlockLength());
+                cs.setFloat(4,bRegModelObj.getBlockWeight());
+                cs.setInt(5,bRegModelObj.getBlockCapacity());
+                cs.setInt(6,bRegModelObj.getBlockCount());
+                cs.setInt(7,0);
 
-                i = ps.execute();
+                i = cs.execute();
 
                 System.out.println("Ok");
 
