@@ -109,18 +109,18 @@ public class RegisterService {
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
         try {
-            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertTrainBLockDetails(?,?,?)}");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertBlockDetails(?,?,?,?,?,?,?,?)}");
             //PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainBlockDetails] values(?,?,?,?,?,?,?)");
             boolean i;
             {
-
-                cs.setString(1,bRegModelObj.getBlockModel());
-                cs.setString(2,bRegModelObj.getBlockType());
-                cs.setFloat(3,bRegModelObj.getBlockLength());
-                cs.setFloat(4,bRegModelObj.getBlockWeight());
-                cs.setInt(5,bRegModelObj.getBlockCapacity());
-                cs.setInt(6,bRegModelObj.getBlockCount());
-                cs.setInt(7,0);
+                cs.setString(1,bRegModelObj.getBlockName());
+                cs.setString(2,bRegModelObj.getBlockModel());
+                cs.setString(3,bRegModelObj.getBlockType());
+                cs.setFloat(4,bRegModelObj.getBlockLength());
+                cs.setFloat(5,bRegModelObj.getBlockWeight());
+                cs.setInt(6,bRegModelObj.getBlockCapacity());
+                cs.setInt(7,bRegModelObj.getBlockCount());
+                cs.setInt(8,0);
 
                 i = cs.execute();
 
