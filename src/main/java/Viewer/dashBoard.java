@@ -1,5 +1,6 @@
 package Viewer;
 
+import Controller.JourneyController;
 import Controller.RegisterController;
 
 import javax.swing.*;
@@ -64,16 +65,27 @@ public class dashBoard {
     private JTextField txtBlockName;
     private JTextField txtDriverNameJourney;
     private JTextField textField1;
-    private JButton button1;
+    private JButton btnClear;
 
 
     public dashBoard(){
+
         JFrame frame = new JFrame("Dashboard");
         frame.add(dashPanel);
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
-        frame.setSize(800,600);
+        frame.setSize(1200,600);
+
+//        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
+//
+//        GraphicsDevice device = graphics.getDefaultScreenDevice();
+//        JFrame frame = new JFrame("Dashboard");
+//        frame.add(dashPanel);
+//        device.setFullScreenWindow(frame);
+
+
+
 
         btnCancel.addActionListener(new ActionListener() {
             @Override
@@ -196,6 +208,37 @@ public class dashBoard {
                 RegisterController blockRegisterControlleer = new RegisterController();
                 blockRegisterControlleer.saveBlockReg(BlockModel, BlockName, BlockType, BlockLength, BlockWeight, BlockCount, BlockCapacity);
 
+
+            }
+        });
+        cmbJourneyType.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        btnCreate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String journeyName = txtJourneyName.getText();
+                float startingTime = Float.parseFloat(txtStartingTime.getText());
+                float endTime = Float.parseFloat(txtEndTime.getText());
+                int startingStation = Integer.parseInt(txtStartingStation.getText());
+                int destination = Integer.parseInt(txtDestination.getText());
+                boolean monday = cbMonday.isSelected();
+                boolean tuesday = cbTuesday.isSelected();
+                boolean wednesday = cbWednesday.isSelected();
+                boolean thursday = cbThursday.isSelected();
+                boolean friday = cbFriday.isSelected();
+                boolean saturday = cbSaturday.isSelected();
+                boolean sunday = cbSunday.isSelected();
+                String journeyType = (String) cmbJourneyType.getSelectedItem();
+                String driverName = txtDriverNameJourney.getText();
+
+
+                JourneyController journeyController = new JourneyController();
+                journeyController.createJourney(journeyName,startingTime,endTime,startingStation,destination,monday,tuesday,wednesday,thursday,friday,saturday,sunday,journeyType,driverName);
 
             }
         });
