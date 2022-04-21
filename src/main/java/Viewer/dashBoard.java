@@ -4,11 +4,17 @@ import Controller.JourneyController;
 import Controller.RegisterController;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
+
+import static sun.plugin.javascript.navig.JSType.Window;
 
 public class dashBoard {
     private JPanel dashPanel;
@@ -65,12 +71,12 @@ public class dashBoard {
     private JTextField txtBlockName;
     private JTextField txtDriverNameJourney;
     private JTextField textField1;
-    private JButton btnClear;
 
 
     public dashBoard(){
 
         JFrame frame = new JFrame("Dashboard");
+        frame.setUndecorated(true);
         frame.add(dashPanel);
         frame.pack();
         frame.setVisible(true);
@@ -90,19 +96,29 @@ public class dashBoard {
         btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                durationCalc();
-//                txtJourneyName.setText("");
-//                lblEngineID.setToolTipText("");
-//                txtStartingTime.setText("");
-//                txtEndTime.setText("");
-//                txtStartingStation.setText("");
-//                txtDestination.setText("");
-//                lblDuration.setText("");
-//                lblDistance.setText("");
-//
-//                cmbJourneyType.setToolTipText("");
-//                txtBlockID.setText("");
-//                txtNoOfBlocks.setText("");
+
+                txtJourneyName.setText("");
+                lblEngineID.setToolTipText("");
+                txtStartingTime.setText("");
+                txtEndTime.setText("");
+                txtStartingStation.setText("");
+                txtDestination.setText("");
+                lblDuration.setText("");
+                lblDistance.setText("");
+                txtDriverNameJourney.setText("");
+                textField1.setText("");
+
+                cbMonday.setSelected(false);
+                cbTuesday.setSelected(false);
+                cbWednesday.setSelected(false);
+                cbThursday.setSelected(false);
+                cbFriday.setSelected(false);
+                cbSaturday.setSelected(false);
+                cbSunday.setSelected(false);
+
+                cmbJourneyType.removeAllItems();
+                txtBlockID.setText("");
+                txtNoOfBlocks.setText("");
 
             }
         });
@@ -124,7 +140,7 @@ public class dashBoard {
             public void actionPerformed(ActionEvent e) {
                 txtBlock.setText("");
                 txtBlockName.setText("");
-                cmbBlockType.setToolTipText("");
+                cmbBlockType.removeAllItems();
                 txtLength.setText("");
                 txtQuantity.setText("");
                 txtWeight.setText("");
@@ -242,6 +258,17 @@ public class dashBoard {
 
             }
         });
+        btnCancle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtTrainName.setText("");
+                txtCapacity.setText("");
+                cmbType.removeAllItems();
+
+            }
+        });
+
+
     }
             //    public void clearTextFields (Container container){
 //
@@ -255,8 +282,8 @@ public class dashBoard {
 //        }
 //    }
             public void durationCalc() {
-//        LocalDateTime stDate = LocalDateTime.parse(txtStartingTime.getText());
-//        LocalDateTime eDate = LocalDateTime.parse(txtEndTime.getText());
+        LocalDateTime stDate = LocalDateTime.parse(txtStartingTime.getText());
+        LocalDateTime eDate = LocalDateTime.parse(txtEndTime.getText());
 
 //        String time1 = "16:00:00";
 //        String time2 = "19:00:00";
