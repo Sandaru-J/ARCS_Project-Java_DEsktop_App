@@ -71,6 +71,7 @@ public class dashBoard {
     private JTextField txtBlockName;
     private JTextField txtDriverNameJourney;
     private JTextField textField1;
+    private JTable table1;
 
 
     public dashBoard(){
@@ -83,6 +84,8 @@ public class dashBoard {
         frame.setLocationRelativeTo(null);
         frame.setSize(1200,600);
 
+
+        //Full Screen
 //        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
 //
 //        GraphicsDevice device = graphics.getDefaultScreenDevice();
@@ -235,7 +238,8 @@ public class dashBoard {
         });
         btnCreate.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+                 public void actionPerformed(ActionEvent e) {
+                durationCalc();
 
                 String journeyName = txtJourneyName.getText();
                 float startingTime = Float.parseFloat(txtStartingTime.getText());
@@ -320,6 +324,5 @@ public class dashBoard {
 
             public static void main(String[] args) {
                 dashBoard panel = new dashBoard();
-
             }
 }
