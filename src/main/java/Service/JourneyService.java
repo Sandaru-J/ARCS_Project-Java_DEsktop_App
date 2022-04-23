@@ -3,8 +3,8 @@ package Service;
 import DatabaseConnection.SqlServerConnection;
 import Model.createJourneyModel;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
 
 public class JourneyService {
 
@@ -16,7 +16,6 @@ public class JourneyService {
 
         try {
             CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertJourneyDetails(?,?,?,?,?,?,?,?,?,?,?,?,?,?  )}");
-//            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainEngineDetails] values(?,?,?)");
             boolean i;
             {
 
@@ -45,6 +44,35 @@ public class JourneyService {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+        return false;
+    }
+
+    public static boolean viewJourney(DefaultTableModel model)
+    {
+
+        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+        Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+        try {
+            Statement st = con.createStatement();
+            String sql = "SELECT * FROM [ARCSDatabase].[dbo].[JourneyDetails]";
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next())
+            {
+                String JourneyID = String.valueOf(rs.getInt("JourneyID"));
+                String JourneyName = rs.getString("JourneyName");
+                String JourneyStatus = rs.getString("JourneyStatus");
+
+                Object[] row = {rs.getInt("JourneyID"),rs.getString("JourneyName"),rs.getString("JourneyStatus")};
+                model.addRow(row);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
         return false;
     }

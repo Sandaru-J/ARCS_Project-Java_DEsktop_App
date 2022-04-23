@@ -2,19 +2,16 @@ package Viewer;
 
 import Controller.JourneyController;
 import Controller.RegisterController;
+import Service.JourneyService;
 
 import javax.swing.*;
-import java.awt.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
-
-import static sun.plugin.javascript.navig.JSType.Window;
 
 public class dashBoard {
     private JPanel dashPanel;
@@ -72,19 +69,22 @@ public class dashBoard {
     private JTextField txtDriverNameJourney;
     private JTextField textField1;
     private JTable table1;
+    private JPanel tablePanel;
+    private JButton btnShowData;
+    private JScrollPane createTable;
 
 
     public dashBoard(){
 
         JFrame frame = new JFrame("Dashboard");
-        frame.setUndecorated(true);
+//        frame.setUndecorated(true);
         frame.add(dashPanel);
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setSize(1200,600);
-
-
+       // createTable();
+createUIComponents();
         //Full Screen
 //        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
 //
@@ -273,6 +273,7 @@ public class dashBoard {
         });
 
 
+
     }
             //    public void clearTextFields (Container container){
 //
@@ -325,4 +326,35 @@ public class dashBoard {
             public static void main(String[] args) {
                 dashBoard panel = new dashBoard();
             }
+
+
+            public JPanel getTablePanel()
+            {
+                return tablePanel;
+            }
+//
+//            private void createTable()
+//            {
+//                table1.setModel(new DefaultTableModel(
+//                        null,
+//                        new String[]{"JourneyID","JourneyName","JourneyStatus"}
+//                ));
+//                String tbData[] = {"JourneyID","JourneyName","JourneyStatus"};
+//                DefaultTableModel tblModel = (DefaultTableModel)table1.getModel();
+//
+//                tblModel.addRow(tbData);
+//            }
+
+    String tbData[] = {"JourneyID","JourneyName","JourneyStatus"};
+    private void createUIComponents() {
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(tbData);
+        table1 = new JTable(model);
+
+        JourneyService journeyService = new JourneyService();
+        journeyService.viewJourney(model);
+
+
+    }
 }
