@@ -4,17 +4,13 @@ import Controller.JourneyController;
 import Controller.RegisterController;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
-
-import static sun.plugin.javascript.navig.JSType.Window;
 
 public class dashBoard {
     private JPanel dashPanel;
@@ -72,12 +68,13 @@ public class dashBoard {
     private JTextField txtDriverNameJourney;
     private JTextField textField1;
     private JTable table1;
+    private JTextField txtDate;
 
 
     public dashBoard(){
 
         JFrame frame = new JFrame("Dashboard");
-        frame.setUndecorated(true);
+        //frame.setUndecorated(true);
         frame.add(dashPanel);
         frame.pack();
         frame.setVisible(true);
@@ -239,26 +236,22 @@ public class dashBoard {
         btnCreate.addActionListener(new ActionListener() {
             @Override
                  public void actionPerformed(ActionEvent e) {
-                durationCalc();
+                //durationCalc();
 
                 String journeyName = txtJourneyName.getText();
                 float startingTime = Float.parseFloat(txtStartingTime.getText());
                 float endTime = Float.parseFloat(txtEndTime.getText());
                 int startingStation = Integer.parseInt(txtStartingStation.getText());
                 int destination = Integer.parseInt(txtDestination.getText());
-                boolean monday = cbMonday.isSelected();
-                boolean tuesday = cbTuesday.isSelected();
-                boolean wednesday = cbWednesday.isSelected();
-                boolean thursday = cbThursday.isSelected();
-                boolean friday = cbFriday.isSelected();
-                boolean saturday = cbSaturday.isSelected();
-                boolean sunday = cbSunday.isSelected();
+                LocalDate date = LocalDate.parse(txtDate.getText());
                 String journeyType = (String) cmbJourneyType.getSelectedItem();
                 String driverName = txtDriverNameJourney.getText();
-
+                int engineID = Integer.parseInt(textField1.getText());
+                int blockID = Integer.parseInt(txtBlockID.getText());
+                int noOfBlocks = Integer.parseInt(txtNoOfBlocks.getText());
 
                 JourneyController journeyController = new JourneyController();
-                journeyController.createJourney(journeyName,startingTime,endTime,startingStation,destination,monday,tuesday,wednesday,thursday,friday,saturday,sunday,journeyType,driverName);
+                journeyController.createJourney(journeyName,startingTime,endTime,startingStation,destination,date,journeyType,driverName,engineID,blockID,noOfBlocks);
 
             }
         });
@@ -285,42 +278,42 @@ public class dashBoard {
 //                clearTextFields((Container)c);
 //        }
 //    }
-            public void durationCalc() {
-        LocalDateTime stDate = LocalDateTime.parse(txtStartingTime.getText());
-        LocalDateTime eDate = LocalDateTime.parse(txtEndTime.getText());
-
+//            public void durationCalc() {
+//        LocalDateTime stDate = LocalDateTime.parse(txtStartingTime.getText());
+//        LocalDateTime eDate = LocalDateTime.parse(txtEndTime.getText());
+//
 //        String time1 = "16:00:00";
 //        String time2 = "19:00:00";
-
-                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-                Date date1 = null;
-                try {
-                    date1 = format.parse(txtStartingTime.getText());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                Date date2 = null;
-                try {
-                    date2 = format.parse(txtEndTime.getText());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                if (date1 instanceof Date || date2 instanceof Date) {
-                    long difference = date2.getTime() - date1.getTime();
-                    difference = difference / 60000;
-                    if (difference < 0) {
-                        difference = difference * (-1);
-                        lblDuration.setText(String.valueOf(difference) + " Minutes");
-                    } else {
-                        lblDuration.setText(String.valueOf(difference) + " Minutes");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect Time format", "Try again", JOptionPane.ERROR_MESSAGE);
-                    txtStartingTime.setText("");
-                    txtEndTime.setText("");
-                }
-
-            }
+//
+//                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+//                Date date1 = null;
+//                try {
+//                    date1 = format.parse(txtStartingTime.getText());
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+//                Date date2 = null;
+//                try {
+//                    date2 = format.parse(txtEndTime.getText());
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+//                if (date1 instanceof Date || date2 instanceof Date) {
+//                    long difference = date2.getTime() - date1.getTime();
+//                    difference = difference / 60000;
+//                    if (difference < 0) {
+//                        difference = difference * (-1);
+//                        lblDuration.setText(String.valueOf(difference) + " Minutes");
+//                    } else {
+//                        lblDuration.setText(String.valueOf(difference) + " Minutes");
+//                    }
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Incorrect Time format", "Try again", JOptionPane.ERROR_MESSAGE);
+//                    txtStartingTime.setText("");
+//                    txtEndTime.setText("");
+//                }
+//
+//            }
 
             public static void main(String[] args) {
                 dashBoard panel = new dashBoard();

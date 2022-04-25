@@ -5,6 +5,7 @@ import Model.createJourneyModel;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 
 public class JourneyService {
 
@@ -15,25 +16,23 @@ public class JourneyService {
 
 
         try {
-            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertJourneyDetails(?,?,?,?,?,?,?,?,?,?,?,?,?,?  )}");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertJourneyDetails(?,?,?,?,?,?,?,?,?,?,?)}");
 //            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainEngineDetails] values(?,?,?)");
             boolean i;
             {
 
                 cs.setString(1,cJourney.getJourneyName());
-                cs.setFloat(  2,cJourney.getStartingTime());
-                cs.setFloat(3,cJourney.getEndTime());
-                cs.setFloat(4,cJourney.getStartingStation());
-                cs.setFloat(5,cJourney.getDestination());
-                cs.setBoolean(6,cJourney.getMonday());
-                cs.setBoolean(7,cJourney.getTuesday());
-                cs.setBoolean(8,cJourney.getWednesday());
-                cs.setBoolean(9,cJourney.getThursday());
-                cs.setBoolean(10,cJourney.getFriday());
-                cs.setBoolean(11,cJourney.getSaturday());
-                cs.setBoolean(12,cJourney.getSunday());
-                cs.setString(13,cJourney.getJourneyType());
-                cs.setString(14,cJourney.getDriverName());
+                cs.setString(2,cJourney.getJourneyType());
+                cs.setFloat(  3,cJourney.getStartingTime());
+                cs.setFloat(4,cJourney.getEndTime());
+                cs.setInt(5,cJourney.getStartingStation());
+                cs.setInt(6,cJourney.getDestination());
+                cs.setDate(7, Date.valueOf(cJourney.getDate())); //2022-04-25
+                cs.setString(8,cJourney.getDriverName());
+                cs.setInt(9,cJourney.getEngineID());
+                cs.setInt(10,cJourney.getBlockID());
+                cs.setInt(11,cJourney.getNoOfBlocks());
+
 
 
                 i = cs.execute();

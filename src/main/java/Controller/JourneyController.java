@@ -3,26 +3,27 @@ package Controller;
 import Model.createJourneyModel;
 import Service.JourneyService;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class JourneyController {
 
-    public void createJourney(String journeyName, float startingTime, float endTime, int startingStation, int destination, boolean monday, boolean tuesday, boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday, String journeyType, String driverName) {
+    public void createJourney(String journeyName, float startingTime, float endTime, int startingStation, int destination, LocalDate date, String journeyType, String driverName, int engineID, int blockID, int noOfBlocks) {
 
         createJourneyModel createJourneyModel = new createJourneyModel();
 
         createJourneyModel.setJourneyName(journeyName);
         createJourneyModel.setStartingTime(startingTime);
         createJourneyModel.setEndTime(endTime);
-        createJourneyModel.setStartingTime(startingStation);
+        createJourneyModel.setStartingStation(startingStation);
         createJourneyModel.setDestination(destination);
-        createJourneyModel.setMonday(monday);
-        createJourneyModel.setTuesday(tuesday);
-        createJourneyModel.setWednesday(wednesday);
-        createJourneyModel.setThursday(thursday);
-        createJourneyModel.setFriday(friday);
-        createJourneyModel.setSaturday(saturday);
-        createJourneyModel.setSunday(sunday);
+        createJourneyModel.setDate(date);
         createJourneyModel.setJourneyType(journeyType);
         createJourneyModel.setDriverName(driverName);
+        createJourneyModel.setEngineID(engineID);
+        createJourneyModel.setBlockID(blockID);
+        createJourneyModel.setNoOfBlocks(noOfBlocks);
+
 
         JourneyService.createJourney(createJourneyModel);
     }
