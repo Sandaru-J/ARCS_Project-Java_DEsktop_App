@@ -69,6 +69,14 @@ public class dashBoard {
     private JTextField textField1;
     private JTable table1;
     private JTextField txtDate;
+    private JPanel panel1;
+    private JTextField textField2;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JPasswordField passwordField1;
+    private JPasswordField passwordField2;
+    private JButton signUpButton;
+    private JButton clearButton;
 
 
     public dashBoard(){
