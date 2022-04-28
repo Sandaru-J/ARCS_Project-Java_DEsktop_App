@@ -2,15 +2,17 @@ package Viewer;
 
 import Controller.JourneyController;
 import Controller.RegisterController;
+import DatabaseConnection.SqlServerConnection;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 public class dashBoard {
     private JPanel dashPanel;
@@ -67,8 +69,10 @@ public class dashBoard {
     private JTextField txtBlockName;
     private JTextField txtDriverNameJourney;
     private JTextField textField1;
-    private JTable table1;
     private JTextField txtDate;
+    private JPanel rootPannel;
+    private JPanel tblPanel;
+    private JTable table1;
 
 
     public dashBoard(){
@@ -80,6 +84,8 @@ public class dashBoard {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setSize(1200,600);
+        createTbl();
+
 
 
         //Full Screen
@@ -264,10 +270,56 @@ public class dashBoard {
 
             }
         });
-
-
     }
-            //    public void clearTextFields (Container container){
+
+    public int rowCount(){
+        int count = 0;
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try{
+            Statement rst = con.createStatement();
+            ResultSet rsRow =rst.executeQuery("SELECT COUNT(JourneyID) FROM [ARCSDatabase].[dbo].[JourneyDetails]");
+            rsRow.next();
+            count=rsRow.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    private void createTbl(){
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[JourneyDetails]");
+
+            int RowCount= rowCount();
+
+            String columns[]={"Journey ID","Name","Journey Status"};
+            String data[][]=new String[RowCount][3];
+
+            int i =0;
+            while (rs.next()) {
+            int id = rs.getInt("JourneyID");
+            String name = rs.getString("JourneyName");
+            String sts = rs.getString("JourneyStatus");
+            data[i][0]= id+"";
+            data[i][1]= name;
+            data[i][2]= sts;
+            i++;
+            }
+            table1.setModel(new DefaultTableModel
+                (data,columns
+                        ));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    //    public void clearTextFields (Container container){
 //
 //        for(Component c : container.getComponents()){
 //            if(c instanceof JTextField){
