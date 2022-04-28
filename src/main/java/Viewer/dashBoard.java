@@ -6,26 +6,18 @@ import Controller.RegisterController;
 import DatabaseConnection.SqlServerConnection;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.*;
-
 
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 import javax.xml.ws.Response;
 
-
 import java.time.LocalDate;
 
-public class dashBoard extends javax.swing.JFrame{
-    public  JPanel dashPanel;
+public class dashBoard extends javax.swing.JFrame {
+    public JPanel dashPanel;
     private JTabbedPane tabbedPane1;
     private JTabbedPane tabbedPane2;
     private JTabbedPane tabbedPane4;
@@ -91,7 +83,7 @@ public class dashBoard extends javax.swing.JFrame{
     private JPasswordField txtAdminPassword;
     private JPasswordField txtAdminConfirmPassword;
     private JButton signUpButton;
-    private JButton CLEARButton1;
+    private JButton clearButton;
     private JButton btnDelete;
     private JTextField txtUpdatedJourneyName;
     private JTextField txtUpdatedJourneyType;
@@ -106,10 +98,9 @@ public class dashBoard extends javax.swing.JFrame{
     private JTextField txtUpdatedJourneyID;
     private JTextField txtUpdatedJourneyDate;
     private JButton CLEARButton;
+    private JButton sgnClearBtn;
 
-
-
-    public dashBoard(){
+    public dashBoard() {
 
 
         JFrame frame = new JFrame("Dashboard");
@@ -118,9 +109,8 @@ public class dashBoard extends javax.swing.JFrame{
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
-        frame.setSize(1200,600);
+        frame.setSize(1200, 600);
         createTbl();
-
 
 
         //Full Screen
@@ -130,8 +120,6 @@ public class dashBoard extends javax.swing.JFrame{
 //        JFrame frame = new JFrame("Dashboard");
 //        frame.add(dashPanel);
 //        device.setFullScreenWindow(frame);
-
-
 
 
         btnCancel.addActionListener(new ActionListener() {
@@ -187,7 +175,7 @@ public class dashBoard extends javax.swing.JFrame{
                 txtWeight.setText("");
                 txtCap.setText("");
             }
-            });
+        });
 //        btnCancel.addActionListener(new ActionListener() {
 //            @Override
 //            public void actionPerformed(ActionEvent e) {
@@ -205,11 +193,10 @@ public class dashBoard extends javax.swing.JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 cmbType.addItem("1");
-               // item select keranne one so validate keranne ba
-                if ( txtTrainName.getText().equals("") || txtCapacity.getText().equals("")
-                        ||  cmbType.getSelectedItem().equals(null) )
-                {
-                        JOptionPane.showMessageDialog(null,"Enter Data to all text fields","Missing fields",JOptionPane.ERROR_MESSAGE);
+                // item select keranne one so validate keranne ba
+                if (txtTrainName.getText().equals("") || txtCapacity.getText().equals("")
+                        || cmbType.getSelectedItem().equals(null)) {
+                    JOptionPane.showMessageDialog(null, "Enter Data to all text fields", "Missing fields", JOptionPane.ERROR_MESSAGE);
                 }
 
             }
@@ -276,7 +263,7 @@ public class dashBoard extends javax.swing.JFrame{
         });
         btnCreate.addActionListener(new ActionListener() {
             @Override
-                 public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {
                 //durationCalc();
 
                 String journeyName = txtJourneyName.getText();
@@ -292,7 +279,7 @@ public class dashBoard extends javax.swing.JFrame{
                 int noOfBlocks = Integer.parseInt(txtNoOfBlocks.getText());
 
                 JourneyController journeyController = new JourneyController();
-                journeyController.createJourney(journeyName,startingTime,endTime,startingStation,destination,date,journeyType,driverName,engineID,blockID,noOfBlocks);
+                journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName, engineID, blockID, noOfBlocks);
 
             }
         });
@@ -305,58 +292,9 @@ public class dashBoard extends javax.swing.JFrame{
 
             }
         });
-    }
-
-    public int rowCount(){
-        int count = 0;
-        SqlServerConnection objSqlServCon = new SqlServerConnection();
-        Connection con = objSqlServCon.createConnectionSqlServer();
-
-        try{
-            Statement rst = con.createStatement();
-            ResultSet rsRow =rst.executeQuery("SELECT COUNT(JourneyID) FROM [ARCSDatabase].[dbo].[JourneyDetails]");
-            rsRow.next();
-            count=rsRow.getInt(1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return count;
-    }
-
-    private void createTbl(){
-        SqlServerConnection objSqlServCon = new SqlServerConnection();
-        Connection con = objSqlServCon.createConnectionSqlServer();
-
-        try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[JourneyDetails]");
-
-            int RowCount= rowCount();
-
-            String columns[]={"Journey ID","Name","Journey Status"};
-            String data[][]=new String[RowCount][3];
-
-            int i =0;
-            while (rs.next()) {
-            int id = rs.getInt("JourneyID");
-            String name = rs.getString("JourneyName");
-            String sts = rs.getString("JourneyStatus");
-            data[i][0]= id+"";
-            data[i][1]= name;
-            data[i][2]= sts;
-            i++;
-            }
-            table1.setModel(new DefaultTableModel
-                (data,columns
-                        ));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
         signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 String AdminFullName = txtAdminName.getText();
                 String AdminUserName = txtAdminUsername.getText();
                 String AdminNIC = txtAdminNIC.getText();
@@ -366,27 +304,12 @@ public class dashBoard extends javax.swing.JFrame{
                 String AdminConfirmPassword = txtAdminConfirmPassword.getText();
 
                 AdminController adminController = new AdminController();
-                adminController.adminSignup(AdminFullName,AdminUserName,AdminNIC,AdminContactNumber,AdminEmail,AdminPassword);
-
-
-//                if(AdminPassword==AdminConfirmPassword)
-//                {
-//                    AdminController adminController = new AdminController();
-//                    adminController.adminSignup(AdminFullName,AdminUserName,AdminNIC,AdminContactNumber,AdminEmail,AdminPassword);
-//
-//                }
-//                else
-//                {
-//                    System.out.println("Passwords are not Matching!");
-//                }
-
-
+                adminController.adminSignup(AdminFullName, AdminUserName, AdminNIC, AdminContactNumber, AdminEmail, AdminPassword);
             }
         });
         btnUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 int UpdatedJourneyID = Integer.parseInt(txtUpdatedJourneyID.getText());
                 String UpdatedJourneyName = txtUpdatedJourneyName.getText();
                 String UpdatedJourneyType = txtUpdatedJourneyType.getText();
@@ -408,16 +331,14 @@ public class dashBoard extends javax.swing.JFrame{
 
                     System.out.println("Ok");
 
-                    } catch (SQLException exception) {
+                } catch (SQLException exception) {
                     exception.printStackTrace();
                 }
-
             }
         });
         btnDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 int UpdatedJourneyID = Integer.parseInt(txtUpdatedJourneyID.getText());
 
                 SqlServerConnection objSqlServerConnection = new SqlServerConnection();
@@ -433,13 +354,11 @@ public class dashBoard extends javax.swing.JFrame{
                 } catch (SQLException exception) {
                     exception.printStackTrace();
                 }
-
             }
         });
         CLEARButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 txtUpdatedJourneyID.setText("");
                 txtUpdatedJourneyName.setText("");
                 txtUpdatedJourneyType.setText("");
@@ -449,10 +368,9 @@ public class dashBoard extends javax.swing.JFrame{
                 txtUpdatedJourneyDate.setText("");
                 txtUpdatedJourneyStartingTime.setText("");
                 txtUpdatedJourneyEndingTime.setText("");
-
             }
         });
-        CLEARButton1.addActionListener(new ActionListener() {
+        sgnClearBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 txtAdminName.setText("");
@@ -466,6 +384,54 @@ public class dashBoard extends javax.swing.JFrame{
             }
         });
     }
+
+    public int rowCount() {
+        int count = 0;
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement rst = con.createStatement();
+            ResultSet rsRow = rst.executeQuery("SELECT COUNT(JourneyID) FROM [ARCSDatabase].[dbo].[JourneyDetails]");
+            rsRow.next();
+            count = rsRow.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    private void createTbl() {
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[JourneyDetails]");
+
+            int RowCount = rowCount();
+
+            String columns[] = {"Journey ID", "Name", "Journey Status"};
+            String data[][] = new String[RowCount][3];
+
+            int i = 0;
+            while (rs.next()) {
+                int id = rs.getInt("JourneyID");
+                String name = rs.getString("JourneyName");
+                String sts = rs.getString("JourneyStatus");
+                data[i][0] = id + "";
+                data[i][1] = name;
+                data[i][2] = sts;
+                i++;
+            }
+            table1.setModel(new DefaultTableModel
+                    (data, columns
+                    ));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     //    public void clearTextFields (Container container){
 //
 //        for(Component c : container.getComponents()){
