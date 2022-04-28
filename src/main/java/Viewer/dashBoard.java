@@ -75,7 +75,7 @@ public class dashBoard extends javax.swing.JFrame{
     private JPasswordField txtAdminPassword;
     private JPasswordField txtAdminConfirmPassword;
     private JButton signUpButton;
-    private JButton clearButton;
+    private JButton CLEARButton1;
     private JButton btnDelete;
     private JTextField txtUpdatedJourneyName;
     private JTextField txtUpdatedJourneyType;
@@ -89,6 +89,7 @@ public class dashBoard extends javax.swing.JFrame{
     private JTextField txtAdminNIC;
     private JTextField txtUpdatedJourneyID;
     private JTextField txtUpdatedJourneyDate;
+    private JButton CLEARButton;
 
 
     public dashBoard(){
@@ -345,6 +346,57 @@ public class dashBoard extends javax.swing.JFrame{
                     } catch (SQLException exception) {
                     exception.printStackTrace();
                 }
+
+            }
+        });
+        btnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int UpdatedJourneyID = Integer.parseInt(txtUpdatedJourneyID.getText());
+
+                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+                String qry="DELETE FROM ARCSDatabase.dbo.JourneyDetails WHERE JourneyID='"+UpdatedJourneyID+"';";
+                try {
+                    PreparedStatement ps = con.prepareStatement(qry);
+                    ps.execute();
+
+                    System.out.println("Ok");
+
+                } catch (SQLException exception) {
+                    exception.printStackTrace();
+                }
+
+            }
+        });
+        CLEARButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                txtUpdatedJourneyID.setText("");
+                txtUpdatedJourneyName.setText("");
+                txtUpdatedJourneyType.setText("");
+                txtUpdatedJourneyDriver.setText("");
+                txtUpdatedJourneyRouteID.setText("");
+                txtUpdatedJourneyTrainID.setText("");
+                txtUpdatedJourneyDate.setText("");
+                txtUpdatedJourneyStartingTime.setText("");
+                txtUpdatedJourneyEndingTime.setText("");
+
+            }
+        });
+        CLEARButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtAdminName.setText("");
+                txtAdminUsername.setText("");
+                txtAdminNIC.setText("");
+                txtAdminPhone.setText("");
+                txtAdminEmail.setText("");
+                txtAdminPassword.setText("");
+                txtAdminConfirmPassword.setText("");
 
             }
         });
