@@ -1,10 +1,12 @@
 package Viewer;
 
+import Controller.AdminController;
 import Controller.JourneyController;
 import Controller.RegisterController;
 import DatabaseConnection.SqlServerConnection;
 
 import javax.swing.*;
+
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,10 +14,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import javax.xml.ws.Response;
+
 import java.time.LocalDate;
 
-public class dashBoard {
-    private JPanel dashPanel;
+public class dashBoard extends javax.swing.JFrame{
+    public  JPanel dashPanel;
     private JTabbedPane tabbedPane1;
     private JTabbedPane tabbedPane2;
     private JTabbedPane tabbedPane4;
@@ -74,8 +79,30 @@ public class dashBoard {
     private JPanel tblPanel;
     private JTable table1;
 
+    private JPanel panel1;
+    private JTextField txtAdminUsername;
+    private JTextField txtAdminEmail;
+    private JTextField txtAdminPhone;
+    private JPasswordField txtAdminPassword;
+    private JPasswordField txtAdminConfirmPassword;
+    private JButton signUpButton;
+    private JButton clearButton;
+    private JButton btnDelete;
+    private JTextField textField5;
+    private JTextField textField6;
+    private JTextField textField7;
+    private JTextField textField8;
+    private JTextField textField9;
+    private JTextField textField10;
+    private JTextField textField11;
+    private JButton btnUpdate;
+    private JTextField txtAdminName;
+    private JTextField txtAdminNIC;
+
+
 
     public dashBoard(){
+
 
         JFrame frame = new JFrame("Dashboard");
         //frame.setUndecorated(true);
@@ -314,10 +341,40 @@ public class dashBoard {
             table1.setModel(new DefaultTableModel
                 (data,columns
                         ));
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+        signUpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String AdminFullName = txtAdminName.getText();
+                String AdminUserName = txtAdminUsername.getText();
+                String AdminNIC = txtAdminNIC.getText();
+                int AdminContactNumber = Integer.parseInt(txtAdminPhone.getText());
+                String AdminEmail = txtAdminEmail.getText();
+                String AdminPassword = txtAdminPassword.getText();
+                String AdminConfirmPassword = txtAdminConfirmPassword.getText();
+
+                AdminController adminController = new AdminController();
+                adminController.adminSignup(AdminFullName,AdminUserName,AdminNIC,AdminContactNumber,AdminEmail,AdminPassword);
+
+
+//                if(AdminPassword==AdminConfirmPassword)
+//                {
+//                    AdminController adminController = new AdminController();
+//                    adminController.adminSignup(AdminFullName,AdminUserName,AdminNIC,AdminContactNumber,AdminEmail,AdminPassword);
+//
+//                }
+//                else
+//                {
+//                    System.out.println("Passwords are not Matching!");
+//                }
+
+
+            }
+        });
     }
     //    public void clearTextFields (Container container){
 //
