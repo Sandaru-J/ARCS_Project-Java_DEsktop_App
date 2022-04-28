@@ -7,9 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import Viewer.dashBoard;
 
-public class Login {
+public class Login extends JFrame{
     private JTextField txtUsername;
     private JPasswordField txtPassword;
     private JPanel panelLogin;
@@ -20,7 +22,7 @@ public class Login {
     {
 
         JFrame frame = new JFrame("Login");
-        frame.setUndecorated(true);
+        //frame.setUndecorated(true);
         frame.add(panelLogin);
         frame.pack();
         frame.setVisible(true);
@@ -37,14 +39,26 @@ public class Login {
                 SqlServerConnection objSqlServerConnection = new SqlServerConnection();
                 Connection con = objSqlServerConnection.createConnectionSqlServer();
 
+                String qry = "SELECT * FROM ARCSDatabase.dbo.AdminDetails WHERE AdminUserName=? AND AdminPassword=?";
                 try {
 
-                    PreparedStatement ps = con.prepareStatement("SELECT * FROM ARCSDatabase.dbo.AdminDetails WHERE AdminUserName=? AND AdminPassword=?");
+                    PreparedStatement ps = con.prepareStatement(qry);
                     ps.setString(1,AdminUserName);
                     ps.setString(2,AdminPassword);
+                    ResultSet rs = ps.executeQuery();
 
-                    ps.execute();
-                    //
+                    if(rs.next())
+                    {
+                        new dashBoard().setVisible(true);
+                        System.out.println("OK");
+                    }
+                    else
+                    {
+                        System.out.println("Wrong");
+                        txtUsername.setText("");
+                        txtPassword.setText("");
+                    }
+
 
                 } catch (SQLException ex) {
                     ex.printStackTrace();
