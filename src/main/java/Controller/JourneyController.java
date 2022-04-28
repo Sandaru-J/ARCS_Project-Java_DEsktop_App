@@ -4,7 +4,6 @@ import Model.createJourneyModel;
 import Service.JourneyService;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class JourneyController {
 

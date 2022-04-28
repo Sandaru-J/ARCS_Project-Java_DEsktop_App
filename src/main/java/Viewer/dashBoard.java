@@ -6,6 +6,10 @@ import Controller.RegisterController;
 import DatabaseConnection.SqlServerConnection;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
+
 
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
@@ -16,6 +20,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.xml.ws.Response;
+
 
 import java.time.LocalDate;
 
@@ -86,18 +91,21 @@ public class dashBoard extends javax.swing.JFrame{
     private JPasswordField txtAdminPassword;
     private JPasswordField txtAdminConfirmPassword;
     private JButton signUpButton;
-    private JButton clearButton;
+    private JButton CLEARButton1;
     private JButton btnDelete;
-    private JTextField textField5;
-    private JTextField textField6;
-    private JTextField textField7;
-    private JTextField textField8;
-    private JTextField textField9;
-    private JTextField textField10;
-    private JTextField textField11;
+    private JTextField txtUpdatedJourneyName;
+    private JTextField txtUpdatedJourneyType;
+    private JTextField txtUpdatedJourneyDriver;
+    private JTextField txtUpdatedJourneyRouteID;
+    private JTextField txtUpdatedJourneyTrainID;
+    private JTextField txtUpdatedJourneyStartingTime;
+    private JTextField txtUpdatedJourneyEndingTime;
     private JButton btnUpdate;
     private JTextField txtAdminName;
     private JTextField txtAdminNIC;
+    private JTextField txtUpdatedJourneyID;
+    private JTextField txtUpdatedJourneyDate;
+    private JButton CLEARButton;
 
 
 
@@ -372,6 +380,88 @@ public class dashBoard extends javax.swing.JFrame{
 //                    System.out.println("Passwords are not Matching!");
 //                }
 
+
+            }
+        });
+        btnUpdate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int UpdatedJourneyID = Integer.parseInt(txtUpdatedJourneyID.getText());
+                String UpdatedJourneyName = txtUpdatedJourneyName.getText();
+                String UpdatedJourneyType = txtUpdatedJourneyType.getText();
+                String UpdatedJourneyDriver = txtUpdatedJourneyDriver.getText();
+                int UpdatedJourneyRouteID = Integer.parseInt(txtUpdatedJourneyRouteID.getText());
+                int UpdatedJourneyTrainID = Integer.parseInt(txtUpdatedJourneyTrainID.getText());
+                LocalDate UpdatedJourneyDate = LocalDate.parse(txtUpdatedJourneyDate.getText());
+                float UpdatedJourneyStartingTime = Float.parseFloat(txtUpdatedJourneyStartingTime.getText());
+                float UpdatedJourneyEndTime = Float.parseFloat(txtUpdatedJourneyEndingTime.getText());
+
+                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+                String qry="UPDATE ARCSDatabase.dbo.JourneyDetails SET JourneyName = '"+UpdatedJourneyName+"', JourneyType = '"+UpdatedJourneyType+"', DriverName='"+UpdatedJourneyDriver+"', RouteID='"+UpdatedJourneyRouteID+"', TrainID='"+UpdatedJourneyTrainID+"', JourneyStartTime='"+UpdatedJourneyStartingTime+"', JourneyEndTime='"+UpdatedJourneyEndTime+"'  WHERE JourneyID='"+UpdatedJourneyID+"';";
+
+                try {
+                    PreparedStatement ps = con.prepareStatement(qry);
+                    ps.execute();
+
+                    System.out.println("Ok");
+
+                    } catch (SQLException exception) {
+                    exception.printStackTrace();
+                }
+
+            }
+        });
+        btnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int UpdatedJourneyID = Integer.parseInt(txtUpdatedJourneyID.getText());
+
+                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+                String qry="DELETE FROM ARCSDatabase.dbo.JourneyDetails WHERE JourneyID='"+UpdatedJourneyID+"';";
+                try {
+                    PreparedStatement ps = con.prepareStatement(qry);
+                    ps.execute();
+
+                    System.out.println("Ok");
+
+                } catch (SQLException exception) {
+                    exception.printStackTrace();
+                }
+
+            }
+        });
+        CLEARButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                txtUpdatedJourneyID.setText("");
+                txtUpdatedJourneyName.setText("");
+                txtUpdatedJourneyType.setText("");
+                txtUpdatedJourneyDriver.setText("");
+                txtUpdatedJourneyRouteID.setText("");
+                txtUpdatedJourneyTrainID.setText("");
+                txtUpdatedJourneyDate.setText("");
+                txtUpdatedJourneyStartingTime.setText("");
+                txtUpdatedJourneyEndingTime.setText("");
+
+            }
+        });
+        CLEARButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtAdminName.setText("");
+                txtAdminUsername.setText("");
+                txtAdminNIC.setText("");
+                txtAdminPhone.setText("");
+                txtAdminEmail.setText("");
+                txtAdminPassword.setText("");
+                txtAdminConfirmPassword.setText("");
 
             }
         });
