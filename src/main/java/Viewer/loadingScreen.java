@@ -16,45 +16,45 @@ public class loadingScreen{
 
     public loadingScreen()
     {
+
         JFrame frame = new JFrame("Loading");
         frame.setUndecorated(true);
         frame.add(panel1);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        loadingScreen ls = new loadingScreen();
 
-
-
+        //loadingScreen ls = new loadingScreen();
 
         try{
 
             for (int i = 0; i <= 100; i++) {
 
                 Thread.sleep(100);
-                ls.lblLOadingValue.setText(i+"%");
-                ls.progressBar1.setValue(i);
+                lblLOadingValue.setText(i+"%");
+                progressBar1.setValue(i);
 
-//                if(i==0)
-//                {
-//                    ls.lblLoading.setText("Turning on Modules...");
-//                }
-//                if(i==20)
-//                {
-//                    ls.lblLoading.setText("Loading Modules...");
-//                }
-//                if(i==50)
-//                {
-//                    ls.lblLoading.setText("Connecting to Database...");
-//                }
-//                if(i==70)
-//                {
-//                    ls.lblLoading.setText("Connected Successfully...");
-//                }
-//                if(i==85)
-//                {
-//                    ls.lblLoading.setText("Launching Application...");
-//                }
+                if(i==0)
+                {
+                    lblLoading.setText("Turning on Modules...");
+                }
+                if(i==20)
+                {
+                    lblLoading.setText("Loading Modules...");
+                }
+                if(i==50)
+                {
+                    lblLoading.setText("Connecting to Database...");
+                }
+                if(i==70)
+                {
+                    lblLoading.setText("Connected Successfully...");
+                }
+                if(i==85)
+                {
+                    lblLoading.setText("Launching Application...");
+                }
+
 
             }
 
@@ -63,8 +63,8 @@ public class loadingScreen{
         {
             JOptionPane.showMessageDialog(null, ex);
         }
-        new loginScreen().setVisible(true);
-
+        new Login();
+        frame.dispose();
 
     }
 
