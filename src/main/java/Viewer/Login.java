@@ -33,6 +33,9 @@ public class Login extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+//                new dashBoard().setVisible(true);
+//                System.out.println("OK");
+
                 String AdminUserName = txtUsername.getText();
                 String AdminPassword = txtPassword.getText();
 
@@ -49,7 +52,7 @@ public class Login extends JFrame{
 
                     if(rs.next())
                     {
-                        new dashBoard().setVisible(true);
+                        new dashBoard();
                         System.out.println("OK");
                     }
                     else
