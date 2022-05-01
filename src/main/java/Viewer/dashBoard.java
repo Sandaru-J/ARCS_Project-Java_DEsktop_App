@@ -14,8 +14,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.*;
 
-import javax.xml.ws.Response;
-
 import java.time.LocalDate;
 
 public class dashBoard extends javax.swing.JFrame {
@@ -101,6 +99,14 @@ public class dashBoard extends javax.swing.JFrame {
     private JTextField txtUpdatedJourneyDate;
     private JButton CLEARButton;
     private JButton sgnClearBtn;
+    private JLabel lblTest;
+    private JTabbedPane tabbedPane3;
+    private JTabbedPane tabbedPane5;
+    private JTabbedPane tabbedPane6;
+    private JTabbedPane tabbedPane7;
+    private JTable tblEngine;
+    private JTable tblBlock;
+    private JScrollBar scrollBar1;
 
     public dashBoard() {
 
@@ -113,6 +119,7 @@ public class dashBoard extends javax.swing.JFrame {
         frame.setLocationRelativeTo(null);
         frame.setSize(1200, 600);
         createTbl();
+        createEngineTbl();
 
 
         //Full Screen
@@ -389,11 +396,15 @@ public class dashBoard extends javax.swing.JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+
+                DefaultTableModel tableModel = (DefaultTableModel)table1.getModel();
+                lblTest.setText((String) tableModel.getValueAt(table1.getSelectedRow(),1));
+
             }
         });
     }
 
-    public int rowCount() {
+    public int rowCountJourney() {
         int count = 0;
         SqlServerConnection objSqlServCon = new SqlServerConnection();
         Connection con = objSqlServCon.createConnectionSqlServer();
@@ -417,7 +428,7 @@ public class dashBoard extends javax.swing.JFrame {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[JourneyDetails]");
 
-            int RowCount = rowCount();
+            int RowCount = rowCountJourney();
 
             String columns[] = {"Journey ID", "Name", "Journey Status"};
             String data[][] = new String[RowCount][3];
@@ -433,6 +444,55 @@ public class dashBoard extends javax.swing.JFrame {
                 i++;
             }
             table1.setModel(new DefaultTableModel
+                    (data, columns
+                    ));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int rowCountEngine() {
+        int count = 0;
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement rst = con.createStatement();
+            ResultSet rsRow = rst.executeQuery("SELECT COUNT(EngineID) FROM [ARCSDatabase].[dbo].[TrainEngineDetails]");
+            rsRow.next();
+            count = rsRow.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    private void createEngineTbl() {
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[TrainEngineDetails]");
+
+            int RowCount = rowCountEngine();
+
+            String columns[] = {"Engine ID", "Engine Name", "Engine Capacity", "Engine Type"};
+            String data[][] = new String[RowCount][4];
+
+            int i = 0;
+            while (rs.next()) {
+                int EngineID = rs.getInt("EngineID");
+                String EngineName = rs.getString("EngineName");
+                Float EngineCapacity = rs.getFloat("EngineCapacity");
+                String EngineType = rs.getString("EngineType");
+                data[i][0] = String.valueOf(EngineID);
+                data[i][1] = EngineName;
+                data[i][2] = String.valueOf(EngineCapacity);
+                data[i][3] = EngineType;
+                i++;
+            }
+            tblEngine.setModel(new DefaultTableModel
                     (data, columns
                     ));
         } catch (SQLException e) {
