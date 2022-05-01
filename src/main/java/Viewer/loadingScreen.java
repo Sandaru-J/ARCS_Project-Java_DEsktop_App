@@ -12,6 +12,7 @@ public class loadingScreen{
     private JLabel lblLoading;
     private JLabel lblLOadingValue;
     private JLabel lblARCS;
+    private JLabel lblImage;
 
 
     public loadingScreen()
@@ -24,7 +25,6 @@ public class loadingScreen{
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        //loadingScreen ls = new loadingScreen();
 
         try{
 
@@ -42,7 +42,7 @@ public class loadingScreen{
                 {
                     lblLoading.setText("Loading Modules...");
                 }
-                if(i==50)
+                if(i==45)
                 {
                     lblLoading.setText("Connecting to Database...");
                 }
@@ -72,5 +72,10 @@ public class loadingScreen{
 
     public static void main(String[] args) {
         new loadingScreen();
+    }
+
+    private void createUIComponents() {
+        //lblImage.setIcon(new ImageIcon("![](../Images/train.png)"));
+        lblImage = new JLabel(new ImageIcon("(../Images/train.png)"));
     }
 }

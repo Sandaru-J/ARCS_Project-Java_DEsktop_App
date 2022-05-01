@@ -27,7 +27,7 @@ public class Login extends JFrame{
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
-        frame.setSize(400,200);
+        frame.setSize(950,400);
 
         loginButton.addActionListener(new ActionListener() {
             @Override
