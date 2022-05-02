@@ -23,7 +23,6 @@ public class JourneyController {
         createJourneyModel.setBlockID(blockID);
         createJourneyModel.setNoOfBlocks(noOfBlocks);
 
-
         JourneyService.createJourney(createJourneyModel);
     }
 

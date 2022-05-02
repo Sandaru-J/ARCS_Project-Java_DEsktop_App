@@ -28,6 +28,7 @@ public class createJourneyModel {
       public void setBlockID (int blockID) { this.blockID = blockID; }
       public void setNoOfBlocks (int noOfBlocks) { this.noOfBlocks = noOfBlocks; }
 
+
       public String getJourneyName() { return journeyName; }
       public float getStartingTime() { return startingTime; }
       public float getEndTime() { return endTime; }
@@ -39,4 +40,6 @@ public class createJourneyModel {
       public int getEngineID() { return engineID; }
       public int getBlockID() { return blockID; }
       public int getNoOfBlocks() { return noOfBlocks; }
+
+
 }
