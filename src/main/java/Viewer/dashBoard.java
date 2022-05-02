@@ -279,6 +279,7 @@ public class dashBoard extends javax.swing.JFrame {
                 String journeyName = txtJourneyName.getText();
                 float startingTime = Float.parseFloat(txtStartingTime.getText());
                 float endTime = Float.parseFloat(txtEndTime.getText());
+
                 int startingStation = Integer.parseInt(txtStartingStation.getText());
                 int destination = Integer.parseInt(txtDestination.getText());
                 LocalDate date = LocalDate.parse(txtDate.getText());
@@ -287,7 +288,6 @@ public class dashBoard extends javax.swing.JFrame {
                 int engineID = Integer.parseInt(textField1.getText());
                 int blockID = Integer.parseInt(txtBlockID.getText());
                 int noOfBlocks = Integer.parseInt(txtNoOfBlocks.getText());
-
                 JourneyController journeyController = new JourneyController();
                 journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName, engineID, blockID, noOfBlocks);
 
