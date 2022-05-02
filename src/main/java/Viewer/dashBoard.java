@@ -106,7 +106,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JTabbedPane tabbedPane7;
     private JTable tblEngine;
     private JTable tblBlock;
-    private JScrollBar scrollBar1;
+    private JTable tblDriver;
 
     public dashBoard() {
 
@@ -118,9 +118,10 @@ public class dashBoard extends javax.swing.JFrame {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setSize(1200, 600);
-        createTbl();
+        createJourneyTbl();
         createEngineTbl();
-
+        createBlockTbl();
+        createDriverTbl();
 
         //Full Screen
 //        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -420,7 +421,7 @@ public class dashBoard extends javax.swing.JFrame {
         return count;
     }
 
-    private void createTbl() {
+    private void createJourneyTbl() {
         SqlServerConnection objSqlServCon = new SqlServerConnection();
         Connection con = objSqlServCon.createConnectionSqlServer();
 
@@ -482,17 +483,135 @@ public class dashBoard extends javax.swing.JFrame {
 
             int i = 0;
             while (rs.next()) {
+
+
                 int EngineID = rs.getInt("EngineID");
                 String EngineName = rs.getString("EngineName");
                 Float EngineCapacity = rs.getFloat("EngineCapacity");
                 String EngineType = rs.getString("EngineType");
-                data[i][0] = String.valueOf(EngineID);
+                data[i][0] = EngineID + "";
                 data[i][1] = EngineName;
-                data[i][2] = String.valueOf(EngineCapacity);
+                data[i][2] = EngineCapacity + "";
                 data[i][3] = EngineType;
                 i++;
             }
             tblEngine.setModel(new DefaultTableModel
+                    (data, columns
+                    ));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int rowCountBlock() {
+        int count = 0;
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement rst = con.createStatement();
+            ResultSet rsRow = rst.executeQuery("SELECT COUNT(BlockID) FROM [ARCSDatabase].[dbo].[TrainBlockDetails]");
+            rsRow.next();
+            count = rsRow.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    private void createBlockTbl() {
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[TrainBlockDetails]");
+
+            int RowCount = rowCountBlock();
+
+            String columns[] = {"Block ID", "Block Name", "BlockType", "Block Model", "Block Length", "Block Weight", "Block Capacity", "Block Count"};
+            String data[][] = new String[RowCount][8];
+
+            int i = 0;
+            while (rs.next()) {
+                int BlockID = rs.getInt("BlockID");
+                String BlockName = rs.getString("BlockName");
+                String BlockModel = rs.getString("BlockModel");
+                String BlockType = rs.getString("BlockType");
+                Float BlockLength = rs.getFloat("BlockLength");
+                Float BlockWeight = rs.getFloat("BlockWeight");
+                int BlockCapacity = rs.getInt("BlockCapacity");
+                int BlockCount = rs.getInt("BlockCount");
+
+                data[i][0] = String.valueOf(BlockID);
+                data[i][1] = BlockName;
+                data[i][2] = BlockModel;
+                data[i][3] = BlockType;
+                data[i][4] = String.valueOf(BlockLength);
+                data[i][5] = String.valueOf(BlockWeight);
+                data[i][6] = String.valueOf(BlockCapacity);
+                data[i][7] = String.valueOf(BlockCount);
+                i++;
+            }
+            tblBlock.setModel(new DefaultTableModel
+                    (data, columns
+                    ));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int rowCountDriver() {
+        int count = 0;
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement rst = con.createStatement();
+            ResultSet rsRow = rst.executeQuery("SELECT COUNT(DriverID) FROM [ARCSDatabase].[dbo].[DriverDetails]");
+            rsRow.next();
+            count = rsRow.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    private void createDriverTbl() {
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[DriverDetails]");
+
+            int RowCount = rowCountDriver();
+
+            String columns[] = {"DriverID", "Name", "Username", "Age", "NIC", "ContactNumber", "Email", "Password"};
+            String data[][] = new String[RowCount][8];
+
+            int i = 0;
+            while (rs.next()) {
+                int DriverID = rs.getInt("DriverID");
+                String DriverFullName = rs.getString("DriverFullName");
+                String DriverUserName = rs.getString("DriverUserName");
+                int DriverAge = rs.getInt("DriverAge");
+                String DriverNIC = rs.getString("DriverNIC");
+                int DriverContactNumber = rs.getInt("DriverContactNumber");
+                String DriverEmail = rs.getString("DriverEmail");
+                String DriverPassword = rs.getString("DriverPassword");
+
+                data[i][0] = DriverID+"";
+                data[i][1] = DriverFullName;
+                data[i][2] = DriverUserName;
+                data[i][3] = DriverAge + "";
+                data[i][4] = DriverNIC;
+                data[i][5] = DriverContactNumber + "";
+                data[i][6] = DriverEmail;
+                data[i][7] = DriverPassword;
+                i++;
+            }
+            tblDriver.setModel(new DefaultTableModel
                     (data, columns
                     ));
         } catch (SQLException e) {
