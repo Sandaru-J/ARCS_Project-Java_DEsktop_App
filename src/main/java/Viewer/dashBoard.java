@@ -247,9 +247,8 @@ public class dashBoard extends javax.swing.JFrame {
 
 
                 String BlockModel = txtBlock.getText();
-                String BlockName = txtBlockName.getName();
+                String BlockName = txtBlockName.getText();
                 String BlockType = (String) cmbBlockType.getSelectedItem();
-
                 float BlockLength = txtLength.getAlignmentX();
                 float BlockWeight = txtWeight.getAlignmentX();
                 int BlockCount = txtQuantity.getComponentCount();
