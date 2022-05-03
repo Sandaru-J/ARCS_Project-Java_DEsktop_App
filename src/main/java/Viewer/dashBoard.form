@@ -45,7 +45,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="6a288" binding="lblEngineID" layout-manager="GridLayoutManager" row-count="16" column-count="17" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="6a288" binding="lblEngineID" layout-manager="GridLayoutManager" row-count="18" column-count="17" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title="Create Journey"/>
@@ -81,7 +81,7 @@
                   <text value=""/>
                 </properties>
               </component>
-              <component id="3bdd4" class="javax.swing.JTextField" binding="txtBlockID">
+              <component id="3bdd4" class="javax.swing.JTextField" binding="txtBlockID1">
                 <constraints>
                   <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -117,7 +117,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="5f088" class="javax.swing.JTextField" binding="txtNoOfBlocks">
+              <component id="5f088" class="javax.swing.JTextField" binding="txtNoOfBlocks1">
                 <constraints>
                   <grid row="8" column="8" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -273,12 +273,12 @@
                 </constraints>
                 <properties>
                   <font name="Calibri" size="22" style="1"/>
-                  <text value="Block ID "/>
+                  <text value="Block ID 01"/>
                 </properties>
               </component>
               <component id="6cbe7" class="javax.swing.JButton" binding="btnCreate">
                 <constraints>
-                  <grid row="11" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="13" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-3243246"/>
@@ -289,7 +289,7 @@
               </component>
               <component id="837ba" class="javax.swing.JButton" binding="btnCancel">
                 <constraints>
-                  <grid row="11" column="9" row-span="1" col-span="7" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="13" column="9" row-span="1" col-span="7" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-3243246"/>
@@ -336,13 +336,13 @@
               </component>
               <component id="567d0" class="javax.swing.JToolBar$Separator">
                 <constraints>
-                  <grid row="9" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="11" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
               <component id="b4ad5" class="javax.swing.JToolBar$Separator">
                 <constraints>
-                  <grid row="10" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="12" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
@@ -354,7 +354,7 @@
               </component>
               <component id="d6192" class="javax.swing.JToolBar$Separator">
                 <constraints>
-                  <grid row="15" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="17" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
@@ -394,21 +394,95 @@
               </grid>
               <component id="7a1c4" class="javax.swing.JToolBar$Separator">
                 <constraints>
-                  <grid row="14" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="16" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
               <component id="46e52" class="javax.swing.JToolBar$Separator">
                 <constraints>
-                  <grid row="13" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="15" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
               <component id="7f6bb" class="javax.swing.JToolBar$Separator">
                 <constraints>
-                  <grid row="12" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="14" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
+              </component>
+              <component id="f3475" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Calibri" size="22" style="1"/>
+                  <text value="Block ID 02"/>
+                </properties>
+              </component>
+              <component id="8169c" class="javax.swing.JTextField" binding="txtBlockID2">
+                <constraints>
+                  <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="1f6ea" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Calibri" size="22" style="1"/>
+                  <text value="Block ID 03"/>
+                </properties>
+              </component>
+              <component id="5cb2f" class="javax.swing.JTextField" binding="txtBlockID3">
+                <constraints>
+                  <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="a95d0" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="9" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Calibri" size="22" style="1"/>
+                  <text value="No of Blocks "/>
+                </properties>
+              </component>
+              <component id="beb6c" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="10" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Calibri" size="22" style="1"/>
+                  <text value="No of Blocks "/>
+                </properties>
+              </component>
+              <component id="8a99c" class="javax.swing.JTextField" binding="txtNoOfBlocks2">
+                <constraints>
+                  <grid row="9" column="8" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="4b756" class="javax.swing.JTextField" binding="txtNoOfBlocks3">
+                <constraints>
+                  <grid row="10" column="8" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value=""/>
+                </properties>
               </component>
             </children>
           </grid>

@@ -24,11 +24,11 @@ public class dashBoard extends javax.swing.JFrame {
     private JTextField txtJourneyName;
     private JTextField txtStartingTime;
     private JTextField txtStartingStation;
-    private JTextField txtBlockID;
+    private JTextField txtBlockID1;
     private JTextField txtEndTime;
     private JTextField txtDestination;
     private JComboBox cmbJourneyType;
-    private JTextField txtNoOfBlocks;
+    private JTextField txtNoOfBlocks1;
     private JButton btnCancel;
     private JButton btnCreate;
     private JTextField txtFullName;
@@ -103,6 +103,10 @@ public class dashBoard extends javax.swing.JFrame {
     private JProgressBar progressBarSpeed;
     private JPanel panelARCSDashboard;
     private JLabel lblSpeed;
+    private JTextField txtBlockID2;
+    private JTextField txtBlockID3;
+    private JTextField txtNoOfBlocks2;
+    private JTextField txtNoOfBlocks3;
 
     public dashBoard() {
 
@@ -152,8 +156,8 @@ public class dashBoard extends javax.swing.JFrame {
                 txtDriverNameJourney.setText("");
                 textField1.setText("");
                 cmbJourneyType.removeAllItems();
-                txtBlockID.setText("");
-                txtNoOfBlocks.setText("");
+                txtBlockID1.setText("");
+                txtNoOfBlocks1.setText("");
 
             }
         });
@@ -274,17 +278,20 @@ public class dashBoard extends javax.swing.JFrame {
                 String journeyName = txtJourneyName.getText();
                 float startingTime = Float.parseFloat(txtStartingTime.getText());
                 float endTime = Float.parseFloat(txtEndTime.getText());
-
                 String startingStation = txtStartingStation.getText();
                 String destination = txtDestination.getText();
                 LocalDate date = LocalDate.parse(txtDate.getText());
                 String journeyType = (String) cmbJourneyType.getSelectedItem();
                 String driverName = txtDriverNameJourney.getText();
                 int engineID = Integer.parseInt(textField1.getText());
-                int blockID = Integer.parseInt(txtBlockID.getText());
-                int noOfBlocks = Integer.parseInt(txtNoOfBlocks.getText());
+                int blockID1 = Integer.parseInt(txtBlockID1.getText());
+                int blockID2 = Integer.parseInt(txtBlockID2.getText());
+                int blockID3 = Integer.parseInt(txtBlockID3.getText());
+                int noOfBlocks1 = Integer.parseInt(txtNoOfBlocks1.getText());
+                int noOfBlocks2 = Integer.parseInt(txtNoOfBlocks2.getText());
+                int noOfBlocks3 = Integer.parseInt(txtNoOfBlocks3.getText());
                 JourneyController journeyController = new JourneyController();
-                journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName, engineID, blockID, noOfBlocks);
+                journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName, engineID, blockID1,blockID2,blockID3, noOfBlocks1,noOfBlocks2,noOfBlocks3);
 
             }
         });
