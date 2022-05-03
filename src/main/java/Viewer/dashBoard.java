@@ -107,6 +107,8 @@ public class dashBoard extends javax.swing.JFrame {
     private JTable tblEngine;
     private JTable tblBlock;
     private JTable tblDriver;
+    private JProgressBar progressBarSpeed;
+    private JPanel panelARCSDashboard;
 
     public dashBoard() {
 
@@ -118,6 +120,7 @@ public class dashBoard extends javax.swing.JFrame {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setSize(1200, 600);
+        panelARCSDashboard.setSize(1200,50);
         createJourneyTbl();
         createEngineTbl();
         createBlockTbl();
@@ -125,11 +128,10 @@ public class dashBoard extends javax.swing.JFrame {
 
         //Full Screen
 //        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
-//
 //        GraphicsDevice device = graphics.getDefaultScreenDevice();
-//        JFrame frame = new JFrame("Dashboard");
-//        frame.add(dashPanel);
 //        device.setFullScreenWindow(frame);
+
+        progressBarSpeed.setValue(40);
 
 
         btnCancel.addActionListener(new ActionListener() {
@@ -280,8 +282,8 @@ public class dashBoard extends javax.swing.JFrame {
                 float startingTime = Float.parseFloat(txtStartingTime.getText());
                 float endTime = Float.parseFloat(txtEndTime.getText());
 
-                int startingStation = Integer.parseInt(txtStartingStation.getText());
-                int destination = Integer.parseInt(txtDestination.getText());
+                String startingStation = txtStartingStation.getText();
+                String destination = txtDestination.getText();
                 LocalDate date = LocalDate.parse(txtDate.getText());
                 String journeyType = (String) cmbJourneyType.getSelectedItem();
                 String driverName = txtDriverNameJourney.getText();

@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class JourneyController {
 
-    public void createJourney(String journeyName, float startingTime, float endTime, int startingStation, int destination, LocalDate date, String journeyType, String driverName, int engineID, int blockID, int noOfBlocks) {
+    public void createJourney(String journeyName, float startingTime, float endTime, String startingStation, String destination, LocalDate date, String journeyType, String driverName, int engineID, int blockID, int noOfBlocks) {
 
         createJourneyModel createJourneyModel = new createJourneyModel();
 
