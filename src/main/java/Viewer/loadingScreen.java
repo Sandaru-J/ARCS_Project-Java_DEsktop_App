@@ -1,18 +1,14 @@
 package Viewer;
 
-import com.sun.javaws.ui.SplashScreen;
-
 import javax.swing.*;
-import java.awt.*;
 
 public class loadingScreen{
     private JPanel panel1;
     private JPanel BackgroundPanel;
     private JProgressBar progressBar1;
     private JLabel lblLoading;
-    private JLabel lblLOadingValue;
+    private JLabel lblLoadingValue;
     private JLabel lblARCS;
-    private JLabel lblImage;
 
 
     public loadingScreen()
@@ -31,7 +27,7 @@ public class loadingScreen{
             for (int i = 0; i <= 100; i++) {
 
                 Thread.sleep(100);
-                lblLOadingValue.setText(i+"%");
+                lblLoadingValue.setText(i+"%");
                 progressBar1.setValue(i);
 
                 if(i==0)
