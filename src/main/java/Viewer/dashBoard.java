@@ -25,13 +25,6 @@ public class dashBoard extends javax.swing.JFrame {
     private JTextField txtStartingTime;
     private JTextField txtStartingStation;
     private JTextField txtBlockID;
-    private JCheckBox cbMonday;
-    private JCheckBox cbTuesday;
-    private JCheckBox cbWednesday;
-    private JCheckBox cbThursday;
-    private JCheckBox cbFriday;
-    private JCheckBox cbSaturday;
-    private JCheckBox cbSunday;
     private JTextField txtEndTime;
     private JTextField txtDestination;
     private JComboBox cmbJourneyType;
@@ -148,15 +141,6 @@ public class dashBoard extends javax.swing.JFrame {
                 lblDistance.setText("");
                 txtDriverNameJourney.setText("");
                 textField1.setText("");
-
-                cbMonday.setSelected(false);
-                cbTuesday.setSelected(false);
-                cbWednesday.setSelected(false);
-                cbThursday.setSelected(false);
-                cbFriday.setSelected(false);
-                cbSaturday.setSelected(false);
-                cbSunday.setSelected(false);
-
                 cmbJourneyType.removeAllItems();
                 txtBlockID.setText("");
                 txtNoOfBlocks.setText("");
@@ -485,7 +469,6 @@ public class dashBoard extends javax.swing.JFrame {
 
             int i = 0;
             while (rs.next()) {
-
 
                 int EngineID = rs.getInt("EngineID");
                 String EngineName = rs.getString("EngineName");
