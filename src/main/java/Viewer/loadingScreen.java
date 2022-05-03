@@ -74,8 +74,5 @@ public class loadingScreen{
         new loadingScreen();
     }
 
-    private void createUIComponents() {
-        //lblImage.setIcon(new ImageIcon("![](../Images/train.png)"));
-        lblImage = new JLabel(new ImageIcon("(../Images/train.png)"));
-    }
+
 }
