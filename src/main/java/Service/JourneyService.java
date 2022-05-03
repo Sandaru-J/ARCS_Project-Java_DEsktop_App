@@ -26,8 +26,8 @@ public class JourneyService {
                 cs.setString(2,cJourney.getJourneyType());
                 cs.setFloat( 3,cJourney.getStartingTime());
                 cs.setFloat(4,cJourney.getEndTime());
-                cs.setInt(5,cJourney.getStartingStation());
-                cs.setInt(6,cJourney.getDestination());
+                cs.setString(5,cJourney.getStartingStation());
+                cs.setString(6,cJourney.getDestination());
                 cs.setDate(7, Date.valueOf(cJourney.getDate())); //2022-04-25
                 cs.setString(8,cJourney.getDriverName());
                 cs.setInt(9,cJourney.getEngineID());

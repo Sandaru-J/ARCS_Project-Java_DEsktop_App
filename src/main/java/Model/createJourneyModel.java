@@ -7,8 +7,8 @@ public class createJourneyModel {
       public String journeyName;
       public float startingTime;
       public float endTime;
-      public int startingStation;
-      public int destination;
+      public String startingStation;
+      public String destination;
       public LocalDate date;
       public String journeyType;
       public String driverName;
@@ -19,8 +19,8 @@ public class createJourneyModel {
       public void setJourneyName (String journeyName) { this.journeyName = journeyName; }
       public void setStartingTime (float startingTime) { this.startingTime = startingTime; }
       public void setEndTime (float endTime) { this.endTime = endTime; }
-      public void setStartingStation(int startingStation) { this.startingStation = startingStation; }
-      public void setDestination (int destination) { this.destination = destination; }
+      public void setStartingStation(String startingStation) { this.startingStation = startingStation; }
+      public void setDestination (String destination) { this.destination = destination; }
       public void setDate (LocalDate date) { this.date = date; }
       public void setJourneyType (String journeyType) { this.journeyType = journeyType; }
       public void setDriverName (String driverName) { this.driverName = driverName; }
@@ -32,8 +32,8 @@ public class createJourneyModel {
       public String getJourneyName() { return journeyName; }
       public float getStartingTime() { return startingTime; }
       public float getEndTime() { return endTime; }
-      public int getStartingStation() { return startingStation; }
-      public int getDestination() { return destination; }
+      public String getStartingStation() { return startingStation; }
+      public String getDestination() { return destination; }
       public LocalDate getDate() { return date; }
       public String getJourneyType() { return journeyType; }
       public String getDriverName() { return driverName; }
