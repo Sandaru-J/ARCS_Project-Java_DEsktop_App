@@ -102,6 +102,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JTable tblDriver;
     private JProgressBar progressBarSpeed;
     private JPanel panelARCSDashboard;
+    private JLabel lblSpeed;
 
     public dashBoard() {
 
@@ -124,8 +125,17 @@ public class dashBoard extends javax.swing.JFrame {
 //        GraphicsDevice device = graphics.getDefaultScreenDevice();
 //        device.setFullScreenWindow(frame);
 
-        progressBarSpeed.setValue(40);
 
+        for (int i = 0; i <= 70; i++) {
+
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            lblSpeed.setText(i + "km/h");
+            progressBarSpeed.setValue(i);
+        }
 
         btnCancel.addActionListener(new ActionListener() {
             @Override
