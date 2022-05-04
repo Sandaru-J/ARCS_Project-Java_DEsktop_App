@@ -837,7 +837,7 @@
                       <text value="Block ID 01"/>
                     </properties>
                   </component>
-                  <component id="5adc9" class="javax.swing.JTextField">
+                  <component id="5adc9" class="javax.swing.JTextField" binding="txtEngineID">
                     <constraints>
                       <grid row="2" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -845,7 +845,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="b4890" class="javax.swing.JTextField">
+                  <component id="b4890" class="javax.swing.JTextField" binding="txtBlockID2">
                     <constraints>
                       <grid row="4" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -853,7 +853,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="8f409" class="javax.swing.JTextField">
+                  <component id="8f409" class="javax.swing.JTextField" binding="txtBlockID1">
                     <constraints>
                       <grid row="3" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -871,7 +871,7 @@
                       <text value="Block Count"/>
                     </properties>
                   </component>
-                  <component id="3d917" class="javax.swing.JTextField">
+                  <component id="3d917" class="javax.swing.JTextField" binding="txtBlockCount1">
                     <constraints>
                       <grid row="3" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -879,7 +879,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="8e463" class="javax.swing.JTextField">
+                  <component id="8e463" class="javax.swing.JTextField" binding="txtBlockCount2">
                     <constraints>
                       <grid row="4" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -887,7 +887,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="7f0e4" class="javax.swing.JButton">
+                  <component id="7f0e4" class="javax.swing.JButton" binding="btnTrainRegistrationClear">
                     <constraints>
                       <grid row="9" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -898,7 +898,7 @@
                       <text value="CANCEL"/>
                     </properties>
                   </component>
-                  <component id="3d338" class="javax.swing.JButton">
+                  <component id="3d338" class="javax.swing.JButton" binding="btnTrainRegister">
                     <constraints>
                       <grid row="9" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -1139,7 +1139,7 @@
                       <text value="Block ID 03"/>
                     </properties>
                   </component>
-                  <component id="2d81" class="javax.swing.JTextField">
+                  <component id="2d81" class="javax.swing.JTextField" binding="txtBlockID3">
                     <constraints>
                       <grid row="5" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -1147,7 +1147,7 @@
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="96893" class="javax.swing.JTextField">
+                  <component id="96893" class="javax.swing.JTextField" binding="txtBlockCount3">
                     <constraints>
                       <grid row="5" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -3096,6 +3096,62 @@
                             <properties/>
                           </component>
                           <component id="2aa0e" class="javax.swing.JToolBar$Separator">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties/>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </tabbedpane>
+                  <tabbedpane id="c24e1" binding="tabbedPane8" default-binding="true">
+                    <constraints>
+                      <tabbedpane title="Train"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <grid id="bf20a" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <tabbedpane title="Train"/>
+                        </constraints>
+                        <properties>
+                          <background color="-1"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="73e56" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Mongolian Baiti" size="36" style="1"/>
+                              <foreground color="-3243246"/>
+                              <text value="TRAIN  INVENTORY"/>
+                            </properties>
+                          </component>
+                          <scrollpane id="5ef18">
+                            <constraints>
+                              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="d30aa" class="javax.swing.JTable" binding="tblTrain">
+                                <constraints/>
+                                <properties/>
+                              </component>
+                            </children>
+                          </scrollpane>
+                          <component id="ee796" class="javax.swing.JToolBar$Separator">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties/>
+                          </component>
+                          <component id="42c64" class="javax.swing.JToolBar$Separator">
                             <constraints>
                               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>

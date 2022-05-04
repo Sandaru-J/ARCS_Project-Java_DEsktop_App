@@ -104,8 +104,16 @@ public class dashBoard extends javax.swing.JFrame {
     private JProgressBar progressBarSpeed;
     private JPanel panelARCSDashboard;
     private JLabel lblSpeed;
+    private JButton btnTrainRegister;
+    private JButton btnTrainRegistrationClear;
+    private JTextField txtEngineID;
     private JTextField txtBlockID2;
     private JTextField txtBlockID3;
+    private JTextField txtBlockCount1;
+    private JTextField txtBlockCount2;
+    private JTextField txtBlockCount3;
+    private JTabbedPane tabbedPane8;
+    private JTable tblTrain;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
 
@@ -124,6 +132,7 @@ public class dashBoard extends javax.swing.JFrame {
         createEngineTbl();
         createBlockTbl();
         createDriverTbl();
+        createTrainTbl();
 
         //Full Screen
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -284,8 +293,9 @@ public class dashBoard extends javax.swing.JFrame {
                 LocalDate date = LocalDate.parse(txtDate.getText());
                 String journeyType = (String) cmbJourneyType.getSelectedItem();
                 String driverName = txtDriverNameJourney.getText();
+
                 JourneyController journeyController = new JourneyController();
-                journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName, engineID, blockID1,blockID2,blockID3, noOfBlocks1,noOfBlocks2,noOfBlocks3);
+                journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName);
 
             }
         });
@@ -396,6 +406,26 @@ public class dashBoard extends javax.swing.JFrame {
 
                 DefaultTableModel tableModel = (DefaultTableModel)table1.getModel();
                 lblTest.setText((String) tableModel.getValueAt(table1.getSelectedRow(),1));
+
+            }
+        });
+        btnTrainRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int engineID = Integer.parseInt(txtEngineID.getText());
+                int blockID1 = Integer.parseInt(txtBlockID1.getText());
+                int blockID2 = Integer.parseInt(txtBlockID2.getText());
+                int blockID3 = Integer.parseInt(txtBlockID3.getText());
+                int noOfBlocks1 = Integer.parseInt(txtNoOfBlocks1.getText());
+                int noOfBlocks2 = Integer.parseInt(txtNoOfBlocks2.getText());
+                int noOfBlocks3 = Integer.parseInt(txtNoOfBlocks3.getText());
+
+                RegisterController registerController = new RegisterController();
+                registerController.saveTrainReg(engineID, blockID1,blockID2,blockID3, noOfBlocks1,noOfBlocks2,noOfBlocks3);
+
+
+
 
             }
         });
@@ -583,6 +613,64 @@ public class dashBoard extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[DriverDetails]");
 
             int RowCount = rowCountDriver();
+
+            String columns[] = {"DriverID", "Name", "Username", "Age", "NIC", "ContactNumber", "Email", "Password"};
+            String data[][] = new String[RowCount][8];
+
+            int i = 0;
+            while (rs.next()) {
+                int DriverID = rs.getInt("DriverID");
+                String DriverFullName = rs.getString("DriverFullName");
+                String DriverUserName = rs.getString("DriverUserName");
+                int DriverAge = rs.getInt("DriverAge");
+                String DriverNIC = rs.getString("DriverNIC");
+                int DriverContactNumber = rs.getInt("DriverContactNumber");
+                String DriverEmail = rs.getString("DriverEmail");
+                String DriverPassword = rs.getString("DriverPassword");
+
+                data[i][0] = DriverID+"";
+                data[i][1] = DriverFullName;
+                data[i][2] = DriverUserName;
+                data[i][3] = DriverAge + "";
+                data[i][4] = DriverNIC;
+                data[i][5] = DriverContactNumber + "";
+                data[i][6] = DriverEmail;
+                data[i][7] = DriverPassword;
+                i++;
+            }
+            tblDriver.setModel(new DefaultTableModel
+                    (data, columns
+                    ));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int rowCountTrain() {
+        int count = 0;
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement rst = con.createStatement();
+            ResultSet rsRow = rst.executeQuery("SELECT COUNT(TrainID) FROM [ARCSDatabase].[dbo].[DriverDetails]");
+            rsRow.next();
+            count = rsRow.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    private void createTrainTbl() {
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[TrainDetails]");
+
+            int RowCount = rowCountTrain();
 
             String columns[] = {"DriverID", "Name", "Username", "Age", "NIC", "ContactNumber", "Email", "Password"};
             String data[][] = new String[RowCount][8];

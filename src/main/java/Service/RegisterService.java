@@ -4,11 +4,9 @@ import DatabaseConnection.SqlServerConnection;
 import Model.blockRegisterModel;
 import Model.driverRegisterModel;
 import Model.engineRegisterModel;
+import Model.trainRegisterModel;
 //import Model.engineRegisterModel;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class RegisterService {
 
@@ -133,4 +131,39 @@ public class RegisterService {
         return false;
 
     }
-}
+
+    public boolean saveTrainReg(trainRegisterModel tRegModelObj) {
+
+        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+        Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+
+        try {
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertJourneyDetails(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+            boolean i;
+            {
+                cs.setInt(1,tRegModelObj.getEngineID());
+                cs.setInt(2,tRegModelObj.getBlockID1());
+                cs.setInt(3,tRegModelObj.getBlockID2());
+                cs.setInt(4,tRegModelObj.getBlockID3());
+                cs.setInt(5,tRegModelObj.getNoOfBlocks1());
+                cs.setInt(6,tRegModelObj.getNoOfBlocks2());
+                cs.setInt(7,tRegModelObj.getNoOfBlocks3());
+
+
+                i = cs.execute();
+
+                System.out.println("Ok");
+
+            }
+            return i;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return false;
+    }
+
+    }
+
+
