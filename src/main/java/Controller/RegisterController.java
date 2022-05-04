@@ -13,7 +13,7 @@ public class RegisterController {
 
     RegisterService registerService = new RegisterService(); //object to RegisterService
 
-    public void saveDriverReg(String DriverFullName, String DriverUserName, int DriverAge, String DriverNIC, int DriverContactNumber, String DriverEmail, String DriverPassword) {
+    public boolean saveDriverReg(String DriverFullName, String DriverUserName, int DriverAge, String DriverNIC, int DriverContactNumber, String DriverEmail, String DriverPassword) {
 
         driverRegisterModel objDriverRegisterModel = new driverRegisterModel(); //object to driverRegisterModel
 
@@ -26,7 +26,8 @@ public class RegisterController {
         objDriverRegisterModel.setDriverEmail(DriverEmail);
         objDriverRegisterModel.setDriverPassword(DriverPassword);
 
-        registerService.saveDriverReg(objDriverRegisterModel);
+        boolean i=registerService.saveDriverReg(objDriverRegisterModel);
+        return i;
     }
 
     public void saveEngineReg(String EngineName, float EngineCapacity, String EngineType) {

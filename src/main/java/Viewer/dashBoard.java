@@ -4,6 +4,8 @@ import Controller.AdminController;
 import Controller.JourneyController;
 import Controller.RegisterController;
 import DatabaseConnection.SqlServerConnection;
+import javafx.scene.control.Alert;
+import sun.awt.geom.AreaOp;
 
 import javax.swing.*;
 
@@ -93,7 +95,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JTextField txtUpdatedJourneyDate;
     private JButton CLEARButton;
     private JButton sgnClearBtn;
-    private JLabel lblTest;
+    private JLabel lblViewJourneyName;
     private JTabbedPane tabbedPane3;
     private JTabbedPane tabbedPane5;
     private JTabbedPane tabbedPane6;
@@ -114,6 +116,21 @@ public class dashBoard extends javax.swing.JFrame {
     private JTextField txtBlockCount3;
     private JTabbedPane tabbedPane8;
     private JTable tblTrain;
+    private JLabel lblViewJourneyType;
+    private JLabel lblViewJourneyID;
+    private JLabel lblViewStartingStation;
+    private JLabel lblViewDestination;
+    private JLabel lblViewDistance;
+    private JLabel lblViewStartingTime;
+    private JLabel lblViewEndingTime;
+    private JLabel lblViewDuration;
+    private JLabel lblViewDate;
+    private JLabel lblViewDriverName;
+    private JLabel lblViewDriverID;
+    private JLabel lblViewDriverPhone;
+    private JPanel panelDriver;
+    private JLabel lblViewTrainID;
+    private JLabel lblViewEngineID;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
 
@@ -135,9 +152,9 @@ public class dashBoard extends javax.swing.JFrame {
         createTrainTbl();
 
         //Full Screen
-        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice device = graphics.getDefaultScreenDevice();
-        device.setFullScreenWindow(frame);
+//        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
+//        GraphicsDevice device = graphics.getDefaultScreenDevice();
+//        device.setFullScreenWindow(frame);
 
 
         for (int i = 0; i <= 70; i++) {
@@ -225,16 +242,32 @@ public class dashBoard extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String DriverFullName = txtFullName.getText();
-                String DriverUserName = txtDriver.getText();
-                int DriverAge = Integer.parseInt(txtAge.getText());
-                String DriverNIC = txtNIC.getText();
-                int DriverContactNumber = Integer.parseInt(txtContactNumber.getText());
-                String DriverEmail = txtEmail.getText();
-                String DriverPassword = txtDriverPassword.getText();
+                JOptionPane.showMessageDialog(dashPanel, "ABC", "Try Again!", JOptionPane.ERROR_MESSAGE);
 
-                RegisterController driverRegisterController = new RegisterController();
-                driverRegisterController.saveDriverReg(DriverFullName, DriverUserName, DriverAge, DriverNIC, DriverContactNumber, DriverEmail, DriverPassword);
+
+                try {
+                    String DriverFullName = txtFullName.getText();
+                    String DriverUserName = txtDriver.getText();
+                    int DriverAge = Integer.parseInt(txtAge.getText());
+                    String DriverNIC = txtNIC.getText();
+                    int DriverContactNumber = Integer.parseInt(txtContactNumber.getText());
+                    String DriverEmail = txtEmail.getText();
+                    String DriverPassword = txtDriverPassword.getText();
+
+                    RegisterController driverRegisterController = new RegisterController();
+                    boolean i =driverRegisterController.saveDriverReg(DriverFullName, DriverUserName, DriverAge, DriverNIC, DriverContactNumber, DriverEmail, DriverPassword);
+                    if(!i){
+                        System.out.println("Data sucessfully registerd");
+                    }else{
+                        System.out.println("Data Not Registered");
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+
             }
         });
         btnRegister.addActionListener(new ActionListener() {
@@ -405,7 +438,40 @@ public class dashBoard extends javax.swing.JFrame {
                 super.mouseClicked(e);
 
                 DefaultTableModel tableModel = (DefaultTableModel)table1.getModel();
-                lblTest.setText((String) tableModel.getValueAt(table1.getSelectedRow(),1));
+                String JourneyID = (String) tableModel.getValueAt(table1.getSelectedRow(),0);
+
+                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+                try {
+                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewJourneyByJourneyID(2)}");
+                    ResultSet rs = cs.executeQuery();
+
+                    lblViewJourneyName.setText(rs.getString(0));
+                    lblViewJourneyType.setText(rs.getString(2));
+                    lblViewJourneyID.setText(String.valueOf(rs.getInt(1)));
+                    lblViewStartingStation.setText(rs.getString(12));
+                    lblViewDestination.setText(rs.getString(13));
+                    lblViewDistance.setText("12km");
+                    lblViewStartingTime.setText(rs.getString(8));
+                    lblViewEndingTime.setText(rs.getString(9));
+                    lblViewDuration.setText(rs.getString(11));
+                    lblViewDate.setText(rs.getString(3));
+                    lblSpeed.setText("70");
+                    lblViewDriverName.setText(rs.getString(5));
+                    lblViewDriverID.setText(rs.getString(4));
+                    lblViewDriverPhone.setText(rs.getString(6));
+                    lblViewTrainID.setText(rs.getString(7));
+                    lblViewEngineID.setText(rs.getString(10));
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+
+                //lblTest.setText(rs.getInt("column 1"));
+
+
 
             }
         });
@@ -556,8 +622,8 @@ public class dashBoard extends javax.swing.JFrame {
 
             int RowCount = rowCountBlock();
 
-            String columns[] = {"Block ID", "Block Name", "BlockType", "Block Model", "Block Length", "Block Weight", "Block Capacity", "Block Count"};
-            String data[][] = new String[RowCount][8];
+            String columns[] = {"Block ID", "Block Name", "BlockType", "Block Model", "Block Length", "Block Weight", "Block Capacity", "Available Block Count", "Registered Block Count"};
+            String data[][] = new String[RowCount][9];
 
             int i = 0;
             while (rs.next()) {
@@ -568,7 +634,8 @@ public class dashBoard extends javax.swing.JFrame {
                 Float BlockLength = rs.getFloat("BlockLength");
                 Float BlockWeight = rs.getFloat("BlockWeight");
                 int BlockCapacity = rs.getInt("BlockCapacity");
-                int BlockCount = rs.getInt("BlockCount");
+                int AvailableBlockCount = rs.getInt("AvailableBlockCount");
+                int RegisteredBlockCount = rs.getInt("RegisteredBlockCount");
 
                 data[i][0] = String.valueOf(BlockID);
                 data[i][1] = BlockName;
@@ -577,7 +644,8 @@ public class dashBoard extends javax.swing.JFrame {
                 data[i][4] = String.valueOf(BlockLength);
                 data[i][5] = String.valueOf(BlockWeight);
                 data[i][6] = String.valueOf(BlockCapacity);
-                data[i][7] = String.valueOf(BlockCount);
+                data[i][7] = String.valueOf(AvailableBlockCount);
+                data[i][8] = String.valueOf(RegisteredBlockCount);
                 i++;
             }
             tblBlock.setModel(new DefaultTableModel
@@ -655,7 +723,7 @@ public class dashBoard extends javax.swing.JFrame {
             Statement rst = con.createStatement();
             ResultSet rsRow = rst.executeQuery("SELECT COUNT(TrainID) FROM [ARCSDatabase].[dbo].[DriverDetails]");
             rsRow.next();
-            count = rsRow.getInt(1);
+            count = rsRow.getInt(7);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -667,36 +735,39 @@ public class dashBoard extends javax.swing.JFrame {
         Connection con = objSqlServCon.createConnectionSqlServer();
 
         try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[TrainDetails]");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.GetAllTrainDetails}");
+            ResultSet rs = cs.executeQuery();
 
-            int RowCount = rowCountTrain();
+            //int RowCount = rowCountTrain();
 
-            String columns[] = {"DriverID", "Name", "Username", "Age", "NIC", "ContactNumber", "Email", "Password"};
-            String data[][] = new String[RowCount][8];
+            String columns[] = {"Train ID", "Engine ID","Block ID 01", "No of Blocks 01","Block ID 02", "No of Blocks 02", "Block ID 03", "No of Blocks 03", "Train Location"};
+            String data[][] = new String[5][9];
 
             int i = 0;
             while (rs.next()) {
-                int DriverID = rs.getInt("DriverID");
-                String DriverFullName = rs.getString("DriverFullName");
-                String DriverUserName = rs.getString("DriverUserName");
-                int DriverAge = rs.getInt("DriverAge");
-                String DriverNIC = rs.getString("DriverNIC");
-                int DriverContactNumber = rs.getInt("DriverContactNumber");
-                String DriverEmail = rs.getString("DriverEmail");
-                String DriverPassword = rs.getString("DriverPassword");
+                int TrainID = rs.getInt("TrainID");
+                int EngineID = rs.getInt("EngineID");
+                int BlockID1 = rs.getInt("BlockID1");
+                int BlockCount1 = rs.getInt("BlockCount1");
+                int BlockID2 = rs.getInt("BlockID2");
+                int BlockCount2 = rs.getInt("BlockCount2");
+                int BlockID3 = rs.getInt("BlockID3");
+                int BlockCount3 = rs.getInt("BlockCount3");
+                String TrainLocation = rs.getString("TrainLocation");
 
-                data[i][0] = DriverID+"";
-                data[i][1] = DriverFullName;
-                data[i][2] = DriverUserName;
-                data[i][3] = DriverAge + "";
-                data[i][4] = DriverNIC;
-                data[i][5] = DriverContactNumber + "";
-                data[i][6] = DriverEmail;
-                data[i][7] = DriverPassword;
+
+                data[i][0] = TrainID + "";
+                data[i][1] = EngineID + "";
+                data[i][2] = BlockID1 + "";
+                data[i][3] = BlockCount1 + "";
+                data[i][4] = BlockID2 + "";
+                data[i][5] = BlockCount2 + "";
+                data[i][6] = BlockID3 + "";
+                data[i][7] = BlockCount3 + "";
+                data[i][8] = TrainLocation;
                 i++;
             }
-            tblDriver.setModel(new DefaultTableModel
+            tblTrain.setModel(new DefaultTableModel
                     (data, columns
                     ));
         } catch (SQLException e) {
