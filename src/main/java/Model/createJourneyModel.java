@@ -12,9 +12,7 @@ public class createJourneyModel {
       public LocalDate date;
       public String journeyType;
       public String driverName;
-      public int engineID;
-      public int blockID;
-      public int noOfBlocks;
+
 
       public void setJourneyName (String journeyName) { this.journeyName = journeyName; }
       public void setStartingTime (float startingTime) { this.startingTime = startingTime; }
@@ -24,9 +22,7 @@ public class createJourneyModel {
       public void setDate (LocalDate date) { this.date = date; }
       public void setJourneyType (String journeyType) { this.journeyType = journeyType; }
       public void setDriverName (String driverName) { this.driverName = driverName; }
-      public void setEngineID (int engineID) { this.engineID = engineID; }
-      public void setBlockID (int blockID) { this.blockID = blockID; }
-      public void setNoOfBlocks (int noOfBlocks) { this.noOfBlocks = noOfBlocks; }
+
 
 
       public String getJourneyName() { return journeyName; }
@@ -37,9 +33,6 @@ public class createJourneyModel {
       public LocalDate getDate() { return date; }
       public String getJourneyType() { return journeyType; }
       public String getDriverName() { return driverName; }
-      public int getEngineID() { return engineID; }
-      public int getBlockID() { return blockID; }
-      public int getNoOfBlocks() { return noOfBlocks; }
 
 
 }

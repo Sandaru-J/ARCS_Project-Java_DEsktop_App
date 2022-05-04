@@ -18,7 +18,7 @@ public class JourneyService {
 
 
         try {
-            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertJourneyDetails(?,?,?,?,?,?,?,?,?,?,?)}");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertJourneyDetails(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
 //            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainEngineDetails] values(?,?,?)");
             boolean i;
             {
@@ -30,9 +30,8 @@ public class JourneyService {
                 cs.setString(6,cJourney.getDestination());
                 cs.setDate(7, Date.valueOf(cJourney.getDate())); //2022-04-25
                 cs.setString(8,cJourney.getDriverName());
-                cs.setInt(9,cJourney.getEngineID());
-                cs.setInt(10,cJourney.getBlockID());
-                cs.setInt(11,cJourney.getNoOfBlocks());
+
+
 
                 i = cs.execute();
 

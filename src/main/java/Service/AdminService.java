@@ -2,6 +2,8 @@ package Service;
 
 import DatabaseConnection.SqlServerConnection;
 import Model.adminSignupModel;
+
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -14,16 +16,19 @@ public class AdminService {
         Connection con = objSqlServerConnection.createConnectionSqlServer();
 
         try {
-            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[AdminDetails] values(?,?,?,?,?,?)");
+            //PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[AdminDetails] values(?,?,?,?,?,?)");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertAdminDetails(?,?,?,?,?,?)}");
 
-            ps.setString(1, admin.getAdminFullName());
-            ps.setString(2, admin.getAdminUserName());
-            ps.setString(3, admin.getAdminNIC());
-            ps.setInt(4, admin.getAdminContactNumber());
-            ps.setString(5, admin.getAdminEmail());
-            ps.setString(6, admin.getAdminPassword());
+            cs.setString(1, admin.getAdminFullName());
+            cs.setString(2, admin.getAdminUserName());
+            cs.setString(3, admin.getAdminNIC());
+            cs.setInt(4, admin.getAdminContactNumber());
+            cs.setString(5, admin.getAdminEmail());
+            cs.setString(6, admin.getAdminPassword());
 
-            ps.execute();
+            cs.execute();
+
+            System.out.println("Ok");
 
         } catch (SQLException e) {
             e.printStackTrace();

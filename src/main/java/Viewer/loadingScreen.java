@@ -1,6 +1,7 @@
 package Viewer;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class loadingScreen{
     private JPanel panel1;

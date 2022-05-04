@@ -5,6 +5,7 @@ import Model.blockRegisterModel;
 import Model.driverRegisterModel;
 //import Model.engineRegisterModel;
 import Model.engineRegisterModel;
+import Model.trainRegisterModel;
 import Service.RegisterService;
 
 
@@ -53,5 +54,21 @@ public class RegisterController {
         blockRegisterModel.setBlockCapacity(BlockCapacity);
 
         registerService.saveBlockReg(blockRegisterModel);
+    }
+
+    public void saveTrainReg(int engineID, int blockID1, int blockID2, int blockID3, int noOfBlocks1, int noOfBlocks2, int noOfBlocks3) {
+
+        trainRegisterModel trainRegisterModel = new trainRegisterModel();
+
+        trainRegisterModel.setEngineID(engineID);
+        trainRegisterModel.setBlockID1(blockID1);
+        trainRegisterModel.setBlockID2(blockID2);
+        trainRegisterModel.setBlockID3(blockID3);
+        trainRegisterModel.setNoOfBlocks1(noOfBlocks1);
+        trainRegisterModel.setNoOfBlocks2(noOfBlocks2);
+        trainRegisterModel.setNoOfBlocks3(noOfBlocks3);
+
+        registerService.saveTrainReg(trainRegisterModel);
+
     }
 }
