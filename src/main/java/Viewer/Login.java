@@ -53,6 +53,7 @@ public class Login extends JFrame{
                     if(rs.next())
                     {
                         new dashBoard();
+                        frame.dispose();
                         System.out.println("OK");
                     }
                     else
@@ -66,6 +67,7 @@ public class Login extends JFrame{
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
+
 
             }
         });

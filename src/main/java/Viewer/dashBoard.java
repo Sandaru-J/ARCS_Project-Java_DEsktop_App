@@ -8,6 +8,7 @@ import DatabaseConnection.SqlServerConnection;
 import javax.swing.*;
 
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -125,9 +126,9 @@ public class dashBoard extends javax.swing.JFrame {
         createDriverTbl();
 
         //Full Screen
-//        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
-//        GraphicsDevice device = graphics.getDefaultScreenDevice();
-//        device.setFullScreenWindow(frame);
+        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice device = graphics.getDefaultScreenDevice();
+        device.setFullScreenWindow(frame);
 
 
         for (int i = 0; i <= 70; i++) {
@@ -283,13 +284,6 @@ public class dashBoard extends javax.swing.JFrame {
                 LocalDate date = LocalDate.parse(txtDate.getText());
                 String journeyType = (String) cmbJourneyType.getSelectedItem();
                 String driverName = txtDriverNameJourney.getText();
-                int engineID = Integer.parseInt(textField1.getText());
-                int blockID1 = Integer.parseInt(txtBlockID1.getText());
-                int blockID2 = Integer.parseInt(txtBlockID2.getText());
-                int blockID3 = Integer.parseInt(txtBlockID3.getText());
-                int noOfBlocks1 = Integer.parseInt(txtNoOfBlocks1.getText());
-                int noOfBlocks2 = Integer.parseInt(txtNoOfBlocks2.getText());
-                int noOfBlocks3 = Integer.parseInt(txtNoOfBlocks3.getText());
                 JourneyController journeyController = new JourneyController();
                 journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName, engineID, blockID1,blockID2,blockID3, noOfBlocks1,noOfBlocks2,noOfBlocks3);
 
@@ -503,7 +497,8 @@ public class dashBoard extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-
+    //CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertEngineDetails(?,?,?)}");
+    //PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainEngineDetails] values(?,?,?)");
     public int rowCountBlock() {
         int count = 0;
         SqlServerConnection objSqlServCon = new SqlServerConnection();
@@ -512,6 +507,7 @@ public class dashBoard extends javax.swing.JFrame {
         try {
             Statement rst = con.createStatement();
             ResultSet rsRow = rst.executeQuery("SELECT COUNT(BlockID) FROM [ARCSDatabase].[dbo].[TrainBlockDetails]");
+
             rsRow.next();
             count = rsRow.getInt(1);
         } catch (SQLException e) {
