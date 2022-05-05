@@ -495,30 +495,86 @@ public class dashBoard extends javax.swing.JFrame {
         btnUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int UpdatedJourneyID = Integer.parseInt(txtUpdatedJourneyID.getText());
-                String UpdatedJourneyName = txtUpdatedJourneyName.getText();
-                String UpdatedJourneyType = txtUpdatedJourneyType.getText();
-                String UpdatedJourneyDriver = txtUpdatedJourneyDriver.getText();
-                int UpdatedJourneyRouteID = Integer.parseInt(txtUpdatedJourneyRouteID.getText());
-                int UpdatedJourneyTrainID = Integer.parseInt(txtUpdatedJourneyTrainID.getText());
-                LocalDate UpdatedJourneyDate = LocalDate.parse(txtUpdatedJourneyDate.getText());
-                float UpdatedJourneyStartingTime = Float.parseFloat(txtUpdatedJourneyStartingTime.getText());
-                float UpdatedJourneyEndTime = Float.parseFloat(txtUpdatedJourneyEndingTime.getText());
 
-                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
-                Connection con = objSqlServerConnection.createConnectionSqlServer();
-
-                String qry="UPDATE ARCSDatabase.dbo.JourneyDetails SET JourneyName = '"+UpdatedJourneyName+"', JourneyType = '"+UpdatedJourneyType+"', DriverName='"+UpdatedJourneyDriver+"', RouteID='"+UpdatedJourneyRouteID+"', TrainID='"+UpdatedJourneyTrainID+"', JourneyStartTime='"+UpdatedJourneyStartingTime+"', JourneyEndTime='"+UpdatedJourneyEndTime+"'  WHERE JourneyID='"+UpdatedJourneyID+"';";
-
-                try {
-                    PreparedStatement ps = con.prepareStatement(qry);
-                    ps.execute();
-
-                    System.out.println("Ok");
-
-                } catch (SQLException exception) {
-                    exception.printStackTrace();
+                if(txtUpdatedJourneyID.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
                 }
+                else if(txtUpdatedJourneyName.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyType.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyDriver.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyRouteID.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyTrainID.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyDate.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyStartingTime.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyEndingTime.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+
+                    try{
+                        int UpdatedJourneyID = Integer.parseInt(txtUpdatedJourneyID.getText());
+                        String UpdatedJourneyName = txtUpdatedJourneyName.getText();
+                        String UpdatedJourneyType = txtUpdatedJourneyType.getText();
+                        String UpdatedJourneyDriver = txtUpdatedJourneyDriver.getText();
+                        int UpdatedJourneyRouteID = Integer.parseInt(txtUpdatedJourneyRouteID.getText());
+                        int UpdatedJourneyTrainID = Integer.parseInt(txtUpdatedJourneyTrainID.getText());
+                        LocalDate UpdatedJourneyDate = LocalDate.parse(txtUpdatedJourneyDate.getText());
+                        float UpdatedJourneyStartingTime = Float.parseFloat(txtUpdatedJourneyStartingTime.getText());
+                        float UpdatedJourneyEndTime = Float.parseFloat(txtUpdatedJourneyEndingTime.getText());
+
+                        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                        Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+                        String qry="UPDATE ARCSDatabase.dbo.JourneyDetails SET JourneyName = '"+UpdatedJourneyName+"', JourneyType = '"+UpdatedJourneyType+"', DriverName='"+UpdatedJourneyDriver+"', RouteID='"+UpdatedJourneyRouteID+"', TrainID='"+UpdatedJourneyTrainID+"', JourneyStartTime='"+UpdatedJourneyStartingTime+"', JourneyEndTime='"+UpdatedJourneyEndTime+"'  WHERE JourneyID='"+UpdatedJourneyID+"';";
+
+                        try {
+                            PreparedStatement ps = con.prepareStatement(qry);
+                            boolean i = ps.execute();
+
+                            System.out.println("Ok");
+
+                            if (!i) {
+                                System.out.println("Data Successfully Registered");
+                                JOptionPane.showMessageDialog(dashPanel, "Journey Successfully Updated", " Registered!", JOptionPane.PLAIN_MESSAGE);
+
+                                txtUpdatedJourneyID.setText("");
+                                txtUpdatedJourneyName.setText("");
+                                txtUpdatedJourneyType.setText("");
+                                txtUpdatedJourneyDriver.setText("");
+                                txtUpdatedJourneyRouteID.setText("");
+                                txtUpdatedJourneyTrainID.setText("");
+                                txtUpdatedJourneyDate.setText("");
+                                txtUpdatedJourneyStartingTime.setText("");
+                                txtUpdatedJourneyEndingTime.setText("");
+
+                            } else {
+                                System.out.println("Data Not Registered");
+                                JOptionPane.showMessageDialog(dashPanel, "Unsuccessful", "Error!", JOptionPane.ERROR_MESSAGE);
+                            }
+
+                        } catch (SQLException exception) {
+                            exception.printStackTrace();
+                        }
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
             }
         });
         btnDelete.addActionListener(new ActionListener() {
