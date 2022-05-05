@@ -242,31 +242,43 @@ public class dashBoard extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                JOptionPane.showMessageDialog(dashPanel, "ABC", "Try Again!", JOptionPane.ERROR_MESSAGE);
+               // JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                if(txtFullName.getText().isEmpty() && txtDriver.getText().isEmpty() && txtAge.getText().isEmpty() && txtNIC.getText().isEmpty() && txtContactNumber.getText().isEmpty() && txtEmail.getText().isEmpty() && txtDriverPassword.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                
+                else {
 
+                    try {
+                        String DriverFullName = txtFullName.getText();
+                        String DriverUserName = txtDriver.getText();
+                        int DriverAge = Integer.parseInt(txtAge.getText());
+                        String DriverNIC = txtNIC.getText();
+                        int DriverContactNumber = Integer.parseInt(txtContactNumber.getText());
+                        String DriverEmail = txtEmail.getText();
+                        String DriverPassword = txtDriverPassword.getText();
 
-                try {
-                    String DriverFullName = txtFullName.getText();
-                    String DriverUserName = txtDriver.getText();
-                    int DriverAge = Integer.parseInt(txtAge.getText());
-                    String DriverNIC = txtNIC.getText();
-                    int DriverContactNumber = Integer.parseInt(txtContactNumber.getText());
-                    String DriverEmail = txtEmail.getText();
-                    String DriverPassword = txtDriverPassword.getText();
+                        RegisterController driverRegisterController = new RegisterController();
+                        boolean i = driverRegisterController.saveDriverReg(DriverFullName, DriverUserName, DriverAge, DriverNIC, DriverContactNumber, DriverEmail, DriverPassword);
+                        if (!i) {
+                            System.out.println("Data Successfully Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Data Successfully Registered", "Registered", JOptionPane.INFORMATION_MESSAGE);
 
-                    RegisterController driverRegisterController = new RegisterController();
-                    boolean i =driverRegisterController.saveDriverReg(DriverFullName, DriverUserName, DriverAge, DriverNIC, DriverContactNumber, DriverEmail, DriverPassword);
-                    if(!i){
-                        System.out.println("Data sucessfully registerd");
-                    }else{
-                        System.out.println("Data Not Registered");
+                            txtDriver.setText("");
+                            txtFullName.setText("");
+                            txtAge.setText("");
+                            txtNIC.setText("");
+                            txtDriverPassword.setText("");
+                            txtContactNumber.setText("");
+                            txtEmail.setText("");
+                        } else {
+                            System.out.println("Data Not Registered");
+
+                        }
+                    } catch (Exception ex) {
+
                     }
                 }
-                catch (Exception ex)
-                {
-
-                }
-
 
             }
         });
