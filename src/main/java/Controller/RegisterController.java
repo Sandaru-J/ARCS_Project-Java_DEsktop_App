@@ -30,7 +30,7 @@ public class RegisterController {
         return i;
     }
 
-    public void saveEngineReg(String EngineName, float EngineCapacity, String EngineType) {
+    public boolean saveEngineReg(String EngineName, float EngineCapacity, String EngineType) {
 
         engineRegisterModel engineRegisterModel = new engineRegisterModel(); //object to engineRegisterModel
 
@@ -39,6 +39,7 @@ public class RegisterController {
         engineRegisterModel.setEngineType(EngineType);
 
         registerService.saveEngineReg(engineRegisterModel);
+        return false;
     }
 
     public void saveBlockReg(String BlockModel, String BlockName, String BlockType, float BlockLength, float BlockWeight, int BlockCount, int BlockCapacity) {

@@ -6,6 +6,7 @@ import Controller.RegisterController;
 import DatabaseConnection.SqlServerConnection;
 import javafx.scene.control.Alert;
 import sun.awt.geom.AreaOp;
+import sun.management.snmp.AdaptorBootstrap;
 
 import javax.swing.*;
 
@@ -226,18 +227,7 @@ public class dashBoard extends javax.swing.JFrame {
 //                    }
 //                });
 
-        btnRegister.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cmbType.addItem("1");
-                // item select keranne one so validate keranne ba
-                if (txtTrainName.getText().equals("") || txtCapacity.getText().equals("")
-                        || cmbType.getSelectedItem().equals(null)) {
-                    JOptionPane.showMessageDialog(null, "Enter Data to all text fields", "Missing fields", JOptionPane.ERROR_MESSAGE);
-                }
 
-            }
-        });
         btnDriverRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -303,20 +293,47 @@ public class dashBoard extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String engineName = txtTrainName.getText();
-                float engineCapacity = Float.parseFloat(txtCapacity.getText());
-                String engineType = (String) cmbType.getSelectedItem();
 
-                RegisterController engineRegisterControlleer = new RegisterController();
-                engineRegisterControlleer.saveEngineReg(engineName, engineCapacity, engineType);
+
+                if(txtTrainName.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtCapacity.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+//                else if(cmbType.getSelectedItem().equals()){
+//                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+//                }
+                else{
+
+                    try {
+                        String engineName = txtTrainName.getText();
+                        float engineCapacity = Float.parseFloat(txtCapacity.getText());
+                        String engineType = (String) cmbType.getSelectedItem();
+
+                        RegisterController engineRegisterControlleer = new RegisterController();
+                        boolean i = engineRegisterControlleer.saveEngineReg(engineName, engineCapacity, engineType);
+
+                        if (!i) {
+                            System.out.println("Data Successfully Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Driver Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
+
+                            txtTrainName.setText("");
+                            txtCapacity.setText("");
+                            cmbType.setSelectedItem("");
+
+                        } else {
+                            System.out.println("Data Not Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Driver Registration", "Error!", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                }
             }
         });
-        btnRegister.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
         btnBlockRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -366,7 +383,7 @@ public class dashBoard extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 txtTrainName.setText("");
                 txtCapacity.setText("");
-                cmbType.removeAllItems();
+                cmbType.setSelectedItem("");
 
             }
         });
