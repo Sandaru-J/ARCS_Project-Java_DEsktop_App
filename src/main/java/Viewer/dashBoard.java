@@ -4,14 +4,10 @@ import Controller.AdminController;
 import Controller.JourneyController;
 import Controller.RegisterController;
 import DatabaseConnection.SqlServerConnection;
-import javafx.scene.control.Alert;
-import sun.awt.geom.AreaOp;
-import sun.management.snmp.AdaptorBootstrap;
 
 import javax.swing.*;
 
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -19,6 +15,7 @@ import java.awt.event.MouseEvent;
 import java.sql.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class dashBoard extends javax.swing.JFrame {
     public JPanel dashPanel;
@@ -132,6 +129,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JPanel panelDriver;
     private JLabel lblViewTrainID;
     private JLabel lblViewEngineID;
+    private JTable tblUpdateJourney;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
 
@@ -151,6 +149,7 @@ public class dashBoard extends javax.swing.JFrame {
         createBlockTbl();
         createDriverTbl();
         createTrainTbl();
+        createUpdateJourneyrTbl();
 
         //Full Screen
 //        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -533,8 +532,8 @@ public class dashBoard extends javax.swing.JFrame {
                         int UpdatedJourneyRouteID = Integer.parseInt(txtUpdatedJourneyRouteID.getText());
                         int UpdatedJourneyTrainID = Integer.parseInt(txtUpdatedJourneyTrainID.getText());
                         LocalDate UpdatedJourneyDate = LocalDate.parse(txtUpdatedJourneyDate.getText());
-                        float UpdatedJourneyStartingTime = Float.parseFloat(txtUpdatedJourneyStartingTime.getText());
-                        float UpdatedJourneyEndTime = Float.parseFloat(txtUpdatedJourneyEndingTime.getText());
+                        LocalTime UpdatedJourneyStartingTime = LocalTime.parse(txtUpdatedJourneyStartingTime.getText());
+                        LocalTime UpdatedJourneyEndTime = LocalTime.parse(txtUpdatedJourneyEndingTime.getText());
 
                         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
                         Connection con = objSqlServerConnection.createConnectionSqlServer();
@@ -545,9 +544,8 @@ public class dashBoard extends javax.swing.JFrame {
                             PreparedStatement ps = con.prepareStatement(qry);
                             boolean i = ps.execute();
 
-                            System.out.println("Ok");
-
                             if (!i) {
+                                createUpdateJourneyrTbl();
                                 System.out.println("Data Successfully Registered");
                                 JOptionPane.showMessageDialog(dashPanel, "Journey Successfully Updated", " Registered!", JOptionPane.PLAIN_MESSAGE);
 
@@ -580,20 +578,51 @@ public class dashBoard extends javax.swing.JFrame {
         btnDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int UpdatedJourneyID = Integer.parseInt(txtUpdatedJourneyID.getText());
 
-                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
-                Connection con = objSqlServerConnection.createConnectionSqlServer();
+                if(txtUpdatedJourneyID.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
 
-                String qry="DELETE FROM ARCSDatabase.dbo.JourneyDetails WHERE JourneyID='"+UpdatedJourneyID+"';";
-                try {
-                    PreparedStatement ps = con.prepareStatement(qry);
-                    ps.execute();
+                    try{
+                        int UpdatedJourneyID = Integer.parseInt(txtUpdatedJourneyID.getText());
 
-                    System.out.println("Ok");
+                        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                        Connection con = objSqlServerConnection.createConnectionSqlServer();
 
-                } catch (SQLException exception) {
-                    exception.printStackTrace();
+                        String qry="DELETE FROM ARCSDatabase.dbo.JourneyDetails WHERE JourneyID='"+UpdatedJourneyID+"';";
+
+                        try {
+                            PreparedStatement ps = con.prepareStatement(qry);
+                            boolean i = ps.execute();
+
+                            if (!i) {
+                                createUpdateJourneyrTbl();
+                                System.out.println("Data Successfully Registered");
+                                JOptionPane.showMessageDialog(dashPanel, "Journey Successfully Deleted", " Registered!", JOptionPane.PLAIN_MESSAGE);
+
+                                txtUpdatedJourneyID.setText("");
+                                txtUpdatedJourneyName.setText("");
+                                txtUpdatedJourneyType.setText("");
+                                txtUpdatedJourneyDriver.setText("");
+                                txtUpdatedJourneyRouteID.setText("");
+                                txtUpdatedJourneyTrainID.setText("");
+                                txtUpdatedJourneyDate.setText("");
+                                txtUpdatedJourneyStartingTime.setText("");
+                                txtUpdatedJourneyEndingTime.setText("");
+
+                            } else {
+                                System.out.println("Data Not Registered");
+                                JOptionPane.showMessageDialog(dashPanel, "Unsuccessful", "Error!", JOptionPane.ERROR_MESSAGE);
+                            }
+
+                        } catch (SQLException exception) {
+                            exception.printStackTrace();
+                        }
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
         });
@@ -640,7 +669,7 @@ public class dashBoard extends javax.swing.JFrame {
                     ResultSet rs = cs.executeQuery();
 
                     lblViewJourneyName.setText(rs.getString(0));
-                    lblViewJourneyType.setText(rs.getString(2));
+                    lblViewJourneyType.setText(rs  .getString(2));
                     lblViewJourneyID.setText(String.valueOf(rs.getInt(1)));
                     lblViewStartingStation.setText(rs.getString(12));
                     lblViewDestination.setText(rs.getString(13));
@@ -742,6 +771,24 @@ public class dashBoard extends javax.swing.JFrame {
                 txtNoOfBlocks1.setText("");
                 txtNoOfBlocks2.setText("");
                 txtNoOfBlocks3.setText("");
+            }
+        });
+        tblUpdateJourney.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                DefaultTableModel tableModel = (DefaultTableModel)tblUpdateJourney.getModel();
+                txtUpdatedJourneyID.setText((String) tableModel.getValueAt(tblUpdateJourney.getSelectedRow(),0));
+                txtUpdatedJourneyName.setText((String) tableModel.getValueAt(tblUpdateJourney.getSelectedRow(),1));
+                txtUpdatedJourneyType.setText((String) tableModel.getValueAt(tblUpdateJourney.getSelectedRow(),2));
+                txtUpdatedJourneyDriver.setText((String) tableModel.getValueAt(tblUpdateJourney.getSelectedRow(),4));
+                txtUpdatedJourneyRouteID.setText((String) tableModel.getValueAt(tblUpdateJourney.getSelectedRow(),5));
+                txtUpdatedJourneyTrainID.setText((String) tableModel.getValueAt(tblUpdateJourney.getSelectedRow(),6));
+                txtUpdatedJourneyDate.setText((String) tableModel.getValueAt(tblUpdateJourney.getSelectedRow(),3));
+                txtUpdatedJourneyStartingTime.setText((String) tableModel.getValueAt(tblUpdateJourney.getSelectedRow(),7));
+                txtUpdatedJourneyEndingTime.setText((String) tableModel.getValueAt(tblUpdateJourney.getSelectedRow(),8));
+
             }
         });
     }
@@ -1017,6 +1064,67 @@ public class dashBoard extends javax.swing.JFrame {
                 i++;
             }
             tblTrain.setModel(new DefaultTableModel
+                    (data, columns
+                    ));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public int rowCountUpdateJourney() {
+        int count = 0;
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement rst = con.createStatement();
+            ResultSet rsRow = rst.executeQuery("SELECT COUNT(JourneyID) FROM [ARCSDatabase].[dbo].[JourneyDetails]");
+            rsRow.next();
+            count = rsRow.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    private void createUpdateJourneyrTbl() {
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[JourneyDetails]");
+
+            int RowCount = rowCountUpdateJourney();
+
+            String columns[] = {"Journey ID", "Journey Name", "Journey Type", "Date", "Driver Name", "Route ID", "Train ID", "Journey Start Time", "Journey End Time", "Journey Status"};
+            String data[][] = new String[RowCount][10];
+
+            int i = 0;
+            while (rs.next()) {
+                int JourneyID = rs.getInt("JourneyID");
+                String JourneyName = rs.getString("JourneyName");
+                String JourneyType = rs.getString("JourneyType");
+                String Date = rs.getString("Date");
+                String DriverName = rs.getString("DriverName");
+                int RouteID = rs.getInt("RouteID");
+                int TrainID = rs.getInt("TrainID");
+                String JourneyStartTime = rs.getString("JourneyStartTime");
+                String JourneyEndTime = rs.getString("JourneyEndTime");
+                int JourneyStatus = rs.getInt("JourneyStatus");
+
+                data[i][0] = JourneyID+"";
+                data[i][1] = JourneyName;
+                data[i][2] = JourneyType;
+                data[i][3] = Date;
+                data[i][4] = DriverName;
+                data[i][5] = RouteID + "";
+                data[i][6] = TrainID + "";
+                data[i][7] = JourneyStartTime + "";
+                data[i][8] = JourneyEndTime + "";
+                data[i][9] = JourneyStatus + "";
+                i++;
+            }
+            tblUpdateJourney.setModel(new DefaultTableModel
                     (data, columns
                     ));
         } catch (SQLException e) {
