@@ -42,7 +42,7 @@ public class RegisterController {
         return false;
     }
 
-    public void saveBlockReg(String BlockModel, String BlockName, String BlockType, float BlockLength, float BlockWeight, int BlockCount, int BlockCapacity) {
+    public boolean saveBlockReg(String BlockModel, String BlockName, String BlockType, float BlockLength, float BlockWeight, int BlockCount, int BlockCapacity) {
 
         System.out.println("came to controller");
         blockRegisterModel blockRegisterModel = new blockRegisterModel(); //object to blockRegisterModel
@@ -56,6 +56,7 @@ public class RegisterController {
         blockRegisterModel.setBlockCapacity(BlockCapacity);
 
         registerService.saveBlockReg(blockRegisterModel);
+        return false;
     }
 
     public boolean saveTrainReg(int engineID, int blockID1, int blockID2, int blockID3, int noOfBlocks1, int noOfBlocks2, int noOfBlocks3) {

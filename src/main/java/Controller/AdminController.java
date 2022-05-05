@@ -5,7 +5,7 @@ import Service.AdminService;
 
 public class AdminController {
 
-    public void adminSignup(String adminFullName, String adminUserName, String adminNIC, int adminContactNumber, String adminEmail, String adminPassword) {
+    public boolean adminSignup(String adminFullName, String adminUserName, String adminNIC, int adminContactNumber, String adminEmail, String adminPassword) {
 
         adminSignupModel adminSignupModel = new adminSignupModel();
 
@@ -17,6 +17,7 @@ public class AdminController {
         adminSignupModel.setAdminPassword(adminPassword);
 
         AdminService.adminSignup(adminSignupModel);
+        return false;
     }
 
 }

@@ -207,7 +207,7 @@ public class dashBoard extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 txtBlock.setText("");
                 txtBlockName.setText("");
-                cmbBlockType.removeAllItems();
+                cmbBlockType.setSelectedItem("");
                 txtLength.setText("");
                 txtQuantity.setText("");
                 txtWeight.setText("");
@@ -339,18 +339,62 @@ public class dashBoard extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
 
 
-                String BlockModel = txtBlock.getText();
-                String BlockName = txtBlockName.getText();
-                String BlockType = (String) cmbBlockType.getSelectedItem();
-                float BlockLength = txtLength.getAlignmentX();
-                float BlockWeight = txtWeight.getAlignmentX();
-                int BlockCount = txtQuantity.getComponentCount();
-                int BlockCapacity = txtCapacity.getComponentCount();
 
-                RegisterController blockRegisterControlleer = new RegisterController();
-                blockRegisterControlleer.saveBlockReg(BlockModel, BlockName, BlockType, BlockLength, BlockWeight, BlockCount, BlockCapacity);
+                if(txtBlock.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockName.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+//                else if(cmbBlockType.getText().isEmpty()){
+//                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+//                }
+                else if(txtLength.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtWeight.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtQuantity.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtCapacity.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
 
+                    try {
+                        String BlockModel = txtBlock.getText();
+                        String BlockName = txtBlockName.getText();
+                        String BlockType = (String) cmbBlockType.getSelectedItem();
+                        float BlockLength = Float.parseFloat(txtLength.getText());
+                        float BlockWeight = Float.parseFloat(txtWeight.getText());
+                        int BlockCount = txtQuantity.getComponentCount();
+                        int BlockCapacity = txtCapacity.getComponentCount();
 
+                        RegisterController blockRegisterControlleer = new RegisterController();
+                        boolean i = blockRegisterControlleer.saveBlockReg(BlockModel, BlockName, BlockType, BlockLength, BlockWeight, BlockCount, BlockCapacity);
+
+                        if (!i) {
+                            System.out.println("Data Successfully Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Block Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
+
+                            txtBlock.setText("");
+                            txtBlockName.setText("");
+                            cmbBlockType.setSelectedItem("");
+                            txtLength.setText("");
+                            txtQuantity.setText("");
+                            txtWeight.setText("");
+                            txtCap.setText("");
+
+                        } else {
+                            System.out.println("Data Not Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Block Registration", "Error!", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
             }
         });
         cmbJourneyType.addActionListener(new ActionListener() {
@@ -390,16 +434,62 @@ public class dashBoard extends javax.swing.JFrame {
         signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String AdminFullName = txtAdminName.getText();
-                String AdminUserName = txtAdminUsername.getText();
-                String AdminNIC = txtAdminNIC.getText();
-                int AdminContactNumber = Integer.parseInt(txtAdminPhone.getText());
-                String AdminEmail = txtAdminEmail.getText();
-                String AdminPassword = txtAdminPassword.getText();
-                String AdminConfirmPassword = txtAdminConfirmPassword.getText();
 
-                AdminController adminController = new AdminController();
-                adminController.adminSignup(AdminFullName, AdminUserName, AdminNIC, AdminContactNumber, AdminEmail, AdminPassword);
+                if(txtAdminName.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAdminUsername.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAdminNIC.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAdminPhone.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAdminEmail.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAdminPassword.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAdminConfirmPassword.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+
+                    try {
+                        String AdminFullName = txtAdminName.getText();
+                        String AdminUserName = txtAdminUsername.getText();
+                        String AdminNIC = txtAdminNIC.getText();
+                        int AdminContactNumber = Integer.parseInt(txtAdminPhone.getText());
+                        String AdminEmail = txtAdminEmail.getText();
+                        String AdminPassword = txtAdminPassword.getText();
+                        String AdminConfirmPassword = txtAdminConfirmPassword.getText();
+
+                        AdminController adminController = new AdminController();
+                        boolean i = adminController.adminSignup(AdminFullName, AdminUserName, AdminNIC, AdminContactNumber, AdminEmail, AdminPassword);
+
+                        if (!i) {
+                            System.out.println("Data Successfully Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Admin Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
+
+                            txtAdminName.setText("");
+                            txtAdminUsername.setText("");
+                            txtAdminNIC.setText("");
+                            txtAdminPhone.setText("");
+                            txtAdminEmail.setText("");
+                            txtAdminPassword.setText("");
+                            txtAdminConfirmPassword.setText("");
+
+                        } else {
+                            System.out.println("Data Not Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Admin Registration", "Error!", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
             }
         });
         btnUpdate.addActionListener(new ActionListener() {
