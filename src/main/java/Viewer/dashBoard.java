@@ -661,38 +661,40 @@ public class dashBoard extends javax.swing.JFrame {
                 DefaultTableModel tableModel = (DefaultTableModel)table1.getModel();
                 String JourneyID = (String) tableModel.getValueAt(table1.getSelectedRow(),0);
 
+
                 SqlServerConnection objSqlServerConnection = new SqlServerConnection();
                 Connection con = objSqlServerConnection.createConnectionSqlServer();
+
 
                 try {
                     CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewJourneyByJourneyID(2)}");
                     ResultSet rs = cs.executeQuery();
 
-                    lblViewJourneyName.setText(rs.getString(0));
-                    lblViewJourneyType.setText(rs  .getString(2));
-                    lblViewJourneyID.setText(String.valueOf(rs.getInt(1)));
-                    lblViewStartingStation.setText(rs.getString(12));
-                    lblViewDestination.setText(rs.getString(13));
-                    lblViewDistance.setText("12km");
-                    lblViewStartingTime.setText(rs.getString(8));
-                    lblViewEndingTime.setText(rs.getString(9));
-                    lblViewDuration.setText(rs.getString(11));
-                    lblViewDate.setText(rs.getString(3));
-                    lblSpeed.setText("70");
-                    lblViewDriverName.setText(rs.getString(5));
-                    lblViewDriverID.setText(rs.getString(4));
-                    lblViewDriverPhone.setText(rs.getString(6));
-                    lblViewTrainID.setText(rs.getString(7));
-                    lblViewEngineID.setText(rs.getString(10));
+                    int i = 0;
+                    while (rs.next()) {
+//
+                        lblViewJourneyName.setText(rs.getString("JourneyName"));
+                        lblViewJourneyType.setText(rs.getString("JourneyType"));
+                        lblViewJourneyID.setText(String.valueOf(rs.getString("JourneyID")));
+                        lblViewStartingStation.setText(rs.getString("StartStationName"));
+                        lblViewDestination.setText(rs.getString("EndStationName"));
+                        lblViewStartingTime.setText(rs.getString("JourneyStartTime"));
+                        lblViewEndingTime.setText(rs.getString("JourneyEndTime"));
+                        lblViewDuration.setText(rs.getString("TimeDuration"));
+                        lblViewDate.setText(rs.getString("Date"));
+                        lblViewDriverName.setText(rs.getString("DriverFullName"));
+                        lblViewDriverID.setText(rs.getString("DriverID"));
+                        lblViewDriverPhone.setText(rs.getString("DriverContactNumber"));
+                        lblViewTrainID.setText(rs.getString("TrainID"));
+                        lblViewEngineID.setText(rs.getString("EngineID"));
+                        i++;
+                    }
 
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-
-
-                //lblTest.setText(rs.getInt("column 1"));
-
-
+                lblViewDistance.setText("12km");
+                lblSpeed.setText("70");
 
             }
         });
