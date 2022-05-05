@@ -13,7 +13,7 @@ public class RegisterController {
 
     RegisterService registerService = new RegisterService(); //object to RegisterService
 
-    public void saveDriverReg(String DriverFullName, String DriverUserName, int DriverAge, String DriverNIC, int DriverContactNumber, String DriverEmail, String DriverPassword) {
+    public boolean saveDriverReg(String DriverFullName, String DriverUserName, int DriverAge, String DriverNIC, int DriverContactNumber, String DriverEmail, String DriverPassword) {
 
         driverRegisterModel objDriverRegisterModel = new driverRegisterModel(); //object to driverRegisterModel
 
@@ -26,10 +26,11 @@ public class RegisterController {
         objDriverRegisterModel.setDriverEmail(DriverEmail);
         objDriverRegisterModel.setDriverPassword(DriverPassword);
 
-        registerService.saveDriverReg(objDriverRegisterModel);
+        boolean i=registerService.saveDriverReg(objDriverRegisterModel);
+        return i;
     }
 
-    public void saveEngineReg(String EngineName, float EngineCapacity, String EngineType) {
+    public boolean saveEngineReg(String EngineName, float EngineCapacity, String EngineType) {
 
         engineRegisterModel engineRegisterModel = new engineRegisterModel(); //object to engineRegisterModel
 
@@ -38,9 +39,10 @@ public class RegisterController {
         engineRegisterModel.setEngineType(EngineType);
 
         registerService.saveEngineReg(engineRegisterModel);
+        return false;
     }
 
-    public void saveBlockReg(String BlockModel, String BlockName, String BlockType, float BlockLength, float BlockWeight, int BlockCount, int BlockCapacity) {
+    public boolean saveBlockReg(String BlockModel, String BlockName, String BlockType, float BlockLength, float BlockWeight, int BlockCount, int BlockCapacity) {
 
         System.out.println("came to controller");
         blockRegisterModel blockRegisterModel = new blockRegisterModel(); //object to blockRegisterModel
@@ -54,9 +56,10 @@ public class RegisterController {
         blockRegisterModel.setBlockCapacity(BlockCapacity);
 
         registerService.saveBlockReg(blockRegisterModel);
+        return false;
     }
 
-    public void saveTrainReg(int engineID, int blockID1, int blockID2, int blockID3, int noOfBlocks1, int noOfBlocks2, int noOfBlocks3) {
+    public boolean saveTrainReg(int engineID, int blockID1, int blockID2, int blockID3, int noOfBlocks1, int noOfBlocks2, int noOfBlocks3) {
 
         trainRegisterModel trainRegisterModel = new trainRegisterModel();
 
@@ -70,5 +73,6 @@ public class RegisterController {
 
         registerService.saveTrainReg(trainRegisterModel);
 
+        return false;
     }
 }

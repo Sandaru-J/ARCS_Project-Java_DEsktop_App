@@ -5,7 +5,9 @@ import Model.blockRegisterModel;
 import Model.driverRegisterModel;
 import Model.engineRegisterModel;
 import Model.trainRegisterModel;
+import Viewer.dashBoard;
 //import Model.engineRegisterModel;
+import javax.swing.*;
 import java.sql.*;
 
 public class RegisterService {
@@ -13,48 +15,20 @@ public class RegisterService {
     public static boolean saveDriverReg(driverRegisterModel dRegModelObj) {
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
-        //driverRegisterModel dRegModelObj = new driverRegisterModel();
-
-
-        //        try {
-//
-//            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[DriverDetails] values(?,?,?,?,?,?,?,?)");
-//            boolean i;
-//            {
-//
-//                ps.setString(1, "D01");
-//                ps.setString(2,dRegModelObj.getDriverFullName());
-//                ps.setString(3,dRegModelObj.getDriverUserName());
-//                ps.setInt(4,dRegModelObj.getDriverAge());
-//                ps.setString(5,dRegModelObj.getDriverNIC());
-//                ps.setInt(6,dRegModelObj.getDriverContactNumber());
-//                ps.setString(7,dRegModelObj.getDriverEmail());
-//                ps.setString(8,dRegModelObj.getDriverPassword());
-//
-//                i = ps.execute();
-//
-//                System.out.println("Ok");
-//
-//            }
-//            return i;
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
 
         try{
             //String sql="call [ARCSDatabase].[dbo].[InsertDriverDetails] (?,?,?,?,?,?,?,?)";
-            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertDriverDetails(?,?,?,?,?,?,?,?)}");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertDriverDetails(?,?,?,?,?,?,?)}");
 
             boolean i;
             {
-                cs.setString(1, "D01");
-                cs.setString(2,dRegModelObj.getDriverFullName());
-                cs.setString(3,dRegModelObj.getDriverUserName());
-                cs.setInt(4,dRegModelObj.getDriverAge());
-                cs.setString(5,dRegModelObj.getDriverNIC());
-                cs.setInt(6,dRegModelObj.getDriverContactNumber());
-                cs.setString(7,dRegModelObj.getDriverEmail());
-                cs.setString(8,dRegModelObj.getDriverPassword());
+                cs.setString(1,dRegModelObj.getDriverFullName());
+                cs.setString(2,dRegModelObj.getDriverUserName());
+                cs.setInt(3,dRegModelObj.getDriverAge());
+                cs.setString(4,dRegModelObj.getDriverNIC());
+                cs.setInt(5,dRegModelObj.getDriverContactNumber());
+                cs.setString(6,dRegModelObj.getDriverEmail());
+                cs.setString(7,dRegModelObj.getDriverPassword());
 
                 i = cs.execute();
 
@@ -139,7 +113,7 @@ public class RegisterService {
 
 
         try {
-            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertJourneyDetails(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertTrainDetails(?,?,?,?,?,?,?)}");
             boolean i;
             {
                 cs.setInt(1,tRegModelObj.getEngineID());
@@ -156,6 +130,7 @@ public class RegisterService {
                 System.out.println("Ok");
 
             }
+
             return i;
         } catch (Exception ex) {
             ex.printStackTrace();

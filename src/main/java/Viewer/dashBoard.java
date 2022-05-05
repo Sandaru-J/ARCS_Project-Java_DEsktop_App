@@ -4,6 +4,9 @@ import Controller.AdminController;
 import Controller.JourneyController;
 import Controller.RegisterController;
 import DatabaseConnection.SqlServerConnection;
+import javafx.scene.control.Alert;
+import sun.awt.geom.AreaOp;
+import sun.management.snmp.AdaptorBootstrap;
 
 import javax.swing.*;
 
@@ -93,7 +96,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JTextField txtUpdatedJourneyDate;
     private JButton CLEARButton;
     private JButton sgnClearBtn;
-    private JLabel lblTest;
+    private JLabel lblViewJourneyName;
     private JTabbedPane tabbedPane3;
     private JTabbedPane tabbedPane5;
     private JTabbedPane tabbedPane6;
@@ -114,6 +117,21 @@ public class dashBoard extends javax.swing.JFrame {
     private JTextField txtBlockCount3;
     private JTabbedPane tabbedPane8;
     private JTable tblTrain;
+    private JLabel lblViewJourneyType;
+    private JLabel lblViewJourneyID;
+    private JLabel lblViewStartingStation;
+    private JLabel lblViewDestination;
+    private JLabel lblViewDistance;
+    private JLabel lblViewStartingTime;
+    private JLabel lblViewEndingTime;
+    private JLabel lblViewDuration;
+    private JLabel lblViewDate;
+    private JLabel lblViewDriverName;
+    private JLabel lblViewDriverID;
+    private JLabel lblViewDriverPhone;
+    private JPanel panelDriver;
+    private JLabel lblViewTrainID;
+    private JLabel lblViewEngineID;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
 
@@ -135,9 +153,9 @@ public class dashBoard extends javax.swing.JFrame {
         createTrainTbl();
 
         //Full Screen
-        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice device = graphics.getDefaultScreenDevice();
-        device.setFullScreenWindow(frame);
+//        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
+//        GraphicsDevice device = graphics.getDefaultScreenDevice();
+//        device.setFullScreenWindow(frame);
 
 
         for (int i = 0; i <= 70; i++) {
@@ -189,7 +207,7 @@ public class dashBoard extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 txtBlock.setText("");
                 txtBlockName.setText("");
-                cmbBlockType.removeAllItems();
+                cmbBlockType.setSelectedItem("");
                 txtLength.setText("");
                 txtQuantity.setText("");
                 txtWeight.setText("");
@@ -209,69 +227,174 @@ public class dashBoard extends javax.swing.JFrame {
 //                    }
 //                });
 
-        btnRegister.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cmbType.addItem("1");
-                // item select keranne one so validate keranne ba
-                if (txtTrainName.getText().equals("") || txtCapacity.getText().equals("")
-                        || cmbType.getSelectedItem().equals(null)) {
-                    JOptionPane.showMessageDialog(null, "Enter Data to all text fields", "Missing fields", JOptionPane.ERROR_MESSAGE);
-                }
 
-            }
-        });
         btnDriverRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String DriverFullName = txtFullName.getText();
-                String DriverUserName = txtDriver.getText();
-                int DriverAge = Integer.parseInt(txtAge.getText());
-                String DriverNIC = txtNIC.getText();
-                int DriverContactNumber = Integer.parseInt(txtContactNumber.getText());
-                String DriverEmail = txtEmail.getText();
-                String DriverPassword = txtDriverPassword.getText();
+               // JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                if(txtFullName.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtDriver.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAge.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtNIC.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtContactNumber.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtEmail.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtDriverPassword.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
 
-                RegisterController driverRegisterController = new RegisterController();
-                driverRegisterController.saveDriverReg(DriverFullName, DriverUserName, DriverAge, DriverNIC, DriverContactNumber, DriverEmail, DriverPassword);
+                    try {
+                        String DriverFullName = txtFullName.getText();
+                        String DriverUserName = txtDriver.getText();
+                        int DriverAge = Integer.parseInt(txtAge.getText());
+                        String DriverNIC = txtNIC.getText();
+                        int DriverContactNumber = Integer.parseInt(txtContactNumber.getText());
+                        String DriverEmail = txtEmail.getText();
+                        String DriverPassword = txtDriverPassword.getText();
+
+                        RegisterController driverRegisterController = new RegisterController();
+                        boolean i = driverRegisterController.saveDriverReg(DriverFullName, DriverUserName, DriverAge, DriverNIC, DriverContactNumber, DriverEmail, DriverPassword);
+                        if (!i) {
+                            System.out.println("Data Successfully Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Driver Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
+
+                            txtDriver.setText("");
+                            txtFullName.setText("");
+                            txtAge.setText("");
+                            txtNIC.setText("");
+                            txtDriverPassword.setText("");
+                            txtContactNumber.setText("");
+                            txtEmail.setText("");
+                        } else {
+                            System.out.println("Data Not Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Driver Registration", "Error!", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
             }
         });
         btnRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String engineName = txtTrainName.getText();
-                float engineCapacity = Float.parseFloat(txtCapacity.getText());
-                String engineType = (String) cmbType.getSelectedItem();
 
-                RegisterController engineRegisterControlleer = new RegisterController();
-                engineRegisterControlleer.saveEngineReg(engineName, engineCapacity, engineType);
+
+                if(txtTrainName.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtCapacity.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+//                else if(cmbType.getSelectedItem().equals()){
+//                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+//                }
+                else{
+
+                    try {
+                        String engineName = txtTrainName.getText();
+                        float engineCapacity = Float.parseFloat(txtCapacity.getText());
+                        String engineType = (String) cmbType.getSelectedItem();
+
+                        RegisterController engineRegisterControlleer = new RegisterController();
+                        boolean i = engineRegisterControlleer.saveEngineReg(engineName, engineCapacity, engineType);
+
+                        if (!i) {
+                            System.out.println("Data Successfully Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Driver Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
+
+                            txtTrainName.setText("");
+                            txtCapacity.setText("");
+                            cmbType.setSelectedItem("");
+
+                        } else {
+                            System.out.println("Data Not Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Driver Registration", "Error!", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                }
             }
         });
-        btnRegister.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
         btnBlockRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
 
-                String BlockModel = txtBlock.getText();
-                String BlockName = txtBlockName.getText();
-                String BlockType = (String) cmbBlockType.getSelectedItem();
-                float BlockLength = txtLength.getAlignmentX();
-                float BlockWeight = txtWeight.getAlignmentX();
-                int BlockCount = txtQuantity.getComponentCount();
-                int BlockCapacity = txtCapacity.getComponentCount();
 
-                RegisterController blockRegisterControlleer = new RegisterController();
-                blockRegisterControlleer.saveBlockReg(BlockModel, BlockName, BlockType, BlockLength, BlockWeight, BlockCount, BlockCapacity);
+                if(txtBlock.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockName.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+//                else if(cmbBlockType.getText().isEmpty()){
+//                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+//                }
+                else if(txtLength.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtWeight.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtQuantity.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtCapacity.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
 
+                    try {
+                        String BlockModel = txtBlock.getText();
+                        String BlockName = txtBlockName.getText();
+                        String BlockType = (String) cmbBlockType.getSelectedItem();
+                        float BlockLength = Float.parseFloat(txtLength.getText());
+                        float BlockWeight = Float.parseFloat(txtWeight.getText());
+                        int BlockCount = txtQuantity.getComponentCount();
+                        int BlockCapacity = txtCapacity.getComponentCount();
 
+                        RegisterController blockRegisterControlleer = new RegisterController();
+                        boolean i = blockRegisterControlleer.saveBlockReg(BlockModel, BlockName, BlockType, BlockLength, BlockWeight, BlockCount, BlockCapacity);
+
+                        if (!i) {
+                            System.out.println("Data Successfully Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Block Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
+
+                            txtBlock.setText("");
+                            txtBlockName.setText("");
+                            cmbBlockType.setSelectedItem("");
+                            txtLength.setText("");
+                            txtQuantity.setText("");
+                            txtWeight.setText("");
+                            txtCap.setText("");
+
+                        } else {
+                            System.out.println("Data Not Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Block Registration", "Error!", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
             }
         });
         cmbJourneyType.addActionListener(new ActionListener() {
@@ -304,52 +427,154 @@ public class dashBoard extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 txtTrainName.setText("");
                 txtCapacity.setText("");
-                cmbType.removeAllItems();
+                cmbType.setSelectedItem("");
 
             }
         });
         signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String AdminFullName = txtAdminName.getText();
-                String AdminUserName = txtAdminUsername.getText();
-                String AdminNIC = txtAdminNIC.getText();
-                int AdminContactNumber = Integer.parseInt(txtAdminPhone.getText());
-                String AdminEmail = txtAdminEmail.getText();
-                String AdminPassword = txtAdminPassword.getText();
-                String AdminConfirmPassword = txtAdminConfirmPassword.getText();
 
-                AdminController adminController = new AdminController();
-                adminController.adminSignup(AdminFullName, AdminUserName, AdminNIC, AdminContactNumber, AdminEmail, AdminPassword);
+                if(txtAdminName.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAdminUsername.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAdminNIC.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAdminPhone.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAdminEmail.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAdminPassword.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAdminConfirmPassword.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+
+                    try {
+                        String AdminFullName = txtAdminName.getText();
+                        String AdminUserName = txtAdminUsername.getText();
+                        String AdminNIC = txtAdminNIC.getText();
+                        int AdminContactNumber = Integer.parseInt(txtAdminPhone.getText());
+                        String AdminEmail = txtAdminEmail.getText();
+                        String AdminPassword = txtAdminPassword.getText();
+                        String AdminConfirmPassword = txtAdminConfirmPassword.getText();
+
+                        AdminController adminController = new AdminController();
+                        boolean i = adminController.adminSignup(AdminFullName, AdminUserName, AdminNIC, AdminContactNumber, AdminEmail, AdminPassword);
+
+                        if (!i) {
+                            System.out.println("Data Successfully Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Admin Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
+
+                            txtAdminName.setText("");
+                            txtAdminUsername.setText("");
+                            txtAdminNIC.setText("");
+                            txtAdminPhone.setText("");
+                            txtAdminEmail.setText("");
+                            txtAdminPassword.setText("");
+                            txtAdminConfirmPassword.setText("");
+
+                        } else {
+                            System.out.println("Data Not Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Admin Registration", "Error!", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
             }
         });
         btnUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int UpdatedJourneyID = Integer.parseInt(txtUpdatedJourneyID.getText());
-                String UpdatedJourneyName = txtUpdatedJourneyName.getText();
-                String UpdatedJourneyType = txtUpdatedJourneyType.getText();
-                String UpdatedJourneyDriver = txtUpdatedJourneyDriver.getText();
-                int UpdatedJourneyRouteID = Integer.parseInt(txtUpdatedJourneyRouteID.getText());
-                int UpdatedJourneyTrainID = Integer.parseInt(txtUpdatedJourneyTrainID.getText());
-                LocalDate UpdatedJourneyDate = LocalDate.parse(txtUpdatedJourneyDate.getText());
-                float UpdatedJourneyStartingTime = Float.parseFloat(txtUpdatedJourneyStartingTime.getText());
-                float UpdatedJourneyEndTime = Float.parseFloat(txtUpdatedJourneyEndingTime.getText());
 
-                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
-                Connection con = objSqlServerConnection.createConnectionSqlServer();
-
-                String qry="UPDATE ARCSDatabase.dbo.JourneyDetails SET JourneyName = '"+UpdatedJourneyName+"', JourneyType = '"+UpdatedJourneyType+"', DriverName='"+UpdatedJourneyDriver+"', RouteID='"+UpdatedJourneyRouteID+"', TrainID='"+UpdatedJourneyTrainID+"', JourneyStartTime='"+UpdatedJourneyStartingTime+"', JourneyEndTime='"+UpdatedJourneyEndTime+"'  WHERE JourneyID='"+UpdatedJourneyID+"';";
-
-                try {
-                    PreparedStatement ps = con.prepareStatement(qry);
-                    ps.execute();
-
-                    System.out.println("Ok");
-
-                } catch (SQLException exception) {
-                    exception.printStackTrace();
+                if(txtUpdatedJourneyID.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
                 }
+                else if(txtUpdatedJourneyName.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyType.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyDriver.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyRouteID.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyTrainID.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyDate.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyStartingTime.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtUpdatedJourneyEndingTime.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+
+                    try{
+                        int UpdatedJourneyID = Integer.parseInt(txtUpdatedJourneyID.getText());
+                        String UpdatedJourneyName = txtUpdatedJourneyName.getText();
+                        String UpdatedJourneyType = txtUpdatedJourneyType.getText();
+                        String UpdatedJourneyDriver = txtUpdatedJourneyDriver.getText();
+                        int UpdatedJourneyRouteID = Integer.parseInt(txtUpdatedJourneyRouteID.getText());
+                        int UpdatedJourneyTrainID = Integer.parseInt(txtUpdatedJourneyTrainID.getText());
+                        LocalDate UpdatedJourneyDate = LocalDate.parse(txtUpdatedJourneyDate.getText());
+                        float UpdatedJourneyStartingTime = Float.parseFloat(txtUpdatedJourneyStartingTime.getText());
+                        float UpdatedJourneyEndTime = Float.parseFloat(txtUpdatedJourneyEndingTime.getText());
+
+                        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                        Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+                        String qry="UPDATE ARCSDatabase.dbo.JourneyDetails SET JourneyName = '"+UpdatedJourneyName+"', JourneyType = '"+UpdatedJourneyType+"', DriverName='"+UpdatedJourneyDriver+"', RouteID='"+UpdatedJourneyRouteID+"', TrainID='"+UpdatedJourneyTrainID+"', JourneyStartTime='"+UpdatedJourneyStartingTime+"', JourneyEndTime='"+UpdatedJourneyEndTime+"'  WHERE JourneyID='"+UpdatedJourneyID+"';";
+
+                        try {
+                            PreparedStatement ps = con.prepareStatement(qry);
+                            boolean i = ps.execute();
+
+                            System.out.println("Ok");
+
+                            if (!i) {
+                                System.out.println("Data Successfully Registered");
+                                JOptionPane.showMessageDialog(dashPanel, "Journey Successfully Updated", " Registered!", JOptionPane.PLAIN_MESSAGE);
+
+                                txtUpdatedJourneyID.setText("");
+                                txtUpdatedJourneyName.setText("");
+                                txtUpdatedJourneyType.setText("");
+                                txtUpdatedJourneyDriver.setText("");
+                                txtUpdatedJourneyRouteID.setText("");
+                                txtUpdatedJourneyTrainID.setText("");
+                                txtUpdatedJourneyDate.setText("");
+                                txtUpdatedJourneyStartingTime.setText("");
+                                txtUpdatedJourneyEndingTime.setText("");
+
+                            } else {
+                                System.out.println("Data Not Registered");
+                                JOptionPane.showMessageDialog(dashPanel, "Unsuccessful", "Error!", JOptionPane.ERROR_MESSAGE);
+                            }
+
+                        } catch (SQLException exception) {
+                            exception.printStackTrace();
+                        }
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
             }
         });
         btnDelete.addActionListener(new ActionListener() {
@@ -405,7 +630,40 @@ public class dashBoard extends javax.swing.JFrame {
                 super.mouseClicked(e);
 
                 DefaultTableModel tableModel = (DefaultTableModel)table1.getModel();
-                lblTest.setText((String) tableModel.getValueAt(table1.getSelectedRow(),1));
+                String JourneyID = (String) tableModel.getValueAt(table1.getSelectedRow(),0);
+
+                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+                try {
+                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewJourneyByJourneyID(2)}");
+                    ResultSet rs = cs.executeQuery();
+
+                    lblViewJourneyName.setText(rs.getString(0));
+                    lblViewJourneyType.setText(rs.getString(2));
+                    lblViewJourneyID.setText(String.valueOf(rs.getInt(1)));
+                    lblViewStartingStation.setText(rs.getString(12));
+                    lblViewDestination.setText(rs.getString(13));
+                    lblViewDistance.setText("12km");
+                    lblViewStartingTime.setText(rs.getString(8));
+                    lblViewEndingTime.setText(rs.getString(9));
+                    lblViewDuration.setText(rs.getString(11));
+                    lblViewDate.setText(rs.getString(3));
+                    lblSpeed.setText("70");
+                    lblViewDriverName.setText(rs.getString(5));
+                    lblViewDriverID.setText(rs.getString(4));
+                    lblViewDriverPhone.setText(rs.getString(6));
+                    lblViewTrainID.setText(rs.getString(7));
+                    lblViewEngineID.setText(rs.getString(10));
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+
+                //lblTest.setText(rs.getInt("column 1"));
+
+
 
             }
         });
@@ -413,20 +671,77 @@ public class dashBoard extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int engineID = Integer.parseInt(txtEngineID.getText());
-                int blockID1 = Integer.parseInt(txtBlockID1.getText());
-                int blockID2 = Integer.parseInt(txtBlockID2.getText());
-                int blockID3 = Integer.parseInt(txtBlockID3.getText());
-                int noOfBlocks1 = Integer.parseInt(txtNoOfBlocks1.getText());
-                int noOfBlocks2 = Integer.parseInt(txtNoOfBlocks2.getText());
-                int noOfBlocks3 = Integer.parseInt(txtNoOfBlocks3.getText());
+                if(txtEngineID.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockID1.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockID2.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockID3.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockCount1.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockCount2.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockCount3.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
 
-                RegisterController registerController = new RegisterController();
-                registerController.saveTrainReg(engineID, blockID1,blockID2,blockID3, noOfBlocks1,noOfBlocks2,noOfBlocks3);
+                else{
 
+                    try {
+                        int engineID = Integer.parseInt(txtEngineID.getText());
+                        int blockID1 = Integer.parseInt(txtBlockID1.getText());
+                        int blockID2 = Integer.parseInt(txtBlockID2.getText());
+                        int blockID3 = Integer.parseInt(txtBlockID3.getText());
+                        int noOfBlocks1 = Integer.parseInt(txtBlockCount1.getText());
+                        int noOfBlocks2 = Integer.parseInt(txtBlockCount2.getText());
+                        int noOfBlocks3 = Integer.parseInt(txtBlockCount3.getText());
 
+                        RegisterController registerController = new RegisterController();
+                        boolean i = registerController.saveTrainReg(engineID, blockID1,blockID2,blockID3, noOfBlocks1,noOfBlocks2,noOfBlocks3);
 
+                        if (!i) {
+                            System.out.println("Data Successfully Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Driver Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
 
+                            txtEngineID.setText("");
+                            txtBlockID1.setText("");
+                            txtBlockID2.setText("");
+                            txtBlockID3.setText("");
+                            txtBlockCount1.setText("");
+                            txtBlockCount2.setText("");
+                            txtBlockCount3.setText("");
+
+                        } else {
+                            System.out.println("Data Not Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Driver Registration", "Error!", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                }
+
+            }
+        });
+        btnTrainRegistrationClear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                txtEngineID.setText("");
+                txtBlockID1.setText("");
+                txtBlockID2.setText("");
+                txtBlockID3.setText("");
+                txtNoOfBlocks1.setText("");
+                txtNoOfBlocks2.setText("");
+                txtNoOfBlocks3.setText("");
             }
         });
     }
@@ -556,8 +871,8 @@ public class dashBoard extends javax.swing.JFrame {
 
             int RowCount = rowCountBlock();
 
-            String columns[] = {"Block ID", "Block Name", "BlockType", "Block Model", "Block Length", "Block Weight", "Block Capacity", "Block Count"};
-            String data[][] = new String[RowCount][8];
+            String columns[] = {"Block ID", "Block Name", "BlockType", "Block Model", "Block Length", "Block Weight", "Block Capacity", "Available Block Count", "Registered Block Count"};
+            String data[][] = new String[RowCount][9];
 
             int i = 0;
             while (rs.next()) {
@@ -568,7 +883,8 @@ public class dashBoard extends javax.swing.JFrame {
                 Float BlockLength = rs.getFloat("BlockLength");
                 Float BlockWeight = rs.getFloat("BlockWeight");
                 int BlockCapacity = rs.getInt("BlockCapacity");
-                int BlockCount = rs.getInt("BlockCount");
+                int AvailableBlockCount = rs.getInt("AvailableBlockCount");
+                int RegisteredBlockCount = rs.getInt("RegisteredBlockCount");
 
                 data[i][0] = String.valueOf(BlockID);
                 data[i][1] = BlockName;
@@ -577,7 +893,8 @@ public class dashBoard extends javax.swing.JFrame {
                 data[i][4] = String.valueOf(BlockLength);
                 data[i][5] = String.valueOf(BlockWeight);
                 data[i][6] = String.valueOf(BlockCapacity);
-                data[i][7] = String.valueOf(BlockCount);
+                data[i][7] = String.valueOf(AvailableBlockCount);
+                data[i][8] = String.valueOf(RegisteredBlockCount);
                 i++;
             }
             tblBlock.setModel(new DefaultTableModel
@@ -655,7 +972,7 @@ public class dashBoard extends javax.swing.JFrame {
             Statement rst = con.createStatement();
             ResultSet rsRow = rst.executeQuery("SELECT COUNT(TrainID) FROM [ARCSDatabase].[dbo].[DriverDetails]");
             rsRow.next();
-            count = rsRow.getInt(1);
+            count = rsRow.getInt(7);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -667,36 +984,39 @@ public class dashBoard extends javax.swing.JFrame {
         Connection con = objSqlServCon.createConnectionSqlServer();
 
         try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[TrainDetails]");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.GetAllTrainDetails}");
+            ResultSet rs = cs.executeQuery();
 
-            int RowCount = rowCountTrain();
+            //int RowCount = rowCountTrain();
 
-            String columns[] = {"DriverID", "Name", "Username", "Age", "NIC", "ContactNumber", "Email", "Password"};
-            String data[][] = new String[RowCount][8];
+            String columns[] = {"Train ID", "Engine ID","Block ID 01", "No of Blocks 01","Block ID 02", "No of Blocks 02", "Block ID 03", "No of Blocks 03", "Train Location"};
+            String data[][] = new String[5][9];
 
             int i = 0;
             while (rs.next()) {
-                int DriverID = rs.getInt("DriverID");
-                String DriverFullName = rs.getString("DriverFullName");
-                String DriverUserName = rs.getString("DriverUserName");
-                int DriverAge = rs.getInt("DriverAge");
-                String DriverNIC = rs.getString("DriverNIC");
-                int DriverContactNumber = rs.getInt("DriverContactNumber");
-                String DriverEmail = rs.getString("DriverEmail");
-                String DriverPassword = rs.getString("DriverPassword");
+                int TrainID = rs.getInt("TrainID");
+                int EngineID = rs.getInt("EngineID");
+                int BlockID1 = rs.getInt("BlockID1");
+                int BlockCount1 = rs.getInt("BlockCount1");
+                int BlockID2 = rs.getInt("BlockID2");
+                int BlockCount2 = rs.getInt("BlockCount2");
+                int BlockID3 = rs.getInt("BlockID3");
+                int BlockCount3 = rs.getInt("BlockCount3");
+                String TrainLocation = rs.getString("TrainLocation");
 
-                data[i][0] = DriverID+"";
-                data[i][1] = DriverFullName;
-                data[i][2] = DriverUserName;
-                data[i][3] = DriverAge + "";
-                data[i][4] = DriverNIC;
-                data[i][5] = DriverContactNumber + "";
-                data[i][6] = DriverEmail;
-                data[i][7] = DriverPassword;
+
+                data[i][0] = TrainID + "";
+                data[i][1] = EngineID + "";
+                data[i][2] = BlockID1 + "";
+                data[i][3] = BlockCount1 + "";
+                data[i][4] = BlockID2 + "";
+                data[i][5] = BlockCount2 + "";
+                data[i][6] = BlockID3 + "";
+                data[i][7] = BlockCount3 + "";
+                data[i][8] = TrainLocation;
                 i++;
             }
-            tblDriver.setModel(new DefaultTableModel
+            tblTrain.setModel(new DefaultTableModel
                     (data, columns
                     ));
         } catch (SQLException e) {
