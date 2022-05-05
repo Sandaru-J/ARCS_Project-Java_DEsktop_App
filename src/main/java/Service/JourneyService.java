@@ -27,7 +27,7 @@ public class JourneyService {
                 cs.setFloat( 3,cJourney.getStartingTime());
                 cs.setFloat(4,cJourney.getEndTime());
                 cs.setString(5,cJourney.getStartingStation());
-                cs.setString(6,cJourney.getDestination());
+                cs.setString(6,cJourney.getStartingStation());
                 cs.setDate(7, Date.valueOf(cJourney.getDate())); //2022-04-25
                 cs.setString(8,cJourney.getDriverName());
 
@@ -36,7 +36,8 @@ public class JourneyService {
                 i = cs.execute();
 
                 System.out.println("Ok");
-
+                DistanceService ds = new DistanceService();
+                ds.distanceGain(cJourney.getStartingStation(),cJourney.getStartingStation());
             }
             return i;
         } catch (Exception ex) {

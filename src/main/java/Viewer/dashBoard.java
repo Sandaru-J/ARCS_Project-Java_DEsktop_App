@@ -557,7 +557,7 @@ public class dashBoard extends javax.swing.JFrame {
             int RowCount = rowCountBlock();
 
             String columns[] = {"Block ID", "Block Name", "BlockType", "Block Model", "Block Length", "Block Weight", "Block Capacity", "Block Count"};
-            String data[][] = new String[RowCount][8];
+            String data[][] = new String[RowCount][];
 
             int i = 0;
             while (rs.next()) {
@@ -653,7 +653,7 @@ public class dashBoard extends javax.swing.JFrame {
 
         try {
             Statement rst = con.createStatement();
-            ResultSet rsRow = rst.executeQuery("SELECT COUNT(TrainID) FROM [ARCSDatabase].[dbo].[DriverDetails]");
+            ResultSet rsRow = rst.executeQuery("SELECT COUNT(EngineID) FROM [ARCSDatabase].[dbo].[TrainDetails]");
             rsRow.next();
             count = rsRow.getInt(1);
         } catch (SQLException e) {
