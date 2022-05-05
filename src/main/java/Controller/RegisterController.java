@@ -57,7 +57,7 @@ public class RegisterController {
         registerService.saveBlockReg(blockRegisterModel);
     }
 
-    public void saveTrainReg(int engineID, int blockID1, int blockID2, int blockID3, int noOfBlocks1, int noOfBlocks2, int noOfBlocks3) {
+    public boolean saveTrainReg(int engineID, int blockID1, int blockID2, int blockID3, int noOfBlocks1, int noOfBlocks2, int noOfBlocks3) {
 
         trainRegisterModel trainRegisterModel = new trainRegisterModel();
 
@@ -71,5 +71,6 @@ public class RegisterController {
 
         registerService.saveTrainReg(trainRegisterModel);
 
+        return false;
     }
 }

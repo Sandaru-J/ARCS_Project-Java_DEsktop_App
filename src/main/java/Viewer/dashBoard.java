@@ -243,10 +243,27 @@ public class dashBoard extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
 
                // JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
-                if(txtFullName.getText().isEmpty() && txtDriver.getText().isEmpty() && txtAge.getText().isEmpty() && txtNIC.getText().isEmpty() && txtContactNumber.getText().isEmpty() && txtEmail.getText().isEmpty() && txtDriverPassword.getText().isEmpty()){
+                if(txtFullName.getText().isEmpty()){
                     JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
                 }
-                
+                else if(txtDriver.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtAge.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtNIC.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtContactNumber.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtEmail.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtDriverPassword.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
                 else {
 
                     try {
@@ -262,7 +279,7 @@ public class dashBoard extends javax.swing.JFrame {
                         boolean i = driverRegisterController.saveDriverReg(DriverFullName, DriverUserName, DriverAge, DriverNIC, DriverContactNumber, DriverEmail, DriverPassword);
                         if (!i) {
                             System.out.println("Data Successfully Registered");
-                            JOptionPane.showMessageDialog(dashPanel, "Data Successfully Registered", "Registered", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(dashPanel, "Driver Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
 
                             txtDriver.setText("");
                             txtFullName.setText("");
@@ -273,10 +290,10 @@ public class dashBoard extends javax.swing.JFrame {
                             txtEmail.setText("");
                         } else {
                             System.out.println("Data Not Registered");
-
+                            JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Driver Registration", "Error!", JOptionPane.ERROR_MESSAGE);
                         }
                     } catch (Exception ex) {
-
+                        ex.printStackTrace();
                     }
                 }
 
@@ -491,20 +508,77 @@ public class dashBoard extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int engineID = Integer.parseInt(txtEngineID.getText());
-                int blockID1 = Integer.parseInt(txtBlockID1.getText());
-                int blockID2 = Integer.parseInt(txtBlockID2.getText());
-                int blockID3 = Integer.parseInt(txtBlockID3.getText());
-                int noOfBlocks1 = Integer.parseInt(txtNoOfBlocks1.getText());
-                int noOfBlocks2 = Integer.parseInt(txtNoOfBlocks2.getText());
-                int noOfBlocks3 = Integer.parseInt(txtNoOfBlocks3.getText());
+                if(txtEngineID.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockID1.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockID2.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockID3.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockCount1.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockCount2.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtBlockCount3.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
 
-                RegisterController registerController = new RegisterController();
-                registerController.saveTrainReg(engineID, blockID1,blockID2,blockID3, noOfBlocks1,noOfBlocks2,noOfBlocks3);
+                else{
 
+                    try {
+                        int engineID = Integer.parseInt(txtEngineID.getText());
+                        int blockID1 = Integer.parseInt(txtBlockID1.getText());
+                        int blockID2 = Integer.parseInt(txtBlockID2.getText());
+                        int blockID3 = Integer.parseInt(txtBlockID3.getText());
+                        int noOfBlocks1 = Integer.parseInt(txtBlockCount1.getText());
+                        int noOfBlocks2 = Integer.parseInt(txtBlockCount2.getText());
+                        int noOfBlocks3 = Integer.parseInt(txtBlockCount3.getText());
 
+                        RegisterController registerController = new RegisterController();
+                        boolean i = registerController.saveTrainReg(engineID, blockID1,blockID2,blockID3, noOfBlocks1,noOfBlocks2,noOfBlocks3);
 
+                        if (!i) {
+                            System.out.println("Data Successfully Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Driver Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
 
+                            txtEngineID.setText("");
+                            txtBlockID1.setText("");
+                            txtBlockID2.setText("");
+                            txtBlockID3.setText("");
+                            txtBlockCount1.setText("");
+                            txtBlockCount2.setText("");
+                            txtBlockCount3.setText("");
+
+                        } else {
+                            System.out.println("Data Not Registered");
+                            JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Driver Registration", "Error!", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+                }
+
+            }
+        });
+        btnTrainRegistrationClear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                txtEngineID.setText("");
+                txtBlockID1.setText("");
+                txtBlockID2.setText("");
+                txtBlockID3.setText("");
+                txtNoOfBlocks1.setText("");
+                txtNoOfBlocks2.setText("");
+                txtNoOfBlocks3.setText("");
             }
         });
     }
