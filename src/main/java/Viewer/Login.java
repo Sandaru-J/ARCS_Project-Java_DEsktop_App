@@ -5,10 +5,8 @@ import DatabaseConnection.SqlServerConnection;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+
 import Viewer.dashBoard;
 
 public class Login extends JFrame{
@@ -42,26 +40,40 @@ public class Login extends JFrame{
                 SqlServerConnection objSqlServerConnection = new SqlServerConnection();
                 Connection con = objSqlServerConnection.createConnectionSqlServer();
 
-                String qry = "SELECT * FROM ARCSDatabase.dbo.AdminDetails WHERE AdminUserName=? AND AdminPassword=?";
+                //String qry = "SELECT * FROM ARCSDatabase.dbo.AdminDetails WHERE AdminUserName=? AND AdminPassword=?";
                 try {
+                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.CheckAdminUserName(?)}");
+                    cs.setString(1,AdminUserName);
+                    //ps.setString(2,AdminPassword);
+                    ResultSet rs = cs.executeQuery();
 
-                    PreparedStatement ps = con.prepareStatement(qry);
-                    ps.setString(1,AdminUserName);
-                    ps.setString(2,AdminPassword);
-                    ResultSet rs = ps.executeQuery();
-
-                    if(rs.next())
+                    if(!rs.next())
                     {
-                        new dashBoard();
-                        System.out.println("OK");
+                        System.out.println("you are not a registerd user");
+                        txtUsername.setText("");
+                        txtPassword.setText("");
+
+                        return;
+                    }else{
+                        System.out.println("asfda");
                     }
-                    else
+                    CallableStatement cs2 = con.prepareCall("{call ARCSDatabase.dbo.CheckAdminConfirmation(?,?)}");
+                    cs2.setString(1,AdminUserName);
+                    cs2.setString(2,AdminPassword);
+                    ResultSet rs1 = cs2.executeQuery();
+
+                    if(rs1.next())
                     {
-                        System.out.println("Wrong");
+
+                        new dashBoard();
+                        return;
+                    }else{
+
+                        System.out.println("Incorrect password");
                         txtUsername.setText("");
                         txtPassword.setText("");
                     }
-
+                    System.out.println(rs1.next());
 
                 } catch (SQLException ex) {
                     ex.printStackTrace();
