@@ -1,6 +1,6 @@
 package Driver.Viewer_Driver;
 
-import Admin.Viewer.dashBoard;
+//import Admin.Viewer.dashBoard;
 import DatabaseConnection.SqlServerConnection;
 
 import javax.swing.*;
@@ -49,7 +49,7 @@ public class driverLogin {
 
                     if(rs.next())
                     {
-                        new driverDashboard();
+                        new Driver.Viewer_Driver.driverDashboard();
                         frame.dispose();
                         System.out.println("OK");
                     }
