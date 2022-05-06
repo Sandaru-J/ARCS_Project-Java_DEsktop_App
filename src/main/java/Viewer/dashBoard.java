@@ -4,6 +4,7 @@ import Controller.AdminController;
 import Controller.JourneyController;
 import Controller.RegisterController;
 import DatabaseConnection.SqlServerConnection;
+import Service.DistanceService;
 
 import javax.swing.*;
 
@@ -139,6 +140,7 @@ public class dashBoard extends javax.swing.JFrame {
         GraphicsDevice device = graphics.getDefaultScreenDevice();
         device.setFullScreenWindow(frame);
 
+        DistanceService ds=new DistanceService();
 
         for (int i = 0; i <= 70; i++) {
 
@@ -249,12 +251,6 @@ public class dashBoard extends javax.swing.JFrame {
                 engineRegisterControlleer.saveEngineReg(engineName, engineCapacity, engineType);
             }
         });
-        btnRegister.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
         btnBlockRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -296,6 +292,7 @@ public class dashBoard extends javax.swing.JFrame {
 
                 JourneyController journeyController = new JourneyController();
                 journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName);
+
 
             }
         });
@@ -423,11 +420,7 @@ public class dashBoard extends javax.swing.JFrame {
 
                 RegisterController registerController = new RegisterController();
                 registerController.saveTrainReg(engineID, blockID1,blockID2,blockID3, noOfBlocks1,noOfBlocks2,noOfBlocks3);
-
-
-
-
-            }
+    }
         });
     }
 

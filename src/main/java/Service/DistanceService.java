@@ -9,9 +9,9 @@ import java.sql.Statement;
 
 public class DistanceService {
 
-    public int distanceGain(String A,String B) throws SQLException {
-        String start = A;
-        String end = B;
+    public int distanceGain() throws SQLException {
+        String start = "FORT";
+        String end = "KANDY";
 
         SqlServerConnection objSqlServCon = new SqlServerConnection();
         Connection con = objSqlServCon.createConnectionSqlServer();
