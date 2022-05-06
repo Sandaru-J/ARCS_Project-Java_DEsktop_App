@@ -121,7 +121,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JLabel lblViewDistance;
     private JLabel lblViewStartingTime;
     private JLabel lblViewEndingTime;
-    private JLabel lblViewDuration;
+    private JLabel lblViewDuration1;
     private JLabel lblViewDate;
     private JLabel lblViewDriverName;
     private JLabel lblViewDriverID;
@@ -130,6 +130,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JLabel lblViewTrainID;
     private JLabel lblViewEngineID;
     private JTable tblUpdateJourney;
+    private JLabel lblViewDuration;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
 
