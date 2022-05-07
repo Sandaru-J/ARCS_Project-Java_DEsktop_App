@@ -28,7 +28,7 @@
             <properties>
               <font name="Mongolian Baiti" size="48" style="1"/>
               <foreground color="-16777216"/>
-              <text value="ARCS LOGIN"/>
+              <text value="ADMIN LOGIN"/>
             </properties>
           </component>
         </children>

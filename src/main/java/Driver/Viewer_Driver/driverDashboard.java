@@ -41,6 +41,7 @@ public class driverDashboard {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setSize(1550,700);
+        driverBegin();
 
         //Full Screen
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -60,7 +61,6 @@ public class driverDashboard {
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime now = LocalTime.now();
-        System.out.println(dtf.format(now));
 
         lblCurrrentDate.setText(String.valueOf(LocalDate.now()));
         lblCurrentTime.setText((dtf.format(now)));
@@ -69,14 +69,14 @@ public class driverDashboard {
     }
     public void driverBegin(){
         driverSignupModel dsm = new driverSignupModel();
-        String driverUserName=dsm.getDriverUserName();
+        String driverUserName = dsm.getDriverUserName();
 
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
 
 
         try {
-            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewJourneyByJourneyID(2)}");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewJourneyByDriverName('"+driverUserName+"')}");
             ResultSet rs = cs.executeQuery();
 
             int i = 0;
