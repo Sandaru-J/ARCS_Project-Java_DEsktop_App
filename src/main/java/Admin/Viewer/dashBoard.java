@@ -187,6 +187,7 @@ public class dashBoard extends javax.swing.JFrame {
                 txtBlockID1.setText("");
                 txtNoOfBlocks1.setText("");
 
+
             }
         });
 

@@ -1,7 +1,7 @@
 
 //import Admin.Viewer.Login;
-import Driver.Viewer_Driver.driverDashboard;
-import Driver.Viewer_Driver.driverLogin;
+//import Driver.Viewer_Driver.driverDashboard;
+//import Driver.Viewer_Driver.driverLogin;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +28,7 @@ public class MainPage {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-//                new Admin.Viewer.Login();
+//                new Login();
 //                frame.dispose();
 
             }
@@ -37,7 +37,7 @@ public class MainPage {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-//                new Driver.Viewer_Driver.driverLogin();
+//                new driverLogin();
 //                frame.dispose();
 
             }

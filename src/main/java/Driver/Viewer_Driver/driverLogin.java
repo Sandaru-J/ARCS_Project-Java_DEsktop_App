@@ -1,15 +1,11 @@
 package Driver.Viewer_Driver;
 
 //import Admin.Viewer.dashBoard;
-import DatabaseConnection.SqlServerConnection;
+import Driver.Controller_Driver.DriverController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class driverLogin {
     private JTextField txtDriverUsername;
@@ -18,6 +14,7 @@ public class driverLogin {
     private JPanel panelDriverLogin;
     private JTextField txtDriverPassword;
 
+    String DriverUserName;
     public driverLogin()
     {
         JFrame frame = new JFrame("Login");
@@ -33,37 +30,26 @@ public class driverLogin {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String DriverUserName = txtDriverUsername.getText();
+                DriverUserName = txtDriverUsername.getText();
                 String DriverPassword = txtDriverPassword.getText();
 
-                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
-                Connection con = objSqlServerConnection.createConnectionSqlServer();
+                DriverController driverController = new DriverController();
+                boolean i = driverController.driverLogin(DriverUserName, DriverPassword);
 
-                String qry = "SELECT * FROM ARCSDatabase.dbo.DriverDetails WHERE DriverUserName=? AND DriverPassword=?";
-                try {
+                if(!i)
+                {
+                    new driverDashboard();
+                    frame.dispose();
+                    System.out.println("OK");
 
-                    PreparedStatement ps = con.prepareStatement(qry);
-                    ps.setString(1,DriverUserName);
-                    ps.setString(2,DriverPassword);
-                    ResultSet rs = ps.executeQuery();
-
-                    if(rs.next())
-                    {
-                        new Driver.Viewer_Driver.driverDashboard();
-                        frame.dispose();
-                        System.out.println("OK");
-                    }
-                    else
-                    {
-                        System.out.println("Wrong");
-                        txtDriverUsername.setText("");
-                        txtDriverPassword.setText("");
-                    }
-
-
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
                 }
+                else
+                {
+                    System.out.println("Wrong");
+                    txtDriverUsername.setText("");
+                    txtDriverPassword.setText("");
+                }
+
 
             }
         });
