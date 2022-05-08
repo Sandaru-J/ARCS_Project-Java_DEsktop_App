@@ -669,7 +669,7 @@ public class dashBoard extends javax.swing.JFrame {
 
 
                 try {
-                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewJourneyByJourneyID(2)}");
+                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewJourneyByJourneyID('"+JourneyID+"')}");
                     ResultSet rs = cs.executeQuery();
 
                     int i = 0;

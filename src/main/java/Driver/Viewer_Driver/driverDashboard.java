@@ -4,10 +4,10 @@ import DatabaseConnection.SqlServerConnection;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -30,6 +30,15 @@ public class driverDashboard {
     private JLabel lblCurrentTime;
     private JLabel lblCurrrentDate;
     private JButton journeyStartButton;
+    private JLabel counterLabel;
+
+    Timer timer;
+    Timer timer1;
+    int hour, minute, second;
+    int hour1, minute1, second1;
+    String ddHour, ddMinute, ddSecond;
+    String ddHour1, ddMinute1, ddSecond1;
+    DecimalFormat dFormat = new DecimalFormat("00");
 
     public driverDashboard()
     {
@@ -42,6 +51,8 @@ public class driverDashboard {
         frame.setLocationRelativeTo(null);
         frame.setSize(1550,700);
         driverBegin();
+        Main();
+        Main2();
 
         //Full Screen
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -59,11 +70,7 @@ public class driverDashboard {
             progressBarAverageSpeed.setValue(i);
         }
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTime now = LocalTime.now();
 
-        lblCurrrentDate.setText(String.valueOf(LocalDate.now()));
-        lblCurrentTime.setText((dtf.format(now)));
 
 
     }
@@ -81,7 +88,7 @@ public class driverDashboard {
 
             int i = 0;
             while (rs.next()) {
-//
+
                 lblViewJourneyName.setText(rs.getString("JourneyName"));
                 lblViewJourneyType.setText(rs.getString("JourneyType"));
                 lblViewJourneyID.setText(String.valueOf(rs.getString("JourneyID")));
@@ -95,10 +102,141 @@ public class driverDashboard {
                 i++;
             }
 
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+
+
+
     }
+
+    public void Main() {
+
+        DateTimeFormatter h = DateTimeFormatter.ofPattern("HH");
+        DateTimeFormatter m = DateTimeFormatter.ofPattern("mm");
+        DateTimeFormatter s = DateTimeFormatter.ofPattern("ss");
+        LocalTime now = LocalTime.now();
+
+        counterLabel.setText("00:00:00");
+
+        hour = Integer.parseInt(h.format(now));
+        minute = Integer.parseInt(m.format(now));
+        second = Integer.parseInt(s.format(now));
+
+//        Time EndingTime = Time.valueOf(lblViewEndingTime.getName());
+//        System.out.println(EndingTime);
+
+        countdownTimer();
+        timer.start();
+    }
+
+    public void countdownTimer() {
+
+        timer = new Timer(1000, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                second--;
+                ddSecond = dFormat.format(second);
+                ddMinute = dFormat.format(minute);
+                ddHour = dFormat.format(hour);
+
+                counterLabel.setText(ddHour + ":" + ddMinute + ":" + ddSecond);
+
+                if(second==-1) {
+                    second = 59;
+                    minute--;
+
+                    ddHour = dFormat.format(hour);
+                    ddMinute = dFormat.format(minute);
+                    ddHour = dFormat.format(hour);
+                    counterLabel.setText(ddHour + ":" + ddMinute + ":" + ddSecond);
+
+                }
+                if(minute==-1) {
+                    minute = 59;
+                    hour--;
+                    ddHour = dFormat.format(hour);
+                    ddMinute = dFormat.format(minute);
+                    ddHour = dFormat.format(hour);
+                    counterLabel.setText(ddHour + ":" + ddMinute + ":" + ddSecond);
+                }
+
+                if(hour==0 && minute==0 && second==0) {
+                    timer.stop();
+                }
+            }
+        });
+    }
+
+    public void Main2() {
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime now = LocalTime.now();
+
+
+        lblCurrentTime.setText((dtf.format(now)));
+
+        DateTimeFormatter h = DateTimeFormatter.ofPattern("HH");
+        DateTimeFormatter m = DateTimeFormatter.ofPattern("mm");
+        DateTimeFormatter s = DateTimeFormatter.ofPattern("ss");
+
+
+        lblCurrrentDate.setText(String.valueOf(LocalDate.now()));
+
+        hour1 = Integer.parseInt(h.format(now));
+        minute1 = Integer.parseInt(m.format(now));
+        second1 = Integer.parseInt(s.format(now));
+
+//        Time EndingTime = Time.valueOf(lblViewEndingTime.getName());
+//        System.out.println(EndingTime);
+
+        currentTimer();
+        timer1.start();
+    }
+
+    public void currentTimer() {
+
+        timer1 = new Timer(1000, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                second1++;
+                ddSecond1 = dFormat.format(second1);
+                ddMinute1 = dFormat.format(minute1);
+                ddHour1 = dFormat.format(hour1);
+
+                lblCurrentTime.setText(ddHour1 + ":" + ddMinute1 + ":" + ddSecond1);
+
+                if(second1==60) {
+                    second1 = 0;
+                    minute1++;
+
+                    ddHour1 = dFormat.format(hour1);
+                    ddMinute1 = dFormat.format(minute1);
+                    ddHour1 = dFormat.format(hour1);
+                    lblCurrentTime.setText(ddHour1 + ":" + ddMinute1 + ":" + ddSecond1);
+
+                }
+                if(minute1==60) {
+                    minute1 = 0;
+                    hour1++;
+                    ddHour1 = dFormat.format(hour1);
+                    ddMinute1 = dFormat.format(minute1);
+                    ddHour1 = dFormat.format(hour1);
+                    lblCurrentTime.setText(ddHour1 + ":" + ddMinute1 + ":" + ddSecond1);
+                }
+
+                if(hour1==0 && minute1==0 && second1==0) {
+                    timer1.stop();
+                }
+            }
+        });
+    }
+
 
 
     public static void main(String[] args) {
