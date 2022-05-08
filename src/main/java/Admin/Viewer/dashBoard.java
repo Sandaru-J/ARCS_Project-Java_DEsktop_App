@@ -1180,11 +1180,21 @@ public class dashBoard extends javax.swing.JFrame {
 //                    JOptionPane.showMessageDialog(null, "Incorrect Time format", "Try again", JOptionPane.ERROR_MESSAGE);
 //                    txtStartingTime.setText("");
 //                    txtEndTime.setText("");
-//                }
+//                }itch
 //
 //            }
 
             public static void main(String[] args) {
                 dashBoard panel = new dashBoard();
             }
+
+    public void alertMethod(int alertVal, String bfxb) {
+
+        switch(alertVal)
+        {
+            case 1:
+                System.out.println(bfxb);
+        }
+
+    }
 }

@@ -2,16 +2,21 @@ package Driver.Viewer_Driver;
 
 import DatabaseConnection.SqlServerConnection;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import Driver.Model_Driver.driverSignupModel;
+import Admin.Viewer.dashBoard;
 
 public class driverDashboard {
     private JLabel lblViewJourneyName;
@@ -31,6 +36,7 @@ public class driverDashboard {
     private JLabel lblCurrrentDate;
     private JButton journeyStartButton;
     private JLabel counterLabel;
+    private JButton btnEmergency;
 
     Timer timer;
     Timer timer1;
@@ -39,6 +45,13 @@ public class driverDashboard {
     String ddHour, ddMinute, ddSecond;
     String ddHour1, ddMinute1, ddSecond1;
     DecimalFormat dFormat = new DecimalFormat("00");
+
+    String clickSound;
+    ButtonHandler bHandler = new ButtonHandler();
+    SoundEffect se = new SoundEffect();
+
+    String bfxb;
+    int alertVal;
 
     public driverDashboard()
     {
@@ -53,6 +66,7 @@ public class driverDashboard {
         driverBegin();
         Main();
         Main2();
+        Sound();
 
         //Full Screen
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -72,7 +86,21 @@ public class driverDashboard {
 
 
 
+        btnEmergency.addActionListener(new ActionListener() {
 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                bfxb = "Emergency alert from Journey "+lblViewJourneyID.getText();
+                alertVal=1;
+                dashBoard ds = new dashBoard();
+                ds.setVisible(false);
+                ds.alertMethod(alertVal,bfxb);
+                btnEmergency.disable();
+                btnEmergency.setText("Emergency Mode Active");
+
+            }
+        });
     }
     public void driverBegin(){
         driverSignupModel dsm = new driverSignupModel();
@@ -89,16 +117,7 @@ public class driverDashboard {
             int i = 0;
             while (rs.next()) {
 
-                lblViewJourneyName.setText(rs.getString("JourneyName"));
-                lblViewJourneyType.setText(rs.getString("JourneyType"));
-                lblViewJourneyID.setText(String.valueOf(rs.getString("JourneyID")));
-                lblViewStartingStation.setText(rs.getString("StartStationName"));
-                lblViewDestination.setText(rs.getString("EndStationName"));
-                lblViewStartingTime.setText(rs.getString("JourneyStartTime"));
-                lblViewEndingTime.setText(rs.getString("JourneyEndTime"));
-                lblViewDuration.setText(rs.getString("TimeDuration"));
-                lblViewDate.setText(rs.getString("Date"));
-
+ 
                 i++;
             }
 
@@ -124,8 +143,8 @@ public class driverDashboard {
         minute = Integer.parseInt(m.format(now));
         second = Integer.parseInt(s.format(now));
 
-//        Time EndingTime = Time.valueOf(lblViewEndingTime.getName());
-//        System.out.println(EndingTime);
+        Time EndingTime = Time.valueOf(lblViewEndingTime.getName());
+        System.out.println(EndingTime);
 
         countdownTimer();
         timer.start();
@@ -235,6 +254,54 @@ public class driverDashboard {
                 }
             }
         });
+    }
+
+
+
+    public void Sound(){
+
+
+        btnEmergency.setFocusPainted(false);
+        btnEmergency.addActionListener(bHandler);
+        btnEmergency.setActionCommand("soundB");
+
+        //clickSound = "C:\\Users\\Dell\\Downloads\\alarm.wav";
+
+
+    }
+
+    public class SoundEffect {
+
+        Clip clip;
+
+        public void setFile(String soundFileName){
+
+            try{
+                File file = new File(soundFileName);
+                AudioInputStream sound = AudioSystem.getAudioInputStream(file);
+                clip = AudioSystem.getClip();
+                clip.open(sound);
+            }
+            catch(Exception e){
+
+            }
+        }
+
+        public void play(){
+
+            clip.setFramePosition(0);
+            clip.start();
+        }
+
+    }
+
+    public class ButtonHandler implements ActionListener{
+
+        public void actionPerformed(ActionEvent event){
+
+            se.setFile(clickSound);
+            se.play();
+        }
     }
 
 
