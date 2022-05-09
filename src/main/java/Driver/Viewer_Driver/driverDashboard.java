@@ -124,7 +124,7 @@ public class driverDashboard {
 
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
-        String x=dAJ.JourneyID;
+        int x=dAJ.JourneyID;
 
 
         try {

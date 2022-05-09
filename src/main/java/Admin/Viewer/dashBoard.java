@@ -694,6 +694,7 @@ public class dashBoard extends javax.swing.JFrame {
                         i++;
                     }
 
+
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
