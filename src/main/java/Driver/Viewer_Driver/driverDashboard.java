@@ -6,6 +6,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +18,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import Driver.Model_Driver.driverSignupModel;
 import Admin.Viewer.dashBoard;
+import Driver.Viewer_Driver.driverAssignedJourneys;
 
 public class driverDashboard {
     private JLabel lblViewJourneyName;
@@ -117,15 +119,15 @@ public class driverDashboard {
         });
     }
     public void driverBegin(){
-        driverSignupModel dsm = new driverSignupModel();
-        String driverUserName = dsm.getDriverUserName();
+
+        driverAssignedJourneys driverAssignedJourneys = new driverAssignedJourneys();
 
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
-
+        System.out.println(driverAssignedJourneys.JourneyID);
 
         try {
-            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewJourneyByDriverName('"+driverUserName+"')}");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewDriversJourneyByJourneyID('"+driverAssignedJourneys.JourneyID+"')}");
             ResultSet rs = cs.executeQuery();
 
             int i = 0;
