@@ -131,6 +131,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JLabel lblViewEngineID;
     private JTable tblUpdateJourney;
     private JLabel lblViewDuration;
+    private JTextPane textPaneJourneyStatus;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
 
@@ -151,6 +152,7 @@ public class dashBoard extends javax.swing.JFrame {
         createDriverTbl();
         createTrainTbl();
         createUpdateJourneyrTbl();
+        viewPane();
 
         //Full Screen
 //        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -1184,17 +1186,28 @@ public class dashBoard extends javax.swing.JFrame {
 //
 //            }
 
-            public static void main(String[] args) {
-                dashBoard panel = new dashBoard();
-            }
 
-    public void alertMethod(int alertVal, String bfxb) {
+
+    public void alertMethod(int alertVal, String btnAction) {
 
         switch(alertVal)
         {
             case 1:
-                System.out.println(bfxb);
+                System.out.println(btnAction);
+            case 2:
+                System.out.println(btnAction);
         }
 
+    }
+
+    private void viewPane()
+    {
+        textPaneJourneyStatus.setText("dw");
+    }
+
+
+
+    public static void main(String[] args) {
+        dashBoard panel = new dashBoard();
     }
 }

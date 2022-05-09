@@ -45,12 +45,13 @@ public class driverDashboard {
     String ddHour, ddMinute, ddSecond;
     String ddHour1, ddMinute1, ddSecond1;
     DecimalFormat dFormat = new DecimalFormat("00");
+    int timenow;
 
     String clickSound;
     ButtonHandler bHandler = new ButtonHandler();
     SoundEffect se = new SoundEffect();
 
-    String bfxb;
+    String btnAction;
     int alertVal;
 
     public driverDashboard()
@@ -91,14 +92,27 @@ public class driverDashboard {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                bfxb = "Emergency alert from Journey "+lblViewJourneyID.getText();
+                btnAction = "Emergency alert from Journey "+lblViewJourneyID.getText();
                 alertVal=1;
                 dashBoard ds = new dashBoard();
                 ds.setVisible(false);
-                ds.alertMethod(alertVal,bfxb);
+                ds.alertMethod(alertVal,btnAction);
                 btnEmergency.disable();
                 btnEmergency.setText("Emergency Mode Active");
 
+            }
+        });
+        journeyStartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                LocalTime now = LocalTime.now();
+//                DateTimeFormatter time = DateTimeFormatter.ofPattern("mm:ss");
+//                timenow = Integer.parseInt(time.format(now));
+                driverSignupModel dsm = new driverSignupModel();
+                String driverUserName = dsm.getDriverUserName();
+
+                btnAction = driverUserName+" started Journey "+lblViewJourneyID.getText();
+                alertVal=2;
             }
         });
     }
@@ -117,7 +131,15 @@ public class driverDashboard {
             int i = 0;
             while (rs.next()) {
 
- 
+                lblViewJourneyName.setText(rs.getString("JourneyName"));
+                lblViewJourneyType.setText(rs.getString("JourneyType"));
+                lblViewJourneyID.setText(String.valueOf(rs.getString("JourneyID")));
+                lblViewStartingStation.setText(rs.getString("StartStationName"));
+                lblViewDestination.setText(rs.getString("EndStationName"));
+                lblViewStartingTime.setText(rs.getString("JourneyStartTime"));
+                lblViewEndingTime.setText(rs.getString("JourneyEndTime"));
+                lblViewDuration.setText(rs.getString("TimeDuration"));
+                lblViewDate.setText(rs.getString("Date"));
                 i++;
             }
 
@@ -143,8 +165,8 @@ public class driverDashboard {
         minute = Integer.parseInt(m.format(now));
         second = Integer.parseInt(s.format(now));
 
-        Time EndingTime = Time.valueOf(lblViewEndingTime.getName());
-        System.out.println(EndingTime);
+//        Time EndingTime = Time.valueOf(lblViewEndingTime.getName());
+//        System.out.println(EndingTime);
 
         countdownTimer();
         timer.start();
