@@ -1040,10 +1040,10 @@ public class dashBoard extends javax.swing.JFrame {
             CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.GetAllTrainDetails}");
             ResultSet rs = cs.executeQuery();
 
-            //int RowCount = rowCountTrain();
+            int RowCount = rowCountTrain();
 
             String columns[] = {"Train ID", "Engine ID","Block ID 01", "No of Blocks 01","Block ID 02", "No of Blocks 02", "Block ID 03", "No of Blocks 03", "Train Location"};
-            String data[][] = new String[5][9];
+            String data[][] = new String[15][9];
 
             int i = 0;
             while (rs.next()) {
@@ -1060,9 +1060,9 @@ public class dashBoard extends javax.swing.JFrame {
 
                 data[i][0] = TrainID + "";
                 data[i][1] = EngineID + "";
+                data[i][4] = BlockID2 + "";
                 data[i][2] = BlockID1 + "";
                 data[i][3] = BlockCount1 + "";
-                data[i][4] = BlockID2 + "";
                 data[i][5] = BlockCount2 + "";
                 data[i][6] = BlockID3 + "";
                 data[i][7] = BlockCount3 + "";

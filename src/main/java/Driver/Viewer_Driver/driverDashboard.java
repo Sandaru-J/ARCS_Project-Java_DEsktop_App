@@ -120,14 +120,15 @@ public class driverDashboard {
     }
     public void driverBegin(){
 
-        driverAssignedJourneys driverAssignedJourneys = new driverAssignedJourneys();
+        driverAssignedJourneys dAJ = new driverAssignedJourneys();
 
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
-        System.out.println(driverAssignedJourneys.JourneyID);
+        String x=dAJ.JourneyID;
+
 
         try {
-            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewDriversJourneyByJourneyID('"+driverAssignedJourneys.JourneyID+"')}");
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewDriversJourneyByJourneyID('"+x+"')}");
             ResultSet rs = cs.executeQuery();
 
             int i = 0;
@@ -289,7 +290,7 @@ public class driverDashboard {
         btnEmergency.addActionListener(bHandler);
         btnEmergency.setActionCommand("soundB");
 
-        //clickSound = "C:\\Users\\Dell\\Downloads\\alarm.wav";
+        clickSound = "C:\\Users\\Dell\\Downloads\\alar.wav";
 
 
     }

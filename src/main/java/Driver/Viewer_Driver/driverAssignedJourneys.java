@@ -32,7 +32,7 @@ public class driverAssignedJourneys {
 
                 DefaultTableModel tableModel = (DefaultTableModel)tblDriverAssignedJourneys.getModel();
                 JourneyID = (String) tableModel.getValueAt(tblDriverAssignedJourneys.getSelectedRow(),0);
-
+                System.out.println(JourneyID);
                 new driverDashboard();
 
 //                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
