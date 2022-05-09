@@ -131,6 +131,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JLabel lblViewEngineID;
     private JTable tblUpdateJourney;
     private JLabel lblViewDuration;
+    private JTextPane textPaneJourneyStatus;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
 
@@ -151,6 +152,7 @@ public class dashBoard extends javax.swing.JFrame {
         createDriverTbl();
         createTrainTbl();
         createUpdateJourneyrTbl();
+        viewPane();
 
         //Full Screen
 //        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -669,7 +671,7 @@ public class dashBoard extends javax.swing.JFrame {
 
 
                 try {
-                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewJourneyByJourneyID(2)}");
+                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewJourneyByJourneyID('"+JourneyID+"')}");
                     ResultSet rs = cs.executeQuery();
 
                     int i = 0;
@@ -1038,10 +1040,10 @@ public class dashBoard extends javax.swing.JFrame {
             CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.GetAllTrainDetails}");
             ResultSet rs = cs.executeQuery();
 
-            //int RowCount = rowCountTrain();
+            int RowCount = rowCountTrain();
 
             String columns[] = {"Train ID", "Engine ID","Block ID 01", "No of Blocks 01","Block ID 02", "No of Blocks 02", "Block ID 03", "No of Blocks 03", "Train Location"};
-            String data[][] = new String[5][9];
+            String data[][] = new String[15][9];
 
             int i = 0;
             while (rs.next()) {
@@ -1058,9 +1060,9 @@ public class dashBoard extends javax.swing.JFrame {
 
                 data[i][0] = TrainID + "";
                 data[i][1] = EngineID + "";
+                data[i][4] = BlockID2 + "";
                 data[i][2] = BlockID1 + "";
                 data[i][3] = BlockCount1 + "";
-                data[i][4] = BlockID2 + "";
                 data[i][5] = BlockCount2 + "";
                 data[i][6] = BlockID3 + "";
                 data[i][7] = BlockCount3 + "";
@@ -1180,11 +1182,32 @@ public class dashBoard extends javax.swing.JFrame {
 //                    JOptionPane.showMessageDialog(null, "Incorrect Time format", "Try again", JOptionPane.ERROR_MESSAGE);
 //                    txtStartingTime.setText("");
 //                    txtEndTime.setText("");
-//                }
+//                }itch
 //
 //            }
 
-            public static void main(String[] args) {
-                dashBoard panel = new dashBoard();
-            }
+
+
+    public void alertMethod(int alertVal, String btnAction) {
+
+        switch(alertVal)
+        {
+            case 1:
+                System.out.println(btnAction);
+            case 2:
+                System.out.println(btnAction);
+        }
+
+    }
+
+    private void viewPane()
+    {
+        textPaneJourneyStatus.setText("dw");
+    }
+
+
+
+    public static void main(String[] args) {
+        dashBoard panel = new dashBoard();
+    }
 }

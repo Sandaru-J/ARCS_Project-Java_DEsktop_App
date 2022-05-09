@@ -38,7 +38,7 @@ public class driverLogin {
 
                 if(!i)
                 {
-                    new driverDashboard();
+                    new driverAssignedJourneys();
                     frame.dispose();
                     System.out.println("OK");
 
