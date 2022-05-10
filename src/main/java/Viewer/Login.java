@@ -9,8 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import Service.DistanceService;
 import Viewer.dashBoard;
 
 public class Login extends JFrame{
@@ -79,6 +77,7 @@ public class Login extends JFrame{
 
                 txtUsername.setText("");
                 txtPassword.setText("");
+
             }
         });
     }
