@@ -1194,9 +1194,9 @@ public class dashBoard extends javax.swing.JFrame {
         switch(alertVal)
         {
             case 1:
-                System.out.println(btnAction);
+                System.out.println(btnAction);break;
             case 2:
-                System.out.println(btnAction);
+                System.out.println(btnAction);break;
         }
 
     }

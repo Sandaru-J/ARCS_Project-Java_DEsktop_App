@@ -124,8 +124,8 @@ public class driverDashboard {
 
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
-        int x=dAJ.JourneyID;
-
+        int x = Integer.parseInt(String.valueOf(dAJ.JourneyID));
+        System.out.println("drverdash ");
 
         try {
             CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewDriversJourneyByJourneyID('"+x+"')}");
