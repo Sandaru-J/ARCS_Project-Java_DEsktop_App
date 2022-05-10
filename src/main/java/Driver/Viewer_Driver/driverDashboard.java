@@ -6,19 +6,21 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.sql.*;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import Driver.Model_Driver.driverSignupModel;
 import Admin.Viewer.dashBoard;
-import Driver.Viewer_Driver.driverAssignedJourneys;
 
 public class driverDashboard {
     private JLabel lblViewJourneyName;
@@ -39,6 +41,11 @@ public class driverDashboard {
     private JButton journeyStartButton;
     private JLabel counterLabel;
     private JButton btnEmergency;
+    private JButton btnStation1;
+    private JButton btnStation2;
+    private JButton btnStation3;
+    private JLabel lblCurrentSpeed;
+    private JLabel lblRequiredSpeed;
 
     Timer timer;
     Timer timer1;
@@ -70,6 +77,7 @@ public class driverDashboard {
         Main();
         Main2();
         Sound();
+        calculateLiveSpeed();
 
         //Full Screen
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -79,12 +87,12 @@ public class driverDashboard {
         for (int i = 0; i <= 70; i++) {
 
             try {
-                Thread.sleep(20);
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            lblSpeed.setText(i + "km/h");
-            progressBarAverageSpeed.setValue(i);
+        lblSpeed.setText(i + "km/h");
+        progressBarAverageSpeed.setValue(i);
         }
 
 
@@ -117,15 +125,64 @@ public class driverDashboard {
                 alertVal=2;
             }
         });
+        btnStation1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                String startTime = "9:00:00";
+                String endTime = "16:00:00";
+                String currentTime = lblCurrentTime.getText();
+
+                int start = 10;
+                int end = 1010;
+                int current = 410;
+
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                try {
+                    java.util.Date time3 = format.parse(endTime);
+                    java.util.Date time2 = format.parse(currentTime);
+                    java.util.Date time1 = format.parse(startTime);
+
+                    long CurrenttimeDifference = ((time2.getTime() - time1.getTime())/ 1000) / 60;
+                    long CurrentdiffDistance = current - start;
+                    long liveSpeed = (CurrentdiffDistance*60) / CurrenttimeDifference;
+
+                    //lblCurrentSpeed.setText(String.valueOf(liveSpeed));
+
+                    for (int i = 0; i <= liveSpeed; i++) {
+
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException y) {
+                            y.printStackTrace();
+                        }
+                        lblCurrentSpeed.setText(i + "km/h");
+                        //progressBarAverageSpeed.setValue(i);
+                    }
+
+
+                    long RequiredtimeDifference = ((time3.getTime() - time2.getTime())/ 1000) / 60;
+                    long RequireddiffDistance = end - current;
+                    long RequiredSpeed = (RequireddiffDistance*60) / RequiredtimeDifference;
+
+                    lblRequiredSpeed.setText(String.valueOf(RequiredSpeed));
+
+                } catch (Exception x) {
+                    x.printStackTrace();
+                }
+
+            }
+        });
     }
     public void driverBegin(){
 
-        driverAssignedJourneys dAJ = new driverAssignedJourneys();
+        driverAssignedJourneys driverAssignedJourneys = new driverAssignedJourneys();
 
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
-        int x = Integer.parseInt(String.valueOf(dAJ.JourneyID));
-        System.out.println("drverdash ");
+         int x = driverAssignedJourneys.JourneyID;
+        System.out.println(x);
 
         try {
             CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewDriversJourneyByJourneyID('"+x+"')}");
@@ -327,6 +384,49 @@ public class driverDashboard {
             se.setFile(clickSound);
             se.play();
         }
+    }
+
+
+
+    public void calculateLiveSpeed()
+    {
+//        Time CurrentTime = Time.valueOf(lblCurrentTime.getText());
+//        System.out.println(CurrentTime);
+//
+//        Time y = Time.valueOf(lblCurrentTime.getText());
+//        System.out.println(y);
+//
+//        Time x = CurrentTime - y;
+
+        String startTime = "9:00:00";
+        String endTime = "16:00:00";
+        String currentTime = "13:00:00";
+
+        int start = 10;
+        int end = 1010;
+        int current = 410;
+
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+        try {
+            java.util.Date time3 = format.parse(endTime);
+            java.util.Date time2 = format.parse(currentTime);
+            java.util.Date time1 = format.parse(startTime);
+
+            long CurrenttimeDifference = ((time2.getTime() - time1.getTime())/ 1000) / 60;
+            long CurrentdiffDistance = current - start;
+            long liveSpeed = (CurrentdiffDistance*60) / CurrenttimeDifference;
+            System.out.println("Live Speed :"+liveSpeed);
+
+            long RequiredtimeDifference = ((time3.getTime() - time2.getTime())/ 1000) / 60;
+            long RequireddiffDistance = end - current;
+            long RequiredSpeed = (RequireddiffDistance*60) / RequiredtimeDifference;
+            System.out.println("Required Speed :"+RequiredSpeed);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 
