@@ -55,12 +55,13 @@ public class driverDashboard {
     String ddHour1, ddMinute1, ddSecond1;
     DecimalFormat dFormat = new DecimalFormat("00");
     int timenow;
+ //   dashBoard ds = new dashBoard();
 
     String clickSound;
     ButtonHandler bHandler = new ButtonHandler();
     SoundEffect se = new SoundEffect();
 
-    String btnAction;
+    String alert;
     int alertVal;
 
     public driverDashboard()
@@ -102,11 +103,10 @@ public class driverDashboard {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                btnAction = "Emergency alert from Journey "+lblViewJourneyID.getText();
+                alert = "Emergency alert from Journey "+lblViewJourneyID.getText();
                 alertVal=1;
-                dashBoard ds = new dashBoard();
-                ds.setVisible(false);
-                ds.alertMethod(alertVal,btnAction);
+
+               //ds.alertMethod(alertVal,btnAction);
                 btnEmergency.disable();
                 btnEmergency.setText("Emergency Mode Active");
 
@@ -121,7 +121,7 @@ public class driverDashboard {
                 driverSignupModel dsm = new driverSignupModel();
                 String driverUserName = dsm.getDriverUserName();
 
-                btnAction = driverUserName+" started Journey "+lblViewJourneyID.getText();
+                alert = driverUserName+" started Journey "+lblViewJourneyID.getText();
                 alertVal=2;
             }
         });

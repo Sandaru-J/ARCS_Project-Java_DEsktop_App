@@ -1203,7 +1203,8 @@ public class dashBoard extends javax.swing.JFrame {
 
     private void viewPane()
     {
-        textPaneJourneyStatus.setText("dw");
+        textPaneJourneyStatus.setText("" +
+                "dw");
     }
 
 
