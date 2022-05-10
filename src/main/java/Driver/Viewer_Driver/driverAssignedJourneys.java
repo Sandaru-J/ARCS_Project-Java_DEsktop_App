@@ -25,6 +25,8 @@ public class driverAssignedJourneys {
         frame.setLocationRelativeTo(null);
         frame.setSize(1200, 600);
         viewDriverAssignedJourneysTbl();
+
+
         tblDriverAssignedJourneys.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -37,33 +39,6 @@ public class driverAssignedJourneys {
                 System.out.println("check jID from  driver Tabel = "+JourneyID);
                 new driverDashboard();
 
-//                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
-//                Connection con = objSqlServerConnection.createConnectionSqlServer();
-//
-//
-//                try {
-//                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewJourneyByJourneyID('"+JourneyID+"')}");
-//                    ResultSet rs = cs.executeQuery();
-//
-//                    int i = 0;
-//                    while (rs.next()) {
-////
-//                        lblViewJourneyName.setText(rs.getString("JourneyName"));
-//                        lblViewJourneyType.setText(rs.getString("JourneyType"));
-//                        lblViewJourneyID.setText(String.valueOf(rs.getString("JourneyID")));
-//                        lblViewStartingStation.setText(rs.getString("StartStationName"));
-//                        lblViewDestination.setText(rs.getString("EndStationName"));
-//                        lblViewStartingTime.setText(rs.getString("JourneyStartTime"));
-//                        lblViewEndingTime.setText(rs.getString("JourneyEndTime"));
-//                        lblViewDuration.setText(rs.getString("TimeDuration"));
-//                        lblViewDate.setText(rs.getString("Date"));
-//
-//                        i++;
-//                    }
-//
-//                } catch (SQLException ex) {
-//                    ex.printStackTrace();("{call ARCSDatabase.dbo.ViewJourneyByJourneyID('"+JourneyID+"')}")
-//                }
 
             }
         });
@@ -132,4 +107,3 @@ public class driverAssignedJourneys {
         ///new driverAssignedJourneys();
     }
 }
-

@@ -20,4 +20,6 @@ public class driverSignupModel {
     }
 
     public String getJourneyID(){return JourneyID;}
+
 }
+

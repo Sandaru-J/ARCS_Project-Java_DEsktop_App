@@ -132,6 +132,8 @@ public class dashBoard extends javax.swing.JFrame {
     private JTable tblUpdateJourney;
     private JLabel lblViewDuration;
     private JTextPane textPaneJourneyStatus;
+    private JComboBox cmbStartingStation;
+    private JComboBox cmbEndStation;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
 
@@ -412,16 +414,21 @@ public class dashBoard extends javax.swing.JFrame {
                 //durationCalc();
 
                 String journeyName = txtJourneyName.getText();
-                float startingTime = Float.parseFloat(txtStartingTime.getText());
-                float endTime = Float.parseFloat(txtEndTime.getText());
-                String startingStation = txtStartingStation.getText();
-                String destination = txtDestination.getText();
+                Time startingTime = Time. valueOf(txtStartingTime.getText());
+                Time endTime = Time.valueOf(txtEndTime.getText());
+                String startingStation = (String) cmbStartingStation.getSelectedItem();
+                String destination = (String) cmbEndStation.getSelectedItem();
                 LocalDate date = LocalDate.parse(txtDate.getText());
                 String journeyType = (String) cmbJourneyType.getSelectedItem();
                 String driverName = txtDriverNameJourney.getText();
 
+
                 JourneyController journeyController = new JourneyController();
-                journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName);
+                try {
+                    journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
 
             }
         });
@@ -671,6 +678,7 @@ public class dashBoard extends javax.swing.JFrame {
 
 
                 try {
+
                     CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewJourneyByJourneyID('"+JourneyID+"')}");
                     ResultSet rs = cs.executeQuery();
 

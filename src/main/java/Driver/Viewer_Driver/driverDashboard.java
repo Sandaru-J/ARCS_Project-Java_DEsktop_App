@@ -130,6 +130,7 @@ public class driverDashboard {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
+
                 String startTime = "9:00:00";
                 String endTime = "16:00:00";
                 String currentTime = lblCurrentTime.getText();
@@ -171,6 +172,86 @@ public class driverDashboard {
                 } catch (Exception x) {
                     x.printStackTrace();
                 }
+
+//                String startTime = lblViewStartingTime.getText();
+//                String endTime = lblViewEndingTime.getText();
+//                String currentTime = lblCurrentTime.getText();
+//
+//                String start = lblViewStartingStation.getText();
+//                String end = lblViewDestination.getText();
+//                int current = 1;
+//
+//                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+//                Connection con = objSqlServerConnection.createConnectionSqlServer();
+//
+//                try {
+//                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.DistanceCalculation(?,?)}");
+//                    ResultSet rs = cs.executeQuery();
+//
+//                    int i = 0;
+//                    while (rs.next()) {
+//
+//                        lblViewStartingStation.setText(rs.getString("StartingStationName"));
+//                        lblViewDestination.setText(rs.getString("EndStationName"));
+//
+//                        i++;
+//                    }
+//
+//                } catch (SQLException ex) {
+//                    ex.printStackTrace();
+//                }
+//
+//
+//                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+//                try {
+//                    java.util.Date time3 = format.parse(endTime);
+//                    java.util.Date time2 = format.parse(currentTime);
+//                    java.util.Date time1 = format.parse(startTime);
+//
+//                    long CurrenttimeDifference = ((time2.getTime() - time1.getTime())/ 1000) / 60;
+//                    long CurrentdiffDistance = current - start;
+//                    long liveSpeed = (CurrentdiffDistance*60) / CurrenttimeDifference;
+//
+//                    //lblCurrentSpeed.setText(String.valueOf(liveSpeed));
+//                    if (liveSpeed < 0)
+//                        liveSpeed = -liveSpeed;
+//
+//                    for (int i = 0; i <= liveSpeed; i++) {
+//
+//                        try {
+//                            Thread.sleep(10);
+//                        } catch (InterruptedException y) {
+//                            y.printStackTrace();
+//                        }
+//                        lblCurrentSpeed.setText(i + "km/h");
+//                        //progressBarAverageSpeed.setValue(i);
+//                    }
+//
+//
+//                    long RequiredtimeDifference = ((time3.getTime() - time2.getTime())/ 1000) / 60;
+//                    long RequireddiffDistance = end - current;
+//                    long RequiredSpeed = (RequireddiffDistance*60) / RequiredtimeDifference;
+//
+//                    //lblRequiredSpeed.setText(String.valueOf(RequiredSpeed));
+//
+//                    if (RequiredSpeed < 0)
+//                        RequiredSpeed = -RequiredSpeed;
+//
+//                    for (int i = 0; i <= RequiredSpeed; i++) {
+//
+//                        try {
+//                            Thread.sleep(10);
+//                        } catch (InterruptedException y) {
+//                            y.printStackTrace();
+//                        }
+//                        lblRequiredSpeed.setText(i + "km/h");
+//                        //progressBarAverageSpeed.setValue(i);
+//                    }
+//
+//                } catch (Exception x) {
+//                    x.printStackTrace();
+//                }
+
 
             }
         });
