@@ -1,4 +1,4 @@
-package Service;
+package Admin.Service;
 
 import DatabaseConnection.SqlServerConnection;
 
@@ -9,15 +9,14 @@ import java.sql.Statement;
 
 public class DistanceService {
 
-    public static int distanceGain() throws SQLException {
-        String start = "COLOMBO FORT";
+    public static int distanceGain(String startingStation) throws SQLException {
+        String start = startingStation;
 
 
         SqlServerConnection objSqlServCon = new SqlServerConnection();
         Connection con = objSqlServCon.createConnectionSqlServer();
-        int x = 1;
-        int y = 0;
-//DELETE FROM ARCSDatabase.dbo.JourneyDetails WHERE JourneyID='"+UpdatedJourneyID+"';";
+        int x=0;
+
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery("SELECT Distance FROM ARCSDatabase.dbo.StationDetails WHERE StationName='" + start + "';");
 
@@ -29,12 +28,12 @@ public class DistanceService {
 
         //int mielage = rs2.getInt(1)- rs.getInt(1);
 
-        System.out.println(y+" "+x);
+        System.out.println(x);
 
-        return 0;
+        return x;
     }
-    public static int endDistanceGain() throws SQLException {
-        String end = "KANDU";
+    public static int endDistanceGain(String destination) throws SQLException {
+        String end = destination;
         SqlServerConnection objSqlServCon = new SqlServerConnection();
         Connection con = objSqlServCon.createConnectionSqlServer();
 
@@ -50,11 +49,7 @@ public class DistanceService {
         //int mielage = rs2.getInt(1)- rs.getInt(1);
 
         System.out.println(y);
-        return 1;
+        return y;
     }
 
-    public static void main(String[] args) throws SQLException {
-        distanceGain();
-        endDistanceGain();
-    }
 }
