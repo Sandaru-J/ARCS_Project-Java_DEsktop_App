@@ -55,12 +55,13 @@ public class driverDashboard {
     String ddHour1, ddMinute1, ddSecond1;
     DecimalFormat dFormat = new DecimalFormat("00");
     int timenow;
+ //   dashBoard ds = new dashBoard();
 
     String clickSound;
     ButtonHandler bHandler = new ButtonHandler();
     SoundEffect se = new SoundEffect();
 
-    String btnAction;
+    String alert;
     int alertVal;
 
     public driverDashboard()
@@ -102,11 +103,10 @@ public class driverDashboard {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                btnAction = "Emergency alert from Journey "+lblViewJourneyID.getText();
+                alert = "Emergency alert from Journey "+lblViewJourneyID.getText();
                 alertVal=1;
-                dashBoard ds = new dashBoard();
-                ds.setVisible(false);
-                ds.alertMethod(alertVal,btnAction);
+
+               //ds.alertMethod(alertVal,btnAction);
                 btnEmergency.disable();
                 btnEmergency.setText("Emergency Mode Active");
 
@@ -121,7 +121,7 @@ public class driverDashboard {
                 driverSignupModel dsm = new driverSignupModel();
                 String driverUserName = dsm.getDriverUserName();
 
-                btnAction = driverUserName+" started Journey "+lblViewJourneyID.getText();
+                alert = driverUserName+" started Journey "+lblViewJourneyID.getText();
                 alertVal=2;
             }
         });
@@ -129,6 +129,7 @@ public class driverDashboard {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+
 
                 String startTime = "9:00:00";
                 String endTime = "16:00:00";
@@ -172,17 +173,104 @@ public class driverDashboard {
                     x.printStackTrace();
                 }
 
+
+//                String startTime = lblViewStartingTime.getText();
+//                String endTime = lblViewEndingTime.getText();
+//                String currentTime = lblCurrentTime.getText();
+//
+//                String start = lblViewStartingStation.getText();
+//                String end = lblViewDestination.getText();
+//                int current = 1;
+//
+//                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+//                Connection con = objSqlServerConnection.createConnectionSqlServer();
+//
+//                try {
+//                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.DistanceCalculation(?,?)}");
+//                    ResultSet rs = cs.executeQuery();
+//
+//                    int i = 0;
+//                    while (rs.next()) {
+//
+//                        lblViewStartingStation.setText(rs.getString("StartingStationName"));
+//                        lblViewDestination.setText(rs.getString("EndStationName"));
+//
+//                        i++;
+//                    }
+//
+//                } catch (SQLException ex) {
+//                    ex.printStackTrace();
+//                }
+//
+//
+//                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+//                try {
+//                    java.util.Date time3 = format.parse(endTime);
+//                    java.util.Date time2 = format.parse(currentTime);
+//                    java.util.Date time1 = format.parse(startTime);
+//
+//                    long CurrenttimeDifference = ((time2.getTime() - time1.getTime())/ 1000) / 60;
+//                    long CurrentdiffDistance = current - start;
+//                    long liveSpeed = (CurrentdiffDistance*60) / CurrenttimeDifference;
+//
+//                    //lblCurrentSpeed.setText(String.valueOf(liveSpeed));
+//                    if (liveSpeed < 0)
+//                        liveSpeed = -liveSpeed;
+//
+//                    for (int i = 0; i <= liveSpeed; i++) {
+//
+//                        try {
+//                            Thread.sleep(10);
+//                        } catch (InterruptedException y) {
+//                            y.printStackTrace();
+//                        }
+//                        lblCurrentSpeed.setText(i + "km/h");
+//                        //progressBarAverageSpeed.setValue(i);
+//                    }
+//
+//
+//                    long RequiredtimeDifference = ((time3.getTime() - time2.getTime())/ 1000) / 60;
+//                    long RequireddiffDistance = end - current;
+//                    long RequiredSpeed = (RequireddiffDistance*60) / RequiredtimeDifference;
+//
+//                    //lblRequiredSpeed.setText(String.valueOf(RequiredSpeed));
+//
+//                    if (RequiredSpeed < 0)
+//                        RequiredSpeed = -RequiredSpeed;
+//
+//                    for (int i = 0; i <= RequiredSpeed; i++) {
+//
+//                        try {
+//                            Thread.sleep(10);
+//                        } catch (InterruptedException y) {
+//                            y.printStackTrace();
+//                        }
+//                        lblRequiredSpeed.setText(i + "km/h");
+//                        //progressBarAverageSpeed.setValue(i);
+//                    }
+//
+//                } catch (Exception x) {
+//                    x.printStackTrace();
+//                }
+
+
+
             }
         });
     }
     public void driverBegin(){
 
-        driverAssignedJourneys driverAssignedJourneys = new driverAssignedJourneys();
+
+
+        driverSignupModel dsm = new driverSignupModel();
 
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
-         int x = driverAssignedJourneys.JourneyID;
-        System.out.println(x);
+
+        String x = String.valueOf(Integer.parseInt(String.valueOf(dsm.getJourneyID())));
+        System.out.println("driver dash id check "+x);
+
+
 
         try {
             CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewDriversJourneyByJourneyID('"+x+"')}");

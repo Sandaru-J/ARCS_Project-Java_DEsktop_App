@@ -16,6 +16,7 @@ public class Login extends JFrame{
     private JPanel panelLogin;
     private JButton loginButton;
     private JButton clearButton;
+    private JLabel lbkABC;
 
     public Login()
     {
@@ -27,6 +28,9 @@ public class Login extends JFrame{
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setSize(950,400);
+
+        ImageIcon trainIcon = new ImageIcon(this.getClass().getResource("/Images/trailLogo.png"));
+        lbkABC = new JLabel(trainIcon);
 
         loginButton.addActionListener(new ActionListener() {
             @Override

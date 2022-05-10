@@ -73,14 +73,6 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="35355" class="javax.swing.JTextField" binding="txtStartingStation">
-                <constraints>
-                  <grid row="4" column="5" row-span="1" col-span="9" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
               <component id="6c7f0" class="javax.swing.JTextField" binding="txtStartingTime">
                 <constraints>
                   <grid row="3" column="5" row-span="1" col-span="9" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -107,14 +99,6 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="ccfe4" class="javax.swing.JTextField" binding="txtDestination">
-                <constraints>
-                  <grid row="4" column="17" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
               <component id="a0be8" class="javax.swing.JComboBox" binding="cmbJourneyType">
                 <constraints>
                   <grid row="5" column="17" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
@@ -122,8 +106,9 @@
                 <properties>
                   <model>
                     <item value=""/>
-                    <item value="1"/>
-                    <item value="2"/>
+                    <item value="Normal"/>
+                    <item value="Semi Luxury"/>
+                    <item value="Luxury"/>
                   </model>
                 </properties>
               </component>
@@ -408,6 +393,72 @@
                 </constraints>
                 <properties>
                   <text value=""/>
+                </properties>
+              </component>
+              <component id="fd24a" class="javax.swing.JComboBox" binding="cmbStartingStation">
+                <constraints>
+                  <grid row="4" column="5" row-span="1" col-span="9" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <model>
+                    <item value=""/>
+                    <item value="FORT"/>
+                    <item value="MARADANA"/>
+                    <item value="MOUNT LAVINIA"/>
+                    <item value="WADDUWA"/>
+                    <item value="RAGAMA"/>
+                    <item value="BENTOTA"/>
+                    <item value="POLGAHAWELA"/>
+                    <item value="AMBALANGODA"/>
+                    <item value="HIKKADUWA"/>
+                    <item value="RAMBUKKANA"/>
+                    <item value="GALLE"/>
+                    <item value="UNAWATUNA"/>
+                    <item value="PERADENIYA"/>
+                    <item value="KANDY"/>
+                    <item value="MATALE"/>
+                    <item value="HATTON"/>
+                    <item value="NANU OYA"/>
+                    <item value="ELLA"/>
+                    <item value="BADULLA"/>
+                    <item value="KOGGALA"/>
+                    <item value="WELIGAMA"/>
+                    <item value="MIRISSA"/>
+                    <item value="MATARA"/>
+                  </model>
+                </properties>
+              </component>
+              <component id="b8053" class="javax.swing.JComboBox" binding="cmbEndStation">
+                <constraints>
+                  <grid row="4" column="17" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <model>
+                    <item value=""/>
+                    <item value="FORT"/>
+                    <item value="MARADANA"/>
+                    <item value="MOUNT LAVINIA"/>
+                    <item value="WADDUWA"/>
+                    <item value="RAGAMA"/>
+                    <item value="BENTOTA"/>
+                    <item value="POLGAHAWELA"/>
+                    <item value="AMBALANGODA"/>
+                    <item value="HIKKADUWA"/>
+                    <item value="RAMBUKKANA"/>
+                    <item value="GALLE"/>
+                    <item value="UNAWATUNA"/>
+                    <item value="PERADENIYA"/>
+                    <item value="KANDY"/>
+                    <item value="MATALE"/>
+                    <item value="HATTON"/>
+                    <item value="NANU OYA"/>
+                    <item value="ELLA"/>
+                    <item value="BADULLA"/>
+                    <item value="KOGGALA"/>
+                    <item value="WELIGAMA"/>
+                    <item value="MIRISSA"/>
+                    <item value="MATARA"/>
+                  </model>
                 </properties>
               </component>
             </children>
@@ -1923,9 +1974,9 @@
                           <grid row="0" column="1" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <background color="-4431801"/>
+                          <background color="-16580519"/>
                         </properties>
-                        <border type="none"/>
+                        <border type="line"/>
                         <children>
                           <component id="2e48b" class="javax.swing.JLabel" binding="lblViewJourneyName">
                             <constraints>
@@ -1978,7 +2029,7 @@
                           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <background color="-13909833"/>
+                          <background color="-16580477"/>
                         </properties>
                         <border type="none"/>
                         <children>
@@ -2052,7 +2103,7 @@
                               <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <background color="-11221934"/>
+                              <background color="-15240239"/>
                             </properties>
                             <border type="none"/>
                             <children>
@@ -2118,7 +2169,7 @@
                           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <background color="-1379759"/>
+                          <background color="-7874918"/>
                         </properties>
                         <border type="line"/>
                         <children>
@@ -2170,7 +2221,7 @@
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <background color="-1379759"/>
+                              <background color="-7874918"/>
                             </properties>
                             <border type="line"/>
                             <children>
@@ -2224,7 +2275,7 @@
                           <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <background color="-4494599"/>
+                          <background color="-14188490"/>
                         </properties>
                         <border type="line" title-justification="5">
                           <color color="-4473925"/>
@@ -2248,7 +2299,7 @@
                           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <background color="-16777216"/>
+                          <background color="-14038181"/>
                           <foreground color="-1"/>
                         </properties>
                         <border type="none"/>
@@ -2272,7 +2323,7 @@
                           <grid row="5" column="2" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <background color="-16777216"/>
+                          <background color="-14038181"/>
                           <foreground color="-1"/>
                         </properties>
                         <border type="none"/>
@@ -2296,7 +2347,7 @@
                           <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <background color="-3243246"/>
+                          <background color="-12474032"/>
                           <enabled value="false"/>
                         </properties>
                         <border type="none"/>
@@ -2306,8 +2357,8 @@
                               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <background color="-3243246"/>
-                              <foreground color="-15460557"/>
+                              <background color="-12474032"/>
+                              <foreground color="-396033"/>
                             </properties>
                           </component>
                           <component id="22b30" class="javax.swing.JLabel">
