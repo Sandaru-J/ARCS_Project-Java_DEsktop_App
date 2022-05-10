@@ -249,6 +249,12 @@ public class dashBoard extends javax.swing.JFrame {
                 engineRegisterControlleer.saveEngineReg(engineName, engineCapacity, engineType);
             }
         });
+        btnRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         btnBlockRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
