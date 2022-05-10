@@ -106,8 +106,9 @@
                 <properties>
                   <model>
                     <item value=""/>
-                    <item value="1"/>
-                    <item value="2"/>
+                    <item value="Normal"/>
+                    <item value="Semi Luxury"/>
+                    <item value="Luxury"/>
                   </model>
                 </properties>
               </component>

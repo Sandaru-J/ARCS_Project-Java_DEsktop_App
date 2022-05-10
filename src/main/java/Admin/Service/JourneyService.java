@@ -24,13 +24,14 @@ public class JourneyService {
             {
                 cs.setString(1,cJourney.getJourneyName());
                 cs.setString(2,cJourney.getJourneyType());
-                cs.setTime( 3,cJourney.getStartingTime());
-                cs.setTime(4,cJourney.getEndTime());
+                //cs.setTime( 3,cJourney.getStartingTime());
+               // cs.setTime(4,cJourney.getEndTime());
                 cs.setString(5,cJourney.getStartingStation());
                 cs.setString(6,cJourney.getDestination());
                 cs.setDate(7, Date.valueOf(cJourney.getDate())); //2022-04-25
                 cs.setString(8,cJourney.getDriverName());
                 cs.setFloat(9,cJourney.getDistance());
+
 
 
                 i = cs.execute();

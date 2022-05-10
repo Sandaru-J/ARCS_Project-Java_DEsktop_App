@@ -2,11 +2,13 @@ package Admin.Model;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 public class createJourneyModel {
 
       public String journeyName;
-      public Time startingTime;
+      public Date startingTime;
       public Time endTime;
       public String startingStation;
       public String destination;
@@ -16,7 +18,7 @@ public class createJourneyModel {
       public float distance;
 
       public void setJourneyName (String journeyName) { this.journeyName = journeyName; }
-      public void setStartingTime (Time startingTime) { this.startingTime = startingTime; }
+      //public void setStartingTime (LocalDateTime startingTime) { this.startingTime = startingTime; }
       public void setEndTime (Time endTime) { this.endTime = endTime; }
       public void setStartingStation(String startingStation) { this.startingStation = startingStation; }
       public void setDestination (String destination) { this.destination = destination; }
@@ -27,7 +29,7 @@ public class createJourneyModel {
 
 
       public String getJourneyName() { return journeyName; }
-      public Time getStartingTime() { return startingTime; }
+      public Date getStartingTime() { return startingTime; }
       public Time getEndTime() { return endTime; }
       public String getStartingStation() { return startingStation; }
       public String getDestination() { return destination; }

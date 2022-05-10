@@ -14,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.*;
 
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -414,8 +415,8 @@ public class dashBoard extends javax.swing.JFrame {
                 //durationCalc();
 
                 String journeyName = txtJourneyName.getText();
-                Time startingTime = Time. valueOf(txtStartingTime.getText());
-                Time endTime = Time.valueOf(txtEndTime.getText());
+                String startingTime = txtStartingTime.getText();
+                String endTime = txtEndTime.getText();
                 String startingStation = (String) cmbStartingStation.getSelectedItem();
                 String destination = (String) cmbEndStation.getSelectedItem();
                 LocalDate date = LocalDate.parse(txtDate.getText());
@@ -427,6 +428,8 @@ public class dashBoard extends javax.swing.JFrame {
                 try {
                     journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName);
                 } catch (SQLException ex) {
+                    ex.printStackTrace();
+                } catch (ParseException ex) {
                     ex.printStackTrace();
                 }
 
@@ -1032,9 +1035,9 @@ public class dashBoard extends javax.swing.JFrame {
 
         try {
             Statement rst = con.createStatement();
-            ResultSet rsRow = rst.executeQuery("SELECT COUNT(TrainID) FROM [ARCSDatabase].[dbo].[DriverDetails]");
+            ResultSet rsRow = rst.executeQuery("SELECT COUNT(TrainID) FROM [ARCSDatabase].[dbo].[TrainDetails]");
             rsRow.next();
-            count = rsRow.getInt(7);
+            count = rsRow.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();
         }

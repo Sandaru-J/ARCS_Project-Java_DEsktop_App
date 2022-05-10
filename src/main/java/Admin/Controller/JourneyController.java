@@ -1,28 +1,32 @@
 package Admin.Controller;
 
 import Admin.Model.createJourneyModel;
-import Admin.Service.DistanceService;
 import Admin.Service.JourneyService;
 import DatabaseConnection.SqlServerConnection;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-
-import static Admin.Service.DistanceService.distanceGain;
-import static Admin.Service.DistanceService.endDistanceGain;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 public class JourneyController {
 
 
-    public void createJourney(String journeyName, Time startingTime, Time endTime, String startingStation, String destination, LocalDate date, String journeyType, String driverName) throws SQLException {
+    public void createJourney(String journeyName, String startingTime, String endTime, String startingStation, String destination, LocalDate date, String journeyType, String driverName) throws SQLException, ParseException {
 
         createJourneyModel createJourneyModel = new createJourneyModel();
 
-
+        DateFormat dateFormat = new SimpleDateFormat("hh:mm");
+        LocalDateTime st = LocalDateTime.parse(startingTime);
+//        Date st = dateFormat.parse(startingTime);
+        Time et = (Time) dateFormat.parse(endTime);
 
         createJourneyModel.setJourneyName(journeyName);
-        createJourneyModel.setStartingTime(startingTime);
-        createJourneyModel.setEndTime(endTime);
+        //createJourneyModel.setStartingTime(st);
+        createJourneyModel.setEndTime(et);
         createJourneyModel.setStartingStation(startingStation);
         createJourneyModel.setDestination(destination);
         createJourneyModel.setDate(date);
@@ -41,8 +45,8 @@ public class JourneyController {
         int x=0;
         int y=0;
         try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT Distance FROM ARCSDatabase.dbo.StationDetails WHERE StationName='" + start + "';");
+            Statement st1 = con.createStatement();
+            ResultSet rs = st1.executeQuery("SELECT Distance FROM ARCSDatabase.dbo.StationDetails WHERE StationName='" + start + "';");
             while (rs.next()) {
                 x = rs.getInt("Distance");
             }
@@ -54,8 +58,8 @@ public class JourneyController {
         }
 
         try {
-            Statement st = con.createStatement();
-            ResultSet rs2 = st.executeQuery("SELECT Distance FROM ARCSDatabase.dbo.StationDetails WHERE StationName='" + end + "';");
+            Statement st2 = con.createStatement();
+            ResultSet rs2 = st2.executeQuery("SELECT Distance FROM ARCSDatabase.dbo.StationDetails WHERE StationName='" + end + "';");
 
 
             while (rs2.next()) {
