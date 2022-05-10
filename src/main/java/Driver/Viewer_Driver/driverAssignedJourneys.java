@@ -31,8 +31,10 @@ public class driverAssignedJourneys {
                 super.mouseClicked(e);
 
                 DefaultTableModel tableModel = (DefaultTableModel)tblDriverAssignedJourneys.getModel();
-                JourneyID = (String) tableModel.getValueAt(tblDriverAssignedJourneys.getSelectedRow(),0);
-                System.out.println(JourneyID);
+                JourneyID = (String) tableModel.getValueAt(tblDriverAssignedJourneys.getSelectedRow(),1);
+                driverSignupModel dsm = new driverSignupModel();
+                dsm.setJourneyID(JourneyID);
+                System.out.println("check jID from  driver Tabel = "+JourneyID);
                 new driverDashboard();
 
 //                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
@@ -60,7 +62,7 @@ public class driverAssignedJourneys {
 //                    }
 //
 //                } catch (SQLException ex) {
-//                    ex.printStackTrace();
+//                    ex.printStackTrace();("{call ARCSDatabase.dbo.ViewJourneyByJourneyID('"+JourneyID+"')}")
 //                }
 
             }
@@ -130,4 +132,3 @@ public class driverAssignedJourneys {
         new driverAssignedJourneys();
     }
 }
-

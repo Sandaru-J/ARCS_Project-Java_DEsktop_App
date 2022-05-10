@@ -177,12 +177,15 @@ public class driverDashboard {
     }
     public void driverBegin(){
 
-        driverAssignedJourneys driverAssignedJourneys = new driverAssignedJourneys();
+
+        driverSignupModel dsm = new driverSignupModel();
 
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
-        int x = Integer.parseInt(driverAssignedJourneys.JourneyID);
-        System.out.println(x);
+
+        String x = String.valueOf(Integer.parseInt(String.valueOf(dsm.getJourneyID())));
+        System.out.println("driver dash id check "+x);
+
 
         try {
             CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ViewDriversJourneyByJourneyID('"+x+"')}");
