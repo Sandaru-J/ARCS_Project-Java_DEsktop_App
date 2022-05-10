@@ -39,6 +39,7 @@ public class driverAssignedJourneys {
                 System.out.println("check jID from  driver Tabel = "+JourneyID);
                 new driverDashboard();
 
+
             }
         });
     }
@@ -103,6 +104,6 @@ public class driverAssignedJourneys {
     }
 
     public static void main(String[] args) {
-        new driverAssignedJourneys();
+        ///new driverAssignedJourneys();
     }
 }
