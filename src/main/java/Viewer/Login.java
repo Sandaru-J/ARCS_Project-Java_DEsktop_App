@@ -79,14 +79,6 @@ public class Login extends JFrame{
 
                 txtUsername.setText("");
                 txtPassword.setText("");
-
-                DistanceService ds = new DistanceService();
-                try {
-                    ds.distanceGain();
-
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
             }
         });
     }
