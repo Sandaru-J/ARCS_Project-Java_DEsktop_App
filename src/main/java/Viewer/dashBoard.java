@@ -117,8 +117,8 @@ public class dashBoard extends javax.swing.JFrame {
     private JTable tblTrain;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
-
     public dashBoard() {
+
 
         JFrame frame = new JFrame("Dashboard");
         //frame.setUndecorated(true);
@@ -297,7 +297,6 @@ public class dashBoard extends javax.swing.JFrame {
                 JourneyController journeyController = new JourneyController();
                 journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName);
 
-
             }
         });
         btnCancle.addActionListener(new ActionListener() {
@@ -397,6 +396,7 @@ public class dashBoard extends javax.swing.JFrame {
                 txtAdminEmail.setText("");
                 txtAdminPassword.setText("");
                 txtAdminConfirmPassword.setText("");
+
             }
         });
         table1.addMouseListener(new MouseAdapter() {
@@ -427,7 +427,7 @@ public class dashBoard extends javax.swing.JFrame {
 
 
 
-    }
+            }
         });
     }
 
