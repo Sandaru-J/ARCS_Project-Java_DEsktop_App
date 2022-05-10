@@ -4,7 +4,6 @@ import Controller.AdminController;
 import Controller.JourneyController;
 import Controller.RegisterController;
 import DatabaseConnection.SqlServerConnection;
-import Service.DistanceService;
 
 import javax.swing.*;
 
@@ -117,6 +116,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JTable tblTrain;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
+
     public dashBoard() {
 
 
