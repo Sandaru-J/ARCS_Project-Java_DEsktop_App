@@ -120,7 +120,6 @@ public class dashBoard extends javax.swing.JFrame {
 
     public dashBoard() {
 
-
         JFrame frame = new JFrame("Dashboard");
         //frame.setUndecorated(true);
         frame.add(dashPanel);
@@ -139,6 +138,7 @@ public class dashBoard extends javax.swing.JFrame {
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = graphics.getDefaultScreenDevice();
         device.setFullScreenWindow(frame);
+
 
         for (int i = 0; i <= 70; i++) {
 
@@ -397,7 +397,6 @@ public class dashBoard extends javax.swing.JFrame {
                 txtAdminEmail.setText("");
                 txtAdminPassword.setText("");
                 txtAdminConfirmPassword.setText("");
-
             }
         });
         table1.addMouseListener(new MouseAdapter() {
@@ -424,6 +423,10 @@ public class dashBoard extends javax.swing.JFrame {
 
                 RegisterController registerController = new RegisterController();
                 registerController.saveTrainReg(engineID, blockID1,blockID2,blockID3, noOfBlocks1,noOfBlocks2,noOfBlocks3);
+
+
+
+
     }
         });
     }
