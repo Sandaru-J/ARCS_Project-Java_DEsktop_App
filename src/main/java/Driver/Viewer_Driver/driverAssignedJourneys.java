@@ -11,7 +11,7 @@ import java.sql.*;
 
 public class driverAssignedJourneys {
 
-    public int JourneyID;
+    public String JourneyID;
     private JTable tblDriverAssignedJourneys;
     private JPanel panelDriverAssignedJourneys;
 
