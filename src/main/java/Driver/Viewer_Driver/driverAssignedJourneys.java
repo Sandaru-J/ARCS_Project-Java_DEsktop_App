@@ -11,7 +11,7 @@ import java.sql.*;
 
 public class driverAssignedJourneys {
 
-    public String JourneyID;
+    public int JourneyID;
     private JTable tblDriverAssignedJourneys;
     private JPanel panelDriverAssignedJourneys;
 
@@ -31,7 +31,7 @@ public class driverAssignedJourneys {
                 super.mouseClicked(e);
 
                 DefaultTableModel tableModel = (DefaultTableModel)tblDriverAssignedJourneys.getModel();
-                JourneyID = (String) tableModel.getValueAt(tblDriverAssignedJourneys.getSelectedRow(),0);
+               // JourneyID = (String) tableModel.getValueAt(tblDriverAssignedJourneys.getSelectedRow(),1);
                 System.out.println(JourneyID);
                 new driverDashboard();
 
@@ -60,7 +60,7 @@ public class driverAssignedJourneys {
 //                    }
 //
 //                } catch (SQLException ex) {
-//                    ex.printStackTrace();
+//                    ex.printStackTrace();("{call ARCSDatabase.dbo.ViewJourneyByJourneyID('"+JourneyID+"')}")
 //                }
 
             }
