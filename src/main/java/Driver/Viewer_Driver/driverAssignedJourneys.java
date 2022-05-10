@@ -11,7 +11,7 @@ import java.sql.*;
 
 public class driverAssignedJourneys {
 
-    public String JourneyID;
+    public int JourneyID;
     private JTable tblDriverAssignedJourneys;
     private JPanel panelDriverAssignedJourneys;
 
@@ -33,12 +33,12 @@ public class driverAssignedJourneys {
                 super.mouseClicked(e);
 
                 DefaultTableModel tableModel = (DefaultTableModel)tblDriverAssignedJourneys.getModel();
+
                 JourneyID = (String) tableModel.getValueAt(tblDriverAssignedJourneys.getSelectedRow(),1);
                 driverSignupModel dsm = new driverSignupModel();
                 dsm.setJourneyID(JourneyID);
                 System.out.println("check jID from  driver Tabel = "+JourneyID);
                 new driverDashboard();
-
 
             }
         });
