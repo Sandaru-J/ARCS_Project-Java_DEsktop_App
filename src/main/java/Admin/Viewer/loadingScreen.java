@@ -9,6 +9,7 @@ public class loadingScreen{
     private JLabel lblLoading;
     private JLabel lblLoadingValue;
     private JLabel lblARCS;
+    private JLabel lblDescription;
 
 
     public loadingScreen()
@@ -21,6 +22,7 @@ public class loadingScreen{
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+        lblDescription.setText("<html>&nbsp;&nbsp;&nbsp;&nbsp;The Automated Railway Control System <br/> functioning under the Ministry of Transport</html>");
 
         try{
 
@@ -59,7 +61,7 @@ public class loadingScreen{
         {
             JOptionPane.showMessageDialog(null, ex);
         }
-        new Login();
+        new MainPage();
         frame.dispose();
 
     }

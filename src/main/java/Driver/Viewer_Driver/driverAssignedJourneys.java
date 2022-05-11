@@ -8,12 +8,16 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class driverAssignedJourneys {
 
     public String JourneyID;
     private JTable tblDriverAssignedJourneys;
     private JPanel panelDriverAssignedJourneys;
+    private JLabel lbldriverAssigenedJourneyDate;
 
     public driverAssignedJourneys()
     {
@@ -102,6 +106,10 @@ public class driverAssignedJourneys {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime now = LocalTime.now();
+        lbldriverAssigenedJourneyDate.setText(String.valueOf(LocalDate.now()));
     }
 
     public static void main(String[] args) {
