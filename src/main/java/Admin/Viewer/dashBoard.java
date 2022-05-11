@@ -425,18 +425,18 @@ public class dashBoard extends javax.swing.JFrame {
                 //durationCalc();
 
                 String journeyName = txtJourneyName.getText();
-                String startingTime = txtStartingTime.getText();
-                String endTime = txtEndTime.getText();
+                Float startingTime = Float.valueOf(txtStartingTime.getText());
+                Float endTime = Float.valueOf(txtEndTime.getText());
                 String startingStation = (String) cmbStartingStation.getSelectedItem();
                 String destination = (String) cmbEndStation.getSelectedItem();
                 LocalDate date = LocalDate.parse(txtDate.getText());
                 String journeyType = (String) cmbJourneyType.getSelectedItem();
                 String driverName = txtDriverNameJourney.getText();
-
+                int trainID = Integer.parseInt(textField1.getText());
 
                 JourneyController journeyController = new JourneyController();
                 try {
-                    journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName);
+                    journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName, trainID);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 } catch (ParseException ex) {

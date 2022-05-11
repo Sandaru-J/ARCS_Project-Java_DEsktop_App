@@ -47,6 +47,8 @@ public class driverDashboard {
     private JLabel lblRequiredSpeed;
     private JProgressBar progressBarCurrentSpeed;
     private JProgressBar progressBarRequiredSpeed;
+    private JButton journeyEndButton;
+    private JLabel lblViewDistance1;
 
     Timer timer;
     Timer timer1;
@@ -106,9 +108,12 @@ public class driverDashboard {
                 alert = "Emergency alert from Journey "+lblViewJourneyID.getText();
                 alertVal=1;
 
-               //ds.alertMethod(alertVal,btnAction);
+                //JOptionPane.showMessageDialog(dashBoard.dashPanel, "EMERGENCY!", "EMERGENCY!", JOptionPane.ERROR_MESSAGE);
+
+
+                //ds.alertMethod(alertVal,btnAction);
                 btnEmergency.disable();
-                btnEmergency.setText("Emergency Mode Active");
+                btnEmergency.setText("EMERGENCY MODE ACTIVE");
 
             }
         });
@@ -124,6 +129,7 @@ public class driverDashboard {
                 alert = driverUserName+" started Journey "+lblViewJourneyID.getText();
                 alertVal=2;
             }
+
         });
         btnStation1.addMouseListener(new MouseAdapter() {
             @Override
@@ -237,6 +243,320 @@ public class driverDashboard {
 
             }
         });
+        btnStation2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                String startTime = lblViewStartingTime.getText();
+                String endTime = lblViewEndingTime.getText();
+                String currentTime = lblCurrentTime.getText();
+
+                String start = lblViewStartingStation.getText();
+                String end = lblViewDestination.getText();
+
+                float current = 0;
+                float startStation = 0;
+                float endStation = 0;
+
+                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+                try {
+                    PreparedStatement ps = con.prepareStatement("SELECT Distance FROM [ARCSDatabase].[dbo].[StationDetails] WHERE StationName='POLGAHAWELA'");
+                    ResultSet rs = ps.executeQuery();
+
+                    int i = 0;
+                    while (rs.next()) {
+
+                        current = Float.parseFloat(rs.getString("Distance"));
+                        i++;
+                    }
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+
+                try {
+                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.DistanceCalculation('"+start+"','"+end+"')}");
+                    ResultSet rs = cs.executeQuery();
+
+                    int i = 0;
+                    while (rs.next()) {
+
+                        startStation = Float.parseFloat(rs.getString("StartStationDistance"));
+                        endStation = Float.parseFloat(rs.getString("EndStationDistance"));
+
+                        i++;
+                    }
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+                System.out.println(startStation);
+                System.out.println(endStation);
+
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                try {
+                    java.util.Date time3 = format.parse(endTime);
+                    java.util.Date time2 = format.parse(currentTime);
+                    java.util.Date time1 = format.parse(startTime);
+
+                    //Current Speed
+                    long CurrenttimeDifference = ((time2.getTime() - time1.getTime())/ 1000) / 60;
+                    //System.out.println(CurrenttimeDifference);
+                    long CurrentdiffDistance = (long) (current - startStation);
+                    //System.out.println(CurrentdiffDistance);
+                    float liveSpeed = (CurrentdiffDistance*60) / CurrenttimeDifference;
+                    //System.out.println(liveSpeed);
+
+                    if (liveSpeed < 0)
+                        liveSpeed = -liveSpeed;
+
+                    for (float i = 0; i <= liveSpeed; i++) {
+
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException y) {
+                            y.printStackTrace();
+                        }
+                        lblCurrentSpeed.setText(i + " km/h");
+                        progressBarCurrentSpeed.setValue((int) i);
+                    }
+
+                    //Required Speed
+                    long RequiredtimeDifference = ((time3.getTime() - time2.getTime())/ 1000) / 60;
+                    long RequireddiffDistance = (long) (endStation - current);
+                    float RequiredSpeed = (RequireddiffDistance*60) / RequiredtimeDifference;
+
+                    //lblRequiredSpeed.setText(String.valueOf(RequiredSpeed));
+
+                    if (RequiredSpeed < 0)
+                        RequiredSpeed = -RequiredSpeed;
+
+                    for (float i = 0; i <= RequiredSpeed; i++) {
+
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException y) {
+                            y.printStackTrace();
+                        }
+
+                        lblRequiredSpeed.setText(i + " km/h");
+                        progressBarRequiredSpeed.setValue((int) i);
+                    }
+
+                } catch (Exception x) {
+                    x.printStackTrace();
+                }
+
+            }
+        });
+        btnStation3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                String startTime = lblViewStartingTime.getText();
+                String endTime = lblViewEndingTime.getText();
+                String currentTime = lblCurrentTime.getText();
+
+                String start = lblViewStartingStation.getText();
+                String end = lblViewDestination.getText();
+
+                float current = 0;
+                float startStation = 0;
+                float endStation = 0;
+
+                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+                try {
+                    PreparedStatement ps = con.prepareStatement("SELECT Distance FROM [ARCSDatabase].[dbo].[StationDetails] WHERE StationName='PERADENIYA'");
+                    ResultSet rs = ps.executeQuery();
+
+                    int i = 0;
+                    while (rs.next()) {
+
+                        current = Float.parseFloat(rs.getString("Distance"));
+                        i++;
+                    }
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+
+                try {
+                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.DistanceCalculation('"+start+"','"+end+"')}");
+                    ResultSet rs = cs.executeQuery();
+
+                    int i = 0;
+                    while (rs.next()) {
+
+                        startStation = Float.parseFloat(rs.getString("StartStationDistance"));
+                        endStation = Float.parseFloat(rs.getString("EndStationDistance"));
+
+                        i++;
+                    }
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+                System.out.println(startStation);
+                System.out.println(endStation);
+
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                try {
+                    java.util.Date time3 = format.parse(endTime);
+                    java.util.Date time2 = format.parse(currentTime);
+                    java.util.Date time1 = format.parse(startTime);
+
+                    //Current Speed
+                    long CurrenttimeDifference = ((time2.getTime() - time1.getTime())/ 1000) / 60;
+                    //System.out.println(CurrenttimeDifference);
+                    long CurrentdiffDistance = (long) (current - startStation);
+                    //System.out.println(CurrentdiffDistance);
+                    float liveSpeed = (CurrentdiffDistance*60) / CurrenttimeDifference;
+                    //System.out.println(liveSpeed);
+
+                    if (liveSpeed < 0)
+                        liveSpeed = -liveSpeed;
+
+                    for (float i = 0; i <= liveSpeed; i++) {
+
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException y) {
+                            y.printStackTrace();
+                        }
+                        lblCurrentSpeed.setText(i + " km/h");
+                        progressBarCurrentSpeed.setValue((int) i);
+                    }
+
+                    //Required Speed
+                    long RequiredtimeDifference = ((time3.getTime() - time2.getTime())/ 1000) / 60;
+                    long RequireddiffDistance = (long) (endStation - current);
+                    float RequiredSpeed = (RequireddiffDistance*60) / RequiredtimeDifference;
+
+                    //lblRequiredSpeed.setText(String.valueOf(RequiredSpeed));
+
+                    if (RequiredSpeed < 0)
+                        RequiredSpeed = -RequiredSpeed;
+
+                    for (float i = 0; i <= RequiredSpeed; i++) {
+
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException y) {
+                            y.printStackTrace();
+                        }
+
+                        lblRequiredSpeed.setText(i + " km/h");
+                        progressBarRequiredSpeed.setValue((int) i);
+                    }
+
+                } catch (Exception x) {
+                    x.printStackTrace();
+                }
+
+            }
+        });
+        journeyStartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                driverSignupModel dsm = new driverSignupModel();
+
+                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+                String x = String.valueOf(Integer.parseInt(String.valueOf(dsm.getJourneyID())));
+                System.out.println("driver dash id check " + x);
+
+                try {
+                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.UpdateJourneyStart('" + x + "')}");
+
+                    cs.execute();
+
+                    System.out.println("Updated Journey Status");
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+                //////////////////////////////////////
+
+//                DateTimeFormatter h = DateTimeFormatter.ofPattern("HH");
+//                DateTimeFormatter m = DateTimeFormatter.ofPattern("mm");
+//                DateTimeFormatter s = DateTimeFormatter.ofPattern("ss");
+//                LocalTime now = LocalTime.now();
+//
+//                String nowTime = lblCurrentTime.getText();
+//                String endingTime = lblViewEndingTime.getText();
+//
+//                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+//
+//                try {
+//
+//                    java.util.Date time3 = format.parse(endingTime);
+//                    java.util.Date time1 = format.parse(nowTime);
+//
+//                    long CountDownTime = time3.getTime() - time1.getTime();
+//                    System.out.println("scd : "+CountDownTime);
+//
+//                    long HH = CountDownTime.toHours();
+//                    long MM = CountDownTime.toMinutesPart();
+//                    long SS = CountDownTime.toSecondsPart();
+//                    String timeInHHMMSS = String.format("%02d:%02d:%02d", HH, MM, SS);
+//                    System.out.println(timeInHHMMSS);
+//
+////                    Date d=new Date(CountDownTime);
+////                    System.out.println(d);
+//
+////                    String CountDownTime1 = String.valueOf(CountDownTime);
+////                    System.out.println("string : "+CountDownTime1);
+////                    LocalDate date = LocalDate.parse(CountDownTime1);
+////                    System.out.println(date);
+////
+////                    hour = Integer.parseInt(h.format(date));
+////                    minute = Integer.parseInt(m.format(date));
+////                    second = Integer.parseInt(s.format(date));
+//
+//            } catch (ParseException ex) {
+//                    ex.printStackTrace();
+//                }
+            }
+            });
+        journeyEndButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                driverSignupModel dsm = new driverSignupModel();
+
+                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+                String x = String.valueOf(Integer.parseInt(String.valueOf(dsm.getJourneyID())));
+                System.out.println("driver dash id check "+x);
+
+                try{
+                    CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.UpdateJourneyEnd('"+x+"')}");
+
+                    cs.execute();
+
+                    System.out.println("Updated Journey Status");
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+
+            }
+        });
     }
     public void driverBegin(){
 
@@ -266,8 +586,11 @@ public class driverDashboard {
                 lblViewDestination.setText(rs.getString("EndStationName"));
                 lblViewStartingTime.setText(rs.getString("JourneyStartTime"));
                 lblViewEndingTime.setText(rs.getString("JourneyEndTime"));
-                lblViewDuration.setText(rs.getString("TimeDuration"));
+                lblViewDuration.setText(String.valueOf(rs.getFloat("TimeDuration")));
                 lblViewDate.setText(rs.getString("Date"));
+                lblViewDistance1.setText(rs.getString("Distance"));
+
+
                 i++;
             }
 
