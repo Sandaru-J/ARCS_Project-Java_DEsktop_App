@@ -20,7 +20,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import Driver.Model_Driver.driverSignupModel;
-import Admin.Viewer.dashBoard;
 
 public class driverDashboard {
     private JLabel lblViewJourneyName;
@@ -46,6 +45,8 @@ public class driverDashboard {
     private JButton btnStation3;
     private JLabel lblCurrentSpeed;
     private JLabel lblRequiredSpeed;
+    private JProgressBar progressBarCurrentSpeed;
+    private JProgressBar progressBarRequiredSpeed;
 
     Timer timer;
     Timer timer1;
@@ -93,7 +94,6 @@ public class driverDashboard {
                 e.printStackTrace();
             }
         lblSpeed.setText(i + "km/h");
-        progressBarAverageSpeed.setValue(i);
         }
 
 
@@ -201,12 +201,12 @@ public class driverDashboard {
                     for (float i = 0; i <= liveSpeed; i++) {
 
                         try {
-                            Thread.sleep(10);
+                            Thread.sleep(100);
                         } catch (InterruptedException y) {
                             y.printStackTrace();
                         }
                         lblCurrentSpeed.setText(i + " km/h");
-                        //progressBarAverageSpeed.setValue(i);
+                        progressBarCurrentSpeed.setValue((int) i);
                     }
 
                     //Required Speed
@@ -222,13 +222,13 @@ public class driverDashboard {
                     for (float i = 0; i <= RequiredSpeed; i++) {
 
                         try {
-                            Thread.sleep(10);
+                            Thread.sleep(100);
                         } catch (InterruptedException y) {
                             y.printStackTrace();
                         }
 
                         lblRequiredSpeed.setText(i + " km/h");
-                        //progressBarAverageSpeed.setValue(i);
+                        progressBarRequiredSpeed.setValue((int) i);
                     }
 
                 } catch (Exception x) {
