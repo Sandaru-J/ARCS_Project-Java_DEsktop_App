@@ -30,7 +30,7 @@ public class driverLogin {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                DriverUserName = txtDriverUsername.getText();
+                String DriverUserName = txtDriverUsername.getText();
                 String DriverPassword = txtDriverPassword.getText();
 
                 DriverController driverController = new DriverController();

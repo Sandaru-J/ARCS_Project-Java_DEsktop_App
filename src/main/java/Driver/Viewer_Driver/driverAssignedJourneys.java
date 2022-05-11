@@ -37,8 +37,9 @@ public class driverAssignedJourneys {
                 JourneyID = (String) tableModel.getValueAt(tblDriverAssignedJourneys.getSelectedRow(),1);
                 driverSignupModel dsm = new driverSignupModel();
                 dsm.setJourneyID(JourneyID);
-                System.out.println("check jID from  driver Tabel = "+JourneyID);
+//                System.out.println("check jID from  driver Tabel = "+JourneyID);
                 new driverDashboard();
+                frame.dispose();
 
             }
         });
