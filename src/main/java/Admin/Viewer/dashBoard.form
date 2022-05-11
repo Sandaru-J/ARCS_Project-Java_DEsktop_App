@@ -16,13 +16,17 @@
     <children>
       <component id="ea4ab" class="javax.swing.JToolBar$Separator">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="1735" height="10"/>
+          </grid>
         </constraints>
         <properties/>
       </component>
       <component id="a7ac3" class="javax.swing.JToolBar$Separator">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="1735" height="10"/>
+          </grid>
         </constraints>
         <properties>
           <background color="-1"/>
@@ -31,7 +35,7 @@
       <tabbedpane id="69110" binding="tabbedPane1" default-binding="true">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="200" height="500"/>
+            <preferred-size width="1735" height="500"/>
           </grid>
         </constraints>
         <properties>
@@ -1951,7 +1955,7 @@
                                   <text value="EMERGENCY"/>
                                 </properties>
                               </component>
-                              <component id="b2668" class="javax.swing.JButton">
+                              <component id="b2668" class="javax.swing.JButton" binding="btnTrackDriver">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                                 </constraints>
@@ -2388,6 +2392,22 @@
                           </component>
                         </children>
                       </grid>
+                      <component id="4e361" class="javax.swing.JButton" binding="btnStMap">
+                        <constraints>
+                          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Station Map"/>
+                        </properties>
+                      </component>
+                      <component id="2e28f" class="javax.swing.JButton" binding="btnMap">
+                        <constraints>
+                          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Button"/>
+                        </properties>
+                      </component>
                     </children>
                   </grid>
                 </children>

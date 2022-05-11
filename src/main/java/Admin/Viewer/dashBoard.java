@@ -8,10 +8,13 @@ import DatabaseConnection.SqlServerConnection;
 import javax.swing.*;
 
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 
 import java.text.DecimalFormat;
@@ -139,6 +142,9 @@ public class dashBoard extends javax.swing.JFrame {
     private JLabel lblAdminCurrentTime;
     private JLabel lblAdminCurrrentDate;
     private JButton btnEmergency;
+    private JButton btnStMap;
+    private JButton btnMap;
+    private JButton btnTrackDriver;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
 
@@ -434,6 +440,7 @@ public class dashBoard extends javax.swing.JFrame {
                 String driverName = txtDriverNameJourney.getText();
                 int trainID = Integer.parseInt(textField1.getText());
 
+
                 JourneyController journeyController = new JourneyController();
                 try {
                     journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName, trainID);
@@ -442,6 +449,7 @@ public class dashBoard extends javax.swing.JFrame {
                 } catch (ParseException ex) {
                     ex.printStackTrace();
                 }
+
 
             }
         });
@@ -817,6 +825,47 @@ public class dashBoard extends javax.swing.JFrame {
                 txtUpdatedJourneyStartingTime.setText((String) tableModel.getValueAt(tblUpdateJourney.getSelectedRow(),7));
                 txtUpdatedJourneyEndingTime.setText((String) tableModel.getValueAt(tblUpdateJourney.getSelectedRow(),8));
 
+            }
+        });
+        btnStMap.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                File file = new File("src/main/java/Admin/Viewer/ARCSMap.html");
+                if (!Desktop.isDesktopSupported())//check if Desktop is supported by Platform or not
+                {
+                    System.out.println("not supported");
+                    return;
+                }
+                Desktop desktop = Desktop.getDesktop();
+                if (file.exists())         //checks file exists or not
+                {
+                    try {
+                        desktop.open(file);              //opens the specified file
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+
+        });
+        btnTrackDriver.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                File file = new File("src/main/java/Admin/Viewer/geolocation/index.html");
+                if (!Desktop.isDesktopSupported())//check if Desktop is supported by Platform or not
+                {
+                    System.out.println("Browser not supported");
+                    return;
+                }
+                Desktop desktop = Desktop.getDesktop();
+                if (file.exists())         //checks file exists or not
+                {
+                    try {
+                        desktop.open(file);              //opens the specified file
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
             }
         });
     }
