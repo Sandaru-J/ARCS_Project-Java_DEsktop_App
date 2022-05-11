@@ -143,7 +143,6 @@ public class dashBoard extends javax.swing.JFrame {
     private JLabel lblAdminCurrrentDate;
     private JButton btnEmergency;
     private JButton btnStMap;
-    private JButton btnMap;
     private JButton btnTrackDriver;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
@@ -758,6 +757,7 @@ public class dashBoard extends javax.swing.JFrame {
                         lblViewDriverPhone.setText(rs.getString("DriverContactNumber"));
                         lblViewTrainID.setText(rs.getString("TrainID"));
                         lblViewEngineID.setText(rs.getString("EngineID"));
+
                         i++;
                     }
 
@@ -1379,7 +1379,7 @@ public class dashBoard extends javax.swing.JFrame {
     private void viewPane()
     {
         textPaneJourneyStatus.setText("" +
-                "dw");
+                "");
     }
 
 

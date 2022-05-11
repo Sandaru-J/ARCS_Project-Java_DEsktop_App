@@ -49,6 +49,7 @@ public class driverDashboard {
     private JProgressBar progressBarRequiredSpeed;
     private JButton journeyEndButton;
     private JLabel lblViewDistance1;
+    private JButton btnLogout;
 
     Timer timer;
     Timer timer1;
@@ -555,6 +556,14 @@ public class driverDashboard {
                 }
 
 
+            }
+        });
+        btnLogout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                frame.dispose();
+                new driverLogin();
             }
         });
     }

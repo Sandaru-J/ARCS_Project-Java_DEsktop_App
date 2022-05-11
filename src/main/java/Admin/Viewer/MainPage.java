@@ -1,17 +1,16 @@
+package Admin.Viewer;
 
-import Admin.Viewer.Login;
-import Driver.Viewer_Driver.driverDashboard;
 import Driver.Viewer_Driver.driverLogin;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Driver;
 
 public class MainPage {
     private JButton adminButton;
     private JButton driverButton;
     private JPanel panelMainPage;
+    private JLabel lblHeading;
 
     public MainPage()
     {
@@ -23,6 +22,8 @@ public class MainPage {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setSize(500,400);
+
+        lblHeading.setText("<html>AUTOMATED RAILWAY<br/>&nbsp;&nbsp;&nbsp;CONTROL SYSTEM</html>");
 
         adminButton.addActionListener(new ActionListener() {
             @Override
