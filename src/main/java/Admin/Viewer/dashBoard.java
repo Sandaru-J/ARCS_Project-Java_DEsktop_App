@@ -144,6 +144,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JButton btnEmergency;
     private JButton btnStMap;
     private JButton btnMap;
+    private JButton btnTrackDriver;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
 
@@ -844,6 +845,26 @@ public class dashBoard extends javax.swing.JFrame {
                 }
             }
 
+        });
+        btnTrackDriver.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                File file = new File("src/main/java/Admin/Viewer/geolocation/index.html");
+                if (!Desktop.isDesktopSupported())//check if Desktop is supported by Platform or not
+                {
+                    System.out.println("Browser not supported");
+                    return;
+                }
+                Desktop desktop = Desktop.getDesktop();
+                if (file.exists())         //checks file exists or not
+                {
+                    try {
+                        desktop.open(file);              //opens the specified file
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
         });
     }
 
