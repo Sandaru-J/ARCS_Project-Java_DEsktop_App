@@ -430,26 +430,64 @@ public class dashBoard extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 //durationCalc();
 
-                String journeyName = txtJourneyName.getText();
-                Float startingTime = Float.valueOf(txtStartingTime.getText());
-                Float endTime = Float.valueOf(txtEndTime.getText());
-                String startingStation = (String) cmbStartingStation.getSelectedItem();
-                String destination = (String) cmbEndStation.getSelectedItem();
-                LocalDate date = LocalDate.parse(txtDate.getText());
-                String journeyType = (String) cmbJourneyType.getSelectedItem();
-                String driverName = txtDriverNameJourney.getText();
-                int trainID = Integer.parseInt(textField1.getText());
-
-
-                JourneyController journeyController = new JourneyController();
-                try {
-                    journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName, trainID);
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                } catch (ParseException ex) {
-                    ex.printStackTrace();
+                if(txtJourneyName.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtStartingTime.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtEndTime.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtDate.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtDriverNameJourney.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(textField1.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
                 }
 
+
+                    else {
+
+                        try {
+                            String journeyName = txtJourneyName.getText();
+                            Float startingTime = Float.valueOf(txtStartingTime.getText());
+                            Float endTime = Float.valueOf(txtEndTime.getText());
+                            String startingStation = (String) cmbStartingStation.getSelectedItem();
+                            String destination = (String) cmbEndStation.getSelectedItem();
+                            LocalDate date = LocalDate.parse(txtDate.getText());
+                            String journeyType = (String) cmbJourneyType.getSelectedItem();
+                            String driverName = txtDriverNameJourney.getText();
+                            int trainID = Integer.parseInt(textField1.getText());
+
+                            JourneyController journeyController = new JourneyController();
+
+                            boolean i = journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName, trainID);
+                            if (!i) {
+                                System.out.println("Data Successfully Registered");
+                                JOptionPane.showMessageDialog(dashPanel, "Admin Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
+
+                                txtJourneyName.setText("");
+                                txtStartingTime.setText("");
+                                txtEndTime.setText("");
+                                txtDate.setText("");
+                                txtDriverNameJourney.setText("");
+                                textField1.setText("");
+                                cmbStartingStation.setSelectedItem("");
+                                cmbEndStation.setSelectedItem("");
+                                cmbJourneyType.setSelectedItem("");
+
+                            } else {
+                                System.out.println("Data Not Registered");
+                                JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Admin Registration", "Error!", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                    }
 
             }
         });
@@ -705,7 +743,7 @@ public class dashBoard extends javax.swing.JFrame {
 
                     int i = 0;
                     while (rs.next()) {
-//
+
                         lblViewJourneyName.setText(rs.getString("JourneyName"));
                         lblViewJourneyType.setText(rs.getString("JourneyType"));
                         lblViewJourneyID.setText(String.valueOf(rs.getString("JourneyID")));

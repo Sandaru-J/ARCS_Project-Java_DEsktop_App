@@ -34,41 +34,41 @@ public class Login extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-//                new dashBoard().setVisible(true);
-//                System.out.println("OK");
+                if (txtUsername.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(panelLogin, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                } else if (txtPassword.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(panelLogin, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                } else {
 
-                String AdminUserName = txtUsername.getText();
-                String AdminPassword = txtPassword.getText();
+                    String AdminUserName = txtUsername.getText();
+                    String AdminPassword = txtPassword.getText();
 
-                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
-                Connection con = objSqlServerConnection.createConnectionSqlServer();
+                    SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                    Connection con = objSqlServerConnection.createConnectionSqlServer();
 
-                String qry = "SELECT * FROM ARCSDatabase.dbo.AdminDetails WHERE AdminUserName=? AND AdminPassword=?";
-                try {
+                    String qry = "SELECT * FROM ARCSDatabase.dbo.AdminDetails WHERE AdminUserName=? AND AdminPassword=?";
+                    try {
 
-                    PreparedStatement ps = con.prepareStatement(qry);
-                    ps.setString(1,AdminUserName);
-                    ps.setString(2,AdminPassword);
-                    ResultSet rs = ps.executeQuery();
+                        PreparedStatement ps = con.prepareStatement(qry);
+                        ps.setString(1, AdminUserName);
+                        ps.setString(2, AdminPassword);
+                        ResultSet rs = ps.executeQuery();
 
-                    if(rs.next())
-                    {
-                        new dashBoard();
-                        frame.dispose();
-                        System.out.println("OK");
+                        if (rs.next()) {
+                            new dashBoard();
+                            frame.dispose();
+                            System.out.println("OK");
+                        } else {
+                            System.out.println("Wrong");
+                            txtUsername.setText("");
+                            txtPassword.setText("");
+                        }
+
+
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
                     }
-                    else
-                    {
-                        System.out.println("Wrong");
-                        txtUsername.setText("");
-                        txtPassword.setText("");
-                    }
-
-
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
                 }
-
 
             }
         });
