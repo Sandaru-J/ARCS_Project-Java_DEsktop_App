@@ -313,7 +313,7 @@
                                   <background color="-13909833"/>
                                   <font name="Baskerville Old Face" size="22" style="1"/>
                                   <foreground color="-16777216"/>
-                                  <text value=" km"/>
+                                  <text value="121 km"/>
                                 </properties>
                               </component>
                               <component id="e8e91" class="javax.swing.JLabel" binding="lblViewDistance1">

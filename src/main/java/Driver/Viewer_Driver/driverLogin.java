@@ -12,7 +12,7 @@ public class driverLogin {
     private JButton driverLoginButton;
     private JButton driverClearButton;
     private JPanel panelDriverLogin;
-    private JTextField txtDriverPassword;
+    private JTextField txtDriverPassword1;
 
     String DriverUserName;
     public driverLogin()
@@ -30,27 +30,30 @@ public class driverLogin {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String DriverUserName = txtDriverUsername.getText();
-                String DriverPassword = txtDriverPassword.getText();
+                if (txtDriverUsername.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(panelDriverLogin, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                } else if (txtDriverUsername.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(panelDriverLogin, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    String DriverUserName = txtDriverUsername.getText();
+                    String DriverPassword = txtDriverUsername.getText();
 
-                DriverController driverController = new DriverController();
-                boolean i = driverController.driverLogin(DriverUserName, DriverPassword);
+                    DriverController driverController = new DriverController();
+                    boolean i = driverController.driverLogin(DriverUserName, DriverPassword);
 
-                if(!i)
-                {
-                    new driverAssignedJourneys();
-                    frame.dispose();
-                    System.out.println("OK");
+                    if (!i) {
+                        new driverAssignedJourneys();
+                        frame.dispose();
+                        System.out.println("OK");
+
+                    } else {
+                        System.out.println("Wrong");
+                        txtDriverUsername.setText("");
+                        txtDriverPassword1.setText("");
+                    }
+
 
                 }
-                else
-                {
-                    System.out.println("Wrong");
-                    txtDriverUsername.setText("");
-                    txtDriverPassword.setText("");
-                }
-
-
             }
         });
     }
