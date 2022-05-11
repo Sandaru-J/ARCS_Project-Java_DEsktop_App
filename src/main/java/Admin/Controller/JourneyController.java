@@ -19,14 +19,14 @@ public class JourneyController {
 
         createJourneyModel createJourneyModel = new createJourneyModel();
 
-        DateFormat dateFormat = new SimpleDateFormat("hh:mm");
-        LocalDateTime st = LocalDateTime.parse(startingTime);
+//        DateFormat dateFormat = new SimpleDateFormat("hh:mm");
+//        LocalDateTime st = LocalDateTime.parse(startingTime);
 //        Date st = dateFormat.parse(startingTime);
-        Time et = (Time) dateFormat.parse(endTime);
+//        Time et = (Time) dateFormat.parse(endTime);
 
         createJourneyModel.setJourneyName(journeyName);
         //createJourneyModel.setStartingTime(st);
-        createJourneyModel.setEndTime(et);
+        //createJourneyModel.setEndTime(et);
         createJourneyModel.setStartingStation(startingStation);
         createJourneyModel.setDestination(destination);
         createJourneyModel.setDate(date);

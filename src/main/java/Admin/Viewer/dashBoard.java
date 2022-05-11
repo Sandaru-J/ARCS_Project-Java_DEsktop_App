@@ -14,9 +14,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.*;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class dashBoard extends javax.swing.JFrame {
     public JPanel dashPanel;
@@ -70,7 +72,6 @@ public class dashBoard extends javax.swing.JFrame {
     private JPanel rootPannel;
     private JPanel tblPanel;
     private JTable table1;
-
     private JPanel panel1;
     private JTextField txtAdminUsername;
     private JTextField txtAdminEmail;
@@ -135,8 +136,16 @@ public class dashBoard extends javax.swing.JFrame {
     private JTextPane textPaneJourneyStatus;
     private JComboBox cmbStartingStation;
     private JComboBox cmbEndStation;
+    private JLabel lblAdminCurrentTime;
+    private JLabel lblAdminCurrrentDate;
+    private JButton btnEmergency;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
+
+    Timer timer1Admin;
+    int hour1Admin, minute1Admin, second1Admin;
+    String ddHour1Admin, ddMinute1Admin, ddSecond1Admin;
+    DecimalFormat dFormat = new DecimalFormat("00");
 
     public dashBoard() {
 
@@ -148,13 +157,14 @@ public class dashBoard extends javax.swing.JFrame {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setSize(1200, 600);
-        panelARCSDashboard.setSize(1200,50);
+        //panelARCSDashboard.setSize(1200,50);
         createJourneyTbl();
         createEngineTbl();
         createBlockTbl();
         createDriverTbl();
         createTrainTbl();
         createUpdateJourneyrTbl();
+        Main2Admin();
         viewPane();
 
         //Full Screen
@@ -1197,6 +1207,73 @@ public class dashBoard extends javax.swing.JFrame {
 //                }itch
 //
 //            }
+
+
+    public void Main2Admin() {
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime now = LocalTime.now();
+
+
+        lblAdminCurrentTime.setText((dtf.format(now)));
+
+        DateTimeFormatter h = DateTimeFormatter.ofPattern("HH");
+        DateTimeFormatter m = DateTimeFormatter.ofPattern("mm");
+        DateTimeFormatter s = DateTimeFormatter.ofPattern("ss");
+
+
+        lblAdminCurrrentDate.setText(String.valueOf(LocalDate.now()));
+
+        hour1Admin = Integer.parseInt(h.format(now));
+        minute1Admin = Integer.parseInt(m.format(now));
+        second1Admin = Integer.parseInt(s.format(now));
+
+//        Time EndingTime = Time.valueOf(lblViewEndingTime.getName());
+//        System.out.println(EndingTime);
+
+        currentTimer();
+        timer1Admin.start();
+    }
+
+    public void currentTimer() {
+
+        timer1Admin = new Timer(1000, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                second1Admin++;
+                ddSecond1Admin = dFormat.format(second1Admin);
+                ddMinute1Admin = dFormat.format(minute1Admin);
+                ddHour1Admin = dFormat.format(hour1Admin);
+
+                lblAdminCurrentTime.setText(ddHour1Admin + ":" + ddMinute1Admin + ":" + ddSecond1Admin);
+
+                if(second1Admin==60) {
+                    second1Admin = 0;
+                    minute1Admin++;
+
+                    ddHour1Admin = dFormat.format(hour1Admin);
+                    ddMinute1Admin = dFormat.format(minute1Admin);
+                    ddHour1Admin = dFormat.format(hour1Admin);
+                    lblAdminCurrentTime.setText(ddHour1Admin + ":" + ddMinute1Admin + ":" + ddSecond1Admin);
+
+                }
+                if(minute1Admin==60) {
+                    minute1Admin = 0;
+                    hour1Admin++;
+                    ddHour1Admin = dFormat.format(hour1Admin);
+                    ddMinute1Admin = dFormat.format(minute1Admin);
+                    ddHour1Admin = dFormat.format(hour1Admin);
+                    lblAdminCurrentTime.setText(ddHour1Admin + ":" + ddMinute1Admin + ":" + ddSecond1Admin);
+                }
+
+                if(hour1Admin==0 && minute1Admin==0 && second1Admin==0) {
+                    timer1Admin.stop();
+                }
+            }
+        });
+    }
 
 
 

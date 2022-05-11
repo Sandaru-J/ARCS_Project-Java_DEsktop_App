@@ -29,8 +29,6 @@ public class Login extends JFrame{
         frame.setLocationRelativeTo(null);
         frame.setSize(950,400);
 
-        ImageIcon trainIcon = new ImageIcon(this.getClass().getResource("/Images/trailLogo.png"));
-        lbkABC = new JLabel(trainIcon);
 
         loginButton.addActionListener(new ActionListener() {
             @Override
