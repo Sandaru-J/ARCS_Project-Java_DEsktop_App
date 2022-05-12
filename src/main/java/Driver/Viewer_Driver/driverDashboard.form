@@ -155,7 +155,7 @@
                             </constraints>
                             <properties>
                               <background color="-4431801"/>
-                              <font name="Courier New" size="26" style="1"/>
+                              <font name="Courier New" size="28" style="1"/>
                               <foreground color="-1"/>
                               <text value=""/>
                             </properties>
@@ -231,24 +231,13 @@
                                   <text value="-"/>
                                 </properties>
                               </component>
-                              <component id="e1a88" class="javax.swing.JLabel">
-                                <constraints>
-                                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-13909833"/>
-                                  <font name="Baskerville Old Face" size="22" style="1"/>
-                                  <foreground color="-16777216"/>
-                                  <text value=" hours"/>
-                                </properties>
-                              </component>
                               <component id="1bca8" class="javax.swing.JLabel" binding="lblViewDuration">
                                 <constraints>
-                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <background color="-13909833"/>
-                                  <font name="Baskerville Old Face" size="22" style="1"/>
+                                  <font name="Baskerville Old Face" size="24" style="1"/>
                                   <foreground color="-16777216"/>
                                   <text value=""/>
                                 </properties>
@@ -305,24 +294,13 @@
                                   <text value="- "/>
                                 </properties>
                               </component>
-                              <component id="eb05e" class="javax.swing.JLabel" binding="lblViewDistance">
+                              <component id="eb05e" class="javax.swing.JLabel" binding="lblViewDistance1">
                                 <constraints>
-                                  <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+                                  <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <background color="-13909833"/>
-                                  <font name="Baskerville Old Face" size="22" style="1"/>
-                                  <foreground color="-16777216"/>
-                                  <text value="121 km"/>
-                                </properties>
-                              </component>
-                              <component id="e8e91" class="javax.swing.JLabel" binding="lblViewDistance1">
-                                <constraints>
-                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-13909833"/>
-                                  <font name="Baskerville Old Face" size="22" style="1"/>
+                                  <font name="Baskerville Old Face" size="24" style="1"/>
                                   <foreground color="-16777216"/>
                                   <text value=""/>
                                 </properties>
@@ -404,7 +382,7 @@
                               <background color="-13909833"/>
                               <font name="Baskerville Old Face" size="28" style="1"/>
                               <foreground color="-16777216"/>
-                              <text value="00 km/h"/>
+                              <text value=""/>
                             </properties>
                           </component>
                         </children>

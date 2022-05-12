@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.sql.*;
 
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -62,6 +61,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JButton btnBlockCancel;
     private JButton btnBlockRegister;
     private JLabel lblDuration;
+    private JLabel lblDurationNew;
     private JLabel lblDistance;
     private JPanel lblEngineID;
     private JTextField txtBlock;
@@ -108,7 +108,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JTable tblDriver;
     private JProgressBar progressBarSpeed;
     private JPanel panelARCSDashboard;
-    private JLabel lblSpeed;
+    private JLabel lblAdminViewSpeed;
     private JButton btnTrainRegister;
     private JButton btnTrainRegistrationClear;
     private JTextField txtEngineID;
@@ -185,7 +185,7 @@ public class dashBoard extends javax.swing.JFrame {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            lblSpeed.setText(i + "km/h");
+            lblAdminViewSpeed.setText(i + "km/h");
             progressBarSpeed.setValue(i);
         }
 
@@ -750,13 +750,21 @@ public class dashBoard extends javax.swing.JFrame {
                         lblViewDestination.setText(rs.getString("EndStationName"));
                         lblViewStartingTime.setText(rs.getString("JourneyStartTime"));
                         lblViewEndingTime.setText(rs.getString("JourneyEndTime"));
-                        lblViewDuration.setText(rs.getString("TimeDuration"));
                         lblViewDate.setText(rs.getString("Date"));
                         lblViewDriverName.setText(rs.getString("DriverFullName"));
                         lblViewDriverID.setText(rs.getString("DriverID"));
                         lblViewDriverPhone.setText(rs.getString("DriverContactNumber"));
                         lblViewTrainID.setText(rs.getString("TrainID"));
                         lblViewEngineID.setText(rs.getString("EngineID"));
+
+                        float Duration = rs.getFloat("Duration");
+                        float Distance = rs.getFloat("Distance");
+                        float AverageSpeed = rs.getFloat("AverageSpeed");
+
+                        lblDurationNew.setText(Duration + " hours");
+                        lblViewDistance.setText(Distance + " km");
+                        lblAdminViewSpeed.setText(AverageSpeed + " km/h");
+
 
                         i++;
                     }
@@ -765,8 +773,7 @@ public class dashBoard extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-                lblViewDistance.setText("12km");
-                lblSpeed.setText("70");
+
 
             }
         });
