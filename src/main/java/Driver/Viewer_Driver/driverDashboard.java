@@ -27,7 +27,6 @@ public class driverDashboard {
     private JLabel lblViewJourneyType;
     private JLabel lblViewDestination;
     private JLabel lblViewStartingStation;
-    private JLabel lblViewDistance;
     private JLabel lblViewStartingTime;
     private JLabel lblViewEndingTime;
     private JLabel lblViewDuration;
@@ -88,17 +87,6 @@ public class driverDashboard {
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = graphics.getDefaultScreenDevice();
         device.setFullScreenWindow(frame);
-
-        for (int i = 0; i <= 70; i++) {
-
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        lblSpeed.setText(i + "km/h");
-        }
-
 
 
         btnEmergency.addActionListener(new ActionListener() {
@@ -595,13 +583,46 @@ public class driverDashboard {
                 lblViewDestination.setText(rs.getString("EndStationName"));
                 lblViewStartingTime.setText(rs.getString("JourneyStartTime"));
                 lblViewEndingTime.setText(rs.getString("JourneyEndTime"));
-                lblViewDuration.setText(String.valueOf(rs.getFloat("TimeDuration")));
                 lblViewDate.setText(rs.getString("Date"));
-                lblViewDistance1.setText(rs.getString("Distance"));
+                float Duration = rs.getFloat("Duration");
+                float Distance = rs.getFloat("Distance");
+                float AverageSpeed = rs.getFloat("AverageSpeed");
 
+                for (int j = 0; j <= Duration; j++) {
+
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    lblViewDistance1.setText(j + " km");
+                }
+
+                for (int j = 0; j <= Distance; j++) {
+
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    lblViewDuration.setText(j + " hours");
+                }
+
+                for (int j = 0; j <= AverageSpeed; j++) {
+
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    lblSpeed.setText(j + " km/h");
+                }
 
                 i++;
             }
+
+
+
 
 
         } catch (SQLException ex) {
