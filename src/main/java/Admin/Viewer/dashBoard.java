@@ -459,7 +459,7 @@ public class dashBoard extends javax.swing.JFrame {
                             boolean i = journeyController.createJourney(journeyName, startingTime, endTime, startingStation, destination, date, journeyType, driverName, trainID);
                             if (!i) {
                                 System.out.println("Data Successfully Registered");
-                                JOptionPane.showMessageDialog(dashPanel, "Admin Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
+                                JOptionPane.showMessageDialog(dashPanel, "Journey Created Successfully", " Created!", JOptionPane.PLAIN_MESSAGE);
 
                                 txtJourneyName.setText("");
                                 txtStartingTime.setText("");
@@ -473,7 +473,7 @@ public class dashBoard extends javax.swing.JFrame {
 
                             } else {
                                 System.out.println("Data Not Registered");
-                                JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Admin Registration", "Error!", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Journey Creation", "Error!", JOptionPane.ERROR_MESSAGE);
                             }
                         } catch (Exception ex) {
                             ex.printStackTrace();
