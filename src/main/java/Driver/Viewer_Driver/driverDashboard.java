@@ -1,5 +1,6 @@
 package Driver.Viewer_Driver;
 
+import Admin.Viewer.dashBoard;
 import DatabaseConnection.SqlServerConnection;
 
 import javax.sound.sampled.AudioInputStream;
@@ -460,6 +461,7 @@ public class driverDashboard {
 
                 driverSignupModel dsm = new driverSignupModel();
 
+
                 SqlServerConnection objSqlServerConnection = new SqlServerConnection();
                 Connection con = objSqlServerConnection.createConnectionSqlServer();
 
@@ -472,6 +474,8 @@ public class driverDashboard {
                     cs.execute();
 
                     System.out.println("Updated Journey Status");
+//                    dashBoard dashBoard = new dashBoard();
+//                    dashBoard.createJourneyTbl();
 
                 } catch (SQLException ex) {
                     ex.printStackTrace();
@@ -588,7 +592,7 @@ public class driverDashboard {
                 float Distance = rs.getFloat("Distance");
                 float AverageSpeed = rs.getFloat("AverageSpeed");
 
-                for (int j = 0; j <= Duration; j++) {
+                for (int j = 0; j <= Distance; j++) {
 
                     try {
                         Thread.sleep(100);
@@ -598,7 +602,7 @@ public class driverDashboard {
                     lblViewDistance1.setText(j + " km");
                 }
 
-                for (int j = 0; j <= Distance; j++) {
+                for (int j = 0; j <= Duration; j++) {
 
                     try {
                         Thread.sleep(100);

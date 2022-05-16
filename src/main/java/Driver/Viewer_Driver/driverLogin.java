@@ -31,12 +31,12 @@ public class driverLogin {
             public void actionPerformed(ActionEvent e) {
 
                 if (txtDriverUsername.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(panelDriverLogin, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
-                } else if (txtDriverUsername.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(panelDriverLogin, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(panelDriverLogin, "Username Missing!", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                } else if (txtDriverPassword1.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(panelDriverLogin, "Password Missing!", "Try Again!", JOptionPane.ERROR_MESSAGE);
                 } else {
                     String DriverUserName = txtDriverUsername.getText();
-                    String DriverPassword = txtDriverUsername.getText();
+                    String DriverPassword = txtDriverPassword1.getText();
 
                     DriverController driverController = new DriverController();
                     boolean i = driverController.driverLogin(DriverUserName, DriverPassword);

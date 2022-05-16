@@ -144,6 +144,7 @@ public class dashBoard extends javax.swing.JFrame {
     private JButton btnEmergency;
     private JButton btnStMap;
     private JButton btnTrackDriver;
+    private JPanel pnl2;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
 
@@ -178,16 +179,7 @@ public class dashBoard extends javax.swing.JFrame {
 //        device.setFullScreenWindow(frame);
 
 
-        for (int i = 0; i <= 70; i++) {
 
-            try {
-                Thread.sleep(20);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            lblAdminViewSpeed.setText(i + "km/h");
-            progressBarSpeed.setValue(i);
-        }
 
         btnCancel.addActionListener(new ActionListener() {
             @Override
@@ -765,6 +757,17 @@ public class dashBoard extends javax.swing.JFrame {
                         lblViewDistance.setText(Distance + " km");
                         lblAdminViewSpeed.setText(AverageSpeed + " km/h");
 
+                        for (int j = 0; j <= AverageSpeed; j++) {
+
+                            try {
+                                Thread.sleep(20);
+                            } catch (InterruptedException ex) {
+                                ex.printStackTrace();
+                            }
+
+                            progressBarSpeed.setValue(j);
+                        }
+
 
                         i++;
                     }
@@ -913,6 +916,14 @@ public class dashBoard extends javax.swing.JFrame {
                 }
             }
         });
+        pnl2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                createJourneyTbl();
+            }
+        });
     }
 
     public int rowCountJourney() {
@@ -931,7 +942,7 @@ public class dashBoard extends javax.swing.JFrame {
         return count;
     }
 
-    private void createJourneyTbl() {
+    public void createJourneyTbl() {
         SqlServerConnection objSqlServCon = new SqlServerConnection();
         Connection con = objSqlServCon.createConnectionSqlServer();
 
