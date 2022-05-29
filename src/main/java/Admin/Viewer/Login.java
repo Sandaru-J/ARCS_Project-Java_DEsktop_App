@@ -59,18 +59,20 @@ public class Login extends JFrame{
                             frame.dispose();
                             System.out.println("OK");
                         } else {
+                            JOptionPane.showMessageDialog(panelLogin, "Invalid Credentials", "Try Again!", JOptionPane.ERROR_MESSAGE);
                             System.out.println("Wrong");
                             txtUsername.setText("");
                             txtPassword.setText("");
                         }
 
-
+                    boolean i = rs.next();
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
                 }
 
             }
+
         });
         clearButton.addActionListener(new ActionListener() {
             @Override
