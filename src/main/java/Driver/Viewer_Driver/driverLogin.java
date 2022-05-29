@@ -1,11 +1,16 @@
 package Driver.Viewer_Driver;
 
 //import Admin.Viewer.dashBoard;
+import DatabaseConnection.SqlServerConnection;
 import Driver.Controller_Driver.DriverController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class driverLogin {
     private JTextField txtDriverUsername;
@@ -38,28 +43,41 @@ public class driverLogin {
                     String DriverUserName = txtDriverUsername.getText();
                     String DriverPassword = txtDriverPassword1.getText();
 
-                    DriverController driverController = new DriverController();
-                    boolean i = driverController.driverLogin(DriverUserName, DriverPassword);
+                    SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+                    Connection con = objSqlServerConnection.createConnectionSqlServer();
 
-                    if (!i) {
-                        new driverAssignedJourneys();
-                        frame.dispose();
-                        System.out.println("OK");
+                    String qry = "SELECT * FROM ARCSDatabase.dbo.DriverDetails WHERE DriverUserName=? AND DriverPassword=?";
+                    try {
 
-                    } else {
-                        System.out.println("Wrong");
-                        txtDriverUsername.setText("");
-                        txtDriverPassword1.setText("");
+                        PreparedStatement ps = con.prepareStatement(qry);
+                        ps.setString(1, DriverUserName);
+                        ps.setString(2, DriverPassword);
+                        ResultSet rs = ps.executeQuery();
+                        if (rs.next()) {
+                            new driverAssignedJourneys();
+                            frame.dispose();
+                            System.out.println("OK");
+
+                        } else {
+
+                            JOptionPane.showMessageDialog(panelDriverLogin, "Invalid Credentials", "Try Again!", JOptionPane.ERROR_MESSAGE);
+                            System.out.println("Wrong");
+                            txtDriverUsername.setText("");
+                            txtDriverPassword1.setText("");
+                        }
+
+
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
                     }
-
-
                 }
             }
         });
-    }
+        }
 
     public static void main(String[] args) {
         new driverLogin();
     }
 
 }
+
