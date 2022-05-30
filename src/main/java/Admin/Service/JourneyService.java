@@ -4,9 +4,13 @@ import DatabaseConnection.SqlServerConnection;
 import Admin.Model.createJourneyModel;
 
 import java.sql.*;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.sql.Date;
+
+import static java.lang.Float.parseFloat;
 
 public class JourneyService {
 
@@ -49,21 +53,22 @@ public class JourneyService {
         DecimalFormat df = new DecimalFormat("0.00");
 
         long distance = y - x;
-        float Distance = Float.parseFloat(df.format(distance));
-
+        float Distance = parseFloat(df.format(distance));
+        if(Distance<0){
+            Distance = -Distance;
+        }
         /////////////////////////////
 
         Float time1 = cJourney.getStartingTime();
         Float time2 = cJourney.getEndTime();
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH.mm");
-
+        DateFormat simpleDateFormat = new SimpleDateFormat("HH.mm");
         // Parsing the Time Period
         long differenceInHours = 0;
         long differenceInMilliSeconds = 0;
         try {
-            Date date1 = (Date) simpleDateFormat.parse(String.valueOf(time1));
-            Date date2 = (Date) simpleDateFormat.parse(String.valueOf(time2));
+            java.util.Date date1 = simpleDateFormat.parse(String.valueOf(time1));
+            java.util.Date date2 =  simpleDateFormat.parse(String.valueOf(time2));
 
 
             differenceInMilliSeconds = Math.abs(date2.getTime() - date1.getTime());
@@ -82,7 +87,7 @@ public class JourneyService {
 
 
         final DecimalFormat df1 = new DecimalFormat("0.00");
-        float Duration = Float.parseFloat(df1.format(differenceInHours));
+        float Duration = parseFloat(df1.format(differenceInHours));
 
         ///////////////////////////
 
