@@ -201,8 +201,11 @@ public class driverDashboard {
 
                 System.out.println(startStation);
                 System.out.println(endStation);
+                System.out.println("end "+endTime);
+                System.out.println("current"+currentTime);
+                System.out.println("start"+startTime);
 
-                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
                 try {
                     java.util.Date time3 = format.parse(endTime);
                     java.util.Date time2 = format.parse(currentTime);
@@ -313,7 +316,7 @@ public class driverDashboard {
                 System.out.println(startStation);
                 System.out.println(endStation);
 
-                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
                 try {
                     java.util.Date time3 = format.parse(endTime);
                     java.util.Date time2 = format.parse(currentTime);
@@ -424,7 +427,7 @@ public class driverDashboard {
                 System.out.println(startStation);
                 System.out.println(endStation);
 
-                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm:");
                 try {
                     java.util.Date time3 = format.parse(endTime);
                     java.util.Date time2 = format.parse(currentTime);

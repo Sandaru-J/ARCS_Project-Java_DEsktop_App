@@ -371,7 +371,7 @@ public class dashBoard extends javax.swing.JFrame {
                 else if(txtQuantity.getText().isEmpty()){
                     JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
                 }
-                else if(txtCapacity.getText().isEmpty()){
+                else if(txtCap.getText().isEmpty()){
                     JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
                 }
                 else {
@@ -922,6 +922,11 @@ public class dashBoard extends javax.swing.JFrame {
                 super.mouseClicked(e);
 
                 createJourneyTbl();
+                createEngineTbl();
+                createDriverTbl();
+                createBlockTbl();
+                createTrainTbl();
+                createUpdateJourneyrTbl();
             }
         });
     }
@@ -947,6 +952,8 @@ public class dashBoard extends javax.swing.JFrame {
         Connection con = objSqlServCon.createConnectionSqlServer();
 
         try {
+//            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.GetAllTrainDetails}");
+//            ResultSet rs = cs.executeQuery();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[JourneyDetails]");
 
