@@ -23,7 +23,7 @@ function createMap () {
       };
       console.log(position);
       infoWindow.setPosition(position);
-      infoWindow.setContent('Journey 07  6.86685,79.88434');
+      infoWindow.setContent('6.86685,79.88434');
       infoWindow.open(map);
       map.setCenter(position);
     }, function () {
