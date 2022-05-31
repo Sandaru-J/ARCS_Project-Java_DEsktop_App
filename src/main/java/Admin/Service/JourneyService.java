@@ -106,19 +106,6 @@ public class JourneyService {
 
         try {
 
-            try
-            {
-                int trainid = cJourney.getTrainID();
-
-                CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ValidationTrainID('"+trainid+"')}");
-                cs.execute();
-
-            }
-            catch (Exception ex)
-            {
-                ex.printStackTrace();
-            }
-
             CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertJourneyDetails(?,?,?,?,?,?,?,?,?,?,?,?)}");
 //            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainEngineDetails] values(?,?,?)");
             boolean i;

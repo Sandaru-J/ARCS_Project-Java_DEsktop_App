@@ -813,388 +813,6 @@
                   </component>
                 </children>
               </grid>
-              <grid id="6b1eb" layout-manager="GridLayoutManager" row-count="20" column-count="25" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <tabbedpane title="Train"/>
-                </constraints>
-                <properties>
-                  <background color="-1"/>
-                </properties>
-                <border type="none"/>
-                <children>
-                  <component id="e49de" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="2" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Calibri" size="22" style="1"/>
-                      <foreground color="-16777216"/>
-                      <text value="Engine ID"/>
-                    </properties>
-                  </component>
-                  <component id="d14ad" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="3" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Calibri" size="22" style="1"/>
-                      <foreground color="-16777216"/>
-                      <text value="Block ID 01"/>
-                    </properties>
-                  </component>
-                  <component id="5adc9" class="javax.swing.JTextField" binding="txtEngineID">
-                    <constraints>
-                      <grid row="2" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="b4890" class="javax.swing.JTextField" binding="txtBlockID2">
-                    <constraints>
-                      <grid row="4" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="8f409" class="javax.swing.JTextField" binding="txtBlockID1">
-                    <constraints>
-                      <grid row="3" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="86b5f" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="3" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Calibri" size="22" style="1"/>
-                      <foreground color="-16777216"/>
-                      <text value="Block Count"/>
-                    </properties>
-                  </component>
-                  <component id="3d917" class="javax.swing.JTextField" binding="txtBlockCount1">
-                    <constraints>
-                      <grid row="3" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="8e463" class="javax.swing.JTextField" binding="txtBlockCount2">
-                    <constraints>
-                      <grid row="4" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="7f0e4" class="javax.swing.JButton" binding="btnTrainRegistrationClear">
-                    <constraints>
-                      <grid row="9" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-3243246"/>
-                      <font name="Cambria" size="18" style="1"/>
-                      <foreground color="-16777216"/>
-                      <text value="CANCEL"/>
-                    </properties>
-                  </component>
-                  <component id="3d338" class="javax.swing.JButton" binding="btnTrainRegister">
-                    <constraints>
-                      <grid row="9" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-3243246"/>
-                      <font name="Cambria" size="18" style="1"/>
-                      <foreground color="-16777216"/>
-                      <text value="REGISTER"/>
-                    </properties>
-                  </component>
-                  <component id="8fdad" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="15" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="1d518" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="8" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="3fc5e" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="18" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-1"/>
-                    </properties>
-                  </component>
-                  <grid id="48d82" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="25" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-1"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <component id="680b7" class="javax.swing.JLabel">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <font name="Georgia" size="28" style="1"/>
-                          <foreground color="-16777216"/>
-                          <text value="TRAIN REGISTRATION"/>
-                        </properties>
-                      </component>
-                    </children>
-                  </grid>
-                  <component id="89640" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="1" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="4213c" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="4" column="16" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="5923a" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="19" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="fb115" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="17" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="22b68" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="16" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="e0804" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="15" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="7e142" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="10" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="576a" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="11" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="43b4e" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="12" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="31ee0" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="13" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="a9186" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="14" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="973c9" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="6" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="d1e74" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="7" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="d837c" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="76f6" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="35c23" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="7cc53" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="4d8cb" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="91d04" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="d5f9" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="8369d" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="9c98e" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="bf8cc" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="17" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="e50e4" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="18" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="1fcf6" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="19" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="ae125" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="20" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="8ae39" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="21" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="8899c" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="3" column="23" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="7ec28" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="4" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Calibri" size="22" style="1"/>
-                      <foreground color="-16777216"/>
-                      <text value="Block ID 02"/>
-                    </properties>
-                  </component>
-                  <component id="6a667" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="5" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Calibri" size="22" style="1"/>
-                      <foreground color="-16777216"/>
-                      <text value="Block ID 03"/>
-                    </properties>
-                  </component>
-                  <component id="2d81" class="javax.swing.JTextField" binding="txtBlockID3">
-                    <constraints>
-                      <grid row="5" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="96893" class="javax.swing.JTextField" binding="txtBlockCount3">
-                    <constraints>
-                      <grid row="5" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="993d7" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="4" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Calibri" size="22" style="1"/>
-                      <foreground color="-16777216"/>
-                      <text value="Block Count"/>
-                    </properties>
-                  </component>
-                  <component id="f196e" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="5" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Calibri" size="22" style="1"/>
-                      <foreground color="-16777216"/>
-                      <text value="Block Count"/>
-                    </properties>
-                  </component>
-                  <component id="c683d" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="4" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                  <component id="d01f0" class="javax.swing.JToolBar$Separator">
-                    <constraints>
-                      <grid row="4" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
-                </children>
-              </grid>
               <grid id="c0360" layout-manager="GridLayoutManager" row-count="21" column-count="19" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
@@ -1882,6 +1500,388 @@
                   </component>
                 </children>
               </grid>
+              <grid id="6b1eb" layout-manager="GridLayoutManager" row-count="20" column-count="25" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <tabbedpane title="Train"/>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="e49de" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri" size="22" style="1"/>
+                      <foreground color="-16777216"/>
+                      <text value="Engine ID"/>
+                    </properties>
+                  </component>
+                  <component id="d14ad" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri" size="22" style="1"/>
+                      <foreground color="-16777216"/>
+                      <text value="Block ID 01"/>
+                    </properties>
+                  </component>
+                  <component id="5adc9" class="javax.swing.JTextField" binding="txtEngineID">
+                    <constraints>
+                      <grid row="2" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="b4890" class="javax.swing.JTextField" binding="txtBlockID2">
+                    <constraints>
+                      <grid row="4" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="8f409" class="javax.swing.JTextField" binding="txtBlockID1">
+                    <constraints>
+                      <grid row="3" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="86b5f" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri" size="22" style="1"/>
+                      <foreground color="-16777216"/>
+                      <text value="Block Count"/>
+                    </properties>
+                  </component>
+                  <component id="3d917" class="javax.swing.JTextField" binding="txtBlockCount1">
+                    <constraints>
+                      <grid row="3" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="8e463" class="javax.swing.JTextField" binding="txtBlockCount2">
+                    <constraints>
+                      <grid row="4" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="7f0e4" class="javax.swing.JButton" binding="btnTrainRegistrationClear">
+                    <constraints>
+                      <grid row="9" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-3243246"/>
+                      <font name="Cambria" size="18" style="1"/>
+                      <foreground color="-16777216"/>
+                      <text value="CANCEL"/>
+                    </properties>
+                  </component>
+                  <component id="3d338" class="javax.swing.JButton" binding="btnTrainRegister">
+                    <constraints>
+                      <grid row="9" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-3243246"/>
+                      <font name="Cambria" size="18" style="1"/>
+                      <foreground color="-16777216"/>
+                      <text value="REGISTER"/>
+                    </properties>
+                  </component>
+                  <component id="8fdad" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="15" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="1d518" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="8" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="3fc5e" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="18" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-1"/>
+                    </properties>
+                  </component>
+                  <grid id="48d82" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="25" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-1"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="680b7" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font name="Georgia" size="28" style="1"/>
+                          <foreground color="-16777216"/>
+                          <text value="TRAIN REGISTRATION"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <component id="89640" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="1" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="4213c" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="4" column="16" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="5923a" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="19" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="fb115" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="17" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="22b68" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="16" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="e0804" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="15" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="7e142" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="10" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="576a" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="11" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="43b4e" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="12" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="31ee0" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="13" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="a9186" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="14" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="973c9" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="6" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="d1e74" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="7" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="d837c" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="76f6" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="35c23" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="7cc53" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="4d8cb" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="91d04" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="d5f9" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="8369d" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="9c98e" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="bf8cc" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="17" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="e50e4" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="18" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="1fcf6" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="19" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="ae125" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="20" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="8ae39" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="21" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="8899c" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="3" column="23" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="7ec28" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="4" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri" size="22" style="1"/>
+                      <foreground color="-16777216"/>
+                      <text value="Block ID 02"/>
+                    </properties>
+                  </component>
+                  <component id="6a667" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="5" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri" size="22" style="1"/>
+                      <foreground color="-16777216"/>
+                      <text value="Block ID 03"/>
+                    </properties>
+                  </component>
+                  <component id="2d81" class="javax.swing.JTextField" binding="txtBlockID3">
+                    <constraints>
+                      <grid row="5" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="96893" class="javax.swing.JTextField" binding="txtBlockCount3">
+                    <constraints>
+                      <grid row="5" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="993d7" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="4" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri" size="22" style="1"/>
+                      <foreground color="-16777216"/>
+                      <text value="Block Count"/>
+                    </properties>
+                  </component>
+                  <component id="f196e" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="5" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri" size="22" style="1"/>
+                      <foreground color="-16777216"/>
+                      <text value="Block Count"/>
+                    </properties>
+                  </component>
+                  <component id="c683d" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="4" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="d01f0" class="javax.swing.JToolBar$Separator">
+                    <constraints>
+                      <grid row="4" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                </children>
+              </grid>
             </children>
           </tabbedpane>
           <tabbedpane id="95df4" binding="tabbedPane4" default-binding="true">
@@ -1909,7 +1909,7 @@
                     </properties>
                     <border type="none"/>
                     <children>
-                      <grid id="37278" binding="tblPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                      <grid id="37278" binding="tblPanel" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                         <margin top="0" left="0" bottom="0" right="0"/>
                         <constraints>
                           <grid row="0" column="0" row-span="10" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -1919,17 +1919,22 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <scrollpane id="3ca9b">
+                          <scrollpane id="3ca9b" binding="jscrlpane">
                             <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                             </constraints>
-                            <properties/>
+                            <properties>
+                              <enabled value="true"/>
+                            </properties>
                             <border type="none"/>
                             <children>
                               <component id="4f058" class="javax.swing.JTable" binding="table1" default-binding="true">
                                 <constraints/>
                                 <properties>
+                                  <background color="-1"/>
+                                  <enabled value="true"/>
                                   <preferredSize width="20" height="400"/>
+                                  <selectionBackground color="-3494830"/>
                                 </properties>
                               </component>
                             </children>
@@ -1937,19 +1942,11 @@
                           <grid id="cfbc0" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                             <margin top="0" left="0" bottom="0" right="0"/>
                             <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <component id="4a007" class="javax.swing.JTextPane" binding="textPaneJourneyStatus">
-                                <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                                    <preferred-size width="150" height="50"/>
-                                  </grid>
-                                </constraints>
-                                <properties/>
-                              </component>
                               <component id="ed038" class="javax.swing.JButton" binding="btnEmergency">
                                 <constraints>
                                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -1972,8 +1969,76 @@
                                   <text value="TRACK DRIVER"/>
                                 </properties>
                               </component>
+                              <component id="8385" class="javax.swing.JTable" binding="table2" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                                    <preferred-size width="150" height="50"/>
+                                  </grid>
+                                </constraints>
+                                <properties/>
+                              </component>
                             </children>
                           </grid>
+                          <component id="46da8" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Georgia" size="14"/>
+                              <foreground color="-16777216"/>
+                              <text value="0 : "/>
+                            </properties>
+                          </component>
+                          <component id="788a9" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Georgia" size="14"/>
+                              <foreground color="-16777216"/>
+                              <text value=" Not Started"/>
+                            </properties>
+                          </component>
+                          <component id="91f11" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Georgia" size="14"/>
+                              <foreground color="-16777216"/>
+                              <text value=" Ongoing"/>
+                            </properties>
+                          </component>
+                          <component id="b2a30" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Georgia" size="14"/>
+                              <foreground color="-16777216"/>
+                              <text value=" Finished"/>
+                            </properties>
+                          </component>
+                          <component id="ebe36" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Georgia" size="14"/>
+                              <foreground color="-16777216"/>
+                              <text value="1 : "/>
+                            </properties>
+                          </component>
+                          <component id="b69e6" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Georgia" size="14"/>
+                              <foreground color="-16777216"/>
+                              <text value="2 : "/>
+                            </properties>
+                          </component>
                         </children>
                       </grid>
                       <grid id="276a4" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -3115,6 +3180,69 @@
                 <properties/>
                 <border type="none"/>
                 <children>
+                  <tabbedpane id="c24e1" binding="tabbedPane8" default-binding="true">
+                    <constraints>
+                      <tabbedpane title="Train"/>
+                    </constraints>
+                    <properties>
+                      <background color="-12828863"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="bf20a" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <tabbedpane title="Train"/>
+                        </constraints>
+                        <properties>
+                          <background color="-1"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="73e56" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font name="Mongolian Baiti" size="36" style="1"/>
+                              <foreground color="-3243246"/>
+                              <text value="TRAIN  INVENTORY"/>
+                            </properties>
+                          </component>
+                          <scrollpane id="5ef18">
+                            <constraints>
+                              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-1"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="d30aa" class="javax.swing.JTable" binding="tblTrain">
+                                <constraints/>
+                                <properties>
+                                  <background color="-1"/>
+                                  <selectionBackground color="-1656461"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </scrollpane>
+                          <component id="ee796" class="javax.swing.JToolBar$Separator">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties/>
+                          </component>
+                          <component id="42c64" class="javax.swing.JToolBar$Separator">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties/>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </tabbedpane>
                   <tabbedpane id="e2fdd" binding="tabbedPane6" default-binding="true">
                     <constraints>
                       <tabbedpane title="Train Engine"/>
@@ -3293,69 +3421,6 @@
                             <properties/>
                           </component>
                           <component id="2aa0e" class="javax.swing.JToolBar$Separator">
-                            <constraints>
-                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties/>
-                          </component>
-                        </children>
-                      </grid>
-                    </children>
-                  </tabbedpane>
-                  <tabbedpane id="c24e1" binding="tabbedPane8" default-binding="true">
-                    <constraints>
-                      <tabbedpane title="Train"/>
-                    </constraints>
-                    <properties>
-                      <background color="-12828863"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <grid id="bf20a" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                        <margin top="0" left="0" bottom="0" right="0"/>
-                        <constraints>
-                          <tabbedpane title="Train"/>
-                        </constraints>
-                        <properties>
-                          <background color="-1"/>
-                        </properties>
-                        <border type="none"/>
-                        <children>
-                          <component id="73e56" class="javax.swing.JLabel">
-                            <constraints>
-                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <font name="Mongolian Baiti" size="36" style="1"/>
-                              <foreground color="-3243246"/>
-                              <text value="TRAIN  INVENTORY"/>
-                            </properties>
-                          </component>
-                          <scrollpane id="5ef18">
-                            <constraints>
-                              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties>
-                              <background color="-1"/>
-                            </properties>
-                            <border type="none"/>
-                            <children>
-                              <component id="d30aa" class="javax.swing.JTable" binding="tblTrain">
-                                <constraints/>
-                                <properties>
-                                  <background color="-1"/>
-                                  <selectionBackground color="-1656461"/>
-                                </properties>
-                              </component>
-                            </children>
-                          </scrollpane>
-                          <component id="ee796" class="javax.swing.JToolBar$Separator">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                            </constraints>
-                            <properties/>
-                          </component>
-                          <component id="42c64" class="javax.swing.JToolBar$Separator">
                             <constraints>
                               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>

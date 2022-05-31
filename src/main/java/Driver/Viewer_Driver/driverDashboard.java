@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -50,6 +51,7 @@ public class driverDashboard {
     private JButton journeyEndButton;
     private JLabel lblViewDistance1;
     private JButton btnLogout;
+    private JButton btnDriverLocation;
 
     Timer timer;
     Timer timer1;
@@ -483,6 +485,7 @@ public class driverDashboard {
 
             }
         });
+
         journeyStartButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -510,47 +513,33 @@ public class driverDashboard {
 
                 //////////////////////////////////////
 
+ //               counterLabel.setText("10:35:00");
+//
+//
+//                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+//                LocalTime now = LocalTime.now();
+//
+//
+//                lblCurrentTime.setText((dtf.format(now)));
+//
 //                DateTimeFormatter h = DateTimeFormatter.ofPattern("HH");
 //                DateTimeFormatter m = DateTimeFormatter.ofPattern("mm");
 //                DateTimeFormatter s = DateTimeFormatter.ofPattern("ss");
-//                LocalTime now = LocalTime.now();
 //
-//                String nowTime = lblCurrentTime.getText();
-//                String endingTime = lblViewEndingTime.getText();
 //
-//                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-//
-//                try {
-//
-//                    java.util.Date time3 = format.parse(endingTime);
-//                    java.util.Date time1 = format.parse(nowTime);
-//
-//                    long CountDownTime = time3.getTime() - time1.getTime();
-//                    System.out.println("scd : "+CountDownTime);
-//
-//                    long HH = CountDownTime.toHours();
-//                    long MM = CountDownTime.toMinutesPart();
-//                    long SS = CountDownTime.toSecondsPart();
-//                    String timeInHHMMSS = String.format("%02d:%02d:%02d", HH, MM, SS);
-//                    System.out.println(timeInHHMMSS);
-//
-////                    Date d=new Date(CountDownTime);
-////                    System.out.println(d);
-//
-////                    String CountDownTime1 = String.valueOf(CountDownTime);
-////                    System.out.println("string : "+CountDownTime1);
-////                    LocalDate date = LocalDate.parse(CountDownTime1);
-////                    System.out.println(date);
-////
-////                    hour = Integer.parseInt(h.format(date));
-////                    minute = Integer.parseInt(m.format(date));
-////                    second = Integer.parseInt(s.format(date));
-//
-//            } catch (ParseException ex) {
-//                    ex.printStackTrace();
-//                }
+//                lblCurrrentDate.setText(String.valueOf(LocalDate.now()));
+
+                hour = 10;
+                minute = 35;
+                second = 25;
+
+                countdownTimer();
+                timer.start();
+
             }
             });
+
+
         journeyEndButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -583,6 +572,28 @@ public class driverDashboard {
 
                 frame.dispose();
                 new driverAssignedJourneys();
+            }
+        });
+        btnDriverLocation.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                File file = new File("src/main/java/Driver/Viewer_Driver/driverLocation/index.html");
+                if (!Desktop.isDesktopSupported())//check if Desktop is supported by Platform or not
+                {
+                    System.out.println("Browser not supported");
+                    return;
+                }
+                Desktop desktop = Desktop.getDesktop();
+                if (file.exists())         //checks file exists or not
+                {
+                    try {
+                        desktop.open(file);              //opens the specified file
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+
             }
         });
     }
@@ -666,63 +677,9 @@ public class driverDashboard {
 
     public void Main() {
 
-        DateTimeFormatter h = DateTimeFormatter.ofPattern("HH");
-        DateTimeFormatter m = DateTimeFormatter.ofPattern("mm");
-        DateTimeFormatter s = DateTimeFormatter.ofPattern("ss");
-        LocalTime now = LocalTime.now();
-
         counterLabel.setText("00:00:00");
-
-        hour = Integer.parseInt(h.format(now));
-        minute = Integer.parseInt(m.format(now));
-        second = Integer.parseInt(s.format(now));
-
-//        Time EndingTime = Time.valueOf(lblViewEndingTime.getName());
-//        System.out.println(EndingTime);
-
-        countdownTimer();
-        timer.start();
     }
 
-    public void countdownTimer() {
-
-        timer = new Timer(1000, new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                second--;
-                ddSecond = dFormat.format(second);
-                ddMinute = dFormat.format(minute);
-                ddHour = dFormat.format(hour);
-
-                counterLabel.setText(ddHour + ":" + ddMinute + ":" + ddSecond);
-
-                if(second==-1) {
-                    second = 59;
-                    minute--;
-
-                    ddHour = dFormat.format(hour);
-                    ddMinute = dFormat.format(minute);
-                    ddHour = dFormat.format(hour);
-                    counterLabel.setText(ddHour + ":" + ddMinute + ":" + ddSecond);
-
-                }
-                if(minute==-1) {
-                    minute = 59;
-                    hour--;
-                    ddHour = dFormat.format(hour);
-                    ddMinute = dFormat.format(minute);
-                    ddHour = dFormat.format(hour);
-                    counterLabel.setText(ddHour + ":" + ddMinute + ":" + ddSecond);
-                }
-
-                if(hour==0 && minute==0 && second==0) {
-                    timer.stop();
-                }
-            }
-        });
-    }
 
     public void Main2() {
 
@@ -881,6 +838,45 @@ public class driverDashboard {
 
     }
 
+    public void countdownTimer() {
+
+        timer = new Timer(1000, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                second--;
+                ddSecond = dFormat.format(second);
+                ddMinute = dFormat.format(minute);
+                ddHour = dFormat.format(hour);
+
+                counterLabel.setText(ddHour + ":" + ddMinute + ":" + ddSecond);
+
+                if(second==-1) {
+                    second = 59;
+                    minute--;
+
+                    ddHour = dFormat.format(hour);
+                    ddMinute = dFormat.format(minute);
+                    ddHour = dFormat.format(hour);
+                    counterLabel.setText(ddHour + ":" + ddMinute + ":" + ddSecond);
+
+                }
+                if(minute==-1) {
+                    minute = 59;
+                    hour--;
+                    ddHour = dFormat.format(hour);
+                    ddMinute = dFormat.format(minute);
+                    ddHour = dFormat.format(hour);
+                    counterLabel.setText(ddHour + ":" + ddMinute + ":" + ddSecond);
+                }
+
+                if(hour==0 && minute==0 && second==0) {
+                    timer.stop();
+                }
+            }
+        });
+    }
 
 
     public static void main(String[] args) {

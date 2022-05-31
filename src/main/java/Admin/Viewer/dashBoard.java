@@ -145,6 +145,8 @@ public class dashBoard extends javax.swing.JFrame {
     private JButton btnStMap;
     private JButton btnTrackDriver;
     private JPanel pnl2;
+    private JScrollPane jscrlpane;
+    private JTable table2;
     private JTextField txtNoOfBlocks2;
     private JTextField txtNoOfBlocks3;
 
@@ -163,6 +165,7 @@ public class dashBoard extends javax.swing.JFrame {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setSize(1200, 600);
+
         //panelARCSDashboard.setSize(1200,50);
         createJourneyTbl();
         createEngineTbl();
@@ -421,7 +424,14 @@ public class dashBoard extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 //durationCalc();
 
-                if(txtJourneyName.getText().isEmpty()){
+                if(txtDriverNameJourney.getText() == "Kalana"){
+                    JOptionPane.showMessageDialog(dashPanel, "Incorrect Driver Name", "Please Enter Valid Details!", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                else if(textField1.getText() == "100"){
+                    JOptionPane.showMessageDialog(dashPanel, "Incorrect Train ID", "Please Enter Valid Details!", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(txtJourneyName.getText().isEmpty()){
                     JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
                 }
                 else if(txtStartingTime.getText().isEmpty()){
@@ -439,6 +449,7 @@ public class dashBoard extends javax.swing.JFrame {
                 else if(textField1.getText().isEmpty()){
                     JOptionPane.showMessageDialog(dashPanel, "Missing Fields!", "Try Again!", JOptionPane.ERROR_MESSAGE);
                 }
+
 
 
                     else {
