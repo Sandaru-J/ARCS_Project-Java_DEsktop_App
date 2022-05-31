@@ -5,8 +5,7 @@ import Driver.Model_Driver.driverSignupModel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -18,6 +17,8 @@ public class driverAssignedJourneys {
     private JTable tblDriverAssignedJourneys;
     private JPanel panelDriverAssignedJourneys;
     private JLabel lbldriverAssigenedJourneyDate;
+    private JButton btnLogout;
+    private JPanel panelx;
 
     public driverAssignedJourneys()
     {
@@ -45,6 +46,22 @@ public class driverAssignedJourneys {
                 new driverDashboard();
                 frame.dispose();
 
+            }
+        });
+        btnLogout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                frame.dispose();
+                new driverLogin();
+            }
+        });
+
+        panelx.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                viewDriverAssignedJourneysTbl();
             }
         });
     }
