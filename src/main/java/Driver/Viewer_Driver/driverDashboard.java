@@ -21,6 +21,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import Driver.Model_Driver.driverSignupModel;
+import ConsoleLog.*;
+
 
 public class driverDashboard {
     private JLabel lblViewJourneyName;
@@ -118,6 +120,12 @@ public class driverDashboard {
 
                 alert = driverUserName+" started Journey "+lblViewJourneyID.getText();
                 alertVal=2;
+                logModel lg = new logModel();
+                lg.setAlertText(alert);
+                lg.setAlertcode(alertVal);
+
+                alertPopup ap = new alertPopup();
+                ap.alertset();
             }
 
         });

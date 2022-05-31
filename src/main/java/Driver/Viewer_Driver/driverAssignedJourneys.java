@@ -81,7 +81,7 @@ public class driverAssignedJourneys {
             int RowCount = rowCountDriverAssignedJourneys();
 
             String columns[] = {"Journey Name", "Journey ID", "Start Time", "End Time", "Start Station", "End Station"};
-            String data[][] = new String[RowCount][6];
+            String data[][] = new String[RowCount][10];
 
             int i = 0;
             while (rs.next()) {
