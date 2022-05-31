@@ -155,7 +155,7 @@ public class dashBoard extends javax.swing.JFrame {
     String ddHour1Admin, ddMinute1Admin, ddSecond1Admin;
     DecimalFormat dFormat = new DecimalFormat("00");
 
-    public dashBoard() {
+    public dashBoard() throws SQLException {
 
 
         JFrame frame = new JFrame("Dashboard");
@@ -175,6 +175,7 @@ public class dashBoard extends javax.swing.JFrame {
         createUpdateJourneyrTbl();
         Main2Admin();
         viewPane();
+        logTbl();
 
         //Full Screen
 //        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -1160,6 +1161,30 @@ public class dashBoard extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    public void logTbl() throws SQLException {
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[DriverDetails]");
+
+        String columns[] = {"Time", "Report"};
+        String data[][] = new String[10][2];
+
+        int i = 0;
+        while (rs.next()) {
+
+//            String DriverFullName = rs.getString("Time");
+//            String DriverUserName = rs.getString("message");
+
+
+            data[i][0] = rs.getString("time");
+            data[i][1] = rs.getString("message");
+
+            i++;
+        }
+        table1.setModel(new DefaultTableModel(data,columns));
+    }
 
     public int rowCountTrain() {
         int count = 0;
@@ -1420,7 +1445,7 @@ public class dashBoard extends javax.swing.JFrame {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         dashBoard panel = new dashBoard();
     }
 }
