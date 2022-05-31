@@ -785,7 +785,7 @@
               <background color="-9539986"/>
               <font name="Courier New" size="14" style="1"/>
               <foreground color="-16777216"/>
-              <text value="LOGOUT"/>
+              <text value="BACK"/>
             </properties>
           </component>
           <component id="392cc" class="javax.swing.JToolBar$Separator">

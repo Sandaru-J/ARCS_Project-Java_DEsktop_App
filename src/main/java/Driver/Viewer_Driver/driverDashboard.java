@@ -89,6 +89,32 @@ public class driverDashboard {
         GraphicsDevice device = graphics.getDefaultScreenDevice();
         device.setFullScreenWindow(frame);
 
+        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+        Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+        String startstation = lblViewStartingStation.getText();
+        String endstation = lblViewDestination.getText();
+        String stations;
+
+        try {
+            CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.SelectRandomStation('"+startstation+"','"+endstation+"')}");
+            ResultSet rs = cs.executeQuery();
+
+            int i = 0;
+            while (rs.next()) {
+
+                stations = rs.getString("StationName");
+
+                i++;
+                System.out.println(stations);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
 
         btnEmergency.addActionListener(new ActionListener() {
 
@@ -138,8 +164,7 @@ public class driverDashboard {
                 float startStation = 0;
                 float endStation = 0;
 
-                SqlServerConnection objSqlServerConnection = new SqlServerConnection();
-                Connection con = objSqlServerConnection.createConnectionSqlServer();
+
 
                 try {
                     PreparedStatement ps = con.prepareStatement("SELECT Distance FROM [ARCSDatabase].[dbo].[StationDetails] WHERE StationName='RAGAMA'");
@@ -176,8 +201,11 @@ public class driverDashboard {
 
                 System.out.println(startStation);
                 System.out.println(endStation);
+                System.out.println("end "+endTime);
+                System.out.println("current"+currentTime);
+                System.out.println("start"+startTime);
 
-                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
                 try {
                     java.util.Date time3 = format.parse(endTime);
                     java.util.Date time2 = format.parse(currentTime);
@@ -288,7 +316,7 @@ public class driverDashboard {
                 System.out.println(startStation);
                 System.out.println(endStation);
 
-                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm");
                 try {
                     java.util.Date time3 = format.parse(endTime);
                     java.util.Date time2 = format.parse(currentTime);
@@ -399,7 +427,7 @@ public class driverDashboard {
                 System.out.println(startStation);
                 System.out.println(endStation);
 
-                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm:");
                 try {
                     java.util.Date time3 = format.parse(endTime);
                     java.util.Date time2 = format.parse(currentTime);
@@ -466,7 +494,6 @@ public class driverDashboard {
                 Connection con = objSqlServerConnection.createConnectionSqlServer();
 
                 String x = String.valueOf(Integer.parseInt(String.valueOf(dsm.getJourneyID())));
-                System.out.println("driver dash id check " + x);
 
                 try {
                     CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.UpdateJourneyStart('" + x + "')}");
@@ -555,7 +582,7 @@ public class driverDashboard {
             public void actionPerformed(ActionEvent e) {
 
                 frame.dispose();
-                new driverLogin();
+                new driverAssignedJourneys();
             }
         });
     }

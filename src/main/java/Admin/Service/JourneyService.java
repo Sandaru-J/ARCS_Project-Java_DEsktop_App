@@ -99,12 +99,26 @@ public class JourneyService {
         if (AverageSpeed1 < 0)
             AverageSpeed1 = -AverageSpeed1;
 
-        float AverageSpeed = Float.parseFloat(df1.format(AverageSpeed1));
+        float AverageSpeed = parseFloat(df1.format(AverageSpeed1));
         System.out.println("Speed : " + AverageSpeed);
 
         //////////////////////////////
 
         try {
+
+            try
+            {
+                int trainid = cJourney.getTrainID();
+
+                CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.ValidationTrainID('"+trainid+"')}");
+                cs.execute();
+
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+            }
+
             CallableStatement cs = con.prepareCall("{call ARCSDatabase.dbo.InsertJourneyDetails(?,?,?,?,?,?,?,?,?,?,?,?)}");
 //            PreparedStatement ps = con.prepareStatement("insert into [ARCSDatabase].[dbo].[TrainEngineDetails] values(?,?,?)");
             boolean i;
