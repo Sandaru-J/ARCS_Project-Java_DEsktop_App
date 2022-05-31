@@ -1,11 +1,18 @@
 package Driver.Viewer_Driver;
 
 //import Admin.Viewer.dashBoard;
+import DatabaseConnection.SqlServerConnection;
 import Driver.Controller_Driver.DriverController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class driverLogin {
     private JTextField txtDriverUsername;
@@ -45,7 +52,11 @@ public class driverLogin {
                         new driverAssignedJourneys();
                         frame.dispose();
                         System.out.println("OK");
-
+                        try {
+                            logAlert();
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
+                        }
                     } else {
                         System.out.println("Wrong");
                         txtDriverUsername.setText("");
@@ -56,6 +67,25 @@ public class driverLogin {
                 }
             }
         });
+    }
+
+    public void logAlert() throws SQLException {
+        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+        Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+        String qry = "INSERT INTO [ARCSDatabase].[dbo].[log] VALUES (?,?)";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        System.out.println(formatter.format(date));
+        String alert= "Driver "+txtDriverUsername.getText()+" has logged into system";
+        String time = formatter.format(date);
+
+        PreparedStatement ps = con.prepareStatement(qry);
+        ps.setString(1, time);
+        ps.setString(2, alert);
+        ps.execute();
+
+
     }
 
     public static void main(String[] args) {
