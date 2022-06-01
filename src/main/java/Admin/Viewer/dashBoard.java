@@ -155,7 +155,7 @@ public class dashBoard extends javax.swing.JFrame {
     String ddHour1Admin, ddMinute1Admin, ddSecond1Admin;
     DecimalFormat dFormat = new DecimalFormat("00");
 
-    public dashBoard() {
+    public dashBoard() throws SQLException {
 
 
         JFrame frame = new JFrame("Dashboard");
@@ -174,7 +174,8 @@ public class dashBoard extends javax.swing.JFrame {
         createTrainTbl();
         createUpdateJourneyrTbl();
         Main2Admin();
-        viewPane();
+        //viewPane();
+        logTbl();
 
         //Full Screen
 //        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -1160,6 +1161,26 @@ public class dashBoard extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    public void logTbl() throws SQLException {
+        SqlServerConnection objSqlServCon = new SqlServerConnection();
+        Connection con = objSqlServCon.createConnectionSqlServer();
+
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[log]");
+
+        String columns[] = {"", ""};
+        String data[][] = new String[15][2];
+
+        int i = 0;
+        while (rs.next()) {
+
+            data[i][0] = rs.getString("time");
+            data[i][1] = rs.getString("message");
+
+            i++;
+        }
+        table2.setModel(new DefaultTableModel(data,columns));
+    }
 
     public int rowCountTrain() {
         int count = 0;
@@ -1333,7 +1354,6 @@ public class dashBoard extends javax.swing.JFrame {
 
 
     public void Main2Admin() {
-
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalTime now = LocalTime.now();
 
@@ -1420,7 +1440,7 @@ public class dashBoard extends javax.swing.JFrame {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         dashBoard panel = new dashBoard();
     }
 }

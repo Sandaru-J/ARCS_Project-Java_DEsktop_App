@@ -22,6 +22,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import Driver.Model_Driver.driverSignupModel;
+import Driver.Viewer_Driver.driverLogin;
 
 public class driverDashboard {
     private JLabel lblViewJourneyName;
@@ -489,10 +490,17 @@ public class driverDashboard {
         journeyStartButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    journeyStartAlert();
+                    journeyEndAlert();
+                    engineFailureAlert();
+                    signalLostAlert();
+                    emergencyModeAlert();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
 
                 driverSignupModel dsm = new driverSignupModel();
-
-
                 SqlServerConnection objSqlServerConnection = new SqlServerConnection();
                 Connection con = objSqlServerConnection.createConnectionSqlServer();
 
@@ -504,30 +512,12 @@ public class driverDashboard {
                     cs.execute();
 
                     System.out.println("Updated Journey Status");
-//                    dashBoard dashBoard = new dashBoard();
-//                    dashBoard.createJourneyTbl();
 
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
 
-                //////////////////////////////////////
-
- //               counterLabel.setText("10:35:00");
-//
-//
-//                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-//                LocalTime now = LocalTime.now();
-//
-//
-//                lblCurrentTime.setText((dtf.format(now)));
-//
-//                DateTimeFormatter h = DateTimeFormatter.ofPattern("HH");
-//                DateTimeFormatter m = DateTimeFormatter.ofPattern("mm");
-//                DateTimeFormatter s = DateTimeFormatter.ofPattern("ss");
-//
-//
-//                lblCurrrentDate.setText(String.valueOf(LocalDate.now()));
+                //Countdown
 
                 hour = 10;
                 minute = 35;
@@ -543,6 +533,11 @@ public class driverDashboard {
         journeyEndButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
+                hour = 00;
+                minute = 00;
+                second = 00;
 
                 driverSignupModel dsm = new driverSignupModel();
 
@@ -878,6 +873,100 @@ public class driverDashboard {
         });
     }
 
+    public void journeyStartAlert() throws SQLException {
+
+        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+        Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+        String qry = "INSERT INTO [ARCSDatabase].[dbo].[log] VALUES (?,?)";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        java.util.Date date = new java.util.Date();
+
+        String alert= "Journey '"+lblViewJourneyName.getText()+"' has started";
+        String time = "["+formatter.format(date)+"]";
+        System.out.println(formatter.format(date)+" Journey '"+lblViewJourneyName.getText()+"' has started");
+        PreparedStatement ps = con.prepareStatement(qry);
+        ps.setString(1, time);
+        ps.setString(2, alert);
+        ps.execute();
+
+    }
+
+    public void journeyEndAlert() throws SQLException {
+
+        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+        Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+        String qry = "INSERT INTO [ARCSDatabase].[dbo].[log] VALUES (?,?)";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        java.util.Date date = new java.util.Date();
+
+        String alert= "Journey '"+lblViewJourneyName.getText()+"' has ended";
+        String time = "["+formatter.format(date)+"]";
+        System.out.println(formatter.format(date)+" Journey '"+lblViewJourneyName.getText()+"' has ended");
+        PreparedStatement ps = con.prepareStatement(qry);
+        ps.setString(1, time);
+        ps.setString(2, alert);
+        ps.execute();
+
+    }
+
+    public void engineFailureAlert() throws SQLException {
+
+        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+        Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+        String qry = "INSERT INTO [ARCSDatabase].[dbo].[log] VALUES (?,?)";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        java.util.Date date = new java.util.Date();
+
+        String alert= "The '"+lblViewJourneyName.getText()+"' engine got a failure";
+        String time = "["+formatter.format(date)+"]";
+        System.out.println(formatter.format(date)+ " The '"+lblViewJourneyName.getText()+"' engine got a failure");
+        PreparedStatement ps = con.prepareStatement(qry);
+        ps.setString(1, time);
+        ps.setString(2, alert);
+        ps.execute();
+
+    }
+
+    public void signalLostAlert() throws SQLException {
+
+        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+        Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+        String qry = "INSERT INTO [ARCSDatabase].[dbo].[log] VALUES (?,?)";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        java.util.Date date = new java.util.Date();
+
+        String alert= "The Journey '"+lblViewJourneyName.getText()+"' lost signal";
+        String time = "["+formatter.format(date)+"]";
+        System.out.println(formatter.format(date)+" The Journey '\"+lblViewJourneyName.getText()+\"' lost signal");
+        PreparedStatement ps = con.prepareStatement(qry);
+        ps.setString(1, time);
+        ps.setString(2, alert);
+        ps.execute();
+
+    }
+
+    public void emergencyModeAlert() throws SQLException {
+
+        SqlServerConnection objSqlServerConnection = new SqlServerConnection();
+        Connection con = objSqlServerConnection.createConnectionSqlServer();
+
+        String qry = "INSERT INTO [ARCSDatabase].[dbo].[log] VALUES (?,?)";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        java.util.Date date = new java.util.Date();
+
+        String alert= "Emergency mode activated by Journey '"+lblViewJourneyName.getText()+"'";
+        String time = "["+formatter.format(date)+"]";
+        System.out.println(formatter.format(date)+" Emergency mode activated by Journey '"+lblViewJourneyName.getText()+"'");
+        PreparedStatement ps = con.prepareStatement(qry);
+        ps.setString(1, time);
+        ps.setString(2, alert);
+        ps.execute();
+
+    }
 
     public static void main(String[] args) {
         new driverDashboard();
