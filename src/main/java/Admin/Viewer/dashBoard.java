@@ -174,7 +174,7 @@ public class dashBoard extends javax.swing.JFrame {
         createTrainTbl();
         createUpdateJourneyrTbl();
         Main2Admin();
-        viewPane();
+        //viewPane();
 
         //Full Screen
 //        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -1412,11 +1412,11 @@ public class dashBoard extends javax.swing.JFrame {
 
     }
 
-    private void viewPane()
-    {
-        textPaneJourneyStatus.setText("" +
-                "");
-    }
+//    private void viewPane()
+//    {
+//        textPaneJourneyStatus.setText("" +
+//                "");
+//    }
 
 
 
