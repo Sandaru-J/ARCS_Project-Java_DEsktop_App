@@ -1136,7 +1136,7 @@
                     <properties>
                       <font name="Calibri" size="22" style="1"/>
                       <foreground color="-16777216"/>
-                      <text value="Block Admin.Model "/>
+                      <text value="Block Admin Model "/>
                     </properties>
                   </component>
                   <component id="ab702" class="javax.swing.JLabel">

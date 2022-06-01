@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ARCS_Project_New" />
         <module name="ARCS_Project" />
+        <module name="ARCS_Project_Final" />
       </profile>
     </annotationProcessing>
   </component>

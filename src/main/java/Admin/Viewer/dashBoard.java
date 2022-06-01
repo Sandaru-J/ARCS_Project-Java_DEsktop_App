@@ -834,7 +834,7 @@ public class dashBoard extends javax.swing.JFrame {
 
                         if (!i) {
                             System.out.println("Data Successfully Registered");
-                            JOptionPane.showMessageDialog(dashPanel, "Driver Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
+                            JOptionPane.showMessageDialog(dashPanel, "Train Successfully Registered", " Registered!", JOptionPane.PLAIN_MESSAGE);
 
                             txtEngineID.setText("");
                             txtBlockID1.setText("");
@@ -846,7 +846,7 @@ public class dashBoard extends javax.swing.JFrame {
 
                         } else {
                             System.out.println("Data Not Registered");
-                            JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Driver Registration", "Error!", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(dashPanel, "Unsuccessful Train Registration", "Error!", JOptionPane.ERROR_MESSAGE);
                         }
                     } catch (Exception ex) {
                         ex.printStackTrace();
