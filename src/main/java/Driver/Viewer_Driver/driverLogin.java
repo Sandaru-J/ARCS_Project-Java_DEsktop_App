@@ -3,6 +3,7 @@ package Driver.Viewer_Driver;
 //import Admin.Viewer.dashBoard;
 import DatabaseConnection.SqlServerConnection;
 import Driver.Controller_Driver.DriverController;
+import javafx.scene.input.InputMethodTextRun;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class driverLogin {
+
     private JTextField txtDriverUsername;
     private JButton driverLoginButton;
     private JButton driverClearButton;
@@ -67,7 +69,7 @@ public class driverLogin {
             }
         });
     }
-    public void logAlert() throws SQLException, SQLException {
+    public void logAlert() throws SQLException {
         SqlServerConnection objSqlServerConnection = new SqlServerConnection();
         Connection con = objSqlServerConnection.createConnectionSqlServer();
 

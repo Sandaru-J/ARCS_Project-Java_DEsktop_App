@@ -174,7 +174,7 @@ public class dashBoard extends javax.swing.JFrame {
         createTrainTbl();
         createUpdateJourneyrTbl();
         Main2Admin();
-        viewPane();
+        //viewPane();
         logTbl();
 
         //Full Screen
@@ -1166,24 +1166,20 @@ public class dashBoard extends javax.swing.JFrame {
         Connection con = objSqlServCon.createConnectionSqlServer();
 
         Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[DriverDetails]");
+        ResultSet rs = st.executeQuery("SELECT * FROM [ARCSDatabase].[dbo].[log]");
 
-        String columns[] = {"Time", "Report"};
-        String data[][] = new String[10][2];
+        String columns[] = {"", ""};
+        String data[][] = new String[15][2];
 
         int i = 0;
         while (rs.next()) {
-
-//            String DriverFullName = rs.getString("Time");
-//            String DriverUserName = rs.getString("message");
-
 
             data[i][0] = rs.getString("time");
             data[i][1] = rs.getString("message");
 
             i++;
         }
-        table1.setModel(new DefaultTableModel(data,columns));
+        table2.setModel(new DefaultTableModel(data,columns));
     }
 
     public int rowCountTrain() {
@@ -1358,7 +1354,6 @@ public class dashBoard extends javax.swing.JFrame {
 
 
     public void Main2Admin() {
-
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalTime now = LocalTime.now();
 
